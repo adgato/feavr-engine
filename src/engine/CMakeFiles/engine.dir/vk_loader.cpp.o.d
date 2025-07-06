@@ -1,0 +1,224 @@
+src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: \
+ /home/adgato/projects/vulkan/template-project/src/engine/vk_loader.cpp \
+ /usr/include/stdc-predef.h /usr/include/c++/13/iostream \
+ /usr/include/c++/13/bits/requires_hosted.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+ /usr/include/c++/13/ostream /usr/include/c++/13/istream \
+ /usr/include/c++/13/ios /usr/include/c++/13/bits/istream.tcc \
+ /usr/include/c++/13/bits/cxxabi_forced.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/vk_loader.h \
+ /usr/include/c++/13/filesystem /usr/include/c++/13/bits/fs_fwd.h \
+ /usr/include/c++/13/system_error /usr/include/c++/13/cstdint \
+ /usr/include/c++/13/bits/chrono.h /usr/include/c++/13/ratio \
+ /usr/include/c++/13/type_traits /usr/include/c++/13/limits \
+ /usr/include/c++/13/ctime /usr/include/time.h \
+ /usr/include/c++/13/bits/parse_numbers.h \
+ /usr/include/c++/13/ext/numeric_traits.h /usr/include/c++/13/concepts \
+ /usr/include/c++/13/compare /usr/include/c++/13/bits/fs_path.h \
+ /usr/include/c++/13/locale /usr/include/c++/13/bits/localefwd.h \
+ /usr/include/c++/13/bits/locale_classes.h \
+ /usr/include/c++/13/bits/locale_facets.h \
+ /usr/include/c++/13/bits/locale_facets_nonio.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/features.h \
+ /usr/include/c++/13/bits/codecvt.h \
+ /usr/include/c++/13/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/13/bits/locale_conv.h /usr/include/c++/13/streambuf \
+ /usr/include/c++/13/bits/stringfwd.h \
+ /usr/include/c++/13/bits/allocator.h /usr/include/c++/13/iosfwd \
+ /usr/include/c++/13/iomanip /usr/include/c++/13/bits/ios_base.h \
+ /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/sstream \
+ /usr/include/c++/13/bits/alloc_traits.h \
+ /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/codecvt \
+ /usr/include/c++/13/string_view /usr/include/c++/13/bits/stl_algobase.h \
+ /usr/include/c++/13/bits/stl_pair.h \
+ /usr/include/c++/13/ext/concurrence.h \
+ /usr/include/c++/13/bits/shared_ptr.h \
+ /usr/include/c++/13/bits/unique_ptr.h /usr/include/c++/13/bits/fs_dir.h \
+ /usr/include/c++/13/typeinfo \
+ /usr/include/c++/13/bits/iterator_concepts.h \
+ /usr/include/c++/13/bits/fs_ops.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/Core.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/vk_engine.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/vk_types.h \
+ /usr/include/c++/13/memory /usr/include/c++/13/optional \
+ /usr/include/c++/13/string /usr/include/c++/13/vector \
+ /usr/include/c++/13/span /usr/include/c++/13/array \
+ /usr/include/c++/13/initializer_list \
+ /usr/include/c++/13/bits/functexcept.h \
+ /usr/include/c++/13/bits/range_access.h \
+ /usr/include/c++/13/bits/utility.h \
+ /usr/include/c++/13/debug/assertions.h /usr/include/c++/13/cstddef \
+ /usr/include/c++/13/bits/stl_iterator.h \
+ /usr/include/c++/13/bits/ranges_base.h /usr/include/c++/13/functional \
+ /usr/include/c++/13/bits/stl_function.h /usr/include/c++/13/tuple \
+ /usr/include/c++/13/bits/functional_hash.h \
+ /usr/include/c++/13/bits/invoke.h /usr/include/c++/13/bits/refwrap.h \
+ /usr/include/c++/13/bits/std_function.h /usr/include/c++/13/new \
+ /usr/include/c++/13/unordered_map /usr/include/c++/13/bits/stl_algo.h \
+ /usr/include/c++/13/bits/algorithmfwd.h \
+ /usr/include/c++/13/bits/stl_iterator_base_types.h \
+ /usr/include/c++/13/bits/stl_heap.h /usr/include/c++/13/debug/debug.h \
+ /usr/include/c++/13/bits/move.h \
+ /usr/include/c++/13/bits/predefined_ops.h \
+ /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
+ /usr/include/c++/13/bits/uniform_int_dist.h \
+ /usr/include/c++/13/bits/concept_check.h \
+ /usr/include/c++/13/bits/stl_tempbuf.h /usr/include/c++/13/cstdlib \
+ /usr/include/c++/13/bits/ranges_cmp.h /usr/include/c++/13/deque \
+ /usr/include/c++/13/bits/stl_construct.h \
+ /usr/include/c++/13/bits/stl_uninitialized.h \
+ /usr/include/c++/13/bits/stl_deque.h /usr/include/c++/13/bits/deque.tcc \
+ /usr/include/c++/13/bits/memory_resource.h \
+ /usr/include/c++/13/source_location /usr/include/c++/13/stdexcept \
+ /usr/include/vulkan/vulkan.h \
+ /home/adgato/projects/vulkan/template-project/include/vma/vk_mem_alloc.h \
+ /home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/core.h \
+ /usr/include/c++/13/cstdio /usr/include/stdio.h \
+ /usr/include/c++/13/cstring /usr/include/string.h \
+ /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
+ /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+ /usr/include/strings.h \
+ /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+ /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
+ /usr/include/c++/13/iterator /usr/include/c++/13/bits/stream_iterator.h \
+ /usr/include/c++/13/bits/streambuf_iterator.h /usr/include/c++/13/ranges \
+ /usr/include/c++/13/bits/ranges_util.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/camera.h \
+ /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_stdinc.h \
+ /usr/include/SDL2/SDL_config.h \
+ /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
+ /usr/include/SDL2/SDL_platform.h /usr/include/SDL2/begin_code.h \
+ /usr/include/SDL2/close_code.h /usr/include/x86_64-linux-gnu/sys/types.h \
+ /usr/include/c++/13/stdlib.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h /usr/include/wchar.h \
+ /usr/include/inttypes.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/ctype.h \
+ /usr/include/c++/13/math.h /usr/include/c++/13/cmath \
+ /usr/include/c++/13/bits/cpp_type_traits.h \
+ /usr/include/c++/13/ext/type_traits.h /usr/include/math.h \
+ /usr/include/c++/13/bits/std_abs.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
+ /usr/include/SDL2/SDL_error.h /usr/include/SDL2/SDL_video.h \
+ /usr/include/SDL2/SDL_pixels.h /usr/include/SDL2/SDL_endian.h \
+ /usr/include/endian.h /usr/include/SDL2/SDL_rect.h \
+ /usr/include/SDL2/SDL_rwops.h /usr/include/SDL2/SDL_surface.h \
+ /usr/include/SDL2/SDL_blendmode.h /usr/include/SDL2/SDL_keyboard.h \
+ /usr/include/SDL2/SDL_keycode.h /usr/include/SDL2/SDL_scancode.h \
+ /usr/include/SDL2/SDL_mouse.h /usr/include/SDL2/SDL_joystick.h \
+ /usr/include/SDL2/SDL_guid.h /usr/include/SDL2/SDL_mutex.h \
+ /usr/include/SDL2/SDL_gamecontroller.h /usr/include/SDL2/SDL_sensor.h \
+ /usr/include/SDL2/SDL_quit.h /usr/include/SDL2/SDL_gesture.h \
+ /usr/include/SDL2/SDL_touch.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/vk_descriptors.h \
+ /usr/include/c++/13/map /usr/include/c++/13/bits/stl_tree.h \
+ /usr/include/c++/13/ext/alloc_traits.h \
+ /usr/include/c++/13/ext/aligned_buffer.h \
+ /usr/include/c++/13/bits/node_handle.h \
+ /usr/include/c++/13/bits/stl_map.h \
+ /usr/include/c++/13/bits/stl_multimap.h \
+ /usr/include/c++/13/bits/erase_if.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/Image.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/shader_descriptors.h \
+ /usr/include/c++/13/cassert /usr/include/assert.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/vk_new.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassDirectory.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/DefaultPass.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/../SubMesh.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/ecs/Common.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/ecs/ComponentTypeUniverse.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/Pass.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/ecs/Engine.h \
+ /usr/include/c++/13/bitset /usr/include/c++/13/unordered_set \
+ /usr/include/c++/13/bits/unordered_set.h \
+ /usr/include/c++/13/bits/hashtable.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArrays.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArray.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/ecs/TypeIndexer.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/ecs/UpdateQueue.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassInstance.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/Material.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/PassManager.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/Swapchain.h \
+ /usr/include/SDL2/SDL_video.h \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/quaternion.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../glm.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../detail/_fixes.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../detail/setup.hpp \
+ /usr/include/c++/13/climits \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
+ /usr/include/c++/13/cfloat \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../fwd.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../trigonometric.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../detail/func_trigonometric.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../packing.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../detail/func_packing.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../detail/type_half.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../detail/setup.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../detail/type_half.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../integer.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../detail/func_integer.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/constants.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/scalar_constants.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/../detail/setup.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/scalar_constants.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/constants.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/quaternion.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../gtc/matrix_transform.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../gtc/../ext/matrix_projection.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../gtc/../ext/matrix_projection.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../gtc/../ext/matrix_clip_space.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../gtc/../ext/matrix_clip_space.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../gtc/../ext/matrix_transform.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../gtc/../ext/matrix_transform.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../gtc/matrix_transform.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/vector_relational.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/vector_relational.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/../detail/type_float.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/../detail/setup.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/quaternion_common.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/../ext/quaternion_geometric.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/../ext/quaternion_geometric.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/quaternion_common.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/quaternion_float.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/../detail/type_quat.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/../detail/../ext/quaternion_relational.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/../detail/../ext/quaternion_relational.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/../detail/type_quat.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/quaternion_float_precision.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/quaternion_double.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/quaternion_double_precision.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/quaternion_trigonometric.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/quaternion_trigonometric.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/quaternion_transform.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../ext/quaternion_transform.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/quaternion.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/epsilon.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/../detail/setup.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtc/epsilon.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../ext/quaternion_exponential.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../ext/quaternion_exponential.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtx/norm.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtx/../gtx/component_wise.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtx/../gtx/../detail/setup.hpp \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtx/../gtx/component_wise.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../gtx/norm.inl \
+ /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/quaternion.inl \
+ /home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/glm_element_traits.hpp \
+ /home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/tools.hpp \
+ /home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/types.hpp \
+ /usr/include/c++/13/utility /usr/include/c++/13/bits/stl_relops.h \
+ /usr/include/c++/13/variant \
+ /usr/include/c++/13/bits/enable_special_members.h \
+ /usr/include/c++/13/bits/exception_defines.h \
+ /home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/util.hpp \
+ /usr/include/c++/13/bit /usr/include/c++/13/memory_resource \
+ /usr/include/c++/13/shared_mutex \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
+ /usr/include/c++/13/bits/std_mutex.h /usr/include/c++/13/bits/align.h \
+ /home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/parser.hpp
