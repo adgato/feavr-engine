@@ -4,7 +4,7 @@ Destroy method is called when the component is removed from the entity during Re
 Serialize handles saving and loading the Component.
 Within Serialize, each field is expected to be serialized using m->SerializeVar, m->SerializeCmp, m->SerializeArr.
 These serialize in the following format [tag][size][data]. Where size == sizeof(data).
-Tags are used to handle the case when component class fields are renamed, added or removed - they are expected to be constants that are strictly increasing through the Serialize method.
+Tags are used to handle the case when component class fields are renamed, added or removed - they are expected to be constants that are non-decreasing through the Serialize method.
 This is so that when loading, the serializer skips over any tags smaller than the next field, and only loads in the field if it finds a matching tag to load from.
 If the size of a primitive (int, char, etc.) or primitive array field differs from the size saved, it is not loaded.
 
