@@ -3,44 +3,50 @@
 #include "Core.h"
 #include "ecs/Engine.h"
 
- //#include <iostream>
+//#include <iostream>
 //#include "mathx.h"
 //using namespace mathx;
 
-struct Cat
-{
-    char* sound;
 
-    void Destroy()
-    {
-        fmt::println("Dying words: {}", sound);
-        delete[] sound;
-    }
-};
 
-void ECSTest()
+void ECSTestSave()
 {
     ecs::EntityManager manager;
 
-    ecs::Entity e1 = manager.NewEntity<Cat>(Cat {new char[] {"Meow1"}});
+    const Cat cat1 { { "hello 1", sizeof("hello 1") } };
+    const Cat cat2 { { "hello 2", sizeof("hello 2") } };
+    const Cat cat3 { { "hello 3", sizeof("hello 3") } };
 
-    manager.RefreshComponents();
-    
+    manager.NewEntity<Cat>(cat1);
+    manager.NewEntity<Cat>(cat2);
+    manager.NewEntity<Cat>(cat3);
 
-    manager.AddComponent<Cat>(e1, Cat {new char[] {"Meow2"}});
-    manager.AddComponent<Cat>(e1, Cat {new char[] {"Meow3"}});
-    manager.RemoveComponent<Cat>(e1);
-    
-    manager.RefreshComponents();
+    manager.SaveTo(PROJECT_ROOT"/test.ecs");
+    manager.Destroy();
+}
+
+
+void ECSTestLoad()
+{
+    ecs::EntityManager manager;
+
+    manager.LoadFrom(PROJECT_ROOT"/test.ecs");
+
+    fmt::println("{}", manager.GetComponent<Cat>(0).catSound.data());
+    fmt::println("{}", manager.GetComponent<Cat>(1).catSound.data());
+    fmt::println("{}", manager.GetComponent<Cat>(2).catSound.data());
+
+    manager.Destroy();
 }
 
 int main()
 {
-    //ECSTest();
-    Core core;
-    core.Init();
-    while (core.Next()) {}
-    core.Destroy();
+    ECSTestSave();
+    ECSTestLoad();
+    //Core core;
+    //core.Init();
+    //while (core.Next()) {}
+    //core.Destroy();
 
     return 0;
 }

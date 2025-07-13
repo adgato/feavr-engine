@@ -23,7 +23,7 @@ namespace rendering::passes
         properties.AllocateSet(engine->descriptorAllocator, defaultPass->materialLayout);
         properties.StageBuffer(default_pass::GLTFMaterialData_binding, matConstProperty);
         properties.StageImage(default_pass::colorTex_binding, engine->commonTextures.errorCheckerboard);
-        properties.StageSampler(default_pass::colorTexSampler_binding, engine->_defaultSamplerNearest);
+        properties.StageSampler(default_pass::colorTexSampler_binding, engine->defaultSamplerNearest);
         properties.PerformWrites();
         
         PassInstance::Init(defaultPass);

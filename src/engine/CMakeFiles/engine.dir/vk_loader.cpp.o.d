@@ -40,7 +40,8 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: \
  /usr/include/c++/13/bits/iterator_concepts.h \
  /usr/include/c++/13/bits/fs_ops.h \
  /home/adgato/projects/vulkan/template-project/src/engine/Core.h \
- /home/adgato/projects/vulkan/template-project/src/engine/vk_engine.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/Swapchain.h \
  /home/adgato/projects/vulkan/template-project/src/engine/vk_types.h \
  /usr/include/c++/13/memory /usr/include/c++/13/optional \
  /usr/include/c++/13/string /usr/include/c++/13/vector \
@@ -84,10 +85,8 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
  /usr/include/c++/13/iterator /usr/include/c++/13/bits/stream_iterator.h \
- /usr/include/c++/13/bits/streambuf_iterator.h /usr/include/c++/13/ranges \
- /usr/include/c++/13/bits/ranges_util.h \
- /home/adgato/projects/vulkan/template-project/src/engine/camera.h \
- /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_stdinc.h \
+ /usr/include/c++/13/bits/streambuf_iterator.h \
+ /usr/include/SDL2/SDL_video.h /usr/include/SDL2/SDL_stdinc.h \
  /usr/include/SDL2/SDL_config.h \
  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
  /usr/include/SDL2/SDL_platform.h /usr/include/SDL2/begin_code.h \
@@ -101,17 +100,21 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: \
  /usr/include/c++/13/ext/type_traits.h /usr/include/math.h \
  /usr/include/c++/13/bits/std_abs.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
- /usr/include/SDL2/SDL_error.h /usr/include/SDL2/SDL_video.h \
  /usr/include/SDL2/SDL_pixels.h /usr/include/SDL2/SDL_endian.h \
  /usr/include/endian.h /usr/include/SDL2/SDL_rect.h \
- /usr/include/SDL2/SDL_rwops.h /usr/include/SDL2/SDL_surface.h \
- /usr/include/SDL2/SDL_blendmode.h /usr/include/SDL2/SDL_keyboard.h \
- /usr/include/SDL2/SDL_keycode.h /usr/include/SDL2/SDL_scancode.h \
- /usr/include/SDL2/SDL_mouse.h /usr/include/SDL2/SDL_joystick.h \
- /usr/include/SDL2/SDL_guid.h /usr/include/SDL2/SDL_mutex.h \
- /usr/include/SDL2/SDL_gamecontroller.h /usr/include/SDL2/SDL_sensor.h \
- /usr/include/SDL2/SDL_quit.h /usr/include/SDL2/SDL_gesture.h \
- /usr/include/SDL2/SDL_touch.h \
+ /usr/include/SDL2/SDL_error.h /usr/include/SDL2/SDL_rwops.h \
+ /usr/include/SDL2/SDL_surface.h /usr/include/SDL2/SDL_blendmode.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/Image.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/vk_engine.h \
+ /usr/include/c++/13/ranges /usr/include/c++/13/bits/ranges_util.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/camera.h \
+ /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_video.h \
+ /usr/include/SDL2/SDL_keyboard.h /usr/include/SDL2/SDL_keycode.h \
+ /usr/include/SDL2/SDL_scancode.h /usr/include/SDL2/SDL_mouse.h \
+ /usr/include/SDL2/SDL_joystick.h /usr/include/SDL2/SDL_guid.h \
+ /usr/include/SDL2/SDL_mutex.h /usr/include/SDL2/SDL_gamecontroller.h \
+ /usr/include/SDL2/SDL_sensor.h /usr/include/SDL2/SDL_quit.h \
+ /usr/include/SDL2/SDL_gesture.h /usr/include/SDL2/SDL_touch.h \
  /home/adgato/projects/vulkan/template-project/src/engine/vk_descriptors.h \
  /usr/include/c++/13/map /usr/include/c++/13/bits/stl_tree.h \
  /usr/include/c++/13/ext/alloc_traits.h \
@@ -121,7 +124,6 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: \
  /usr/include/c++/13/bits/stl_multimap.h \
  /usr/include/c++/13/bits/erase_if.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h \
- /home/adgato/projects/vulkan/template-project/src/engine/rendering/Image.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/shader_descriptors.h \
  /usr/include/c++/13/cassert /usr/include/assert.h \
@@ -130,22 +132,38 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassDirectory.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/DefaultPass.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/../SubMesh.h \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Common.h \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/ComponentTypeUniverse.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h \
+ /usr/include/c++/13/bitset \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h \
+ /usr/include/c++/13/fstream \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
+ /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/cerrno \
+ /usr/include/errno.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/Pass.h \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Engine.h \
- /usr/include/c++/13/bitset /usr/include/c++/13/unordered_set \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h \
+ /usr/include/c++/13/format /usr/include/c++/13/charconv \
+ /usr/include/c++/13/bit /usr/include/c++/13/bits/charconv.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
+ /usr/include/c++/13/variant \
+ /usr/include/c++/13/bits/enable_special_members.h \
+ /usr/include/c++/13/bits/exception_defines.h \
+ /usr/include/c++/13/bits/ranges_algobase.h \
+ /usr/include/c++/13/unordered_set \
  /usr/include/c++/13/bits/unordered_set.h \
  /usr/include/c++/13/bits/hashtable.h \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArrays.h \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArray.h \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/TypeIndexer.h \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/UpdateQueue.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassInstance.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Material.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/PassManager.h \
- /home/adgato/projects/vulkan/template-project/src/engine/rendering/Swapchain.h \
- /usr/include/SDL2/SDL_video.h \
  /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/quaternion.hpp \
  /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../glm.hpp \
  /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/../detail/_fixes.hpp \
@@ -213,12 +231,7 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: \
  /home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/tools.hpp \
  /home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/types.hpp \
  /usr/include/c++/13/utility /usr/include/c++/13/bits/stl_relops.h \
- /usr/include/c++/13/variant \
- /usr/include/c++/13/bits/enable_special_members.h \
- /usr/include/c++/13/bits/exception_defines.h \
  /home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/util.hpp \
- /usr/include/c++/13/bit /usr/include/c++/13/memory_resource \
- /usr/include/c++/13/shared_mutex \
- /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
+ /usr/include/c++/13/memory_resource /usr/include/c++/13/shared_mutex \
  /usr/include/c++/13/bits/std_mutex.h /usr/include/c++/13/bits/align.h \
  /home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/parser.hpp

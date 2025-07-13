@@ -6,7 +6,7 @@ bin/engine: include/fastgltf/libfastgltf.a \
   include/fmt/libfmtd.a \
   include/libimgui.a \
   include/libvkbootstrap.a \
-  src/directmath/libdirectmath.a \
+  src/serialisation/libserialisation.a \
   /lib/i386-linux-gnu/libFLAC.so.12 \
   /lib/i386-linux-gnu/libLLVM.so.19.1 \
   /lib/i386-linux-gnu/libX11-xcb.so.1 \
@@ -229,6 +229,7 @@ bin/engine: include/fastgltf/libfastgltf.a \
   /usr/lib/x86_64-linux-gnu/libvulkan.so \
   /usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-16.1.so \
   src/engine/CMakeFiles/engine.dir/Core.cpp.o \
+  src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o \
   src/engine/CMakeFiles/engine.dir/camera.cpp.o \
   src/engine/CMakeFiles/engine.dir/main.cpp.o \
   src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o \
@@ -254,16 +255,21 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o: src/engine/CMakeFiles/engine.dir/cm
   include/imgui/imgui_impl_sdl2.h \
   include/imgui/imgui_impl_vulkan.h \
   include/vma/vk_mem_alloc.h \
+  src/ecs/ecs/ByteStream.h \
+  src/ecs/ecs/Common.h \
+  src/ecs/ecs/ComponentTypeUniverse.h \
+  src/ecs/ecs/Engine.h \
+  src/ecs/ecs/RawArray.h \
+  src/ecs/ecs/RawArrays.h \
+  src/ecs/ecs/SerialTypes.h \
+  src/ecs/ecs/TypeIndexer.h \
+  src/ecs/ecs/TypeUniverse.h \
+  src/ecs/ecs/UpdateQueue.h \
+  src/ecs/ecs/array.h \
   src/engine/Core.cpp \
   src/engine/Core.h \
+  src/engine/ImguiOverlay.h \
   src/engine/camera.h \
-  src/engine/ecs/Common.h \
-  src/engine/ecs/ComponentTypeUniverse.h \
-  src/engine/ecs/Engine.h \
-  src/engine/ecs/RawArray.h \
-  src/engine/ecs/RawArrays.h \
-  src/engine/ecs/TypeIndexer.h \
-  src/engine/ecs/UpdateQueue.h \
   src/engine/rendering/Buffer.h \
   src/engine/rendering/CommonSetLayouts.h \
   src/engine/rendering/CommonTextures.h \
@@ -311,23 +317,28 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o: src/engine/CMakeFiles/engine.dir/cm
   /usr/include/assert.h \
   /usr/include/c++/13/array \
   /usr/include/c++/13/atomic \
+  /usr/include/c++/13/bit \
   /usr/include/c++/13/bits/algorithmfwd.h \
   /usr/include/c++/13/bits/alloc_traits.h \
   /usr/include/c++/13/bits/allocator.h \
   /usr/include/c++/13/bits/atomic_base.h \
   /usr/include/c++/13/bits/atomic_timed_wait.h \
   /usr/include/c++/13/bits/atomic_wait.h \
+  /usr/include/c++/13/bits/charconv.h \
   /usr/include/c++/13/bits/chrono.h \
   /usr/include/c++/13/bits/codecvt.h \
   /usr/include/c++/13/bits/concept_check.h \
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/deque.tcc \
+  /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/bits/erase_if.h \
+  /usr/include/c++/13/bits/exception_defines.h \
   /usr/include/c++/13/bits/fs_dir.h \
   /usr/include/c++/13/bits/fs_fwd.h \
   /usr/include/c++/13/bits/fs_ops.h \
   /usr/include/c++/13/bits/fs_path.h \
+  /usr/include/c++/13/bits/fstream.tcc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hashtable.h \
@@ -348,6 +359,7 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o: src/engine/CMakeFiles/engine.dir/cm
   /usr/include/c++/13/bits/predefined_ops.h \
   /usr/include/c++/13/bits/quoted_string.h \
   /usr/include/c++/13/bits/range_access.h \
+  /usr/include/c++/13/bits/ranges_algobase.h \
   /usr/include/c++/13/bits/ranges_base.h \
   /usr/include/c++/13/bits/ranges_cmp.h \
   /usr/include/c++/13/bits/ranges_util.h \
@@ -385,6 +397,7 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o: src/engine/CMakeFiles/engine.dir/cm
   /usr/include/c++/13/bitset \
   /usr/include/c++/13/cassert \
   /usr/include/c++/13/cerrno \
+  /usr/include/c++/13/charconv \
   /usr/include/c++/13/cmath \
   /usr/include/c++/13/codecvt \
   /usr/include/c++/13/compare \
@@ -404,6 +417,8 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o: src/engine/CMakeFiles/engine.dir/cm
   /usr/include/c++/13/ext/numeric_traits.h \
   /usr/include/c++/13/ext/type_traits.h \
   /usr/include/c++/13/filesystem \
+  /usr/include/c++/13/format \
+  /usr/include/c++/13/fstream \
   /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
   /usr/include/c++/13/iomanip \
@@ -438,6 +453,7 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o: src/engine/CMakeFiles/engine.dir/cm
   /usr/include/c++/13/typeinfo \
   /usr/include/c++/13/unordered_map \
   /usr/include/c++/13/unordered_set \
+  /usr/include/c++/13/variant \
   /usr/include/c++/13/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
@@ -465,7 +481,10 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o: src/engine/CMakeFiles/engine.dir/cm
   /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
   /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
@@ -474,6 +493,124 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o: src/engine/CMakeFiles/engine.dir/cm
   /usr/include/x86_64-linux-gnu/sys/types.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h
+
+src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx \
+  include/fmt/include/fmt/core.h \
+  include/imgui/imconfig.h \
+  include/imgui/imgui.h \
+  include/imgui/imgui_impl_sdl2.h \
+  include/imgui/imgui_impl_vulkan.h \
+  include/vma/vk_mem_alloc.h \
+  src/engine/ImguiOverlay.cpp \
+  src/engine/ImguiOverlay.h \
+  src/engine/rendering/Image.h \
+  src/engine/rendering/Swapchain.h \
+  src/engine/vk_initializers.h \
+  src/engine/vk_new.h \
+  src/engine/vk_types.h \
+  /usr/include/SDL2/SDL_blendmode.h \
+  /usr/include/SDL2/SDL_config.h \
+  /usr/include/SDL2/SDL_endian.h \
+  /usr/include/SDL2/SDL_error.h \
+  /usr/include/SDL2/SDL_pixels.h \
+  /usr/include/SDL2/SDL_platform.h \
+  /usr/include/SDL2/SDL_rect.h \
+  /usr/include/SDL2/SDL_rwops.h \
+  /usr/include/SDL2/SDL_stdinc.h \
+  /usr/include/SDL2/SDL_surface.h \
+  /usr/include/SDL2/SDL_video.h \
+  /usr/include/SDL2/begin_code.h \
+  /usr/include/SDL2/close_code.h \
+  /usr/include/assert.h \
+  /usr/include/c++/13/array \
+  /usr/include/c++/13/bits/algorithmfwd.h \
+  /usr/include/c++/13/bits/allocator.h \
+  /usr/include/c++/13/bits/concept_check.h \
+  /usr/include/c++/13/bits/cpp_type_traits.h \
+  /usr/include/c++/13/bits/deque.tcc \
+  /usr/include/c++/13/bits/functexcept.h \
+  /usr/include/c++/13/bits/functional_hash.h \
+  /usr/include/c++/13/bits/invoke.h \
+  /usr/include/c++/13/bits/memory_resource.h \
+  /usr/include/c++/13/bits/move.h \
+  /usr/include/c++/13/bits/predefined_ops.h \
+  /usr/include/c++/13/bits/range_access.h \
+  /usr/include/c++/13/bits/ranges_base.h \
+  /usr/include/c++/13/bits/ranges_cmp.h \
+  /usr/include/c++/13/bits/refwrap.h \
+  /usr/include/c++/13/bits/requires_hosted.h \
+  /usr/include/c++/13/bits/std_abs.h \
+  /usr/include/c++/13/bits/std_function.h \
+  /usr/include/c++/13/bits/stl_algo.h \
+  /usr/include/c++/13/bits/stl_algobase.h \
+  /usr/include/c++/13/bits/stl_construct.h \
+  /usr/include/c++/13/bits/stl_deque.h \
+  /usr/include/c++/13/bits/stl_function.h \
+  /usr/include/c++/13/bits/stl_heap.h \
+  /usr/include/c++/13/bits/stl_iterator.h \
+  /usr/include/c++/13/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/13/bits/stl_iterator_base_types.h \
+  /usr/include/c++/13/bits/stl_pair.h \
+  /usr/include/c++/13/bits/stl_tempbuf.h \
+  /usr/include/c++/13/bits/stl_uninitialized.h \
+  /usr/include/c++/13/bits/stream_iterator.h \
+  /usr/include/c++/13/bits/streambuf_iterator.h \
+  /usr/include/c++/13/bits/uniform_int_dist.h \
+  /usr/include/c++/13/bits/utility.h \
+  /usr/include/c++/13/cmath \
+  /usr/include/c++/13/compare \
+  /usr/include/c++/13/concepts \
+  /usr/include/c++/13/cstddef \
+  /usr/include/c++/13/cstdio \
+  /usr/include/c++/13/cstdlib \
+  /usr/include/c++/13/cstring \
+  /usr/include/c++/13/debug/assertions.h \
+  /usr/include/c++/13/debug/debug.h \
+  /usr/include/c++/13/deque \
+  /usr/include/c++/13/ext/numeric_traits.h \
+  /usr/include/c++/13/ext/type_traits.h \
+  /usr/include/c++/13/functional \
+  /usr/include/c++/13/initializer_list \
+  /usr/include/c++/13/iosfwd \
+  /usr/include/c++/13/iterator \
+  /usr/include/c++/13/limits \
+  /usr/include/c++/13/math.h \
+  /usr/include/c++/13/memory \
+  /usr/include/c++/13/new \
+  /usr/include/c++/13/optional \
+  /usr/include/c++/13/source_location \
+  /usr/include/c++/13/span \
+  /usr/include/c++/13/stdexcept \
+  /usr/include/c++/13/stdlib.h \
+  /usr/include/c++/13/string \
+  /usr/include/c++/13/string_view \
+  /usr/include/c++/13/tuple \
+  /usr/include/c++/13/type_traits \
+  /usr/include/c++/13/typeinfo \
+  /usr/include/c++/13/unordered_map \
+  /usr/include/c++/13/vector \
+  /usr/include/ctype.h \
+  /usr/include/endian.h \
+  /usr/include/features.h \
+  /usr/include/inttypes.h \
+  /usr/include/math.h \
+  /usr/include/stdc-predef.h \
+  /usr/include/stdio.h \
+  /usr/include/string.h \
+  /usr/include/strings.h \
+  /usr/include/vulkan/vulkan.h \
+  /usr/include/wchar.h \
+  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
+  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
+  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h
@@ -1030,15 +1167,20 @@ src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch: src/engine/CMakeFiles/engine
 src/engine/CMakeFiles/engine.dir/main.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx \
   include/fmt/include/fmt/core.h \
   include/vma/vk_mem_alloc.h \
+  src/ecs/ecs/ByteStream.h \
+  src/ecs/ecs/Common.h \
+  src/ecs/ecs/ComponentTypeUniverse.h \
+  src/ecs/ecs/Engine.h \
+  src/ecs/ecs/RawArray.h \
+  src/ecs/ecs/RawArrays.h \
+  src/ecs/ecs/SerialTypes.h \
+  src/ecs/ecs/TypeIndexer.h \
+  src/ecs/ecs/TypeUniverse.h \
+  src/ecs/ecs/UpdateQueue.h \
+  src/ecs/ecs/array.h \
   src/engine/Core.h \
+  src/engine/ImguiOverlay.h \
   src/engine/camera.h \
-  src/engine/ecs/Common.h \
-  src/engine/ecs/ComponentTypeUniverse.h \
-  src/engine/ecs/Engine.h \
-  src/engine/ecs/RawArray.h \
-  src/engine/ecs/RawArrays.h \
-  src/engine/ecs/TypeIndexer.h \
-  src/engine/ecs/UpdateQueue.h \
   src/engine/main.cpp \
   src/engine/rendering/Buffer.h \
   src/engine/rendering/CommonSetLayouts.h \
@@ -1085,22 +1227,37 @@ src/engine/CMakeFiles/engine.dir/main.cpp.o: src/engine/CMakeFiles/engine.dir/cm
   /usr/include/SDL2/close_code.h \
   /usr/include/assert.h \
   /usr/include/c++/13/array \
+  /usr/include/c++/13/bit \
   /usr/include/c++/13/bits/algorithmfwd.h \
   /usr/include/c++/13/bits/allocator.h \
+  /usr/include/c++/13/bits/charconv.h \
+  /usr/include/c++/13/bits/codecvt.h \
   /usr/include/c++/13/bits/concept_check.h \
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/deque.tcc \
+  /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/bits/erase_if.h \
+  /usr/include/c++/13/bits/exception_defines.h \
+  /usr/include/c++/13/bits/fstream.tcc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hashtable.h \
   /usr/include/c++/13/bits/invoke.h \
+  /usr/include/c++/13/bits/istream.tcc \
+  /usr/include/c++/13/bits/locale_classes.h \
+  /usr/include/c++/13/bits/locale_conv.h \
+  /usr/include/c++/13/bits/locale_facets.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/13/bits/localefwd.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/move.h \
   /usr/include/c++/13/bits/node_handle.h \
+  /usr/include/c++/13/bits/parse_numbers.h \
   /usr/include/c++/13/bits/predefined_ops.h \
   /usr/include/c++/13/bits/range_access.h \
+  /usr/include/c++/13/bits/ranges_algobase.h \
   /usr/include/c++/13/bits/ranges_base.h \
   /usr/include/c++/13/bits/ranges_cmp.h \
   /usr/include/c++/13/bits/ranges_util.h \
@@ -1125,11 +1282,14 @@ src/engine/CMakeFiles/engine.dir/main.cpp.o: src/engine/CMakeFiles/engine.dir/cm
   /usr/include/c++/13/bits/stl_uninitialized.h \
   /usr/include/c++/13/bits/stream_iterator.h \
   /usr/include/c++/13/bits/streambuf_iterator.h \
+  /usr/include/c++/13/bits/stringfwd.h \
   /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/unordered_set.h \
   /usr/include/c++/13/bits/utility.h \
   /usr/include/c++/13/bitset \
   /usr/include/c++/13/cassert \
+  /usr/include/c++/13/cerrno \
+  /usr/include/c++/13/charconv \
   /usr/include/c++/13/cmath \
   /usr/include/c++/13/compare \
   /usr/include/c++/13/concepts \
@@ -1137,6 +1297,7 @@ src/engine/CMakeFiles/engine.dir/main.cpp.o: src/engine/CMakeFiles/engine.dir/cm
   /usr/include/c++/13/cstdio \
   /usr/include/c++/13/cstdlib \
   /usr/include/c++/13/cstring \
+  /usr/include/c++/13/ctime \
   /usr/include/c++/13/debug/assertions.h \
   /usr/include/c++/13/debug/debug.h \
   /usr/include/c++/13/deque \
@@ -1144,21 +1305,28 @@ src/engine/CMakeFiles/engine.dir/main.cpp.o: src/engine/CMakeFiles/engine.dir/cm
   /usr/include/c++/13/ext/alloc_traits.h \
   /usr/include/c++/13/ext/numeric_traits.h \
   /usr/include/c++/13/ext/type_traits.h \
+  /usr/include/c++/13/format \
+  /usr/include/c++/13/fstream \
   /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
+  /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
+  /usr/include/c++/13/istream \
   /usr/include/c++/13/iterator \
   /usr/include/c++/13/limits \
+  /usr/include/c++/13/locale \
   /usr/include/c++/13/map \
   /usr/include/c++/13/math.h \
   /usr/include/c++/13/memory \
   /usr/include/c++/13/new \
   /usr/include/c++/13/optional \
+  /usr/include/c++/13/ostream \
   /usr/include/c++/13/ranges \
   /usr/include/c++/13/source_location \
   /usr/include/c++/13/span \
   /usr/include/c++/13/stdexcept \
   /usr/include/c++/13/stdlib.h \
+  /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
   /usr/include/c++/13/tuple \
@@ -1166,16 +1334,20 @@ src/engine/CMakeFiles/engine.dir/main.cpp.o: src/engine/CMakeFiles/engine.dir/cm
   /usr/include/c++/13/typeinfo \
   /usr/include/c++/13/unordered_map \
   /usr/include/c++/13/unordered_set \
+  /usr/include/c++/13/variant \
   /usr/include/c++/13/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
+  /usr/include/errno.h \
   /usr/include/features.h \
   /usr/include/inttypes.h \
+  /usr/include/libintl.h \
   /usr/include/math.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdio.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/time.h \
   /usr/include/vulkan/vulkan.h \
   /usr/include/wchar.h \
   /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
@@ -1183,7 +1355,13 @@ src/engine/CMakeFiles/engine.dir/main.cpp.o: src/engine/CMakeFiles/engine.dir/cm
   /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
@@ -1282,14 +1460,18 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o: src/engine/CMak
   include/glm/glm/detail/type_half.inl \
   include/glm/glm/packing.hpp \
   include/vma/vk_mem_alloc.h \
+  src/ecs/ecs/ByteStream.h \
+  src/ecs/ecs/Common.h \
+  src/ecs/ecs/ComponentTypeUniverse.h \
+  src/ecs/ecs/Engine.h \
+  src/ecs/ecs/RawArray.h \
+  src/ecs/ecs/RawArrays.h \
+  src/ecs/ecs/SerialTypes.h \
+  src/ecs/ecs/TypeIndexer.h \
+  src/ecs/ecs/TypeUniverse.h \
+  src/ecs/ecs/UpdateQueue.h \
+  src/ecs/ecs/array.h \
   src/engine/camera.h \
-  src/engine/ecs/Common.h \
-  src/engine/ecs/ComponentTypeUniverse.h \
-  src/engine/ecs/Engine.h \
-  src/engine/ecs/RawArray.h \
-  src/engine/ecs/RawArrays.h \
-  src/engine/ecs/TypeIndexer.h \
-  src/engine/ecs/UpdateQueue.h \
   src/engine/rendering/Buffer.h \
   src/engine/rendering/CommonSetLayouts.h \
   src/engine/rendering/CommonTextures.cpp \
@@ -1336,22 +1518,37 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o: src/engine/CMak
   /usr/include/SDL2/close_code.h \
   /usr/include/assert.h \
   /usr/include/c++/13/array \
+  /usr/include/c++/13/bit \
   /usr/include/c++/13/bits/algorithmfwd.h \
   /usr/include/c++/13/bits/allocator.h \
+  /usr/include/c++/13/bits/charconv.h \
+  /usr/include/c++/13/bits/codecvt.h \
   /usr/include/c++/13/bits/concept_check.h \
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/deque.tcc \
+  /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/bits/erase_if.h \
+  /usr/include/c++/13/bits/exception_defines.h \
+  /usr/include/c++/13/bits/fstream.tcc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hashtable.h \
   /usr/include/c++/13/bits/invoke.h \
+  /usr/include/c++/13/bits/istream.tcc \
+  /usr/include/c++/13/bits/locale_classes.h \
+  /usr/include/c++/13/bits/locale_conv.h \
+  /usr/include/c++/13/bits/locale_facets.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/13/bits/localefwd.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/move.h \
   /usr/include/c++/13/bits/node_handle.h \
+  /usr/include/c++/13/bits/parse_numbers.h \
   /usr/include/c++/13/bits/predefined_ops.h \
   /usr/include/c++/13/bits/range_access.h \
+  /usr/include/c++/13/bits/ranges_algobase.h \
   /usr/include/c++/13/bits/ranges_base.h \
   /usr/include/c++/13/bits/ranges_cmp.h \
   /usr/include/c++/13/bits/ranges_util.h \
@@ -1376,11 +1573,14 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o: src/engine/CMak
   /usr/include/c++/13/bits/stl_uninitialized.h \
   /usr/include/c++/13/bits/stream_iterator.h \
   /usr/include/c++/13/bits/streambuf_iterator.h \
+  /usr/include/c++/13/bits/stringfwd.h \
   /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/unordered_set.h \
   /usr/include/c++/13/bits/utility.h \
   /usr/include/c++/13/bitset \
   /usr/include/c++/13/cassert \
+  /usr/include/c++/13/cerrno \
+  /usr/include/c++/13/charconv \
   /usr/include/c++/13/cmath \
   /usr/include/c++/13/compare \
   /usr/include/c++/13/concepts \
@@ -1388,6 +1588,7 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o: src/engine/CMak
   /usr/include/c++/13/cstdio \
   /usr/include/c++/13/cstdlib \
   /usr/include/c++/13/cstring \
+  /usr/include/c++/13/ctime \
   /usr/include/c++/13/debug/assertions.h \
   /usr/include/c++/13/debug/debug.h \
   /usr/include/c++/13/deque \
@@ -1395,21 +1596,28 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o: src/engine/CMak
   /usr/include/c++/13/ext/alloc_traits.h \
   /usr/include/c++/13/ext/numeric_traits.h \
   /usr/include/c++/13/ext/type_traits.h \
+  /usr/include/c++/13/format \
+  /usr/include/c++/13/fstream \
   /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
+  /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
+  /usr/include/c++/13/istream \
   /usr/include/c++/13/iterator \
   /usr/include/c++/13/limits \
+  /usr/include/c++/13/locale \
   /usr/include/c++/13/map \
   /usr/include/c++/13/math.h \
   /usr/include/c++/13/memory \
   /usr/include/c++/13/new \
   /usr/include/c++/13/optional \
+  /usr/include/c++/13/ostream \
   /usr/include/c++/13/ranges \
   /usr/include/c++/13/source_location \
   /usr/include/c++/13/span \
   /usr/include/c++/13/stdexcept \
   /usr/include/c++/13/stdlib.h \
+  /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
   /usr/include/c++/13/tuple \
@@ -1417,16 +1625,20 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o: src/engine/CMak
   /usr/include/c++/13/typeinfo \
   /usr/include/c++/13/unordered_map \
   /usr/include/c++/13/unordered_set \
+  /usr/include/c++/13/variant \
   /usr/include/c++/13/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
+  /usr/include/errno.h \
   /usr/include/features.h \
   /usr/include/inttypes.h \
+  /usr/include/libintl.h \
   /usr/include/math.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdio.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/time.h \
   /usr/include/vulkan/vulkan.h \
   /usr/include/wchar.h \
   /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
@@ -1434,7 +1646,13 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o: src/engine/CMak
   /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
@@ -1448,14 +1666,18 @@ src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.o: src/engine/CMa
 src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx \
   include/fmt/include/fmt/core.h \
   include/vma/vk_mem_alloc.h \
+  src/ecs/ecs/ByteStream.h \
+  src/ecs/ecs/Common.h \
+  src/ecs/ecs/ComponentTypeUniverse.h \
+  src/ecs/ecs/Engine.h \
+  src/ecs/ecs/RawArray.h \
+  src/ecs/ecs/RawArrays.h \
+  src/ecs/ecs/SerialTypes.h \
+  src/ecs/ecs/TypeIndexer.h \
+  src/ecs/ecs/TypeUniverse.h \
+  src/ecs/ecs/UpdateQueue.h \
+  src/ecs/ecs/array.h \
   src/engine/camera.h \
-  src/engine/ecs/Common.h \
-  src/engine/ecs/ComponentTypeUniverse.h \
-  src/engine/ecs/Engine.h \
-  src/engine/ecs/RawArray.h \
-  src/engine/ecs/RawArrays.h \
-  src/engine/ecs/TypeIndexer.h \
-  src/engine/ecs/UpdateQueue.h \
   src/engine/rendering/Buffer.h \
   src/engine/rendering/CommonSetLayouts.h \
   src/engine/rendering/CommonTextures.h \
@@ -1503,22 +1725,37 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o: src/engine/CMakeFiles/en
   /usr/include/SDL2/close_code.h \
   /usr/include/assert.h \
   /usr/include/c++/13/array \
+  /usr/include/c++/13/bit \
   /usr/include/c++/13/bits/algorithmfwd.h \
   /usr/include/c++/13/bits/allocator.h \
+  /usr/include/c++/13/bits/charconv.h \
+  /usr/include/c++/13/bits/codecvt.h \
   /usr/include/c++/13/bits/concept_check.h \
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/deque.tcc \
+  /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/bits/erase_if.h \
+  /usr/include/c++/13/bits/exception_defines.h \
+  /usr/include/c++/13/bits/fstream.tcc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hashtable.h \
   /usr/include/c++/13/bits/invoke.h \
+  /usr/include/c++/13/bits/istream.tcc \
+  /usr/include/c++/13/bits/locale_classes.h \
+  /usr/include/c++/13/bits/locale_conv.h \
+  /usr/include/c++/13/bits/locale_facets.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/13/bits/localefwd.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/move.h \
   /usr/include/c++/13/bits/node_handle.h \
+  /usr/include/c++/13/bits/parse_numbers.h \
   /usr/include/c++/13/bits/predefined_ops.h \
   /usr/include/c++/13/bits/range_access.h \
+  /usr/include/c++/13/bits/ranges_algobase.h \
   /usr/include/c++/13/bits/ranges_base.h \
   /usr/include/c++/13/bits/ranges_cmp.h \
   /usr/include/c++/13/bits/ranges_util.h \
@@ -1543,11 +1780,14 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o: src/engine/CMakeFiles/en
   /usr/include/c++/13/bits/stl_uninitialized.h \
   /usr/include/c++/13/bits/stream_iterator.h \
   /usr/include/c++/13/bits/streambuf_iterator.h \
+  /usr/include/c++/13/bits/stringfwd.h \
   /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/unordered_set.h \
   /usr/include/c++/13/bits/utility.h \
   /usr/include/c++/13/bitset \
   /usr/include/c++/13/cassert \
+  /usr/include/c++/13/cerrno \
+  /usr/include/c++/13/charconv \
   /usr/include/c++/13/cmath \
   /usr/include/c++/13/compare \
   /usr/include/c++/13/concepts \
@@ -1555,6 +1795,7 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o: src/engine/CMakeFiles/en
   /usr/include/c++/13/cstdio \
   /usr/include/c++/13/cstdlib \
   /usr/include/c++/13/cstring \
+  /usr/include/c++/13/ctime \
   /usr/include/c++/13/debug/assertions.h \
   /usr/include/c++/13/debug/debug.h \
   /usr/include/c++/13/deque \
@@ -1562,21 +1803,28 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o: src/engine/CMakeFiles/en
   /usr/include/c++/13/ext/alloc_traits.h \
   /usr/include/c++/13/ext/numeric_traits.h \
   /usr/include/c++/13/ext/type_traits.h \
+  /usr/include/c++/13/format \
+  /usr/include/c++/13/fstream \
   /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
+  /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
+  /usr/include/c++/13/istream \
   /usr/include/c++/13/iterator \
   /usr/include/c++/13/limits \
+  /usr/include/c++/13/locale \
   /usr/include/c++/13/map \
   /usr/include/c++/13/math.h \
   /usr/include/c++/13/memory \
   /usr/include/c++/13/new \
   /usr/include/c++/13/optional \
+  /usr/include/c++/13/ostream \
   /usr/include/c++/13/ranges \
   /usr/include/c++/13/source_location \
   /usr/include/c++/13/span \
   /usr/include/c++/13/stdexcept \
   /usr/include/c++/13/stdlib.h \
+  /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
   /usr/include/c++/13/tuple \
@@ -1584,16 +1832,20 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o: src/engine/CMakeFiles/en
   /usr/include/c++/13/typeinfo \
   /usr/include/c++/13/unordered_map \
   /usr/include/c++/13/unordered_set \
+  /usr/include/c++/13/variant \
   /usr/include/c++/13/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
+  /usr/include/errno.h \
   /usr/include/features.h \
   /usr/include/inttypes.h \
+  /usr/include/libintl.h \
   /usr/include/math.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdio.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/time.h \
   /usr/include/vulkan/vulkan.h \
   /usr/include/wchar.h \
   /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
@@ -1601,7 +1853,13 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o: src/engine/CMakeFiles/en
   /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
@@ -1611,13 +1869,17 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o: src/engine/CMakeFiles/en
 src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx \
   include/fmt/include/fmt/core.h \
   include/vma/vk_mem_alloc.h \
-  src/engine/ecs/Common.h \
-  src/engine/ecs/ComponentTypeUniverse.h \
-  src/engine/ecs/Engine.h \
-  src/engine/ecs/RawArray.h \
-  src/engine/ecs/RawArrays.h \
-  src/engine/ecs/TypeIndexer.h \
-  src/engine/ecs/UpdateQueue.h \
+  src/ecs/ecs/ByteStream.h \
+  src/ecs/ecs/Common.h \
+  src/ecs/ecs/ComponentTypeUniverse.h \
+  src/ecs/ecs/Engine.h \
+  src/ecs/ecs/RawArray.h \
+  src/ecs/ecs/RawArrays.h \
+  src/ecs/ecs/SerialTypes.h \
+  src/ecs/ecs/TypeIndexer.h \
+  src/ecs/ecs/TypeUniverse.h \
+  src/ecs/ecs/UpdateQueue.h \
+  src/ecs/ecs/array.h \
   src/engine/rendering/Buffer.h \
   src/engine/rendering/Material.cpp \
   src/engine/rendering/Material.h \
@@ -1628,20 +1890,35 @@ src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o: src/engine/CMakeFiles
   src/engine/vk_types.h \
   /usr/include/assert.h \
   /usr/include/c++/13/array \
+  /usr/include/c++/13/bit \
   /usr/include/c++/13/bits/algorithmfwd.h \
   /usr/include/c++/13/bits/allocator.h \
+  /usr/include/c++/13/bits/charconv.h \
+  /usr/include/c++/13/bits/codecvt.h \
   /usr/include/c++/13/bits/concept_check.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/deque.tcc \
+  /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/bits/erase_if.h \
+  /usr/include/c++/13/bits/exception_defines.h \
+  /usr/include/c++/13/bits/fstream.tcc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hashtable.h \
   /usr/include/c++/13/bits/invoke.h \
+  /usr/include/c++/13/bits/istream.tcc \
+  /usr/include/c++/13/bits/locale_classes.h \
+  /usr/include/c++/13/bits/locale_conv.h \
+  /usr/include/c++/13/bits/locale_facets.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/13/bits/localefwd.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/move.h \
+  /usr/include/c++/13/bits/parse_numbers.h \
   /usr/include/c++/13/bits/predefined_ops.h \
   /usr/include/c++/13/bits/range_access.h \
+  /usr/include/c++/13/bits/ranges_algobase.h \
   /usr/include/c++/13/bits/ranges_base.h \
   /usr/include/c++/13/bits/ranges_cmp.h \
   /usr/include/c++/13/bits/ranges_util.h \
@@ -1662,33 +1939,44 @@ src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o: src/engine/CMakeFiles
   /usr/include/c++/13/bits/stl_uninitialized.h \
   /usr/include/c++/13/bits/stream_iterator.h \
   /usr/include/c++/13/bits/streambuf_iterator.h \
+  /usr/include/c++/13/bits/stringfwd.h \
   /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/unordered_set.h \
   /usr/include/c++/13/bits/utility.h \
   /usr/include/c++/13/bitset \
   /usr/include/c++/13/cassert \
+  /usr/include/c++/13/cerrno \
+  /usr/include/c++/13/charconv \
   /usr/include/c++/13/compare \
   /usr/include/c++/13/concepts \
   /usr/include/c++/13/cstddef \
   /usr/include/c++/13/cstdio \
   /usr/include/c++/13/cstdlib \
   /usr/include/c++/13/cstring \
+  /usr/include/c++/13/ctime \
   /usr/include/c++/13/debug/assertions.h \
   /usr/include/c++/13/debug/debug.h \
   /usr/include/c++/13/deque \
   /usr/include/c++/13/ext/numeric_traits.h \
+  /usr/include/c++/13/format \
+  /usr/include/c++/13/fstream \
   /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
+  /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
+  /usr/include/c++/13/istream \
   /usr/include/c++/13/iterator \
   /usr/include/c++/13/limits \
+  /usr/include/c++/13/locale \
   /usr/include/c++/13/memory \
   /usr/include/c++/13/new \
   /usr/include/c++/13/optional \
+  /usr/include/c++/13/ostream \
   /usr/include/c++/13/ranges \
   /usr/include/c++/13/source_location \
   /usr/include/c++/13/span \
   /usr/include/c++/13/stdexcept \
+  /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
   /usr/include/c++/13/tuple \
@@ -1696,30 +1984,44 @@ src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o: src/engine/CMakeFiles
   /usr/include/c++/13/typeinfo \
   /usr/include/c++/13/unordered_map \
   /usr/include/c++/13/unordered_set \
+  /usr/include/c++/13/variant \
   /usr/include/c++/13/vector \
+  /usr/include/errno.h \
   /usr/include/features.h \
+  /usr/include/libintl.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdio.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/time.h \
   /usr/include/vulkan/vulkan.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
   /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
 
 src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx \
   include/fmt/include/fmt/core.h \
   include/vma/vk_mem_alloc.h \
-  src/engine/ecs/Common.h \
-  src/engine/ecs/ComponentTypeUniverse.h \
-  src/engine/ecs/Engine.h \
-  src/engine/ecs/RawArray.h \
-  src/engine/ecs/RawArrays.h \
-  src/engine/ecs/TypeIndexer.h \
-  src/engine/ecs/UpdateQueue.h \
+  src/ecs/ecs/ByteStream.h \
+  src/ecs/ecs/Common.h \
+  src/ecs/ecs/ComponentTypeUniverse.h \
+  src/ecs/ecs/Engine.h \
+  src/ecs/ecs/RawArray.h \
+  src/ecs/ecs/RawArrays.h \
+  src/ecs/ecs/SerialTypes.h \
+  src/ecs/ecs/TypeIndexer.h \
+  src/ecs/ecs/TypeUniverse.h \
+  src/ecs/ecs/UpdateQueue.h \
+  src/ecs/ecs/array.h \
   src/engine/rendering/Buffer.h \
   src/engine/rendering/PassManager.cpp \
   src/engine/rendering/PassManager.h \
@@ -1729,20 +2031,35 @@ src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o: src/engine/CMakeFi
   src/engine/vk_types.h \
   /usr/include/assert.h \
   /usr/include/c++/13/array \
+  /usr/include/c++/13/bit \
   /usr/include/c++/13/bits/algorithmfwd.h \
   /usr/include/c++/13/bits/allocator.h \
+  /usr/include/c++/13/bits/charconv.h \
+  /usr/include/c++/13/bits/codecvt.h \
   /usr/include/c++/13/bits/concept_check.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/deque.tcc \
+  /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/bits/erase_if.h \
+  /usr/include/c++/13/bits/exception_defines.h \
+  /usr/include/c++/13/bits/fstream.tcc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hashtable.h \
   /usr/include/c++/13/bits/invoke.h \
+  /usr/include/c++/13/bits/istream.tcc \
+  /usr/include/c++/13/bits/locale_classes.h \
+  /usr/include/c++/13/bits/locale_conv.h \
+  /usr/include/c++/13/bits/locale_facets.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/13/bits/localefwd.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/move.h \
+  /usr/include/c++/13/bits/parse_numbers.h \
   /usr/include/c++/13/bits/predefined_ops.h \
   /usr/include/c++/13/bits/range_access.h \
+  /usr/include/c++/13/bits/ranges_algobase.h \
   /usr/include/c++/13/bits/ranges_base.h \
   /usr/include/c++/13/bits/ranges_cmp.h \
   /usr/include/c++/13/bits/ranges_util.h \
@@ -1763,33 +2080,44 @@ src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o: src/engine/CMakeFi
   /usr/include/c++/13/bits/stl_uninitialized.h \
   /usr/include/c++/13/bits/stream_iterator.h \
   /usr/include/c++/13/bits/streambuf_iterator.h \
+  /usr/include/c++/13/bits/stringfwd.h \
   /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/unordered_set.h \
   /usr/include/c++/13/bits/utility.h \
   /usr/include/c++/13/bitset \
   /usr/include/c++/13/cassert \
+  /usr/include/c++/13/cerrno \
+  /usr/include/c++/13/charconv \
   /usr/include/c++/13/compare \
   /usr/include/c++/13/concepts \
   /usr/include/c++/13/cstddef \
   /usr/include/c++/13/cstdio \
   /usr/include/c++/13/cstdlib \
   /usr/include/c++/13/cstring \
+  /usr/include/c++/13/ctime \
   /usr/include/c++/13/debug/assertions.h \
   /usr/include/c++/13/debug/debug.h \
   /usr/include/c++/13/deque \
   /usr/include/c++/13/ext/numeric_traits.h \
+  /usr/include/c++/13/format \
+  /usr/include/c++/13/fstream \
   /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
+  /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
+  /usr/include/c++/13/istream \
   /usr/include/c++/13/iterator \
   /usr/include/c++/13/limits \
+  /usr/include/c++/13/locale \
   /usr/include/c++/13/memory \
   /usr/include/c++/13/new \
   /usr/include/c++/13/optional \
+  /usr/include/c++/13/ostream \
   /usr/include/c++/13/ranges \
   /usr/include/c++/13/source_location \
   /usr/include/c++/13/span \
   /usr/include/c++/13/stdexcept \
+  /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
   /usr/include/c++/13/tuple \
@@ -1797,37 +2125,57 @@ src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o: src/engine/CMakeFi
   /usr/include/c++/13/typeinfo \
   /usr/include/c++/13/unordered_map \
   /usr/include/c++/13/unordered_set \
+  /usr/include/c++/13/variant \
   /usr/include/c++/13/vector \
+  /usr/include/errno.h \
   /usr/include/features.h \
+  /usr/include/libintl.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdio.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/time.h \
   /usr/include/vulkan/vulkan.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
   /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
 
 src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx \
   include/fmt/include/fmt/core.h \
   include/vma/vk_mem_alloc.h \
-  src/engine/ecs/Common.h \
-  src/engine/ecs/ComponentTypeUniverse.h \
+  src/ecs/ecs/ByteStream.h \
+  src/ecs/ecs/Common.h \
+  src/ecs/ecs/ComponentTypeUniverse.h \
+  src/ecs/ecs/SerialTypes.h \
+  src/ecs/ecs/TypeUniverse.h \
+  src/ecs/ecs/array.h \
   src/engine/rendering/Buffer.h \
   src/engine/rendering/SubMesh.cpp \
   src/engine/rendering/SubMesh.h \
   src/engine/vk_types.h \
+  /usr/include/assert.h \
   /usr/include/c++/13/array \
   /usr/include/c++/13/bits/algorithmfwd.h \
   /usr/include/c++/13/bits/allocator.h \
+  /usr/include/c++/13/bits/codecvt.h \
   /usr/include/c++/13/bits/concept_check.h \
+  /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/deque.tcc \
+  /usr/include/c++/13/bits/fstream.tcc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/invoke.h \
+  /usr/include/c++/13/bits/istream.tcc \
+  /usr/include/c++/13/bits/locale_classes.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/move.h \
   /usr/include/c++/13/bits/predefined_ops.h \
@@ -1853,6 +2201,9 @@ src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o: src/engine/CMakeFiles/
   /usr/include/c++/13/bits/streambuf_iterator.h \
   /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/utility.h \
+  /usr/include/c++/13/bitset \
+  /usr/include/c++/13/cassert \
+  /usr/include/c++/13/cerrno \
   /usr/include/c++/13/compare \
   /usr/include/c++/13/concepts \
   /usr/include/c++/13/cstddef \
@@ -1863,14 +2214,18 @@ src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o: src/engine/CMakeFiles/
   /usr/include/c++/13/debug/debug.h \
   /usr/include/c++/13/deque \
   /usr/include/c++/13/ext/numeric_traits.h \
+  /usr/include/c++/13/fstream \
   /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
+  /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
+  /usr/include/c++/13/istream \
   /usr/include/c++/13/iterator \
   /usr/include/c++/13/limits \
   /usr/include/c++/13/memory \
   /usr/include/c++/13/new \
   /usr/include/c++/13/optional \
+  /usr/include/c++/13/ostream \
   /usr/include/c++/13/source_location \
   /usr/include/c++/13/span \
   /usr/include/c++/13/stdexcept \
@@ -1881,6 +2236,7 @@ src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o: src/engine/CMakeFiles/
   /usr/include/c++/13/typeinfo \
   /usr/include/c++/13/unordered_map \
   /usr/include/c++/13/vector \
+  /usr/include/errno.h \
   /usr/include/features.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdio.h \
@@ -1891,7 +2247,10 @@ src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o: src/engine/CMakeFiles/
   /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
 
 src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx \
@@ -2146,14 +2505,18 @@ src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.o: src/engine/CMakeFile
 src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx \
   include/fmt/include/fmt/core.h \
   include/vma/vk_mem_alloc.h \
+  src/ecs/ecs/ByteStream.h \
+  src/ecs/ecs/Common.h \
+  src/ecs/ecs/ComponentTypeUniverse.h \
+  src/ecs/ecs/Engine.h \
+  src/ecs/ecs/RawArray.h \
+  src/ecs/ecs/RawArrays.h \
+  src/ecs/ecs/SerialTypes.h \
+  src/ecs/ecs/TypeIndexer.h \
+  src/ecs/ecs/TypeUniverse.h \
+  src/ecs/ecs/UpdateQueue.h \
+  src/ecs/ecs/array.h \
   src/engine/camera.h \
-  src/engine/ecs/Common.h \
-  src/engine/ecs/ComponentTypeUniverse.h \
-  src/engine/ecs/Engine.h \
-  src/engine/ecs/RawArray.h \
-  src/engine/ecs/RawArrays.h \
-  src/engine/ecs/TypeIndexer.h \
-  src/engine/ecs/UpdateQueue.h \
   src/engine/rendering/CommonSetLayouts.h \
   src/engine/rendering/CommonTextures.h \
   src/engine/rendering/Image.h \
@@ -2201,22 +2564,37 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o: src/engine/
   /usr/include/SDL2/close_code.h \
   /usr/include/assert.h \
   /usr/include/c++/13/array \
+  /usr/include/c++/13/bit \
   /usr/include/c++/13/bits/algorithmfwd.h \
   /usr/include/c++/13/bits/allocator.h \
+  /usr/include/c++/13/bits/charconv.h \
+  /usr/include/c++/13/bits/codecvt.h \
   /usr/include/c++/13/bits/concept_check.h \
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/deque.tcc \
+  /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/bits/erase_if.h \
+  /usr/include/c++/13/bits/exception_defines.h \
+  /usr/include/c++/13/bits/fstream.tcc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hashtable.h \
   /usr/include/c++/13/bits/invoke.h \
+  /usr/include/c++/13/bits/istream.tcc \
+  /usr/include/c++/13/bits/locale_classes.h \
+  /usr/include/c++/13/bits/locale_conv.h \
+  /usr/include/c++/13/bits/locale_facets.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/13/bits/localefwd.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/move.h \
   /usr/include/c++/13/bits/node_handle.h \
+  /usr/include/c++/13/bits/parse_numbers.h \
   /usr/include/c++/13/bits/predefined_ops.h \
   /usr/include/c++/13/bits/range_access.h \
+  /usr/include/c++/13/bits/ranges_algobase.h \
   /usr/include/c++/13/bits/ranges_base.h \
   /usr/include/c++/13/bits/ranges_cmp.h \
   /usr/include/c++/13/bits/ranges_util.h \
@@ -2241,11 +2619,14 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o: src/engine/
   /usr/include/c++/13/bits/stl_uninitialized.h \
   /usr/include/c++/13/bits/stream_iterator.h \
   /usr/include/c++/13/bits/streambuf_iterator.h \
+  /usr/include/c++/13/bits/stringfwd.h \
   /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/unordered_set.h \
   /usr/include/c++/13/bits/utility.h \
   /usr/include/c++/13/bitset \
   /usr/include/c++/13/cassert \
+  /usr/include/c++/13/cerrno \
+  /usr/include/c++/13/charconv \
   /usr/include/c++/13/cmath \
   /usr/include/c++/13/compare \
   /usr/include/c++/13/concepts \
@@ -2253,6 +2634,7 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o: src/engine/
   /usr/include/c++/13/cstdio \
   /usr/include/c++/13/cstdlib \
   /usr/include/c++/13/cstring \
+  /usr/include/c++/13/ctime \
   /usr/include/c++/13/debug/assertions.h \
   /usr/include/c++/13/debug/debug.h \
   /usr/include/c++/13/deque \
@@ -2260,21 +2642,28 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o: src/engine/
   /usr/include/c++/13/ext/alloc_traits.h \
   /usr/include/c++/13/ext/numeric_traits.h \
   /usr/include/c++/13/ext/type_traits.h \
+  /usr/include/c++/13/format \
+  /usr/include/c++/13/fstream \
   /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
+  /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
+  /usr/include/c++/13/istream \
   /usr/include/c++/13/iterator \
   /usr/include/c++/13/limits \
+  /usr/include/c++/13/locale \
   /usr/include/c++/13/map \
   /usr/include/c++/13/math.h \
   /usr/include/c++/13/memory \
   /usr/include/c++/13/new \
   /usr/include/c++/13/optional \
+  /usr/include/c++/13/ostream \
   /usr/include/c++/13/ranges \
   /usr/include/c++/13/source_location \
   /usr/include/c++/13/span \
   /usr/include/c++/13/stdexcept \
   /usr/include/c++/13/stdlib.h \
+  /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
   /usr/include/c++/13/tuple \
@@ -2282,16 +2671,20 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o: src/engine/
   /usr/include/c++/13/typeinfo \
   /usr/include/c++/13/unordered_map \
   /usr/include/c++/13/unordered_set \
+  /usr/include/c++/13/variant \
   /usr/include/c++/13/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
+  /usr/include/errno.h \
   /usr/include/features.h \
   /usr/include/inttypes.h \
+  /usr/include/libintl.h \
   /usr/include/math.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdio.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/time.h \
   /usr/include/vulkan/vulkan.h \
   /usr/include/wchar.h \
   /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
@@ -2299,7 +2692,13 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o: src/engine/
   /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
@@ -2309,14 +2708,18 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o: src/engine/
 src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx \
   include/fmt/include/fmt/core.h \
   include/vma/vk_mem_alloc.h \
+  src/ecs/ecs/ByteStream.h \
+  src/ecs/ecs/Common.h \
+  src/ecs/ecs/ComponentTypeUniverse.h \
+  src/ecs/ecs/Engine.h \
+  src/ecs/ecs/RawArray.h \
+  src/ecs/ecs/RawArrays.h \
+  src/ecs/ecs/SerialTypes.h \
+  src/ecs/ecs/TypeIndexer.h \
+  src/ecs/ecs/TypeUniverse.h \
+  src/ecs/ecs/UpdateQueue.h \
+  src/ecs/ecs/array.h \
   src/engine/camera.h \
-  src/engine/ecs/Common.h \
-  src/engine/ecs/ComponentTypeUniverse.h \
-  src/engine/ecs/Engine.h \
-  src/engine/ecs/RawArray.h \
-  src/engine/ecs/RawArrays.h \
-  src/engine/ecs/TypeIndexer.h \
-  src/engine/ecs/UpdateQueue.h \
   src/engine/rendering/Buffer.h \
   src/engine/rendering/CommonSetLayouts.h \
   src/engine/rendering/CommonTextures.h \
@@ -2363,22 +2766,37 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o: src/engine/CMakeFi
   /usr/include/SDL2/close_code.h \
   /usr/include/assert.h \
   /usr/include/c++/13/array \
+  /usr/include/c++/13/bit \
   /usr/include/c++/13/bits/algorithmfwd.h \
   /usr/include/c++/13/bits/allocator.h \
+  /usr/include/c++/13/bits/charconv.h \
+  /usr/include/c++/13/bits/codecvt.h \
   /usr/include/c++/13/bits/concept_check.h \
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/deque.tcc \
+  /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/bits/erase_if.h \
+  /usr/include/c++/13/bits/exception_defines.h \
+  /usr/include/c++/13/bits/fstream.tcc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hashtable.h \
   /usr/include/c++/13/bits/invoke.h \
+  /usr/include/c++/13/bits/istream.tcc \
+  /usr/include/c++/13/bits/locale_classes.h \
+  /usr/include/c++/13/bits/locale_conv.h \
+  /usr/include/c++/13/bits/locale_facets.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.h \
+  /usr/include/c++/13/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/13/bits/localefwd.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/move.h \
   /usr/include/c++/13/bits/node_handle.h \
+  /usr/include/c++/13/bits/parse_numbers.h \
   /usr/include/c++/13/bits/predefined_ops.h \
   /usr/include/c++/13/bits/range_access.h \
+  /usr/include/c++/13/bits/ranges_algobase.h \
   /usr/include/c++/13/bits/ranges_base.h \
   /usr/include/c++/13/bits/ranges_cmp.h \
   /usr/include/c++/13/bits/ranges_util.h \
@@ -2403,11 +2821,14 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o: src/engine/CMakeFi
   /usr/include/c++/13/bits/stl_uninitialized.h \
   /usr/include/c++/13/bits/stream_iterator.h \
   /usr/include/c++/13/bits/streambuf_iterator.h \
+  /usr/include/c++/13/bits/stringfwd.h \
   /usr/include/c++/13/bits/uniform_int_dist.h \
   /usr/include/c++/13/bits/unordered_set.h \
   /usr/include/c++/13/bits/utility.h \
   /usr/include/c++/13/bitset \
   /usr/include/c++/13/cassert \
+  /usr/include/c++/13/cerrno \
+  /usr/include/c++/13/charconv \
   /usr/include/c++/13/cmath \
   /usr/include/c++/13/compare \
   /usr/include/c++/13/concepts \
@@ -2415,6 +2836,7 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o: src/engine/CMakeFi
   /usr/include/c++/13/cstdio \
   /usr/include/c++/13/cstdlib \
   /usr/include/c++/13/cstring \
+  /usr/include/c++/13/ctime \
   /usr/include/c++/13/debug/assertions.h \
   /usr/include/c++/13/debug/debug.h \
   /usr/include/c++/13/deque \
@@ -2422,21 +2844,28 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o: src/engine/CMakeFi
   /usr/include/c++/13/ext/alloc_traits.h \
   /usr/include/c++/13/ext/numeric_traits.h \
   /usr/include/c++/13/ext/type_traits.h \
+  /usr/include/c++/13/format \
+  /usr/include/c++/13/fstream \
   /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
+  /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
+  /usr/include/c++/13/istream \
   /usr/include/c++/13/iterator \
   /usr/include/c++/13/limits \
+  /usr/include/c++/13/locale \
   /usr/include/c++/13/map \
   /usr/include/c++/13/math.h \
   /usr/include/c++/13/memory \
   /usr/include/c++/13/new \
   /usr/include/c++/13/optional \
+  /usr/include/c++/13/ostream \
   /usr/include/c++/13/ranges \
   /usr/include/c++/13/source_location \
   /usr/include/c++/13/span \
   /usr/include/c++/13/stdexcept \
   /usr/include/c++/13/stdlib.h \
+  /usr/include/c++/13/streambuf \
   /usr/include/c++/13/string \
   /usr/include/c++/13/string_view \
   /usr/include/c++/13/tuple \
@@ -2444,16 +2873,20 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o: src/engine/CMakeFi
   /usr/include/c++/13/typeinfo \
   /usr/include/c++/13/unordered_map \
   /usr/include/c++/13/unordered_set \
+  /usr/include/c++/13/variant \
   /usr/include/c++/13/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
+  /usr/include/errno.h \
   /usr/include/features.h \
   /usr/include/inttypes.h \
+  /usr/include/libintl.h \
   /usr/include/math.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdio.h \
   /usr/include/string.h \
   /usr/include/strings.h \
+  /usr/include/time.h \
   /usr/include/vulkan/vulkan.h \
   /usr/include/wchar.h \
   /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
@@ -2461,7 +2894,13 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o: src/engine/CMakeFi
   /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
@@ -2598,15 +3037,20 @@ src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o: src/engine/CMakeFiles/engine.d
   include/vkbootstrap/VkBootstrap.h \
   include/vkbootstrap/VkBootstrapDispatch.h \
   include/vma/vk_mem_alloc.h \
+  src/ecs/ecs/ByteStream.h \
+  src/ecs/ecs/Common.h \
+  src/ecs/ecs/ComponentTypeUniverse.h \
+  src/ecs/ecs/Engine.h \
+  src/ecs/ecs/RawArray.h \
+  src/ecs/ecs/RawArrays.h \
+  src/ecs/ecs/SerialTypes.h \
+  src/ecs/ecs/TypeIndexer.h \
+  src/ecs/ecs/TypeUniverse.h \
+  src/ecs/ecs/UpdateQueue.h \
+  src/ecs/ecs/array.h \
   src/engine/Core.h \
+  src/engine/ImguiOverlay.h \
   src/engine/camera.h \
-  src/engine/ecs/Common.h \
-  src/engine/ecs/ComponentTypeUniverse.h \
-  src/engine/ecs/Engine.h \
-  src/engine/ecs/RawArray.h \
-  src/engine/ecs/RawArrays.h \
-  src/engine/ecs/TypeIndexer.h \
-  src/engine/ecs/UpdateQueue.h \
   src/engine/rendering/Buffer.h \
   src/engine/rendering/CommonSetLayouts.h \
   src/engine/rendering/CommonTextures.h \
@@ -2687,17 +3131,21 @@ src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o: src/engine/CMakeFiles/engine.d
   /usr/include/c++/13/bits/alloc_traits.h \
   /usr/include/c++/13/bits/allocator.h \
   /usr/include/c++/13/bits/atomic_base.h \
+  /usr/include/c++/13/bits/charconv.h \
   /usr/include/c++/13/bits/chrono.h \
   /usr/include/c++/13/bits/codecvt.h \
   /usr/include/c++/13/bits/concept_check.h \
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
   /usr/include/c++/13/bits/deque.tcc \
+  /usr/include/c++/13/bits/enable_special_members.h \
   /usr/include/c++/13/bits/erase_if.h \
+  /usr/include/c++/13/bits/exception_defines.h \
   /usr/include/c++/13/bits/fs_dir.h \
   /usr/include/c++/13/bits/fs_fwd.h \
   /usr/include/c++/13/bits/fs_ops.h \
   /usr/include/c++/13/bits/fs_path.h \
+  /usr/include/c++/13/bits/fstream.tcc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hashtable.h \
@@ -2756,7 +3204,9 @@ src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o: src/engine/CMakeFiles/engine.d
   /usr/include/c++/13/bits/utility.h \
   /usr/include/c++/13/bitset \
   /usr/include/c++/13/cassert \
+  /usr/include/c++/13/cerrno \
   /usr/include/c++/13/cfloat \
+  /usr/include/c++/13/charconv \
   /usr/include/c++/13/climits \
   /usr/include/c++/13/cmath \
   /usr/include/c++/13/codecvt \
@@ -2779,6 +3229,8 @@ src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o: src/engine/CMakeFiles/engine.d
   /usr/include/c++/13/ext/numeric_traits.h \
   /usr/include/c++/13/ext/type_traits.h \
   /usr/include/c++/13/filesystem \
+  /usr/include/c++/13/format \
+  /usr/include/c++/13/fstream \
   /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
   /usr/include/c++/13/iomanip \
@@ -2815,9 +3267,11 @@ src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o: src/engine/CMakeFiles/engine.d
   /usr/include/c++/13/unordered_map \
   /usr/include/c++/13/unordered_set \
   /usr/include/c++/13/utility \
+  /usr/include/c++/13/variant \
   /usr/include/c++/13/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
+  /usr/include/errno.h \
   /usr/include/features.h \
   /usr/include/inttypes.h \
   /usr/include/libintl.h \
@@ -2835,8 +3289,11 @@ src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o: src/engine/CMakeFiles/engine.d
   /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
@@ -3015,15 +3472,20 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: src/engine/CMakeFiles/engine.d
   include/glm/glm/gtx/quaternion.hpp \
   include/glm/glm/gtx/quaternion.inl \
   include/vma/vk_mem_alloc.h \
+  src/ecs/ecs/ByteStream.h \
+  src/ecs/ecs/Common.h \
+  src/ecs/ecs/ComponentTypeUniverse.h \
+  src/ecs/ecs/Engine.h \
+  src/ecs/ecs/RawArray.h \
+  src/ecs/ecs/RawArrays.h \
+  src/ecs/ecs/SerialTypes.h \
+  src/ecs/ecs/TypeIndexer.h \
+  src/ecs/ecs/TypeUniverse.h \
+  src/ecs/ecs/UpdateQueue.h \
+  src/ecs/ecs/array.h \
   src/engine/Core.h \
+  src/engine/ImguiOverlay.h \
   src/engine/camera.h \
-  src/engine/ecs/Common.h \
-  src/engine/ecs/ComponentTypeUniverse.h \
-  src/engine/ecs/Engine.h \
-  src/engine/ecs/RawArray.h \
-  src/engine/ecs/RawArrays.h \
-  src/engine/ecs/TypeIndexer.h \
-  src/engine/ecs/UpdateQueue.h \
   src/engine/rendering/Buffer.h \
   src/engine/rendering/CommonSetLayouts.h \
   src/engine/rendering/CommonTextures.h \
@@ -3076,6 +3538,7 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: src/engine/CMakeFiles/engine.d
   /usr/include/c++/13/bits/align.h \
   /usr/include/c++/13/bits/alloc_traits.h \
   /usr/include/c++/13/bits/allocator.h \
+  /usr/include/c++/13/bits/charconv.h \
   /usr/include/c++/13/bits/chrono.h \
   /usr/include/c++/13/bits/codecvt.h \
   /usr/include/c++/13/bits/concept_check.h \
@@ -3089,6 +3552,7 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: src/engine/CMakeFiles/engine.d
   /usr/include/c++/13/bits/fs_fwd.h \
   /usr/include/c++/13/bits/fs_ops.h \
   /usr/include/c++/13/bits/fs_path.h \
+  /usr/include/c++/13/bits/fstream.tcc \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hashtable.h \
@@ -3109,6 +3573,7 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: src/engine/CMakeFiles/engine.d
   /usr/include/c++/13/bits/predefined_ops.h \
   /usr/include/c++/13/bits/quoted_string.h \
   /usr/include/c++/13/bits/range_access.h \
+  /usr/include/c++/13/bits/ranges_algobase.h \
   /usr/include/c++/13/bits/ranges_base.h \
   /usr/include/c++/13/bits/ranges_cmp.h \
   /usr/include/c++/13/bits/ranges_util.h \
@@ -3144,7 +3609,9 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: src/engine/CMakeFiles/engine.d
   /usr/include/c++/13/bits/utility.h \
   /usr/include/c++/13/bitset \
   /usr/include/c++/13/cassert \
+  /usr/include/c++/13/cerrno \
   /usr/include/c++/13/cfloat \
+  /usr/include/c++/13/charconv \
   /usr/include/c++/13/climits \
   /usr/include/c++/13/cmath \
   /usr/include/c++/13/codecvt \
@@ -3165,6 +3632,8 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: src/engine/CMakeFiles/engine.d
   /usr/include/c++/13/ext/numeric_traits.h \
   /usr/include/c++/13/ext/type_traits.h \
   /usr/include/c++/13/filesystem \
+  /usr/include/c++/13/format \
+  /usr/include/c++/13/fstream \
   /usr/include/c++/13/functional \
   /usr/include/c++/13/initializer_list \
   /usr/include/c++/13/iomanip \
@@ -3204,6 +3673,7 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: src/engine/CMakeFiles/engine.d
   /usr/include/c++/13/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
+  /usr/include/errno.h \
   /usr/include/features.h \
   /usr/include/inttypes.h \
   /usr/include/libintl.h \
@@ -3220,8 +3690,11 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: src/engine/CMakeFiles/engine.d
   /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
+  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
@@ -3328,14 +3801,6 @@ src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.o: src/engine/CMakeFiles/engin
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
 
 
-/usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h:
-
-/usr/include/c++/13/fstream:
-
-/usr/include/c++/13/bits/fstream.tcc:
-
 /usr/include/c++/13/memory_resource:
 
 include/fastgltf/include/fastgltf/types.hpp:
@@ -3387,8 +3852,6 @@ src/engine/vk_pipelines.h:
 /usr/lib/gcc/x86_64-linux-gnu/13/include/serializeintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/prfchwintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/popcntintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/pmmintrin.h:
 
@@ -3500,10 +3963,6 @@ src/engine/rendering/Swapchain.cpp:
 
 include/vkbootstrap/VkBootstrapDispatch.h:
 
-src/engine/rendering/passes/DefaultPass.cpp:
-
-src/engine/vk_initializers.h:
-
 src/engine/rendering/Image.cpp:
 
 src/engine/main.cpp:
@@ -3592,9 +4051,7 @@ src/engine/rendering/Material.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
-/usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h:
-
-/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
+/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
 
@@ -3631,10 +4088,6 @@ src/engine/rendering/Material.cpp:
 /usr/include/x86_64-linux-gnu/asm/unistd.h:
 
 /usr/include/x86_64-linux-gnu/asm/errno.h:
-
-/usr/include/SDL2/SDL_loadso.h:
-
-/usr/include/vk_video/vulkan_video_codecs_common.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/waitpkgintrin.h:
 
@@ -3676,19 +4129,39 @@ src/engine/rendering/SubMesh.cpp:
 
 /usr/include/c++/13/pstl/glue_memory_defs.h:
 
-/usr/include/c++/13/bits/locale_conv.h:
+/usr/lib/gcc/x86_64-linux-gnu/13/include/uintrintrin.h:
 
-/usr/include/c++/13/atomic:
+/usr/include/c++/13/ext/atomicity.h:
 
-/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+/usr/include/c++/13/exception:
 
-/usr/include/c++/13/bits/invoke.h:
+/usr/include/c++/13/cwctype:
 
-/usr/include/c++/13/bits/hashtable.h:
+/usr/include/x86_64-linux-gnu/bits/math-vector.h:
 
-include/glm/glm/ext/matrix_float4x2_precision.hpp:
+/usr/include/c++/13/cwchar:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/float.h:
+/usr/include/c++/13/clocale:
+
+/usr/include/c++/13/cctype:
+
+/usr/include/c++/13/bits/vector.tcc:
+
+/usr/include/c++/13/bits/uses_allocator.h:
+
+/usr/include/c++/13/bits/streambuf.tcc:
+
+/usr/include/vk_video/vulkan_video_codec_h265std.h:
+
+/usr/include/c++/13/bits/stl_vector.h:
+
+/usr/include/c++/13/bits/stl_raw_storage_iter.h:
+
+src/engine/vk_pipelines.cpp:
+
+/usr/include/c++/13/bits/stl_bvector.h:
+
+/usr/include/c++/13/bits/std_mutex.h:
 
 /usr/include/c++/13/bits/fs_ops.h:
 
@@ -3696,15 +4169,9 @@ include/glm/glm/ext/matrix_float4x2_precision.hpp:
 
 /lib/x86_64-linux-gnu/libmvec.so.1:
 
-/usr/include/c++/13/bits/fs_dir.h:
-
 /usr/include/c++/13/bits/cxxabi_forced.h:
 
 /usr/include/c++/13/bits/concept_check.h:
-
-/usr/include/SDL2/SDL_atomic.h:
-
-/usr/include/c++/13/bits/atomic_base.h:
 
 /usr/include/c++/13/bits/alloc_traits.h:
 
@@ -3723,8 +4190,6 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o:
 /usr/include/SDL2/SDL_rwops.h:
 
 include/glm/glm/ext/quaternion_double_precision.hpp:
-
-/usr/include/c++/13/bits/locale_classes.h:
 
 /usr/include/SDL2/SDL_quit.h:
 
@@ -3764,8 +4229,6 @@ include/glm/glm/detail/type_vec4.inl:
 
 /usr/include/SDL2/SDL_scancode.h:
 
-src/engine/ecs/RawArray.h:
-
 /usr/include/c++/13/bits/utility.h:
 
 src/engine/rendering/passes/PassDirectory.h:
@@ -3784,10 +4247,6 @@ src/engine/rendering/Material.h:
 
 src/engine/rendering/Image.h:
 
-src/engine/ecs/TypeIndexer.h:
-
-/usr/include/c++/13/bits/vector.tcc:
-
 /usr/include/c++/13/bits/fs_path.h:
 
 src/engine/Core.h:
@@ -3795,6 +4254,30 @@ src/engine/Core.h:
 /lib/x86_64-linux-gnu/libXdmcp.so.6:
 
 src/engine/Core.cpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512fintrin.h:
+
+/usr/include/c++/13/bits/unordered_map.h:
+
+/lib/x86_64-linux-gnu/libzstd.so.1:
+
+src/ecs/ecs/array.h:
+
+/usr/include/c++/13/backward/auto_ptr.h:
+
+src/ecs/ecs/UpdateQueue.h:
+
+/usr/include/c++/13/bits/fs_dir.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/popcntintrin.h:
+
+src/ecs/ecs/RawArray.h:
+
+src/ecs/ecs/Common.h:
+
+/usr/include/SDL2/SDL_error.h:
+
+src/ecs/ecs/ByteStream.h:
 
 include/glm/glm/detail/func_integer.inl:
 
@@ -3830,15 +4313,9 @@ include/fmt/include/fmt/core.h:
 
 /lib/i386-linux-gnu/libdrm_radeon.so.1:
 
+/usr/include/c++/13/bits/enable_special_members.h:
+
 src/engine/rendering/PassManager.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/avxifmaintrin.h:
-
-/usr/include/c++/13/ext/string_conversions.h:
-
-/usr/include/c++/13/bits/functional_hash.h:
-
-/usr/include/c++/13/iomanip:
 
 src/engine/CMakeFiles/engine.dir/vk_initializers.cpp.o:
 
@@ -3890,6 +4367,14 @@ src/engine/CMakeFiles/engine.dir/main.cpp.o:
 
 /usr/lib/i386-linux-gnu/libtinfo.so.6:
 
+/usr/include/SDL2/SDL_atomic.h:
+
+/usr/include/c++/13/bits/atomic_base.h:
+
+src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o:
+
+/lib/i386-linux-gnu/libXext.so.6:
+
 /usr/lib/x86_64-linux-gnu/libvulkan.so:
 
 include/fastgltf/include/fastgltf/glm_element_traits.hpp:
@@ -3931,8 +4416,6 @@ include/glm/glm/ext/matrix_double2x4.hpp:
 /usr/lib/i386-linux-gnu/libpciaccess.so.0:
 
 /lib/i386-linux-gnu/libelf.so.1:
-
-src/engine/ecs/UpdateQueue.h:
 
 /usr/lib/i386-linux-gnu/libsndfile.so.1:
 
@@ -3984,6 +4467,10 @@ src/engine/rendering/Buffer.h:
 
 /usr/lib/i386-linux-gnu/libpulse.so.0:
 
+src/engine/rendering/passes/DefaultPass.cpp:
+
+src/engine/vk_initializers.h:
+
 /usr/lib/i386-linux-gnu/libgcrypt.so.20:
 
 /usr/lib/i386-linux-gnu/libgbm.so.1:
@@ -4008,8 +4495,6 @@ src/engine/rendering/Buffer.h:
 
 include/glm/glm/gtc/constants.hpp:
 
-/usr/include/SDL2/SDL_error.h:
-
 /usr/lib/i386-linux-gnu/libexpat.so.1:
 
 /usr/include/c++/13/initializer_list:
@@ -4022,15 +4507,21 @@ include/glm/glm/ext/matrix_float4x4_precision.hpp:
 
 include/glm/glm/detail/type_quat.hpp:
 
+/usr/include/c++/13/atomic:
+
 src/engine/vk_descriptors.h:
 
 include/glm/glm/detail/type_mat3x3.inl:
+
+src/ecs/ecs/RawArrays.h:
 
 /usr/lib/i386-linux-gnu/libsamplerate.so.0:
 
 /usr/lib/i386-linux-gnu/libdecor-0.so.0:
 
 include/glm/glm/detail/type_float.hpp:
+
+src/ecs/ecs/SerialTypes.h:
 
 /usr/lib/i386-linux-gnu/libcap.so.2:
 
@@ -4041,6 +4532,12 @@ include/glm/glm/detail/type_float.hpp:
 /usr/include/stdint.h:
 
 /usr/lib/i386-linux-gnu/libbsd.so.0:
+
+/usr/include/SDL2/SDL_loadso.h:
+
+/usr/include/vk_video/vulkan_video_codecs_common.h:
+
+src/ecs/ecs/ComponentTypeUniverse.h:
 
 /lib/x86_64-linux-gnu/libpulse.so.0:
 
@@ -4064,9 +4561,19 @@ include/glm/glm/ext/vector_uint4_precision.hpp:
 
 /usr/include/c++/13/bits/cxxabi_init_exception.h:
 
-/usr/include/c++/13/cwctype:
-
 /usr/lib/i386-linux-gnu/libmp3lame.so.0:
+
+/lib/x86_64-linux-gnu/libgbm.so.1:
+
+/lib/i386-linux-gnu/libogg.so.0:
+
+/usr/lib/i386-linux-gnu/libicuuc.so.74:
+
+/lib/i386-linux-gnu/libxml2.so.2:
+
+/usr/include/c++/13/typeinfo:
+
+/usr/include/c++/13/cstring:
 
 /usr/lib/i386-linux-gnu/libffi.so.8:
 
@@ -4082,15 +4589,39 @@ include/glm/glm/ext/vector_uint4_precision.hpp:
 
 include/glm/glm/ext/matrix_float2x2.hpp:
 
-src/engine/ecs/ComponentTypeUniverse.h:
-
 include/glm/glm/gtc/matrix_transform.inl:
 
 /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
 /lib/i386-linux-gnu/libpulse.so.0:
 
+include/glm/glm/vec4.hpp:
+
+/usr/include/SDL2/SDL_video.h:
+
+/usr/lib/i386-linux-gnu/libxcb-dri2.so.0:
+
+include/glm/glm/detail/type_quat.inl:
+
+include/fastgltf/include/fastgltf/util.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/usr/include/x86_64-linux-gnu/bits/endianness.h:
+
+include/libvkbootstrap.a:
+
+/usr/include/c++/13/pstl/pstl_config.h:
+
+src/engine/CMakeFiles/engine.dir/cmake_pch.hxx:
+
+include/glm/glm/mat4x2.hpp:
+
+/lib/i386-linux-gnu/libXau.so.6:
+
 /usr/include/c++/13/bits/algorithmfwd.h:
+
+src/ecs/ecs/TypeUniverse.h:
 
 /lib/x86_64-linux-gnu/libxcb.so.1:
 
@@ -4098,11 +4629,9 @@ include/glm/glm/gtc/matrix_transform.inl:
 
 /lib/i386-linux-gnu/libvorbis.so.0:
 
+src/engine/ImguiOverlay.cpp:
+
 /lib/i386-linux-gnu/libtinfo.so.6:
-
-/usr/include/c++/13/variant:
-
-/usr/lib/i386-linux-gnu/libmd.so.0:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
@@ -4111,8 +4640,6 @@ include/glm/glm/gtc/matrix_transform.inl:
 /lib/i386-linux-gnu/libxcb-dri2.so.0:
 
 /lib/i386-linux-gnu/libgallium-24.2.8-1ubuntu1~24.04.1.so:
-
-src/engine/ecs/Common.h:
 
 /lib/x86_64-linux-gnu/libapparmor.so.1:
 
@@ -4136,13 +4663,9 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o:
 
 /lib/i386-linux-gnu/libopus.so.0:
 
-/usr/include/c++/13/bits/streambuf.tcc:
-
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vp2intersectintrin.h:
 
 /lib/x86_64-linux-gnu/libxcb-dri2.so.0:
-
-/lib/i386-linux-gnu/libogg.so.0:
 
 /usr/lib/i386-linux-gnu/libvorbis.so.0:
 
@@ -4158,6 +4681,18 @@ src/engine/vk_engine.h:
 
 include/glm/glm/ext/vector_int4.hpp:
 
+src/ecs/ecs/TypeIndexer.h:
+
+/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
+
+src/engine/vk_types.h:
+
+/lib/x86_64-linux-gnu/libXcursor.so.1:
+
+/usr/include/c++/13/locale:
+
+include/glm/glm/ext/vector_uint2_precision.hpp:
+
 /usr/include/c++/13/bits/exception_ptr.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/cldemoteintrin.h:
@@ -4170,27 +4705,7 @@ include/glm/glm/ext/vector_int4.hpp:
 
 /usr/include/SDL2/SDL_events.h:
 
-/usr/include/c++/13/bits/locale_facets.h:
-
 /usr/lib/x86_64-linux-gnu/libgcc_s.so.1:
-
-/usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:
-
-/lib/i386-linux-gnu/libicuuc.so.74:
-
-/lib/x86_64-linux-gnu/libwayland-server.so.0:
-
-/usr/include/c++/13/concepts:
-
-/usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
-
-src/engine/vk_types.h:
-
-/lib/x86_64-linux-gnu/libXcursor.so.1:
-
-/usr/include/c++/13/locale:
-
-include/glm/glm/ext/vector_uint2_precision.hpp:
 
 /lib/i386-linux-gnu/libvorbisenc.so.2:
 
@@ -4218,6 +4733,8 @@ include/glm/glm/ext/vector_uint2_precision.hpp:
 
 /lib/x86_64-linux-gnu/libdbus-1.so.3:
 
+/usr/include/c++/13/fstream:
+
 /usr/lib/i386-linux-gnu/libapparmor.so.1:
 
 include/glm/glm/ext/quaternion_geometric.hpp:
@@ -4227,22 +4744,6 @@ include/glm/glm/ext/quaternion_geometric.hpp:
 /usr/include/SDL2/SDL_touch.h:
 
 include/glm/glm/ext/matrix_double4x4.hpp:
-
-/usr/include/c++/13/pstl/pstl_config.h:
-
-src/engine/CMakeFiles/engine.dir/cmake_pch.hxx:
-
-include/glm/glm/mat4x2.hpp:
-
-/lib/i386-linux-gnu/libXau.so.6:
-
-include/fastgltf/include/fastgltf/util.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
-
-/usr/include/x86_64-linux-gnu/bits/endianness.h:
-
-include/libvkbootstrap.a:
 
 /lib/i386-linux-gnu/libffi.so.8:
 
@@ -4276,17 +4777,31 @@ include/glm/glm/ext/matrix_double2x2.hpp:
 
 /usr/include/c++/13/bits/nested_exception.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/uintrintrin.h:
-
-/usr/include/c++/13/ext/atomicity.h:
-
 /lib/x86_64-linux-gnu/libopus.so.0:
 
 /lib/x86_64-linux-gnu/libicuuc.so.74:
 
 include/glm/glm/ext/matrix_double3x2_precision.hpp:
 
+/usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:
+
+/lib/i386-linux-gnu/libicuuc.so.74:
+
+/lib/x86_64-linux-gnu/libwayland-server.so.0:
+
+/usr/include/c++/13/concepts:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/f16cintrin.h:
+
+/usr/include/c++/13/bits/memoryfwd.h:
+
 /lib/i386-linux-gnu/libXcursor.so.1:
+
+/usr/include/c++/13/bits/locale_conv.h:
+
+src/engine/ImguiOverlay.h:
+
+/lib/x86_64-linux-gnu/libxkbcommon.so.0:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
 
@@ -4299,10 +4814,6 @@ include/glm/glm/ext/matrix_double3x2_precision.hpp:
 /lib/x86_64-linux-gnu/libcap.so.2:
 
 /usr/lib/i386-linux-gnu/libxcb-present.so.0:
-
-/usr/include/c++/13/bits/ios_base.h:
-
-/lib/x86_64-linux-gnu/libXau.so.6:
 
 include/glm/glm/ext/vector_float2.hpp:
 
@@ -4324,7 +4835,7 @@ src/engine/camera.cpp:
 
 /lib/x86_64-linux-gnu/libwayland-client.so.0:
 
-/lib/i386-linux-gnu/libXext.so.6:
+/usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
@@ -4337,18 +4848,6 @@ src/engine/camera.cpp:
 /usr/include/c++/13/cmath:
 
 /usr/include/c++/13/stdexcept:
-
-src/engine/ecs/RawArrays.h:
-
-/usr/include/c++/13/bits/stl_tempbuf.h:
-
-/usr/lib/x86_64-linux-gnu/crtn.o:
-
-/usr/include/SDL2/SDL_gamecontroller.h:
-
-/lib/i386-linux-gnu/libX11.so.6:
-
-include/glm/glm/ext/vector_int4_precision.hpp:
 
 /usr/include/SDL2/SDL_sensor.h:
 
@@ -4366,42 +4865,6 @@ include/glm/glm/mat3x4.hpp:
 
 include/glm/glm/gtc/epsilon.inl:
 
-/usr/lib/i386-linux-gnu/libicuuc.so.74:
-
-/lib/i386-linux-gnu/libxml2.so.2:
-
-/usr/include/c++/13/typeinfo:
-
-/usr/include/c++/13/cstring:
-
-/usr/include/c++/13/bits/uses_allocator.h:
-
-include/glm/glm/vec4.hpp:
-
-/usr/include/SDL2/SDL_video.h:
-
-/usr/lib/i386-linux-gnu/libxcb-dri2.so.0:
-
-include/glm/glm/detail/type_quat.inl:
-
-/lib/x86_64-linux-gnu/libgbm.so.1:
-
-src/directmath/libdirectmath.a:
-
-include/glm/glm/gtc/constants.inl:
-
-/usr/include/x86_64-linux-gnu/bits/waitflags.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
-
-src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o:
-
-/lib/i386-linux-gnu/libdrm.so.2:
-
-/usr/include/x86_64-linux-gnu/bits/posix2_lim.h:
-
-src/engine/ecs/Engine.h:
-
 /lib/i386-linux-gnu/libXi.so.6:
 
 /usr/include/c++/13/bits/atomic_wait.h:
@@ -4417,12 +4880,6 @@ include/glm/glm/detail/type_mat3x2.hpp:
 /lib/x86_64-linux-gnu/libgcrypt.so.20:
 
 src/engine/rendering/CommonTextures.h:
-
-/lib/x86_64-linux-gnu/libicudata.so.74:
-
-include/imgui/imgui_impl_sdl2.h:
-
-/usr/lib/i386-linux-gnu/libXau.so.6:
 
 /lib/i386-linux-gnu/libX11-xcb.so.1:
 
@@ -4442,11 +4899,7 @@ include/glm/glm/ext/quaternion_relational.inl:
 
 /lib/i386-linux-gnu/libexpat.so.1:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512fintrin.h:
-
-/lib/x86_64-linux-gnu/libzstd.so.1:
-
-/usr/include/c++/13/bits/unordered_map.h:
+/lib/i386-linux-gnu/libdrm.so.2:
 
 /lib/i386-linux-gnu/libXdmcp.so.6:
 
@@ -4460,11 +4913,21 @@ include/glm/glm/mat3x2.hpp:
 
 /lib/x86_64-linux-gnu/libedit.so.2:
 
+/usr/include/x86_64-linux-gnu/bits/waitflags.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
+src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o:
+
 include/glm/glm/ext/quaternion_transform.inl:
 
 include/glm/glm/ext/matrix_double2x3_precision.hpp:
 
 /usr/lib/i386-linux-gnu/libxml2.so.2:
+
+/usr/include/c++/13/bits/charconv.h:
+
+/usr/include/c++/13/bits/ranges_uninitialized.h:
 
 /lib/x86_64-linux-gnu/libXi.so.6:
 
@@ -4515,6 +4978,16 @@ src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.o:
 include/glm/glm/ext/matrix_double4x3.hpp:
 
 /lib/x86_64-linux-gnu/libasyncns.so.0:
+
+/usr/include/c++/13/bits/stl_tempbuf.h:
+
+/usr/lib/x86_64-linux-gnu/crtn.o:
+
+/usr/include/SDL2/SDL_gamecontroller.h:
+
+/lib/i386-linux-gnu/libX11.so.6:
+
+include/glm/glm/ext/vector_int4_precision.hpp:
 
 src/engine/CMakeFiles/engine.dir/vk_descriptors.cpp.o:
 
@@ -4579,6 +5052,16 @@ src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.cxx:
 /usr/lib/i386-linux-gnu/libXcursor.so.1:
 
 /lib/x86_64-linux-gnu/libglapi.so.0:
+
+include/imgui/imgui_impl_sdl2.h:
+
+/usr/lib/i386-linux-gnu/libXau.so.6:
+
+/lib/x86_64-linux-gnu/libicudata.so.74:
+
+/usr/include/c++/13/bits/hashtable.h:
+
+include/glm/glm/ext/matrix_float4x2_precision.hpp:
 
 /lib/x86_64-linux-gnu/liblzma.so.5:
 
@@ -4656,8 +5139,6 @@ include/libimgui.a:
 
 include/glm/glm/ext/vector_uint3_precision.hpp:
 
-/lib/x86_64-linux-gnu/libxkbcommon.so.0:
-
 include/glm/glm/ext/matrix_clip_space.hpp:
 
 /lib/i386-linux-gnu/libXrender.so.1:
@@ -4674,6 +5155,8 @@ include/glm/glm/detail/type_mat4x2.hpp:
 
 /usr/lib/i386-linux-gnu/libLLVM.so.19.1:
 
+/usr/include/c++/13/bits/exception_defines.h:
+
 /usr/lib/i386-linux-gnu/libX11.so.6:
 
 include/glm/glm/ext/matrix_float3x4.hpp:
@@ -4683,6 +5166,30 @@ include/glm/glm/ext/matrix_float3x4.hpp:
 include/glm/glm/ext/matrix_float2x3.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
+
+/usr/include/c++/13/bits/fstream.tcc:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/float.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxifmaintrin.h:
+
+/usr/include/c++/13/ext/string_conversions.h:
+
+/usr/include/c++/13/iomanip:
+
+/usr/include/c++/13/bits/functional_hash.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+/usr/include/c++/13/bits/invoke.h:
+
+/lib/x86_64-linux-gnu/libXau.so.6:
+
+/usr/include/c++/13/bits/ios_base.h:
+
+/usr/include/c++/13/bits/locale_classes.h:
+
+/usr/include/c++/13/bits/locale_facets.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
@@ -4704,10 +5211,6 @@ include/glm/glm/ext/quaternion_relational.hpp:
 
 /usr/include/c++/13/bits/memory_resource.h:
 
-src/engine/vk_pipelines.cpp:
-
-/usr/include/c++/13/bits/stl_bvector.h:
-
 /usr/lib/i386-linux-gnu/liblz4.so.1:
 
 /usr/include/c++/13/bits/move.h:
@@ -4723,6 +5226,8 @@ include/glm/glm/mat3x3.hpp:
 /lib/i386-linux-gnu/libFLAC.so.12:
 
 /usr/include/c++/13/bits/range_access.h:
+
+/usr/include/c++/13/bits/ranges_algobase.h:
 
 /lib/i386-linux-gnu/libxcb-present.so.0:
 
@@ -4816,10 +5321,6 @@ include/glm/glm/ext/vector_float3.hpp:
 
 /usr/include/c++/13/bits/unique_ptr.h:
 
-/usr/include/vk_video/vulkan_video_codec_h265std.h:
-
-/usr/include/c++/13/bits/stl_vector.h:
-
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
 
 /usr/include/c++/13/bits/unordered_set.h:
@@ -4866,8 +5367,6 @@ include/glm/glm/ext/matrix_double3x2.hpp:
 
 include/glm/glm/gtc/epsilon.hpp:
 
-/usr/include/c++/13/cctype:
-
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avxneconvertintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/unistd.h:
@@ -4879,6 +5378,8 @@ include/glm/glm/gtc/epsilon.hpp:
 /usr/include/c++/13/ios:
 
 /usr/include/syscall.h:
+
+src/serialisation/libserialisation.a:
 
 /usr/include/c++/13/ratio:
 
@@ -4910,6 +5411,10 @@ include/glm/glm/gtc/epsilon.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
+/usr/include/c++/13/bits/uses_allocator_args.h:
+
+/usr/include/c++/13/ranges:
+
 /usr/include/c++/13/semaphore:
 
 /usr/include/c++/13/stop_token:
@@ -4927,6 +5432,12 @@ include/glm/glm/gtc/epsilon.hpp:
 /usr/include/c++/13/stdlib.h:
 
 /usr/include/c++/13/unordered_map:
+
+/usr/lib/i386-linux-gnu/libmd.so.0:
+
+/usr/include/c++/13/variant:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
 
 /usr/include/c++/13/pstl/execution_defs.h:
 
@@ -4958,6 +5469,8 @@ include/glm/glm/detail/setup.hpp:
 
 /usr/include/stdc-predef.h:
 
+src/ecs/ecs/Engine.h:
+
 /usr/include/stdio.h:
 
 /usr/include/string.h:
@@ -4988,11 +5501,15 @@ include/glm/glm/ext/vector_double3_precision.hpp:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/time_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h:
+
+/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
+
+/usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h:
 
 include/fastgltf/libfastgltf_simdjson.a:
 
@@ -5046,6 +5563,8 @@ include/glm/glm/ext/scalar_constants.hpp:
 
 include/glm/glm/ext/matrix_float3x4_precision.hpp:
 
+include/glm/glm/gtc/constants.inl:
+
 include/glm/glm/ext/matrix_projection.hpp:
 
 /usr/include/c++/13/bits/unique_lock.h:
@@ -5059,6 +5578,8 @@ include/glm/glm/ext/vector_int3.hpp:
 include/glm/glm/mat4x4.hpp:
 
 include/glm/glm/ext/matrix_transform.inl:
+
+/usr/include/c++/13/charconv:
 
 include/glm/glm/ext/quaternion_float.hpp:
 
@@ -5142,8 +5663,6 @@ include/glm/glm/detail/type_mat2x2.inl:
 
 include/glm/glm/detail/type_mat2x3.hpp:
 
-/usr/include/c++/13/bits/std_mutex.h:
-
 include/glm/glm/detail/type_mat2x3.inl:
 
 include/glm/glm/detail/type_mat3x4.hpp:
@@ -5210,10 +5729,6 @@ include/glm/glm/ext/matrix_float2x2_precision.hpp:
 
 include/glm/glm/ext/matrix_float2x3_precision.hpp:
 
-/usr/include/c++/13/ranges:
-
-/usr/include/c++/13/bits/uses_allocator_args.h:
-
 include/glm/glm/ext/matrix_float2x4.hpp:
 
 include/glm/glm/ext/matrix_float2x4_precision.hpp:
@@ -5268,6 +5783,8 @@ include/glm/glm/ext/vector_float2_precision.hpp:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/amxtileintrin.h:
 
+/usr/include/c++/13/format:
+
 include/glm/glm/ext/vector_float4.hpp:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h:
@@ -5296,8 +5813,6 @@ include/glm/glm/vector_relational.hpp:
 
 /usr/include/alloca.h:
 
-/usr/include/c++/13/backward/auto_ptr.h:
-
 /usr/include/c++/13/bits/align.h:
 
 /usr/include/c++/13/bits/allocated_ptr.h:
@@ -5314,36 +5829,12 @@ include/glm/glm/vector_relational.hpp:
 
 /usr/include/c++/13/bits/char_traits.h:
 
-/usr/include/c++/13/bits/charconv.h:
-
-/usr/include/c++/13/bits/ranges_uninitialized.h:
-
-/usr/include/c++/13/bits/enable_special_members.h:
-
 /usr/include/c++/13/bits/exception.h:
 
-/usr/include/c++/13/bits/exception_defines.h:
-
 /usr/include/c++/13/bits/hash_bytes.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/f16cintrin.h:
-
-/usr/include/c++/13/bits/memoryfwd.h:
 
 /usr/include/SDL2/SDL.h:
 
 /usr/include/c++/13/bits/postypes.h:
 
-/usr/include/c++/13/bits/ranges_algobase.h:
-
 /usr/include/c++/13/bits/shared_ptr_atomic.h:
-
-/usr/include/c++/13/bits/stl_raw_storage_iter.h:
-
-/usr/include/c++/13/clocale:
-
-/usr/include/x86_64-linux-gnu/bits/math-vector.h:
-
-/usr/include/c++/13/cwchar:
-
-/usr/include/c++/13/exception:

@@ -56,5 +56,19 @@ src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o: \
  /usr/include/c++/13/iterator /usr/include/c++/13/bits/stream_iterator.h \
  /usr/include/c++/13/iosfwd /usr/include/c++/13/bits/streambuf_iterator.h \
  /usr/include/c++/13/limits /usr/include/c++/13/string_view \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Common.h \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/ComponentTypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h \
+ /usr/include/c++/13/bitset /usr/include/c++/13/bits/cxxabi_forced.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h \
+ /usr/include/c++/13/fstream /usr/include/c++/13/istream \
+ /usr/include/c++/13/ios /usr/include/c++/13/ostream \
+ /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/bits/codecvt.h \
+ /usr/include/c++/13/bits/locale_classes.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
+ /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/cerrno \
+ /usr/include/errno.h /usr/include/c++/13/cassert /usr/include/assert.h

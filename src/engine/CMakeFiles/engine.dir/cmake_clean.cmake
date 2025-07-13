@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/engine.dir/link.d"
   "CMakeFiles/engine.dir/Core.cpp.o"
   "CMakeFiles/engine.dir/Core.cpp.o.d"
+  "CMakeFiles/engine.dir/ImguiOverlay.cpp.o"
+  "CMakeFiles/engine.dir/ImguiOverlay.cpp.o.d"
   "CMakeFiles/engine.dir/camera.cpp.o"
   "CMakeFiles/engine.dir/camera.cpp.o.d"
   "CMakeFiles/engine.dir/cmake_pch.hxx.gch"

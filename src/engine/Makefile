@@ -200,6 +200,30 @@ Core.cpp.s:
 	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/Core.cpp.s
 .PHONY : Core.cpp.s
 
+ImguiOverlay.o: ImguiOverlay.cpp.o
+.PHONY : ImguiOverlay.o
+
+# target to build an object file
+ImguiOverlay.cpp.o:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o
+.PHONY : ImguiOverlay.cpp.o
+
+ImguiOverlay.i: ImguiOverlay.cpp.i
+.PHONY : ImguiOverlay.i
+
+# target to preprocess a source file
+ImguiOverlay.cpp.i:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.i
+.PHONY : ImguiOverlay.cpp.i
+
+ImguiOverlay.s: ImguiOverlay.cpp.s
+.PHONY : ImguiOverlay.s
+
+# target to generate assembly for a file
+ImguiOverlay.cpp.s:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.s
+.PHONY : ImguiOverlay.cpp.s
+
 camera.o: camera.cpp.o
 .PHONY : camera.o
 
@@ -639,6 +663,9 @@ help:
 	@echo "... Core.o"
 	@echo "... Core.i"
 	@echo "... Core.s"
+	@echo "... ImguiOverlay.o"
+	@echo "... ImguiOverlay.i"
+	@echo "... ImguiOverlay.s"
 	@echo "... camera.o"
 	@echo "... camera.i"
 	@echo "... camera.s"

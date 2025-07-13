@@ -7,7 +7,8 @@
 
 namespace rendering
 {
-    Image Image::Allocate(const VmaAllocator allocator, const VkDevice device, const VkExtent3D size, const VkFormat format, const VkImageUsageFlags usage, const VkImageAspectFlags aspectFlags /*= VK_IMAGE_ASPECT_COLOR_BIT*/, const bool mipmapped /*= false*/)
+    Image Image::Allocate(const VmaAllocator allocator, const VkDevice device, const VkExtent3D size, const VkFormat format, const VkImageUsageFlags usage,
+                          const VkImageAspectFlags aspectFlags /*= VK_IMAGE_ASPECT_COLOR_BIT*/, const bool mipmapped /*= false*/)
     {
         Image newImage;
         newImage.allocator = allocator;
@@ -32,7 +33,7 @@ namespace rendering
         view_info.subresourceRange.levelCount = img_info.mipLevels;
 
         VK_CHECK(vkCreateImageView(newImage.device, &view_info, nullptr, &newImage.imageView));
-        
+
         return newImage;
     }
 
@@ -69,8 +70,7 @@ namespace rendering
 
     void Image::Transition(const VkCommandBuffer cmd, const VkImageLayout newLayout)
     {
-        auto imageBarrier = vkinit::New<VkImageMemoryBarrier2>();
-        {
+        auto imageBarrier = vkinit::New<VkImageMemoryBarrier2>(); {
             imageBarrier.srcStageMask = VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT;
             imageBarrier.srcAccessMask = VK_ACCESS_2_MEMORY_WRITE_BIT;
             imageBarrier.dstStageMask = VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT;
@@ -78,16 +78,15 @@ namespace rendering
 
             imageBarrier.oldLayout = currentLayout;
             imageBarrier.newLayout = newLayout;
-        
+
             imageBarrier.subresourceRange.aspectMask = aspectFlags;
             imageBarrier.subresourceRange.levelCount = VK_REMAINING_MIP_LEVELS;
             imageBarrier.subresourceRange.layerCount = VK_REMAINING_ARRAY_LAYERS;
-            
+
             imageBarrier.image = image;
         }
 
-        auto depInfo = vkinit::New<VkDependencyInfo>();
-        {
+        auto depInfo = vkinit::New<VkDependencyInfo>(); {
             depInfo.imageMemoryBarrierCount = 1;
             depInfo.pImageMemoryBarriers = &imageBarrier;
         }
@@ -101,11 +100,10 @@ namespace rendering
     {
         Transition(cmd, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
         dst.Transition(cmd, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
-        
-        auto blitRegion = vkinit::New<VkImageBlit2>();
-        {
-            blitRegion.srcOffsets[1] = { static_cast<int32_t>(imageExtent.width), static_cast<int32_t>(imageExtent.height), static_cast<int32_t>(imageExtent.depth) };
-            blitRegion.dstOffsets[1] = { static_cast<int32_t>(dst.imageExtent.width), static_cast<int32_t>(dst.imageExtent.height), static_cast<int32_t>(dst.imageExtent.depth) };
+
+        auto blitRegion = vkinit::New<VkImageBlit2>(); {
+            blitRegion.srcOffsets[1] = {static_cast<int32_t>(imageExtent.width), static_cast<int32_t>(imageExtent.height), static_cast<int32_t>(imageExtent.depth)};
+            blitRegion.dstOffsets[1] = {static_cast<int32_t>(dst.imageExtent.width), static_cast<int32_t>(dst.imageExtent.height), static_cast<int32_t>(dst.imageExtent.depth)};
 
             blitRegion.srcSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
             blitRegion.srcSubresource.layerCount = 1;
@@ -113,16 +111,15 @@ namespace rendering
             blitRegion.dstSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
             blitRegion.dstSubresource.layerCount = 1;
         }
-	
-        auto blitInfo = vkinit::New<VkBlitImageInfo2>();
-        {
+
+        auto blitInfo = vkinit::New<VkBlitImageInfo2>(); {
             blitInfo.dstImage = dst.image;
             blitInfo.dstImageLayout = VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL;
             blitInfo.srcImage = image;
             blitInfo.srcImageLayout = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;
             blitInfo.filter = VK_FILTER_LINEAR;
             blitInfo.regionCount = 1;
-            blitInfo.pRegions = &blitRegion;	    
+            blitInfo.pRegions = &blitRegion;
         }
 
         vkCmdBlitImage2(cmd, &blitInfo);
@@ -132,7 +129,7 @@ namespace rendering
     {
         if (image == VK_NULL_HANDLE)
             return;
-        
+
         vkDestroyImageView(device, imageView, nullptr);
 
         if (allocation != VK_NULL_HANDLE)

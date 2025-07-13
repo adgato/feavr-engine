@@ -5,7 +5,8 @@
 #include "VkBootstrap.h"
 #include "vk_new.h"
 
-namespace rendering {
+namespace rendering
+{
     void DeviceData::Destroy() const
     {
         vkDestroySurfaceKHR(instance, surface, nullptr);
@@ -16,7 +17,8 @@ namespace rendering {
         SDL_DestroyWindow(window);
     }
 
-    void SwapchainRenderer::InitSwapchain() {
+    void SwapchainRenderer::Init()
+    {
         constexpr bool useValidationLayers = true;
 
         SDL_Init(SDL_INIT_VIDEO);
@@ -47,20 +49,20 @@ namespace rendering {
 
         SDL_Vulkan_CreateSurface(deviceData.window, deviceData.instance, &deviceData.surface);
 
-        VkPhysicalDeviceVulkan13Features features13{.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_FEATURES};
+        VkPhysicalDeviceVulkan13Features features13 {.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_3_FEATURES};
         features13.dynamicRendering = true;
         features13.synchronization2 = true;
 
-        VkPhysicalDeviceVulkan12Features features12{.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES};
+        VkPhysicalDeviceVulkan12Features features12 {.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES};
         features12.bufferDeviceAddress = true;
         features12.descriptorIndexing = true;
 
-        VkPhysicalDeviceFeatures features{};
+        VkPhysicalDeviceFeatures features {};
         features.shaderInt64 = true;
 
         //use vkbootstrap to select a gpu.
         //We want a gpu that can write to the SDL surface and supports vulkan 1.2
-        vkb::PhysicalDeviceSelector selector{vkb_inst};
+        vkb::PhysicalDeviceSelector selector {vkb_inst};
         vkb::PhysicalDevice vkbPhysicalDevice = selector
                 .set_minimum_version(1, 3)
                 .set_required_features_13(features13)
@@ -72,7 +74,7 @@ namespace rendering {
 
         //create the final vulkan device
 
-        vkb::DeviceBuilder deviceBuilder{vkbPhysicalDevice};
+        vkb::DeviceBuilder deviceBuilder {vkbPhysicalDevice};
 
         vkb::Device vkbDevice = deviceBuilder.build().value();
 
@@ -86,11 +88,11 @@ namespace rendering {
 
         //initialize the memory allocator
 
-        vkb::SwapchainBuilder swapchainBuilder{deviceData.physicalDevice, deviceData.device, deviceData.surface};
+        vkb::SwapchainBuilder swapchainBuilder {deviceData.physicalDevice, deviceData.device, deviceData.surface};
 
         vkb::Swapchain vkbSwapchain = swapchainBuilder
                 //.use_default_format_selection()
-                .set_desired_format(VkSurfaceFormatKHR{.format = imageFormat, .colorSpace = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR})
+                .set_desired_format(VkSurfaceFormatKHR {.format = imageFormat, .colorSpace = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR})
                 //use vsync present mode
                 .set_desired_present_mode(VK_PRESENT_MODE_FIFO_KHR)
                 .set_desired_extent(windowSize.width, windowSize.height)
@@ -101,12 +103,13 @@ namespace rendering {
         swapchain = vkbSwapchain.swapchain;
         swapchainImages.clear();
 
-        const std::vector<VkImage> &images = vkbSwapchain.get_images().value();
-        const std::vector<VkImageView> &imageViews = vkbSwapchain.get_image_views().value();
+        const std::vector<VkImage>& images = vkbSwapchain.get_images().value();
+        const std::vector<VkImageView>& imageViews = vkbSwapchain.get_image_views().value();
 
-        for (uint32_t i = 0; i < vkbSwapchain.image_count; ++i) {
-            Image &image = swapchainImages.emplace_back();
-            image.imageExtent = VkExtent3D{vkbSwapchain.extent.width, vkbSwapchain.extent.height, 1};
+        for (uint32_t i = 0; i < vkbSwapchain.image_count; ++i)
+        {
+            Image& image = swapchainImages.emplace_back();
+            image.imageExtent = VkExtent3D {vkbSwapchain.extent.width, vkbSwapchain.extent.height, 1};
             image.image = images[i];
             image.imageView = imageViews[i];
             image.device = deviceData.device;
@@ -116,9 +119,7 @@ namespace rendering {
             image.aspectFlags = VK_IMAGE_ASPECT_COLOR_BIT;
             image.currentLayout = VK_IMAGE_LAYOUT_UNDEFINED;
         }
-    }
 
-    void SwapchainRenderer::InitCommandBuffer() {
         //create a command pool for commands submitted to the graphics queue.
         //we also want the pool to allow for resetting of individual command buffers
         //create syncronization structures
@@ -143,7 +144,8 @@ namespace rendering {
         VK_CHECK(vkAllocateCommandBuffers(deviceData.device, &cmdAllocInfo, &immCommandBuffer));
         VK_CHECK(vkCreateFence(deviceData.device, &fenceCreateInfo, nullptr, &immFence));
 
-        for (auto &frame: frames) {
+        for (auto& frame : frames)
+        {
             VK_CHECK(vkCreateCommandPool(deviceData.device, &commandPoolInfo, nullptr, &frame.commandPool));
             cmdAllocInfo.commandPool = frame.commandPool;
             VK_CHECK(vkAllocateCommandBuffers(deviceData.device, &cmdAllocInfo, &frame.cmd));
@@ -153,7 +155,8 @@ namespace rendering {
         }
     }
 
-    void SwapchainRenderer::ImmediateSumbit(std::function<void(VkCommandBuffer cmd)> &&function) const {
+    void SwapchainRenderer::ImmediateSumbit(std::function<void(VkCommandBuffer cmd)>&& function) const
+    {
         const VkCommandBuffer cmd = immCommandBuffer;
 
         auto cmdBeginInfo = vkinit::New<VkCommandBufferBeginInfo>(); {
@@ -179,8 +182,9 @@ namespace rendering {
         // at this point, the submission has finished executing
     }
 
-    std::tuple<VkCommandBuffer, Image &> SwapchainRenderer::BeginFrame() {
-        const FrameCommand &currentFrame = frames[frameCount % FRAME_OVERLAP];
+    std::tuple<VkCommandBuffer, Image&> SwapchainRenderer::BeginFrame()
+    {
+        const FrameCommand& currentFrame = frames[frameCount % FRAME_OVERLAP];
 
         auto cmdBeginInfo = vkinit::New<VkCommandBufferBeginInfo>(); {
             cmdBeginInfo.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
@@ -196,8 +200,11 @@ namespace rendering {
         return {currentFrame.cmd, swapchainImages[currentSwapchainImageIndex]};
     }
 
-    void SwapchainRenderer::EndFrame() {
-        const FrameCommand &currentFrame = frames[frameCount++ % FRAME_OVERLAP];
+    void SwapchainRenderer::EndFrame()
+    {
+        const FrameCommand& currentFrame = frames[frameCount++ % FRAME_OVERLAP];
+        // transition to present image
+        swapchainImages[currentSwapchainImageIndex].Transition(currentFrame.cmd, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR);
 
         auto cmdinfo = vkinit::New<VkCommandBufferSubmitInfo>(); {
             cmdinfo.commandBuffer = currentFrame.cmd;
@@ -248,16 +255,18 @@ namespace rendering {
         VK_CHECK(vkQueuePresentKHR(deviceData.graphicsQueue, &presentInfo));
     }
 
-    void SwapchainRenderer::Destroy() {
+    void SwapchainRenderer::Destroy()
+    {
         vkDestroySwapchainKHR(deviceData.device, swapchain, nullptr);
 
-        for (auto &image: swapchainImages)
+        for (auto& image : swapchainImages)
             image.Destroy();
 
         vkDestroyCommandPool(deviceData.device, immCommandPool, nullptr);
         vkDestroyFence(deviceData.device, immFence, nullptr);
 
-        for (const auto &frame: frames) {
+        for (const auto& frame : frames)
+        {
             vkDestroyCommandPool(deviceData.device, frame.commandPool, nullptr);
             vkDestroyFence(deviceData.device, frame.renderFence, nullptr);
             vkDestroySemaphore(deviceData.device, frame.renderSemaphore, nullptr);

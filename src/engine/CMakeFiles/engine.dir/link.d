@@ -3,6 +3,7 @@
   /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o \
   /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o \
   CMakeFiles/engine.dir/Core.cpp.o \
+  CMakeFiles/engine.dir/ImguiOverlay.cpp.o \
   CMakeFiles/engine.dir/camera.cpp.o \
   CMakeFiles/engine.dir/main.cpp.o \
   CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o \
@@ -20,7 +21,7 @@
   CMakeFiles/engine.dir/vk_initializers.cpp.o \
   CMakeFiles/engine.dir/vk_loader.cpp.o \
   CMakeFiles/engine.dir/vk_pipelines.cpp.o \
-  ../directmath/libdirectmath.a \
+  ../serialisation/libserialisation.a \
   /usr/lib/x86_64-linux-gnu/libvulkan.so \
   ../../include/fmt/libfmtd.a \
   ../../include/libvkbootstrap.a \
@@ -268,6 +269,8 @@
 
 CMakeFiles/engine.dir/Core.cpp.o:
 
+CMakeFiles/engine.dir/ImguiOverlay.cpp.o:
+
 CMakeFiles/engine.dir/camera.cpp.o:
 
 CMakeFiles/engine.dir/main.cpp.o:
@@ -302,7 +305,7 @@ CMakeFiles/engine.dir/vk_loader.cpp.o:
 
 CMakeFiles/engine.dir/vk_pipelines.cpp.o:
 
-../directmath/libdirectmath.a:
+../serialisation/libserialisation.a:
 
 /usr/lib/x86_64-linux-gnu/libvulkan.so:
 

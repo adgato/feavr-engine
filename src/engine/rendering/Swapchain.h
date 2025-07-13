@@ -56,9 +56,7 @@ namespace rendering
     	DeviceData deviceData;
 
 
-        void InitSwapchain();
-
-        void InitCommandBuffer();
+        void Init();
 
         void ImmediateSumbit(std::function<void(VkCommandBuffer cmd)>&& function) const;
         

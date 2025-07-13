@@ -71,4 +71,30 @@ namespace shader_layouts
         }
     }
 
+    namespace unlit_shader
+    {
+        constexpr auto pixel_entry = "frag";
+        constexpr auto vertex_entry = "vert";
+        constexpr auto pixel_filename = PROJECT_ROOT "/shaders/spv/unlit_shader_ps.spv";
+        constexpr auto vertex_filename = PROJECT_ROOT "/shaders/spv/unlit_shader_vs.spv";
+        constexpr auto colorTex_binding = VkDescriptorSetLayoutBinding{
+            .binding = 1,
+            .descriptorType = VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE,
+            .descriptorCount = 1,
+            .stageFlags = 0x00000010,
+        };
+        constexpr auto colorTexSampler_binding = VkDescriptorSetLayoutBinding{
+            .binding = 2,
+            .descriptorType = VK_DESCRIPTOR_TYPE_SAMPLER,
+            .descriptorCount = 1,
+            .stageFlags = 0x00000010,
+        };
+
+        inline std::vector bindings_1 = {colorTex_binding, colorTexSampler_binding, };
+        inline DescriptorSetLayoutInfo CreateSetLayout_1(const VkDevice device)
+        {
+            return CreateSetLayout(device, &bindings_1);
+        }
+    }
+
 }

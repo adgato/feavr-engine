@@ -4,13 +4,15 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DFASTGLTF_DISABLE_CUSTOM_MEMORY_POOL=0 -DFASTGLTF_ENABLE_DEPRECATED_EXT=0 -DFASTGLTF_USE_64BIT_FLOAT=0 -DFASTGLTF_USE_CUSTOM_SMALLVECTOR=0 -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DPROJECT_ROOT=\"/home/adgato/projects/vulkan/template-project\"
 
-CXX_INCLUDES = -I/home/adgato/projects/vulkan/template-project/src/engine -I/home/adgato/projects/vulkan/template-project/src/directmath -I/home/adgato/projects/vulkan/template-project/include/glm -I/home/adgato/projects/vulkan/template-project/include/vma -I/home/adgato/projects/vulkan/template-project/include/fmt/include -I/home/adgato/projects/vulkan/template-project/include/vkbootstrap -I/home/adgato/projects/vulkan/template-project/include/imgui -I/home/adgato/projects/vulkan/template-project/include/fastgltf/include -isystem /usr/include/SDL2
+CXX_INCLUDES = -I/home/adgato/projects/vulkan/template-project/src/engine -I/home/adgato/projects/vulkan/template-project/src/ecs -I/home/adgato/projects/vulkan/template-project/src/serialisation -I/home/adgato/projects/vulkan/template-project/include/hlsl++ -I/home/adgato/projects/vulkan/template-project/include/vma -I/home/adgato/projects/vulkan/template-project/include/glm -I/home/adgato/projects/vulkan/template-project/include/fmt/include -I/home/adgato/projects/vulkan/template-project/include/vkbootstrap -I/home/adgato/projects/vulkan/template-project/include/imgui -I/home/adgato/projects/vulkan/template-project/include/fastgltf/include -isystem /usr/include/SDL2
 
 CXX_FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Og
 
 # PCH options: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch_OPTIONS = -Winvalid-pch;-x;c++-header;-include;/home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 
 # PCH options: src/engine/CMakeFiles/engine.dir/Core.cpp.o_OPTIONS = -Winvalid-pch;-include;/home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
+
+# PCH options: src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o_OPTIONS = -Winvalid-pch;-include;/home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 
 # PCH options: src/engine/CMakeFiles/engine.dir/camera.cpp.o_OPTIONS = -Winvalid-pch;-include;/home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 

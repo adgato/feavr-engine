@@ -1,6 +1,4 @@
-#ifndef COMPILING
 #include "hlsl_syntax.hlsli"
-#endif
 
 #pragma vertex vert
 #pragma pixel frag
@@ -46,7 +44,7 @@ struct Vertex
 
 struct VSOutput
 {
-    float4 position : SV_POSITION;
+    float4 position : SV_Position;
     float3 normal : NORMAL;
     float3 color : COLOR;
     float2 uv : TEXCOORD0;
@@ -75,5 +73,5 @@ float4 frag(const VSOutput i) : SV_TARGET
     float3 color = i.color * colorTex.Sample(colorTexSampler, i.uv).xyz;
     float3 ambient = color * ambientColor.xyz;
 
-    return float4(color * lightValue *  sunlightColor.w + ambient ,1.0f);
+    return float4(color * lightValue *  sunlightColor.w + ambient, 1.0f);
 }

@@ -2,7 +2,8 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o: \
  /home/adgato/projects/vulkan/template-project/src/engine/Core.cpp \
  /usr/include/stdc-predef.h \
  /home/adgato/projects/vulkan/template-project/src/engine/Core.h \
- /home/adgato/projects/vulkan/template-project/src/engine/vk_engine.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/Swapchain.h \
  /home/adgato/projects/vulkan/template-project/src/engine/vk_types.h \
  /usr/include/c++/13/memory /usr/include/c++/13/optional \
  /usr/include/c++/13/string /usr/include/c++/13/vector \
@@ -56,9 +57,7 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o: \
  /usr/include/c++/13/iterator /usr/include/c++/13/bits/stream_iterator.h \
  /usr/include/c++/13/iosfwd /usr/include/c++/13/bits/streambuf_iterator.h \
  /usr/include/c++/13/limits /usr/include/c++/13/string_view \
- /usr/include/c++/13/ranges /usr/include/c++/13/bits/ranges_util.h \
- /home/adgato/projects/vulkan/template-project/src/engine/camera.h \
- /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_stdinc.h \
+ /usr/include/SDL2/SDL_video.h /usr/include/SDL2/SDL_stdinc.h \
  /usr/include/SDL2/SDL_config.h \
  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
  /usr/include/SDL2/SDL_platform.h /usr/include/SDL2/begin_code.h \
@@ -72,17 +71,21 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o: \
  /usr/include/c++/13/ext/type_traits.h /usr/include/math.h \
  /usr/include/c++/13/bits/std_abs.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
- /usr/include/SDL2/SDL_error.h /usr/include/SDL2/SDL_video.h \
  /usr/include/SDL2/SDL_pixels.h /usr/include/SDL2/SDL_endian.h \
  /usr/include/endian.h /usr/include/SDL2/SDL_rect.h \
- /usr/include/SDL2/SDL_rwops.h /usr/include/SDL2/SDL_surface.h \
- /usr/include/SDL2/SDL_blendmode.h /usr/include/SDL2/SDL_keyboard.h \
- /usr/include/SDL2/SDL_keycode.h /usr/include/SDL2/SDL_scancode.h \
- /usr/include/SDL2/SDL_mouse.h /usr/include/SDL2/SDL_joystick.h \
- /usr/include/SDL2/SDL_guid.h /usr/include/SDL2/SDL_mutex.h \
- /usr/include/SDL2/SDL_gamecontroller.h /usr/include/SDL2/SDL_sensor.h \
- /usr/include/SDL2/SDL_quit.h /usr/include/SDL2/SDL_gesture.h \
- /usr/include/SDL2/SDL_touch.h \
+ /usr/include/SDL2/SDL_error.h /usr/include/SDL2/SDL_rwops.h \
+ /usr/include/SDL2/SDL_surface.h /usr/include/SDL2/SDL_blendmode.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/Image.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/vk_engine.h \
+ /usr/include/c++/13/ranges /usr/include/c++/13/bits/ranges_util.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/camera.h \
+ /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_video.h \
+ /usr/include/SDL2/SDL_keyboard.h /usr/include/SDL2/SDL_keycode.h \
+ /usr/include/SDL2/SDL_scancode.h /usr/include/SDL2/SDL_mouse.h \
+ /usr/include/SDL2/SDL_joystick.h /usr/include/SDL2/SDL_guid.h \
+ /usr/include/SDL2/SDL_mutex.h /usr/include/SDL2/SDL_gamecontroller.h \
+ /usr/include/SDL2/SDL_sensor.h /usr/include/SDL2/SDL_quit.h \
+ /usr/include/SDL2/SDL_gesture.h /usr/include/SDL2/SDL_touch.h \
  /home/adgato/projects/vulkan/template-project/src/engine/vk_descriptors.h \
  /usr/include/c++/13/map /usr/include/c++/13/bits/stl_tree.h \
  /usr/include/c++/13/ext/alloc_traits.h \
@@ -92,7 +95,6 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o: \
  /usr/include/c++/13/bits/stl_multimap.h \
  /usr/include/c++/13/bits/erase_if.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h \
- /home/adgato/projects/vulkan/template-project/src/engine/rendering/Image.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/shader_descriptors.h \
  /usr/include/c++/13/cassert /usr/include/assert.h \
@@ -101,23 +103,50 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o: \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassDirectory.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/DefaultPass.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/../SubMesh.h \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Common.h \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/ComponentTypeUniverse.h \
- /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/Pass.h \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Engine.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h \
  /usr/include/c++/13/bitset /usr/include/c++/13/bits/cxxabi_forced.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h \
+ /usr/include/c++/13/fstream /usr/include/c++/13/istream \
+ /usr/include/c++/13/ios /usr/include/c++/13/ostream \
+ /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/bits/codecvt.h \
+ /usr/include/c++/13/bits/locale_classes.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
+ /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/cerrno \
+ /usr/include/errno.h \
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/Pass.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h \
+ /usr/include/c++/13/format /usr/include/c++/13/charconv \
+ /usr/include/c++/13/bit /usr/include/c++/13/bits/charconv.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
+ /usr/include/c++/13/locale /usr/include/c++/13/bits/localefwd.h \
+ /usr/include/c++/13/bits/locale_facets.h \
+ /usr/include/c++/13/bits/locale_facets_nonio.h /usr/include/c++/13/ctime \
+ /usr/include/time.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/13/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/13/bits/locale_conv.h /usr/include/c++/13/streambuf \
+ /usr/include/c++/13/bits/stringfwd.h /usr/include/c++/13/variant \
+ /usr/include/c++/13/bits/enable_special_members.h \
+ /usr/include/c++/13/bits/exception_defines.h \
+ /usr/include/c++/13/bits/parse_numbers.h \
+ /usr/include/c++/13/bits/ranges_algobase.h \
  /usr/include/c++/13/unordered_set \
  /usr/include/c++/13/bits/unordered_set.h \
  /usr/include/c++/13/bits/hashtable.h \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArrays.h \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArray.h \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/TypeIndexer.h \
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/UpdateQueue.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassInstance.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Material.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/PassManager.h \
- /home/adgato/projects/vulkan/template-project/src/engine/rendering/Swapchain.h \
- /usr/include/SDL2/SDL_video.h \
  /home/adgato/projects/vulkan/template-project/include/imgui/imgui_impl_sdl2.h \
  /home/adgato/projects/vulkan/template-project/include/imgui/imgui.h \
  /home/adgato/projects/vulkan/template-project/include/imgui/imconfig.h \
@@ -125,16 +154,13 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o: \
  /usr/include/c++/13/thread /usr/include/c++/13/stop_token \
  /usr/include/c++/13/atomic /usr/include/c++/13/bits/atomic_base.h \
  /usr/include/c++/13/bits/std_thread.h \
- /usr/include/c++/13/bits/unique_ptr.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
- /usr/include/c++/13/semaphore /usr/include/c++/13/bits/semaphore_base.h \
+ /usr/include/c++/13/bits/unique_ptr.h /usr/include/c++/13/semaphore \
+ /usr/include/c++/13/bits/semaphore_base.h \
  /usr/include/c++/13/bits/chrono.h /usr/include/c++/13/ratio \
- /usr/include/c++/13/cstdint /usr/include/c++/13/ctime \
- /usr/include/time.h /usr/include/c++/13/bits/parse_numbers.h \
- /usr/include/c++/13/bits/atomic_timed_wait.h \
+ /usr/include/c++/13/cstdint /usr/include/c++/13/bits/atomic_timed_wait.h \
  /usr/include/c++/13/bits/atomic_wait.h \
- /usr/include/c++/13/bits/this_thread_sleep.h /usr/include/c++/13/cerrno \
- /usr/include/errno.h /usr/include/x86_64-linux-gnu/sys/time.h \
+ /usr/include/c++/13/bits/this_thread_sleep.h \
+ /usr/include/x86_64-linux-gnu/sys/time.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
@@ -147,20 +173,8 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o: \
  /home/adgato/projects/vulkan/template-project/src/engine/vk_loader.h \
  /usr/include/c++/13/filesystem /usr/include/c++/13/bits/fs_fwd.h \
  /usr/include/c++/13/system_error /usr/include/c++/13/bits/fs_path.h \
- /usr/include/c++/13/locale /usr/include/c++/13/bits/localefwd.h \
- /usr/include/c++/13/bits/locale_classes.h \
- /usr/include/c++/13/bits/locale_facets.h \
- /usr/include/c++/13/bits/locale_facets_nonio.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
- /usr/include/libintl.h /usr/include/c++/13/bits/codecvt.h \
- /usr/include/c++/13/bits/locale_facets_nonio.tcc \
- /usr/include/c++/13/bits/locale_conv.h /usr/include/c++/13/streambuf \
- /usr/include/c++/13/bits/stringfwd.h /usr/include/c++/13/iomanip \
- /usr/include/c++/13/bits/ios_base.h \
+ /usr/include/c++/13/iomanip /usr/include/c++/13/bits/ios_base.h \
  /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/sstream \
- /usr/include/c++/13/istream /usr/include/c++/13/ios \
- /usr/include/c++/13/ostream /usr/include/c++/13/bits/istream.tcc \
  /usr/include/c++/13/bits/alloc_traits.h \
  /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/codecvt \
  /usr/include/c++/13/ext/concurrence.h \

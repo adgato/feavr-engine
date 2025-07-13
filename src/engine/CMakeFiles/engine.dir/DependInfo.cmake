@@ -10,6 +10,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/adgato/projects/vulkan/template-project/src/engine/Core.cpp" "src/engine/CMakeFiles/engine.dir/Core.cpp.o" "gcc" "src/engine/CMakeFiles/engine.dir/Core.cpp.o.d"
   "/home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx" "src/engine/CMakeFiles/engine.dir/Core.cpp.o" "gcc" "src/engine/CMakeFiles/engine.dir/Core.cpp.o.d"
+  "/home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.cpp" "src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o" "gcc" "src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o.d"
+  "/home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx" "src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o" "gcc" "src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o.d"
   "/home/adgato/projects/vulkan/template-project/src/engine/camera.cpp" "src/engine/CMakeFiles/engine.dir/camera.cpp.o" "gcc" "src/engine/CMakeFiles/engine.dir/camera.cpp.o.d"
   "/home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx" "src/engine/CMakeFiles/engine.dir/camera.cpp.o" "gcc" "src/engine/CMakeFiles/engine.dir/camera.cpp.o.d"
   "/home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.cxx" "src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch" "gcc" "src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch.d"

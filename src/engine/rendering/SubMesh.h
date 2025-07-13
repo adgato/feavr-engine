@@ -4,11 +4,6 @@
 
 namespace rendering
 {
-    struct Transform
-    {
-        glm::mat4 transform;
-        static void Destroy() {}
-    };
 
     struct Mesh
     {

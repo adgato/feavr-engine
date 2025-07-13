@@ -131,8 +131,4 @@ foreach(HLSL ${HLSL_SOURCE_FILES})
     endif()
 endforeach(HLSL)
 
-set(SHADER_SOURCES ${GLSL_SOURCE_FILES} ${HLSL_SOURCE_FILES})
-
-add_custom_target(shader_binaries ALL DEPENDS ${SPIRV_BINARY_FILES})
-add_custom_target(shaders SOURCES ${SHADER_SOURCES})
-add_dependencies(shaders shader_binaries)
+add_custom_target(shaders ALL DEPENDS ${SPIRV_BINARY_FILES})

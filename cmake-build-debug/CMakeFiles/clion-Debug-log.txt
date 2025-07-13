@@ -12,5 +12,7 @@ CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
 -- Version: 10.1.1
 -- Build type: Debug
 -- Configuring done (0.4s)
--- Generating done (0.0s)
--- Build files have been written to: /home/adgato/projects/vulkan/template-project
+CMake Error: Cannot determine link language for target "serialisation".
+CMake Error: CMake can not determine linker language for target: serialisation
+-- Generating done (0.1s)
+CMake Generate step failed.  Build files cannot be regenerated correctly.

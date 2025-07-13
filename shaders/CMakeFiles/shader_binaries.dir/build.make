@@ -68,6 +68,8 @@ include shaders/CMakeFiles/shader_binaries.dir/progress.make
 
 shaders/CMakeFiles/shader_binaries: shaders/spv/default_shader_vs.spv
 shaders/CMakeFiles/shader_binaries: shaders/spv/default_shader_ps.spv
+shaders/CMakeFiles/shader_binaries: shaders/spv/unlit_shader_vs.spv
+shaders/CMakeFiles/shader_binaries: shaders/spv/unlit_shader_ps.spv
 
 shaders/spv/default_shader_ps.spv: shaders/default_shader.hlsl
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "HLSL default_shader.hlsl (frag)"
@@ -77,12 +79,22 @@ shaders/spv/default_shader_vs.spv: shaders/default_shader.hlsl
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "HLSL default_shader.hlsl (vert)"
 	cd /home/adgato/projects/vulkan/template-project/shaders && /home/adgato/portable/dxc/bin/dxc -E vert -T vs_6_0 -spirv -fspv-target-env=vulkan1.3 -D COMPILING /home/adgato/projects/vulkan/template-project/shaders/default_shader.hlsl -Fo /home/adgato/projects/vulkan/template-project/shaders/spv/default_shader_vs.spv
 
+shaders/spv/unlit_shader_ps.spv: shaders/unlit_shader.hlsl
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "HLSL unlit_shader.hlsl (frag)"
+	cd /home/adgato/projects/vulkan/template-project/shaders && /home/adgato/portable/dxc/bin/dxc -E frag -T ps_6_0 -spirv -fspv-target-env=vulkan1.3 -D COMPILING /home/adgato/projects/vulkan/template-project/shaders/unlit_shader.hlsl -Fo /home/adgato/projects/vulkan/template-project/shaders/spv/unlit_shader_ps.spv
+
+shaders/spv/unlit_shader_vs.spv: shaders/unlit_shader.hlsl
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "HLSL unlit_shader.hlsl (vert)"
+	cd /home/adgato/projects/vulkan/template-project/shaders && /home/adgato/portable/dxc/bin/dxc -E vert -T vs_6_0 -spirv -fspv-target-env=vulkan1.3 -D COMPILING /home/adgato/projects/vulkan/template-project/shaders/unlit_shader.hlsl -Fo /home/adgato/projects/vulkan/template-project/shaders/spv/unlit_shader_vs.spv
+
 shaders/CMakeFiles/shader_binaries.dir/codegen:
 .PHONY : shaders/CMakeFiles/shader_binaries.dir/codegen
 
 shader_binaries: shaders/CMakeFiles/shader_binaries
 shader_binaries: shaders/spv/default_shader_ps.spv
 shader_binaries: shaders/spv/default_shader_vs.spv
+shader_binaries: shaders/spv/unlit_shader_ps.spv
+shader_binaries: shaders/spv/unlit_shader_vs.spv
 shader_binaries: shaders/CMakeFiles/shader_binaries.dir/build.make
 .PHONY : shader_binaries
 

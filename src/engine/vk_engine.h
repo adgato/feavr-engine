@@ -1,7 +1,4 @@
-﻿// vulkan_guide.h : Include file for standard system include files,
-// or project specific include files.
-
-#pragma once
+﻿#pragma once
 
 #include <vk_types.h>
 #include <ranges>
@@ -19,60 +16,46 @@
 
 struct FrameData
 {
-	DescriptorAllocator frameDescriptors;
-	rendering::Buffer<GPUSceneData> sceneDataBuffer;
+    DescriptorAllocator frameDescriptors;
+    rendering::Buffer<GPUSceneData> sceneDataBuffer;
 };
 
-class VulkanEngine {
+class VulkanEngine
+{
 public:
+    ecs::EntityManager entityManager;
 
-	bool _isInitialized{ false };
+    FrameData frameData[rendering::FRAME_OVERLAP];
 
-	ecs::EntityManager entityManager;
-	
-	FrameData frameData[rendering::FRAME_OVERLAP];
+    VmaAllocator vmaAllocator;
+    VkDevice device;
 
-	VmaAllocator vmaAllocator;
-	VkDevice device;
-	
-	Camera mainCamera;
-	
-	float renderScale = 1.f;
-	DescriptorAllocator descriptorAllocator;
+    Camera mainCamera;
 
-	rendering::CommonSetLayouts commonSets;
-	rendering::CommonTextures commonTextures;
+    DescriptorAllocator descriptorAllocator;
 
-	DescriptorWriter gpuSceneDescriptorSet;
+    rendering::CommonSetLayouts commonSets;
+    rendering::CommonTextures commonTextures;
 
-	VkSampler _defaultSamplerLinear;
-	VkSampler _defaultSamplerNearest;
+    DescriptorWriter gpuSceneDescriptorSet;
 
-	rendering::Image drawImage;
-	rendering::Image depthImage;
-	
-	rendering::PassManager passManager;
+    VkSampler defaultSamplerLinear;
+    VkSampler defaultSamplerNearest;
 
-	VkDescriptorPool imguiPool;
+    rendering::Image drawImage;
+    rendering::Image depthImage;
 
-	GPUSceneData sceneData;
+    rendering::PassManager passManager;
 
-	rendering::Material<default_pass::Pass> defaultMaterial;
+    GPUSceneData sceneData;
 
-	void init(rendering::SwapchainRenderer* swapchainRenderer);
+    rendering::Material<default_pass::Pass> defaultMaterial;
 
-	//shuts down the engine
-	void cleanup();
+    void Init(rendering::SwapchainRenderer* swapchainRenderer);
 
-	//draw loop
-	void draw(uint32_t frameCount, VkCommandBuffer cmd, rendering::Image& targetImage);
+    void Draw(uint32_t frameCount, VkCommandBuffer cmd, rendering::Image& targetImage);
 
-	rendering::Mesh UploadMesh(const rendering::SwapchainRenderer* swapchainRenderer, std::span<uint32_t> indices, std::span<Vertex> vertices) const;
+    void Destroy();
 
-private:
-	void init_swapchain(const rendering::DeviceData& deviceData);
-	
-	void init_descriptors();
-	
-	void init_imgui(const rendering::DeviceData& deviceData);
+    rendering::Mesh UploadMesh(const rendering::SwapchainRenderer* swapchainRenderer, std::span<uint32_t> indices, std::span<Vertex> vertices) const;
 };

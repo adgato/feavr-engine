@@ -7,7 +7,7 @@ bin/engine
  /home/adgato/projects/vulkan/template-project/include/fmt/libfmtd.a
  /home/adgato/projects/vulkan/template-project/include/libimgui.a
  /home/adgato/projects/vulkan/template-project/include/libvkbootstrap.a
- /home/adgato/projects/vulkan/template-project/src/directmath/libdirectmath.a
+ /home/adgato/projects/vulkan/template-project/src/serialisation/libserialisation.a
  /lib/i386-linux-gnu/libFLAC.so.12
  /lib/i386-linux-gnu/libLLVM.so.19.1
  /lib/i386-linux-gnu/libX11-xcb.so.1
@@ -230,6 +230,7 @@ bin/engine
  /usr/lib/x86_64-linux-gnu/libvulkan.so
  /usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-16.1.so
  /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/Core.cpp.o
+ /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o
  /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/camera.cpp.o
  /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/main.cpp.o
  /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o
@@ -256,16 +257,21 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o
  /home/adgato/projects/vulkan/template-project/include/imgui/imgui_impl_sdl2.h
  /home/adgato/projects/vulkan/template-project/include/imgui/imgui_impl_vulkan.h
  /home/adgato/projects/vulkan/template-project/include/vma/vk_mem_alloc.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h
  /home/adgato/projects/vulkan/template-project/src/engine/Core.cpp
  /home/adgato/projects/vulkan/template-project/src/engine/Core.h
+ /home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.h
  /home/adgato/projects/vulkan/template-project/src/engine/camera.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Common.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/ComponentTypeUniverse.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Engine.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArray.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArrays.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/TypeIndexer.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/UpdateQueue.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.h
@@ -313,23 +319,28 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o
  /usr/include/assert.h
  /usr/include/c++/13/array
  /usr/include/c++/13/atomic
+ /usr/include/c++/13/bit
  /usr/include/c++/13/bits/algorithmfwd.h
  /usr/include/c++/13/bits/alloc_traits.h
  /usr/include/c++/13/bits/allocator.h
  /usr/include/c++/13/bits/atomic_base.h
  /usr/include/c++/13/bits/atomic_timed_wait.h
  /usr/include/c++/13/bits/atomic_wait.h
+ /usr/include/c++/13/bits/charconv.h
  /usr/include/c++/13/bits/chrono.h
  /usr/include/c++/13/bits/codecvt.h
  /usr/include/c++/13/bits/concept_check.h
  /usr/include/c++/13/bits/cpp_type_traits.h
  /usr/include/c++/13/bits/cxxabi_forced.h
  /usr/include/c++/13/bits/deque.tcc
+ /usr/include/c++/13/bits/enable_special_members.h
  /usr/include/c++/13/bits/erase_if.h
+ /usr/include/c++/13/bits/exception_defines.h
  /usr/include/c++/13/bits/fs_dir.h
  /usr/include/c++/13/bits/fs_fwd.h
  /usr/include/c++/13/bits/fs_ops.h
  /usr/include/c++/13/bits/fs_path.h
+ /usr/include/c++/13/bits/fstream.tcc
  /usr/include/c++/13/bits/functexcept.h
  /usr/include/c++/13/bits/functional_hash.h
  /usr/include/c++/13/bits/hashtable.h
@@ -350,6 +361,7 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o
  /usr/include/c++/13/bits/predefined_ops.h
  /usr/include/c++/13/bits/quoted_string.h
  /usr/include/c++/13/bits/range_access.h
+ /usr/include/c++/13/bits/ranges_algobase.h
  /usr/include/c++/13/bits/ranges_base.h
  /usr/include/c++/13/bits/ranges_cmp.h
  /usr/include/c++/13/bits/ranges_util.h
@@ -387,6 +399,7 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o
  /usr/include/c++/13/bitset
  /usr/include/c++/13/cassert
  /usr/include/c++/13/cerrno
+ /usr/include/c++/13/charconv
  /usr/include/c++/13/cmath
  /usr/include/c++/13/codecvt
  /usr/include/c++/13/compare
@@ -406,6 +419,8 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o
  /usr/include/c++/13/ext/numeric_traits.h
  /usr/include/c++/13/ext/type_traits.h
  /usr/include/c++/13/filesystem
+ /usr/include/c++/13/format
+ /usr/include/c++/13/fstream
  /usr/include/c++/13/functional
  /usr/include/c++/13/initializer_list
  /usr/include/c++/13/iomanip
@@ -440,6 +455,7 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o
  /usr/include/c++/13/typeinfo
  /usr/include/c++/13/unordered_map
  /usr/include/c++/13/unordered_set
+ /usr/include/c++/13/variant
  /usr/include/c++/13/vector
  /usr/include/ctype.h
  /usr/include/endian.h
@@ -467,7 +483,10 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o
  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h
  /usr/include/x86_64-linux-gnu/bits/types/time_t.h
  /usr/include/x86_64-linux-gnu/bits/wordsize.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h
@@ -476,6 +495,125 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.o
  /usr/include/x86_64-linux-gnu/sys/types.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h
+
+src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o
+ /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
+ /home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/core.h
+ /home/adgato/projects/vulkan/template-project/include/imgui/imconfig.h
+ /home/adgato/projects/vulkan/template-project/include/imgui/imgui.h
+ /home/adgato/projects/vulkan/template-project/include/imgui/imgui_impl_sdl2.h
+ /home/adgato/projects/vulkan/template-project/include/imgui/imgui_impl_vulkan.h
+ /home/adgato/projects/vulkan/template-project/include/vma/vk_mem_alloc.h
+ /home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.cpp
+ /home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.h
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/Image.h
+ /home/adgato/projects/vulkan/template-project/src/engine/rendering/Swapchain.h
+ /home/adgato/projects/vulkan/template-project/src/engine/vk_initializers.h
+ /home/adgato/projects/vulkan/template-project/src/engine/vk_new.h
+ /home/adgato/projects/vulkan/template-project/src/engine/vk_types.h
+ /usr/include/SDL2/SDL_blendmode.h
+ /usr/include/SDL2/SDL_config.h
+ /usr/include/SDL2/SDL_endian.h
+ /usr/include/SDL2/SDL_error.h
+ /usr/include/SDL2/SDL_pixels.h
+ /usr/include/SDL2/SDL_platform.h
+ /usr/include/SDL2/SDL_rect.h
+ /usr/include/SDL2/SDL_rwops.h
+ /usr/include/SDL2/SDL_stdinc.h
+ /usr/include/SDL2/SDL_surface.h
+ /usr/include/SDL2/SDL_video.h
+ /usr/include/SDL2/begin_code.h
+ /usr/include/SDL2/close_code.h
+ /usr/include/assert.h
+ /usr/include/c++/13/array
+ /usr/include/c++/13/bits/algorithmfwd.h
+ /usr/include/c++/13/bits/allocator.h
+ /usr/include/c++/13/bits/concept_check.h
+ /usr/include/c++/13/bits/cpp_type_traits.h
+ /usr/include/c++/13/bits/deque.tcc
+ /usr/include/c++/13/bits/functexcept.h
+ /usr/include/c++/13/bits/functional_hash.h
+ /usr/include/c++/13/bits/invoke.h
+ /usr/include/c++/13/bits/memory_resource.h
+ /usr/include/c++/13/bits/move.h
+ /usr/include/c++/13/bits/predefined_ops.h
+ /usr/include/c++/13/bits/range_access.h
+ /usr/include/c++/13/bits/ranges_base.h
+ /usr/include/c++/13/bits/ranges_cmp.h
+ /usr/include/c++/13/bits/refwrap.h
+ /usr/include/c++/13/bits/requires_hosted.h
+ /usr/include/c++/13/bits/std_abs.h
+ /usr/include/c++/13/bits/std_function.h
+ /usr/include/c++/13/bits/stl_algo.h
+ /usr/include/c++/13/bits/stl_algobase.h
+ /usr/include/c++/13/bits/stl_construct.h
+ /usr/include/c++/13/bits/stl_deque.h
+ /usr/include/c++/13/bits/stl_function.h
+ /usr/include/c++/13/bits/stl_heap.h
+ /usr/include/c++/13/bits/stl_iterator.h
+ /usr/include/c++/13/bits/stl_iterator_base_funcs.h
+ /usr/include/c++/13/bits/stl_iterator_base_types.h
+ /usr/include/c++/13/bits/stl_pair.h
+ /usr/include/c++/13/bits/stl_tempbuf.h
+ /usr/include/c++/13/bits/stl_uninitialized.h
+ /usr/include/c++/13/bits/stream_iterator.h
+ /usr/include/c++/13/bits/streambuf_iterator.h
+ /usr/include/c++/13/bits/uniform_int_dist.h
+ /usr/include/c++/13/bits/utility.h
+ /usr/include/c++/13/cmath
+ /usr/include/c++/13/compare
+ /usr/include/c++/13/concepts
+ /usr/include/c++/13/cstddef
+ /usr/include/c++/13/cstdio
+ /usr/include/c++/13/cstdlib
+ /usr/include/c++/13/cstring
+ /usr/include/c++/13/debug/assertions.h
+ /usr/include/c++/13/debug/debug.h
+ /usr/include/c++/13/deque
+ /usr/include/c++/13/ext/numeric_traits.h
+ /usr/include/c++/13/ext/type_traits.h
+ /usr/include/c++/13/functional
+ /usr/include/c++/13/initializer_list
+ /usr/include/c++/13/iosfwd
+ /usr/include/c++/13/iterator
+ /usr/include/c++/13/limits
+ /usr/include/c++/13/math.h
+ /usr/include/c++/13/memory
+ /usr/include/c++/13/new
+ /usr/include/c++/13/optional
+ /usr/include/c++/13/source_location
+ /usr/include/c++/13/span
+ /usr/include/c++/13/stdexcept
+ /usr/include/c++/13/stdlib.h
+ /usr/include/c++/13/string
+ /usr/include/c++/13/string_view
+ /usr/include/c++/13/tuple
+ /usr/include/c++/13/type_traits
+ /usr/include/c++/13/typeinfo
+ /usr/include/c++/13/unordered_map
+ /usr/include/c++/13/vector
+ /usr/include/ctype.h
+ /usr/include/endian.h
+ /usr/include/features.h
+ /usr/include/inttypes.h
+ /usr/include/math.h
+ /usr/include/stdc-predef.h
+ /usr/include/stdio.h
+ /usr/include/string.h
+ /usr/include/strings.h
+ /usr/include/vulkan/vulkan.h
+ /usr/include/wchar.h
+ /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h
+ /usr/include/x86_64-linux-gnu/bits/libc-header-start.h
+ /usr/include/x86_64-linux-gnu/bits/string_fortified.h
+ /usr/include/x86_64-linux-gnu/bits/strings_fortified.h
+ /usr/include/x86_64-linux-gnu/bits/types/locale_t.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h
+ /usr/include/x86_64-linux-gnu/sys/types.h
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h
@@ -1035,15 +1173,20 @@ src/engine/CMakeFiles/engine.dir/main.cpp.o
  /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
  /home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/core.h
  /home/adgato/projects/vulkan/template-project/include/vma/vk_mem_alloc.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h
  /home/adgato/projects/vulkan/template-project/src/engine/Core.h
+ /home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.h
  /home/adgato/projects/vulkan/template-project/src/engine/camera.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Common.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/ComponentTypeUniverse.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Engine.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArray.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArrays.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/TypeIndexer.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/UpdateQueue.h
  /home/adgato/projects/vulkan/template-project/src/engine/main.cpp
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.h
@@ -1090,22 +1233,37 @@ src/engine/CMakeFiles/engine.dir/main.cpp.o
  /usr/include/SDL2/close_code.h
  /usr/include/assert.h
  /usr/include/c++/13/array
+ /usr/include/c++/13/bit
  /usr/include/c++/13/bits/algorithmfwd.h
  /usr/include/c++/13/bits/allocator.h
+ /usr/include/c++/13/bits/charconv.h
+ /usr/include/c++/13/bits/codecvt.h
  /usr/include/c++/13/bits/concept_check.h
  /usr/include/c++/13/bits/cpp_type_traits.h
  /usr/include/c++/13/bits/cxxabi_forced.h
  /usr/include/c++/13/bits/deque.tcc
+ /usr/include/c++/13/bits/enable_special_members.h
  /usr/include/c++/13/bits/erase_if.h
+ /usr/include/c++/13/bits/exception_defines.h
+ /usr/include/c++/13/bits/fstream.tcc
  /usr/include/c++/13/bits/functexcept.h
  /usr/include/c++/13/bits/functional_hash.h
  /usr/include/c++/13/bits/hashtable.h
  /usr/include/c++/13/bits/invoke.h
+ /usr/include/c++/13/bits/istream.tcc
+ /usr/include/c++/13/bits/locale_classes.h
+ /usr/include/c++/13/bits/locale_conv.h
+ /usr/include/c++/13/bits/locale_facets.h
+ /usr/include/c++/13/bits/locale_facets_nonio.h
+ /usr/include/c++/13/bits/locale_facets_nonio.tcc
+ /usr/include/c++/13/bits/localefwd.h
  /usr/include/c++/13/bits/memory_resource.h
  /usr/include/c++/13/bits/move.h
  /usr/include/c++/13/bits/node_handle.h
+ /usr/include/c++/13/bits/parse_numbers.h
  /usr/include/c++/13/bits/predefined_ops.h
  /usr/include/c++/13/bits/range_access.h
+ /usr/include/c++/13/bits/ranges_algobase.h
  /usr/include/c++/13/bits/ranges_base.h
  /usr/include/c++/13/bits/ranges_cmp.h
  /usr/include/c++/13/bits/ranges_util.h
@@ -1130,11 +1288,14 @@ src/engine/CMakeFiles/engine.dir/main.cpp.o
  /usr/include/c++/13/bits/stl_uninitialized.h
  /usr/include/c++/13/bits/stream_iterator.h
  /usr/include/c++/13/bits/streambuf_iterator.h
+ /usr/include/c++/13/bits/stringfwd.h
  /usr/include/c++/13/bits/uniform_int_dist.h
  /usr/include/c++/13/bits/unordered_set.h
  /usr/include/c++/13/bits/utility.h
  /usr/include/c++/13/bitset
  /usr/include/c++/13/cassert
+ /usr/include/c++/13/cerrno
+ /usr/include/c++/13/charconv
  /usr/include/c++/13/cmath
  /usr/include/c++/13/compare
  /usr/include/c++/13/concepts
@@ -1142,6 +1303,7 @@ src/engine/CMakeFiles/engine.dir/main.cpp.o
  /usr/include/c++/13/cstdio
  /usr/include/c++/13/cstdlib
  /usr/include/c++/13/cstring
+ /usr/include/c++/13/ctime
  /usr/include/c++/13/debug/assertions.h
  /usr/include/c++/13/debug/debug.h
  /usr/include/c++/13/deque
@@ -1149,21 +1311,28 @@ src/engine/CMakeFiles/engine.dir/main.cpp.o
  /usr/include/c++/13/ext/alloc_traits.h
  /usr/include/c++/13/ext/numeric_traits.h
  /usr/include/c++/13/ext/type_traits.h
+ /usr/include/c++/13/format
+ /usr/include/c++/13/fstream
  /usr/include/c++/13/functional
  /usr/include/c++/13/initializer_list
+ /usr/include/c++/13/ios
  /usr/include/c++/13/iosfwd
+ /usr/include/c++/13/istream
  /usr/include/c++/13/iterator
  /usr/include/c++/13/limits
+ /usr/include/c++/13/locale
  /usr/include/c++/13/map
  /usr/include/c++/13/math.h
  /usr/include/c++/13/memory
  /usr/include/c++/13/new
  /usr/include/c++/13/optional
+ /usr/include/c++/13/ostream
  /usr/include/c++/13/ranges
  /usr/include/c++/13/source_location
  /usr/include/c++/13/span
  /usr/include/c++/13/stdexcept
  /usr/include/c++/13/stdlib.h
+ /usr/include/c++/13/streambuf
  /usr/include/c++/13/string
  /usr/include/c++/13/string_view
  /usr/include/c++/13/tuple
@@ -1171,16 +1340,20 @@ src/engine/CMakeFiles/engine.dir/main.cpp.o
  /usr/include/c++/13/typeinfo
  /usr/include/c++/13/unordered_map
  /usr/include/c++/13/unordered_set
+ /usr/include/c++/13/variant
  /usr/include/c++/13/vector
  /usr/include/ctype.h
  /usr/include/endian.h
+ /usr/include/errno.h
  /usr/include/features.h
  /usr/include/inttypes.h
+ /usr/include/libintl.h
  /usr/include/math.h
  /usr/include/stdc-predef.h
  /usr/include/stdio.h
  /usr/include/string.h
  /usr/include/strings.h
+ /usr/include/time.h
  /usr/include/vulkan/vulkan.h
  /usr/include/wchar.h
  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h
@@ -1188,7 +1361,13 @@ src/engine/CMakeFiles/engine.dir/main.cpp.o
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h
  /usr/include/x86_64-linux-gnu/sys/types.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h
@@ -1289,14 +1468,18 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o
  /home/adgato/projects/vulkan/template-project/include/glm/glm/detail/type_half.inl
  /home/adgato/projects/vulkan/template-project/include/glm/glm/packing.hpp
  /home/adgato/projects/vulkan/template-project/include/vma/vk_mem_alloc.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h
  /home/adgato/projects/vulkan/template-project/src/engine/camera.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Common.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/ComponentTypeUniverse.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Engine.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArray.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArrays.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/TypeIndexer.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/UpdateQueue.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.cpp
@@ -1343,22 +1526,37 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o
  /usr/include/SDL2/close_code.h
  /usr/include/assert.h
  /usr/include/c++/13/array
+ /usr/include/c++/13/bit
  /usr/include/c++/13/bits/algorithmfwd.h
  /usr/include/c++/13/bits/allocator.h
+ /usr/include/c++/13/bits/charconv.h
+ /usr/include/c++/13/bits/codecvt.h
  /usr/include/c++/13/bits/concept_check.h
  /usr/include/c++/13/bits/cpp_type_traits.h
  /usr/include/c++/13/bits/cxxabi_forced.h
  /usr/include/c++/13/bits/deque.tcc
+ /usr/include/c++/13/bits/enable_special_members.h
  /usr/include/c++/13/bits/erase_if.h
+ /usr/include/c++/13/bits/exception_defines.h
+ /usr/include/c++/13/bits/fstream.tcc
  /usr/include/c++/13/bits/functexcept.h
  /usr/include/c++/13/bits/functional_hash.h
  /usr/include/c++/13/bits/hashtable.h
  /usr/include/c++/13/bits/invoke.h
+ /usr/include/c++/13/bits/istream.tcc
+ /usr/include/c++/13/bits/locale_classes.h
+ /usr/include/c++/13/bits/locale_conv.h
+ /usr/include/c++/13/bits/locale_facets.h
+ /usr/include/c++/13/bits/locale_facets_nonio.h
+ /usr/include/c++/13/bits/locale_facets_nonio.tcc
+ /usr/include/c++/13/bits/localefwd.h
  /usr/include/c++/13/bits/memory_resource.h
  /usr/include/c++/13/bits/move.h
  /usr/include/c++/13/bits/node_handle.h
+ /usr/include/c++/13/bits/parse_numbers.h
  /usr/include/c++/13/bits/predefined_ops.h
  /usr/include/c++/13/bits/range_access.h
+ /usr/include/c++/13/bits/ranges_algobase.h
  /usr/include/c++/13/bits/ranges_base.h
  /usr/include/c++/13/bits/ranges_cmp.h
  /usr/include/c++/13/bits/ranges_util.h
@@ -1383,11 +1581,14 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o
  /usr/include/c++/13/bits/stl_uninitialized.h
  /usr/include/c++/13/bits/stream_iterator.h
  /usr/include/c++/13/bits/streambuf_iterator.h
+ /usr/include/c++/13/bits/stringfwd.h
  /usr/include/c++/13/bits/uniform_int_dist.h
  /usr/include/c++/13/bits/unordered_set.h
  /usr/include/c++/13/bits/utility.h
  /usr/include/c++/13/bitset
  /usr/include/c++/13/cassert
+ /usr/include/c++/13/cerrno
+ /usr/include/c++/13/charconv
  /usr/include/c++/13/cmath
  /usr/include/c++/13/compare
  /usr/include/c++/13/concepts
@@ -1395,6 +1596,7 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o
  /usr/include/c++/13/cstdio
  /usr/include/c++/13/cstdlib
  /usr/include/c++/13/cstring
+ /usr/include/c++/13/ctime
  /usr/include/c++/13/debug/assertions.h
  /usr/include/c++/13/debug/debug.h
  /usr/include/c++/13/deque
@@ -1402,21 +1604,28 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o
  /usr/include/c++/13/ext/alloc_traits.h
  /usr/include/c++/13/ext/numeric_traits.h
  /usr/include/c++/13/ext/type_traits.h
+ /usr/include/c++/13/format
+ /usr/include/c++/13/fstream
  /usr/include/c++/13/functional
  /usr/include/c++/13/initializer_list
+ /usr/include/c++/13/ios
  /usr/include/c++/13/iosfwd
+ /usr/include/c++/13/istream
  /usr/include/c++/13/iterator
  /usr/include/c++/13/limits
+ /usr/include/c++/13/locale
  /usr/include/c++/13/map
  /usr/include/c++/13/math.h
  /usr/include/c++/13/memory
  /usr/include/c++/13/new
  /usr/include/c++/13/optional
+ /usr/include/c++/13/ostream
  /usr/include/c++/13/ranges
  /usr/include/c++/13/source_location
  /usr/include/c++/13/span
  /usr/include/c++/13/stdexcept
  /usr/include/c++/13/stdlib.h
+ /usr/include/c++/13/streambuf
  /usr/include/c++/13/string
  /usr/include/c++/13/string_view
  /usr/include/c++/13/tuple
@@ -1424,16 +1633,20 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o
  /usr/include/c++/13/typeinfo
  /usr/include/c++/13/unordered_map
  /usr/include/c++/13/unordered_set
+ /usr/include/c++/13/variant
  /usr/include/c++/13/vector
  /usr/include/ctype.h
  /usr/include/endian.h
+ /usr/include/errno.h
  /usr/include/features.h
  /usr/include/inttypes.h
+ /usr/include/libintl.h
  /usr/include/math.h
  /usr/include/stdc-predef.h
  /usr/include/stdio.h
  /usr/include/string.h
  /usr/include/strings.h
+ /usr/include/time.h
  /usr/include/vulkan/vulkan.h
  /usr/include/wchar.h
  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h
@@ -1441,7 +1654,13 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h
  /usr/include/x86_64-linux-gnu/sys/types.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h
@@ -1457,14 +1676,18 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o
  /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
  /home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/core.h
  /home/adgato/projects/vulkan/template-project/include/vma/vk_mem_alloc.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h
  /home/adgato/projects/vulkan/template-project/src/engine/camera.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Common.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/ComponentTypeUniverse.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Engine.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArray.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArrays.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/TypeIndexer.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/UpdateQueue.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.h
@@ -1512,22 +1735,37 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o
  /usr/include/SDL2/close_code.h
  /usr/include/assert.h
  /usr/include/c++/13/array
+ /usr/include/c++/13/bit
  /usr/include/c++/13/bits/algorithmfwd.h
  /usr/include/c++/13/bits/allocator.h
+ /usr/include/c++/13/bits/charconv.h
+ /usr/include/c++/13/bits/codecvt.h
  /usr/include/c++/13/bits/concept_check.h
  /usr/include/c++/13/bits/cpp_type_traits.h
  /usr/include/c++/13/bits/cxxabi_forced.h
  /usr/include/c++/13/bits/deque.tcc
+ /usr/include/c++/13/bits/enable_special_members.h
  /usr/include/c++/13/bits/erase_if.h
+ /usr/include/c++/13/bits/exception_defines.h
+ /usr/include/c++/13/bits/fstream.tcc
  /usr/include/c++/13/bits/functexcept.h
  /usr/include/c++/13/bits/functional_hash.h
  /usr/include/c++/13/bits/hashtable.h
  /usr/include/c++/13/bits/invoke.h
+ /usr/include/c++/13/bits/istream.tcc
+ /usr/include/c++/13/bits/locale_classes.h
+ /usr/include/c++/13/bits/locale_conv.h
+ /usr/include/c++/13/bits/locale_facets.h
+ /usr/include/c++/13/bits/locale_facets_nonio.h
+ /usr/include/c++/13/bits/locale_facets_nonio.tcc
+ /usr/include/c++/13/bits/localefwd.h
  /usr/include/c++/13/bits/memory_resource.h
  /usr/include/c++/13/bits/move.h
  /usr/include/c++/13/bits/node_handle.h
+ /usr/include/c++/13/bits/parse_numbers.h
  /usr/include/c++/13/bits/predefined_ops.h
  /usr/include/c++/13/bits/range_access.h
+ /usr/include/c++/13/bits/ranges_algobase.h
  /usr/include/c++/13/bits/ranges_base.h
  /usr/include/c++/13/bits/ranges_cmp.h
  /usr/include/c++/13/bits/ranges_util.h
@@ -1552,11 +1790,14 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o
  /usr/include/c++/13/bits/stl_uninitialized.h
  /usr/include/c++/13/bits/stream_iterator.h
  /usr/include/c++/13/bits/streambuf_iterator.h
+ /usr/include/c++/13/bits/stringfwd.h
  /usr/include/c++/13/bits/uniform_int_dist.h
  /usr/include/c++/13/bits/unordered_set.h
  /usr/include/c++/13/bits/utility.h
  /usr/include/c++/13/bitset
  /usr/include/c++/13/cassert
+ /usr/include/c++/13/cerrno
+ /usr/include/c++/13/charconv
  /usr/include/c++/13/cmath
  /usr/include/c++/13/compare
  /usr/include/c++/13/concepts
@@ -1564,6 +1805,7 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o
  /usr/include/c++/13/cstdio
  /usr/include/c++/13/cstdlib
  /usr/include/c++/13/cstring
+ /usr/include/c++/13/ctime
  /usr/include/c++/13/debug/assertions.h
  /usr/include/c++/13/debug/debug.h
  /usr/include/c++/13/deque
@@ -1571,21 +1813,28 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o
  /usr/include/c++/13/ext/alloc_traits.h
  /usr/include/c++/13/ext/numeric_traits.h
  /usr/include/c++/13/ext/type_traits.h
+ /usr/include/c++/13/format
+ /usr/include/c++/13/fstream
  /usr/include/c++/13/functional
  /usr/include/c++/13/initializer_list
+ /usr/include/c++/13/ios
  /usr/include/c++/13/iosfwd
+ /usr/include/c++/13/istream
  /usr/include/c++/13/iterator
  /usr/include/c++/13/limits
+ /usr/include/c++/13/locale
  /usr/include/c++/13/map
  /usr/include/c++/13/math.h
  /usr/include/c++/13/memory
  /usr/include/c++/13/new
  /usr/include/c++/13/optional
+ /usr/include/c++/13/ostream
  /usr/include/c++/13/ranges
  /usr/include/c++/13/source_location
  /usr/include/c++/13/span
  /usr/include/c++/13/stdexcept
  /usr/include/c++/13/stdlib.h
+ /usr/include/c++/13/streambuf
  /usr/include/c++/13/string
  /usr/include/c++/13/string_view
  /usr/include/c++/13/tuple
@@ -1593,16 +1842,20 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o
  /usr/include/c++/13/typeinfo
  /usr/include/c++/13/unordered_map
  /usr/include/c++/13/unordered_set
+ /usr/include/c++/13/variant
  /usr/include/c++/13/vector
  /usr/include/ctype.h
  /usr/include/endian.h
+ /usr/include/errno.h
  /usr/include/features.h
  /usr/include/inttypes.h
+ /usr/include/libintl.h
  /usr/include/math.h
  /usr/include/stdc-predef.h
  /usr/include/stdio.h
  /usr/include/string.h
  /usr/include/strings.h
+ /usr/include/time.h
  /usr/include/vulkan/vulkan.h
  /usr/include/wchar.h
  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h
@@ -1610,7 +1863,13 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h
  /usr/include/x86_64-linux-gnu/sys/types.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h
@@ -1621,13 +1880,17 @@ src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o
  /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
  /home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/core.h
  /home/adgato/projects/vulkan/template-project/include/vma/vk_mem_alloc.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Common.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/ComponentTypeUniverse.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Engine.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArray.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArrays.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/TypeIndexer.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/UpdateQueue.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Material.cpp
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Material.h
@@ -1638,20 +1901,35 @@ src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o
  /home/adgato/projects/vulkan/template-project/src/engine/vk_types.h
  /usr/include/assert.h
  /usr/include/c++/13/array
+ /usr/include/c++/13/bit
  /usr/include/c++/13/bits/algorithmfwd.h
  /usr/include/c++/13/bits/allocator.h
+ /usr/include/c++/13/bits/charconv.h
+ /usr/include/c++/13/bits/codecvt.h
  /usr/include/c++/13/bits/concept_check.h
  /usr/include/c++/13/bits/cxxabi_forced.h
  /usr/include/c++/13/bits/deque.tcc
+ /usr/include/c++/13/bits/enable_special_members.h
  /usr/include/c++/13/bits/erase_if.h
+ /usr/include/c++/13/bits/exception_defines.h
+ /usr/include/c++/13/bits/fstream.tcc
  /usr/include/c++/13/bits/functexcept.h
  /usr/include/c++/13/bits/functional_hash.h
  /usr/include/c++/13/bits/hashtable.h
  /usr/include/c++/13/bits/invoke.h
+ /usr/include/c++/13/bits/istream.tcc
+ /usr/include/c++/13/bits/locale_classes.h
+ /usr/include/c++/13/bits/locale_conv.h
+ /usr/include/c++/13/bits/locale_facets.h
+ /usr/include/c++/13/bits/locale_facets_nonio.h
+ /usr/include/c++/13/bits/locale_facets_nonio.tcc
+ /usr/include/c++/13/bits/localefwd.h
  /usr/include/c++/13/bits/memory_resource.h
  /usr/include/c++/13/bits/move.h
+ /usr/include/c++/13/bits/parse_numbers.h
  /usr/include/c++/13/bits/predefined_ops.h
  /usr/include/c++/13/bits/range_access.h
+ /usr/include/c++/13/bits/ranges_algobase.h
  /usr/include/c++/13/bits/ranges_base.h
  /usr/include/c++/13/bits/ranges_cmp.h
  /usr/include/c++/13/bits/ranges_util.h
@@ -1672,33 +1950,44 @@ src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o
  /usr/include/c++/13/bits/stl_uninitialized.h
  /usr/include/c++/13/bits/stream_iterator.h
  /usr/include/c++/13/bits/streambuf_iterator.h
+ /usr/include/c++/13/bits/stringfwd.h
  /usr/include/c++/13/bits/uniform_int_dist.h
  /usr/include/c++/13/bits/unordered_set.h
  /usr/include/c++/13/bits/utility.h
  /usr/include/c++/13/bitset
  /usr/include/c++/13/cassert
+ /usr/include/c++/13/cerrno
+ /usr/include/c++/13/charconv
  /usr/include/c++/13/compare
  /usr/include/c++/13/concepts
  /usr/include/c++/13/cstddef
  /usr/include/c++/13/cstdio
  /usr/include/c++/13/cstdlib
  /usr/include/c++/13/cstring
+ /usr/include/c++/13/ctime
  /usr/include/c++/13/debug/assertions.h
  /usr/include/c++/13/debug/debug.h
  /usr/include/c++/13/deque
  /usr/include/c++/13/ext/numeric_traits.h
+ /usr/include/c++/13/format
+ /usr/include/c++/13/fstream
  /usr/include/c++/13/functional
  /usr/include/c++/13/initializer_list
+ /usr/include/c++/13/ios
  /usr/include/c++/13/iosfwd
+ /usr/include/c++/13/istream
  /usr/include/c++/13/iterator
  /usr/include/c++/13/limits
+ /usr/include/c++/13/locale
  /usr/include/c++/13/memory
  /usr/include/c++/13/new
  /usr/include/c++/13/optional
+ /usr/include/c++/13/ostream
  /usr/include/c++/13/ranges
  /usr/include/c++/13/source_location
  /usr/include/c++/13/span
  /usr/include/c++/13/stdexcept
+ /usr/include/c++/13/streambuf
  /usr/include/c++/13/string
  /usr/include/c++/13/string_view
  /usr/include/c++/13/tuple
@@ -1706,31 +1995,45 @@ src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o
  /usr/include/c++/13/typeinfo
  /usr/include/c++/13/unordered_map
  /usr/include/c++/13/unordered_set
+ /usr/include/c++/13/variant
  /usr/include/c++/13/vector
+ /usr/include/errno.h
  /usr/include/features.h
+ /usr/include/libintl.h
  /usr/include/stdc-predef.h
  /usr/include/stdio.h
  /usr/include/string.h
  /usr/include/strings.h
+ /usr/include/time.h
  /usr/include/vulkan/vulkan.h
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
 
 src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o
  /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
  /home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/core.h
  /home/adgato/projects/vulkan/template-project/include/vma/vk_mem_alloc.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Common.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/ComponentTypeUniverse.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Engine.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArray.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArrays.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/TypeIndexer.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/UpdateQueue.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/PassManager.cpp
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/PassManager.h
@@ -1740,20 +2043,35 @@ src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o
  /home/adgato/projects/vulkan/template-project/src/engine/vk_types.h
  /usr/include/assert.h
  /usr/include/c++/13/array
+ /usr/include/c++/13/bit
  /usr/include/c++/13/bits/algorithmfwd.h
  /usr/include/c++/13/bits/allocator.h
+ /usr/include/c++/13/bits/charconv.h
+ /usr/include/c++/13/bits/codecvt.h
  /usr/include/c++/13/bits/concept_check.h
  /usr/include/c++/13/bits/cxxabi_forced.h
  /usr/include/c++/13/bits/deque.tcc
+ /usr/include/c++/13/bits/enable_special_members.h
  /usr/include/c++/13/bits/erase_if.h
+ /usr/include/c++/13/bits/exception_defines.h
+ /usr/include/c++/13/bits/fstream.tcc
  /usr/include/c++/13/bits/functexcept.h
  /usr/include/c++/13/bits/functional_hash.h
  /usr/include/c++/13/bits/hashtable.h
  /usr/include/c++/13/bits/invoke.h
+ /usr/include/c++/13/bits/istream.tcc
+ /usr/include/c++/13/bits/locale_classes.h
+ /usr/include/c++/13/bits/locale_conv.h
+ /usr/include/c++/13/bits/locale_facets.h
+ /usr/include/c++/13/bits/locale_facets_nonio.h
+ /usr/include/c++/13/bits/locale_facets_nonio.tcc
+ /usr/include/c++/13/bits/localefwd.h
  /usr/include/c++/13/bits/memory_resource.h
  /usr/include/c++/13/bits/move.h
+ /usr/include/c++/13/bits/parse_numbers.h
  /usr/include/c++/13/bits/predefined_ops.h
  /usr/include/c++/13/bits/range_access.h
+ /usr/include/c++/13/bits/ranges_algobase.h
  /usr/include/c++/13/bits/ranges_base.h
  /usr/include/c++/13/bits/ranges_cmp.h
  /usr/include/c++/13/bits/ranges_util.h
@@ -1774,33 +2092,44 @@ src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o
  /usr/include/c++/13/bits/stl_uninitialized.h
  /usr/include/c++/13/bits/stream_iterator.h
  /usr/include/c++/13/bits/streambuf_iterator.h
+ /usr/include/c++/13/bits/stringfwd.h
  /usr/include/c++/13/bits/uniform_int_dist.h
  /usr/include/c++/13/bits/unordered_set.h
  /usr/include/c++/13/bits/utility.h
  /usr/include/c++/13/bitset
  /usr/include/c++/13/cassert
+ /usr/include/c++/13/cerrno
+ /usr/include/c++/13/charconv
  /usr/include/c++/13/compare
  /usr/include/c++/13/concepts
  /usr/include/c++/13/cstddef
  /usr/include/c++/13/cstdio
  /usr/include/c++/13/cstdlib
  /usr/include/c++/13/cstring
+ /usr/include/c++/13/ctime
  /usr/include/c++/13/debug/assertions.h
  /usr/include/c++/13/debug/debug.h
  /usr/include/c++/13/deque
  /usr/include/c++/13/ext/numeric_traits.h
+ /usr/include/c++/13/format
+ /usr/include/c++/13/fstream
  /usr/include/c++/13/functional
  /usr/include/c++/13/initializer_list
+ /usr/include/c++/13/ios
  /usr/include/c++/13/iosfwd
+ /usr/include/c++/13/istream
  /usr/include/c++/13/iterator
  /usr/include/c++/13/limits
+ /usr/include/c++/13/locale
  /usr/include/c++/13/memory
  /usr/include/c++/13/new
  /usr/include/c++/13/optional
+ /usr/include/c++/13/ostream
  /usr/include/c++/13/ranges
  /usr/include/c++/13/source_location
  /usr/include/c++/13/span
  /usr/include/c++/13/stdexcept
+ /usr/include/c++/13/streambuf
  /usr/include/c++/13/string
  /usr/include/c++/13/string_view
  /usr/include/c++/13/tuple
@@ -1808,38 +2137,58 @@ src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o
  /usr/include/c++/13/typeinfo
  /usr/include/c++/13/unordered_map
  /usr/include/c++/13/unordered_set
+ /usr/include/c++/13/variant
  /usr/include/c++/13/vector
+ /usr/include/errno.h
  /usr/include/features.h
+ /usr/include/libintl.h
  /usr/include/stdc-predef.h
  /usr/include/stdio.h
  /usr/include/string.h
  /usr/include/strings.h
+ /usr/include/time.h
  /usr/include/vulkan/vulkan.h
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
 
 src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o
  /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
  /home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/core.h
  /home/adgato/projects/vulkan/template-project/include/vma/vk_mem_alloc.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Common.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/ComponentTypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/SubMesh.cpp
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/SubMesh.h
  /home/adgato/projects/vulkan/template-project/src/engine/vk_types.h
+ /usr/include/assert.h
  /usr/include/c++/13/array
  /usr/include/c++/13/bits/algorithmfwd.h
  /usr/include/c++/13/bits/allocator.h
+ /usr/include/c++/13/bits/codecvt.h
  /usr/include/c++/13/bits/concept_check.h
+ /usr/include/c++/13/bits/cxxabi_forced.h
  /usr/include/c++/13/bits/deque.tcc
+ /usr/include/c++/13/bits/fstream.tcc
  /usr/include/c++/13/bits/functexcept.h
  /usr/include/c++/13/bits/functional_hash.h
  /usr/include/c++/13/bits/invoke.h
+ /usr/include/c++/13/bits/istream.tcc
+ /usr/include/c++/13/bits/locale_classes.h
  /usr/include/c++/13/bits/memory_resource.h
  /usr/include/c++/13/bits/move.h
  /usr/include/c++/13/bits/predefined_ops.h
@@ -1865,6 +2214,9 @@ src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o
  /usr/include/c++/13/bits/streambuf_iterator.h
  /usr/include/c++/13/bits/uniform_int_dist.h
  /usr/include/c++/13/bits/utility.h
+ /usr/include/c++/13/bitset
+ /usr/include/c++/13/cassert
+ /usr/include/c++/13/cerrno
  /usr/include/c++/13/compare
  /usr/include/c++/13/concepts
  /usr/include/c++/13/cstddef
@@ -1875,14 +2227,18 @@ src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o
  /usr/include/c++/13/debug/debug.h
  /usr/include/c++/13/deque
  /usr/include/c++/13/ext/numeric_traits.h
+ /usr/include/c++/13/fstream
  /usr/include/c++/13/functional
  /usr/include/c++/13/initializer_list
+ /usr/include/c++/13/ios
  /usr/include/c++/13/iosfwd
+ /usr/include/c++/13/istream
  /usr/include/c++/13/iterator
  /usr/include/c++/13/limits
  /usr/include/c++/13/memory
  /usr/include/c++/13/new
  /usr/include/c++/13/optional
+ /usr/include/c++/13/ostream
  /usr/include/c++/13/source_location
  /usr/include/c++/13/span
  /usr/include/c++/13/stdexcept
@@ -1893,6 +2249,7 @@ src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o
  /usr/include/c++/13/typeinfo
  /usr/include/c++/13/unordered_map
  /usr/include/c++/13/vector
+ /usr/include/errno.h
  /usr/include/features.h
  /usr/include/stdc-predef.h
  /usr/include/stdio.h
@@ -1903,7 +2260,10 @@ src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
 
 src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.o
@@ -2160,14 +2520,18 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o
  /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
  /home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/core.h
  /home/adgato/projects/vulkan/template-project/include/vma/vk_mem_alloc.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h
  /home/adgato/projects/vulkan/template-project/src/engine/camera.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Common.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/ComponentTypeUniverse.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Engine.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArray.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArrays.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/TypeIndexer.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/UpdateQueue.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Image.h
@@ -2215,22 +2579,37 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o
  /usr/include/SDL2/close_code.h
  /usr/include/assert.h
  /usr/include/c++/13/array
+ /usr/include/c++/13/bit
  /usr/include/c++/13/bits/algorithmfwd.h
  /usr/include/c++/13/bits/allocator.h
+ /usr/include/c++/13/bits/charconv.h
+ /usr/include/c++/13/bits/codecvt.h
  /usr/include/c++/13/bits/concept_check.h
  /usr/include/c++/13/bits/cpp_type_traits.h
  /usr/include/c++/13/bits/cxxabi_forced.h
  /usr/include/c++/13/bits/deque.tcc
+ /usr/include/c++/13/bits/enable_special_members.h
  /usr/include/c++/13/bits/erase_if.h
+ /usr/include/c++/13/bits/exception_defines.h
+ /usr/include/c++/13/bits/fstream.tcc
  /usr/include/c++/13/bits/functexcept.h
  /usr/include/c++/13/bits/functional_hash.h
  /usr/include/c++/13/bits/hashtable.h
  /usr/include/c++/13/bits/invoke.h
+ /usr/include/c++/13/bits/istream.tcc
+ /usr/include/c++/13/bits/locale_classes.h
+ /usr/include/c++/13/bits/locale_conv.h
+ /usr/include/c++/13/bits/locale_facets.h
+ /usr/include/c++/13/bits/locale_facets_nonio.h
+ /usr/include/c++/13/bits/locale_facets_nonio.tcc
+ /usr/include/c++/13/bits/localefwd.h
  /usr/include/c++/13/bits/memory_resource.h
  /usr/include/c++/13/bits/move.h
  /usr/include/c++/13/bits/node_handle.h
+ /usr/include/c++/13/bits/parse_numbers.h
  /usr/include/c++/13/bits/predefined_ops.h
  /usr/include/c++/13/bits/range_access.h
+ /usr/include/c++/13/bits/ranges_algobase.h
  /usr/include/c++/13/bits/ranges_base.h
  /usr/include/c++/13/bits/ranges_cmp.h
  /usr/include/c++/13/bits/ranges_util.h
@@ -2255,11 +2634,14 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o
  /usr/include/c++/13/bits/stl_uninitialized.h
  /usr/include/c++/13/bits/stream_iterator.h
  /usr/include/c++/13/bits/streambuf_iterator.h
+ /usr/include/c++/13/bits/stringfwd.h
  /usr/include/c++/13/bits/uniform_int_dist.h
  /usr/include/c++/13/bits/unordered_set.h
  /usr/include/c++/13/bits/utility.h
  /usr/include/c++/13/bitset
  /usr/include/c++/13/cassert
+ /usr/include/c++/13/cerrno
+ /usr/include/c++/13/charconv
  /usr/include/c++/13/cmath
  /usr/include/c++/13/compare
  /usr/include/c++/13/concepts
@@ -2267,6 +2649,7 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o
  /usr/include/c++/13/cstdio
  /usr/include/c++/13/cstdlib
  /usr/include/c++/13/cstring
+ /usr/include/c++/13/ctime
  /usr/include/c++/13/debug/assertions.h
  /usr/include/c++/13/debug/debug.h
  /usr/include/c++/13/deque
@@ -2274,21 +2657,28 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o
  /usr/include/c++/13/ext/alloc_traits.h
  /usr/include/c++/13/ext/numeric_traits.h
  /usr/include/c++/13/ext/type_traits.h
+ /usr/include/c++/13/format
+ /usr/include/c++/13/fstream
  /usr/include/c++/13/functional
  /usr/include/c++/13/initializer_list
+ /usr/include/c++/13/ios
  /usr/include/c++/13/iosfwd
+ /usr/include/c++/13/istream
  /usr/include/c++/13/iterator
  /usr/include/c++/13/limits
+ /usr/include/c++/13/locale
  /usr/include/c++/13/map
  /usr/include/c++/13/math.h
  /usr/include/c++/13/memory
  /usr/include/c++/13/new
  /usr/include/c++/13/optional
+ /usr/include/c++/13/ostream
  /usr/include/c++/13/ranges
  /usr/include/c++/13/source_location
  /usr/include/c++/13/span
  /usr/include/c++/13/stdexcept
  /usr/include/c++/13/stdlib.h
+ /usr/include/c++/13/streambuf
  /usr/include/c++/13/string
  /usr/include/c++/13/string_view
  /usr/include/c++/13/tuple
@@ -2296,16 +2686,20 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o
  /usr/include/c++/13/typeinfo
  /usr/include/c++/13/unordered_map
  /usr/include/c++/13/unordered_set
+ /usr/include/c++/13/variant
  /usr/include/c++/13/vector
  /usr/include/ctype.h
  /usr/include/endian.h
+ /usr/include/errno.h
  /usr/include/features.h
  /usr/include/inttypes.h
+ /usr/include/libintl.h
  /usr/include/math.h
  /usr/include/stdc-predef.h
  /usr/include/stdio.h
  /usr/include/string.h
  /usr/include/strings.h
+ /usr/include/time.h
  /usr/include/vulkan/vulkan.h
  /usr/include/wchar.h
  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h
@@ -2313,7 +2707,13 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h
  /usr/include/x86_64-linux-gnu/sys/types.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h
@@ -2324,14 +2724,18 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o
  /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
  /home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/core.h
  /home/adgato/projects/vulkan/template-project/include/vma/vk_mem_alloc.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h
  /home/adgato/projects/vulkan/template-project/src/engine/camera.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Common.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/ComponentTypeUniverse.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Engine.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArray.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArrays.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/TypeIndexer.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/UpdateQueue.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.h
@@ -2378,22 +2782,37 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o
  /usr/include/SDL2/close_code.h
  /usr/include/assert.h
  /usr/include/c++/13/array
+ /usr/include/c++/13/bit
  /usr/include/c++/13/bits/algorithmfwd.h
  /usr/include/c++/13/bits/allocator.h
+ /usr/include/c++/13/bits/charconv.h
+ /usr/include/c++/13/bits/codecvt.h
  /usr/include/c++/13/bits/concept_check.h
  /usr/include/c++/13/bits/cpp_type_traits.h
  /usr/include/c++/13/bits/cxxabi_forced.h
  /usr/include/c++/13/bits/deque.tcc
+ /usr/include/c++/13/bits/enable_special_members.h
  /usr/include/c++/13/bits/erase_if.h
+ /usr/include/c++/13/bits/exception_defines.h
+ /usr/include/c++/13/bits/fstream.tcc
  /usr/include/c++/13/bits/functexcept.h
  /usr/include/c++/13/bits/functional_hash.h
  /usr/include/c++/13/bits/hashtable.h
  /usr/include/c++/13/bits/invoke.h
+ /usr/include/c++/13/bits/istream.tcc
+ /usr/include/c++/13/bits/locale_classes.h
+ /usr/include/c++/13/bits/locale_conv.h
+ /usr/include/c++/13/bits/locale_facets.h
+ /usr/include/c++/13/bits/locale_facets_nonio.h
+ /usr/include/c++/13/bits/locale_facets_nonio.tcc
+ /usr/include/c++/13/bits/localefwd.h
  /usr/include/c++/13/bits/memory_resource.h
  /usr/include/c++/13/bits/move.h
  /usr/include/c++/13/bits/node_handle.h
+ /usr/include/c++/13/bits/parse_numbers.h
  /usr/include/c++/13/bits/predefined_ops.h
  /usr/include/c++/13/bits/range_access.h
+ /usr/include/c++/13/bits/ranges_algobase.h
  /usr/include/c++/13/bits/ranges_base.h
  /usr/include/c++/13/bits/ranges_cmp.h
  /usr/include/c++/13/bits/ranges_util.h
@@ -2418,11 +2837,14 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o
  /usr/include/c++/13/bits/stl_uninitialized.h
  /usr/include/c++/13/bits/stream_iterator.h
  /usr/include/c++/13/bits/streambuf_iterator.h
+ /usr/include/c++/13/bits/stringfwd.h
  /usr/include/c++/13/bits/uniform_int_dist.h
  /usr/include/c++/13/bits/unordered_set.h
  /usr/include/c++/13/bits/utility.h
  /usr/include/c++/13/bitset
  /usr/include/c++/13/cassert
+ /usr/include/c++/13/cerrno
+ /usr/include/c++/13/charconv
  /usr/include/c++/13/cmath
  /usr/include/c++/13/compare
  /usr/include/c++/13/concepts
@@ -2430,6 +2852,7 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o
  /usr/include/c++/13/cstdio
  /usr/include/c++/13/cstdlib
  /usr/include/c++/13/cstring
+ /usr/include/c++/13/ctime
  /usr/include/c++/13/debug/assertions.h
  /usr/include/c++/13/debug/debug.h
  /usr/include/c++/13/deque
@@ -2437,21 +2860,28 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o
  /usr/include/c++/13/ext/alloc_traits.h
  /usr/include/c++/13/ext/numeric_traits.h
  /usr/include/c++/13/ext/type_traits.h
+ /usr/include/c++/13/format
+ /usr/include/c++/13/fstream
  /usr/include/c++/13/functional
  /usr/include/c++/13/initializer_list
+ /usr/include/c++/13/ios
  /usr/include/c++/13/iosfwd
+ /usr/include/c++/13/istream
  /usr/include/c++/13/iterator
  /usr/include/c++/13/limits
+ /usr/include/c++/13/locale
  /usr/include/c++/13/map
  /usr/include/c++/13/math.h
  /usr/include/c++/13/memory
  /usr/include/c++/13/new
  /usr/include/c++/13/optional
+ /usr/include/c++/13/ostream
  /usr/include/c++/13/ranges
  /usr/include/c++/13/source_location
  /usr/include/c++/13/span
  /usr/include/c++/13/stdexcept
  /usr/include/c++/13/stdlib.h
+ /usr/include/c++/13/streambuf
  /usr/include/c++/13/string
  /usr/include/c++/13/string_view
  /usr/include/c++/13/tuple
@@ -2459,16 +2889,20 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o
  /usr/include/c++/13/typeinfo
  /usr/include/c++/13/unordered_map
  /usr/include/c++/13/unordered_set
+ /usr/include/c++/13/variant
  /usr/include/c++/13/vector
  /usr/include/ctype.h
  /usr/include/endian.h
+ /usr/include/errno.h
  /usr/include/features.h
  /usr/include/inttypes.h
+ /usr/include/libintl.h
  /usr/include/math.h
  /usr/include/stdc-predef.h
  /usr/include/stdio.h
  /usr/include/string.h
  /usr/include/strings.h
+ /usr/include/time.h
  /usr/include/vulkan/vulkan.h
  /usr/include/wchar.h
  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h
@@ -2476,7 +2910,13 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h
  /usr/include/x86_64-linux-gnu/sys/types.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h
@@ -2615,15 +3055,20 @@ src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o
  /home/adgato/projects/vulkan/template-project/include/vkbootstrap/VkBootstrap.h
  /home/adgato/projects/vulkan/template-project/include/vkbootstrap/VkBootstrapDispatch.h
  /home/adgato/projects/vulkan/template-project/include/vma/vk_mem_alloc.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h
  /home/adgato/projects/vulkan/template-project/src/engine/Core.h
+ /home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.h
  /home/adgato/projects/vulkan/template-project/src/engine/camera.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Common.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/ComponentTypeUniverse.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Engine.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArray.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArrays.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/TypeIndexer.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/UpdateQueue.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.h
@@ -2704,17 +3149,21 @@ src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o
  /usr/include/c++/13/bits/alloc_traits.h
  /usr/include/c++/13/bits/allocator.h
  /usr/include/c++/13/bits/atomic_base.h
+ /usr/include/c++/13/bits/charconv.h
  /usr/include/c++/13/bits/chrono.h
  /usr/include/c++/13/bits/codecvt.h
  /usr/include/c++/13/bits/concept_check.h
  /usr/include/c++/13/bits/cpp_type_traits.h
  /usr/include/c++/13/bits/cxxabi_forced.h
  /usr/include/c++/13/bits/deque.tcc
+ /usr/include/c++/13/bits/enable_special_members.h
  /usr/include/c++/13/bits/erase_if.h
+ /usr/include/c++/13/bits/exception_defines.h
  /usr/include/c++/13/bits/fs_dir.h
  /usr/include/c++/13/bits/fs_fwd.h
  /usr/include/c++/13/bits/fs_ops.h
  /usr/include/c++/13/bits/fs_path.h
+ /usr/include/c++/13/bits/fstream.tcc
  /usr/include/c++/13/bits/functexcept.h
  /usr/include/c++/13/bits/functional_hash.h
  /usr/include/c++/13/bits/hashtable.h
@@ -2773,7 +3222,9 @@ src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o
  /usr/include/c++/13/bits/utility.h
  /usr/include/c++/13/bitset
  /usr/include/c++/13/cassert
+ /usr/include/c++/13/cerrno
  /usr/include/c++/13/cfloat
+ /usr/include/c++/13/charconv
  /usr/include/c++/13/climits
  /usr/include/c++/13/cmath
  /usr/include/c++/13/codecvt
@@ -2796,6 +3247,8 @@ src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o
  /usr/include/c++/13/ext/numeric_traits.h
  /usr/include/c++/13/ext/type_traits.h
  /usr/include/c++/13/filesystem
+ /usr/include/c++/13/format
+ /usr/include/c++/13/fstream
  /usr/include/c++/13/functional
  /usr/include/c++/13/initializer_list
  /usr/include/c++/13/iomanip
@@ -2832,9 +3285,11 @@ src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o
  /usr/include/c++/13/unordered_map
  /usr/include/c++/13/unordered_set
  /usr/include/c++/13/utility
+ /usr/include/c++/13/variant
  /usr/include/c++/13/vector
  /usr/include/ctype.h
  /usr/include/endian.h
+ /usr/include/errno.h
  /usr/include/features.h
  /usr/include/inttypes.h
  /usr/include/libintl.h
@@ -2852,8 +3307,11 @@ src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h
  /usr/include/x86_64-linux-gnu/sys/types.h
@@ -3034,15 +3492,20 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o
  /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/quaternion.hpp
  /home/adgato/projects/vulkan/template-project/include/glm/glm/gtx/quaternion.inl
  /home/adgato/projects/vulkan/template-project/include/vma/vk_mem_alloc.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h
  /home/adgato/projects/vulkan/template-project/src/engine/Core.h
+ /home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.h
  /home/adgato/projects/vulkan/template-project/src/engine/camera.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Common.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/ComponentTypeUniverse.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/Engine.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArray.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/RawArrays.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/TypeIndexer.h
- /home/adgato/projects/vulkan/template-project/src/engine/ecs/UpdateQueue.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.h
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.h
@@ -3095,6 +3558,7 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o
  /usr/include/c++/13/bits/align.h
  /usr/include/c++/13/bits/alloc_traits.h
  /usr/include/c++/13/bits/allocator.h
+ /usr/include/c++/13/bits/charconv.h
  /usr/include/c++/13/bits/chrono.h
  /usr/include/c++/13/bits/codecvt.h
  /usr/include/c++/13/bits/concept_check.h
@@ -3108,6 +3572,7 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o
  /usr/include/c++/13/bits/fs_fwd.h
  /usr/include/c++/13/bits/fs_ops.h
  /usr/include/c++/13/bits/fs_path.h
+ /usr/include/c++/13/bits/fstream.tcc
  /usr/include/c++/13/bits/functexcept.h
  /usr/include/c++/13/bits/functional_hash.h
  /usr/include/c++/13/bits/hashtable.h
@@ -3128,6 +3593,7 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o
  /usr/include/c++/13/bits/predefined_ops.h
  /usr/include/c++/13/bits/quoted_string.h
  /usr/include/c++/13/bits/range_access.h
+ /usr/include/c++/13/bits/ranges_algobase.h
  /usr/include/c++/13/bits/ranges_base.h
  /usr/include/c++/13/bits/ranges_cmp.h
  /usr/include/c++/13/bits/ranges_util.h
@@ -3163,7 +3629,9 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o
  /usr/include/c++/13/bits/utility.h
  /usr/include/c++/13/bitset
  /usr/include/c++/13/cassert
+ /usr/include/c++/13/cerrno
  /usr/include/c++/13/cfloat
+ /usr/include/c++/13/charconv
  /usr/include/c++/13/climits
  /usr/include/c++/13/cmath
  /usr/include/c++/13/codecvt
@@ -3184,6 +3652,8 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o
  /usr/include/c++/13/ext/numeric_traits.h
  /usr/include/c++/13/ext/type_traits.h
  /usr/include/c++/13/filesystem
+ /usr/include/c++/13/format
+ /usr/include/c++/13/fstream
  /usr/include/c++/13/functional
  /usr/include/c++/13/initializer_list
  /usr/include/c++/13/iomanip
@@ -3223,6 +3693,7 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o
  /usr/include/c++/13/vector
  /usr/include/ctype.h
  /usr/include/endian.h
+ /usr/include/errno.h
  /usr/include/features.h
  /usr/include/inttypes.h
  /usr/include/libintl.h
@@ -3239,8 +3710,11 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h
+ /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h
  /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h
  /usr/include/x86_64-linux-gnu/sys/types.h

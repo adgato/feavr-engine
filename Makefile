@@ -228,6 +228,19 @@ fmt/fast:
 .PHONY : fmt/fast
 
 #=============================================================================
+# Target rules for targets named serialisation
+
+# Build rule for target.
+serialisation: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 serialisation
+.PHONY : serialisation
+
+# fast build rule for target.
+serialisation/fast:
+	$(MAKE) $(MAKESILENT) -f src/serialisation/CMakeFiles/serialisation.dir/build.make src/serialisation/CMakeFiles/serialisation.dir/build
+.PHONY : serialisation/fast
+
+#=============================================================================
 # Target rules for targets named engine
 
 # Build rule for target.
@@ -239,45 +252,6 @@ engine: cmake_check_build_system
 engine/fast:
 	$(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/build
 .PHONY : engine/fast
-
-#=============================================================================
-# Target rules for targets named directmath
-
-# Build rule for target.
-directmath: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 directmath
-.PHONY : directmath
-
-# fast build rule for target.
-directmath/fast:
-	$(MAKE) $(MAKESILENT) -f src/directmath/CMakeFiles/directmath.dir/build.make src/directmath/CMakeFiles/directmath.dir/build
-.PHONY : directmath/fast
-
-#=============================================================================
-# Target rules for targets named shader_drafter
-
-# Build rule for target.
-shader_drafter: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 shader_drafter
-.PHONY : shader_drafter
-
-# fast build rule for target.
-shader_drafter/fast:
-	$(MAKE) $(MAKESILENT) -f src/shader_drafter/CMakeFiles/shader_drafter.dir/build.make src/shader_drafter/CMakeFiles/shader_drafter.dir/build
-.PHONY : shader_drafter/fast
-
-#=============================================================================
-# Target rules for targets named shader_binaries
-
-# Build rule for target.
-shader_binaries: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 shader_binaries
-.PHONY : shader_binaries
-
-# fast build rule for target.
-shader_binaries/fast:
-	$(MAKE) $(MAKESILENT) -f shaders/CMakeFiles/shader_binaries.dir/build.make shaders/CMakeFiles/shader_binaries.dir/build
-.PHONY : shader_binaries/fast
 
 #=============================================================================
 # Target rules for targets named shaders
@@ -292,6 +266,19 @@ shaders/fast:
 	$(MAKE) $(MAKESILENT) -f shaders/CMakeFiles/shaders.dir/build.make shaders/CMakeFiles/shaders.dir/build
 .PHONY : shaders/fast
 
+#=============================================================================
+# Target rules for targets named shader_drafter
+
+# Build rule for target.
+shader_drafter: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 shader_drafter
+.PHONY : shader_drafter
+
+# fast build rule for target.
+shader_drafter/fast:
+	$(MAKE) $(MAKESILENT) -f src/shader_drafter/CMakeFiles/shader_drafter.dir/build.make src/shader_drafter/CMakeFiles/shader_drafter.dir/build
+.PHONY : shader_drafter/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -304,14 +291,13 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... shader_binaries"
 	@echo "... shaders"
-	@echo "... directmath"
 	@echo "... engine"
 	@echo "... fastgltf"
 	@echo "... fastgltf_simdjson"
 	@echo "... fmt"
 	@echo "... imgui"
+	@echo "... serialisation"
 	@echo "... shader_drafter"
 	@echo "... vkbootstrap"
 .PHONY : help

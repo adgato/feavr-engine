@@ -9,9 +9,9 @@
 
 void Core::Init()
 {
-    swapchain.InitSwapchain();
-    swapchain.InitCommandBuffer();
-    engine.init(&swapchain);
+    swapchain.Init();
+    imguiOverlay.Init(swapchain.deviceData);
+    engine.Init(&swapchain);
     loadGltf(this, {PROJECT_ROOT"/assets/structure.glb"});
 }
 
@@ -25,17 +25,17 @@ bool Core::Next()
     {
         switch (e.type)
         {
-        case SDL_QUIT:
-            loopAgain = false;
-            break;
-        case SDL_WINDOWEVENT_MINIMIZED:
-            skipDrawing = true;
-            break;
-        case SDL_WINDOWEVENT_MAXIMIZED:
-            skipDrawing = false;
-            break;
-        default: // SDL_WINDOWEVENT_RESIZED
-            break;
+            case SDL_QUIT:
+                loopAgain = false;
+                break;
+            case SDL_WINDOWEVENT_MINIMIZED:
+                skipDrawing = true;
+                break;
+            case SDL_WINDOWEVENT_MAXIMIZED:
+                skipDrawing = false;
+                break;
+            default: // SDL_WINDOWEVENT_RESIZED
+                break;
         }
 
         engine.mainCamera.processSDLEvent(e);
@@ -53,18 +53,19 @@ bool Core::Next()
     if (!skipDrawing)
     {
         auto [cmd, frame] = swapchain.BeginFrame();
-        engine.draw(swapchain.frameCount, cmd,frame);
+        engine.Draw(swapchain.frameCount, cmd, frame);
+        imguiOverlay.Draw(cmd, frame);
         swapchain.EndFrame();
-    }
-    else
-        std::this_thread::sleep_for(std::chrono::milliseconds{100});
+    } else
+        std::this_thread::sleep_for(std::chrono::milliseconds {100});
 
     return loopAgain;
 }
 
 void Core::Destroy()
 {
-    engine.cleanup();
+    engine.Destroy();
+    imguiOverlay.Destroy();
     swapchain.Destroy();
     manager.Destroy();
 }

@@ -382,8 +382,7 @@ int main()
         {
             auto shaderData = ReflectShader(globalData, entry.path());
             UnionShader(shaderData);
-            if (!shaderData.name.empty() && !shaderData.descriptorSets.empty())
-                shaders.push_back(std::move(shaderData));
+            shaders.push_back(std::move(shaderData));
         }
     }
 

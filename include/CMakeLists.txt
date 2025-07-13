@@ -6,6 +6,7 @@ find_package(SDL2 REQUIRED)
 add_library(vkbootstrap STATIC)
 add_library(glm INTERFACE)
 add_library(vma INTERFACE)
+add_library(hlslpp INTERFACE)
 
 add_library(stb_image INTERFACE)
 
@@ -28,6 +29,8 @@ set_property(TARGET vkbootstrap PROPERTY CXX_STANDARD 20)
 target_include_directories(vma INTERFACE vma)
 
 target_include_directories(glm INTERFACE glm)
+
+target_include_directories(hlslpp INTERFACE hlsl++)
 
 add_library(imgui STATIC)
 

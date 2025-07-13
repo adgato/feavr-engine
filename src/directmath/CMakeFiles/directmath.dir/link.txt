@@ -1,2 +1,0 @@
-/usr/bin/ar qc libdirectmath.a CMakeFiles/directmath.dir/temp.cpp.o
-/usr/bin/ranlib libdirectmath.a

@@ -236,7 +236,7 @@ void PipelineBuilder::enable_depthtest(bool depthWriteEnable, VkCompareOp op)
 //< depth_enable
 
 //> load_shader
-VkShaderModule vkutil::load_shader_module(const char* filePath, VkDevice device)
+VkShaderModule vkutil::load_shader_module(const char* filePath, const VkDevice device)
 {
     // open the file. With cursor at the end
     std::ifstream file(filePath, std::ios::ate | std::ios::binary);
@@ -245,7 +245,7 @@ VkShaderModule vkutil::load_shader_module(const char* filePath, VkDevice device)
 
     // find what the size of the file is by looking up the location of the cursor
     // because the cursor is at the end, it gives the size directly in bytes
-    size_t fileSize = (size_t)file.tellg();
+    const size_t fileSize = file.tellg();
 
     // spirv expects the buffer to be on uint32, so make sure to reserve a int
     // vector big enough for the entire file

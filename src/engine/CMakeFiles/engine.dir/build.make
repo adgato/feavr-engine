@@ -103,12 +103,28 @@ src/engine/CMakeFiles/engine.dir/Core.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/Core.cpp.s"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -S /home/adgato/projects/vulkan/template-project/src/engine/Core.cpp -o CMakeFiles/engine.dir/Core.cpp.s
 
+src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o: src/engine/CMakeFiles/engine.dir/flags.make
+src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o: src/engine/ImguiOverlay.cpp
+src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
+src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
+src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o"
+	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o -MF CMakeFiles/engine.dir/ImguiOverlay.cpp.o.d -o CMakeFiles/engine.dir/ImguiOverlay.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.cpp
+
+src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/engine.dir/ImguiOverlay.cpp.i"
+	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -E /home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.cpp > CMakeFiles/engine.dir/ImguiOverlay.cpp.i
+
+src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/engine.dir/ImguiOverlay.cpp.s"
+	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -S /home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.cpp -o CMakeFiles/engine.dir/ImguiOverlay.cpp.s
+
 src/engine/CMakeFiles/engine.dir/camera.cpp.o: src/engine/CMakeFiles/engine.dir/flags.make
 src/engine/CMakeFiles/engine.dir/camera.cpp.o: src/engine/camera.cpp
 src/engine/CMakeFiles/engine.dir/camera.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/camera.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/camera.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/engine/CMakeFiles/engine.dir/camera.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/engine/CMakeFiles/engine.dir/camera.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/camera.cpp.o -MF CMakeFiles/engine.dir/camera.cpp.o.d -o CMakeFiles/engine.dir/camera.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/camera.cpp
 
 src/engine/CMakeFiles/engine.dir/camera.cpp.i: cmake_force
@@ -124,7 +140,7 @@ src/engine/CMakeFiles/engine.dir/main.cpp.o: src/engine/main.cpp
 src/engine/CMakeFiles/engine.dir/main.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/main.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/main.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/engine/CMakeFiles/engine.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/engine/CMakeFiles/engine.dir/main.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/main.cpp.o -MF CMakeFiles/engine.dir/main.cpp.o.d -o CMakeFiles/engine.dir/main.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/main.cpp
 
 src/engine/CMakeFiles/engine.dir/main.cpp.i: cmake_force
@@ -140,7 +156,7 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o: src/engine/re
 src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o -MF CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o.d -o CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.cpp
 
 src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.i: cmake_force
@@ -156,7 +172,7 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o: src/engine/rend
 src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o -MF CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o.d -o CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.cpp
 
 src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.i: cmake_force
@@ -172,7 +188,7 @@ src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.o: src/engine/ren
 src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.o -MF CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.o.d -o CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/rendering/FwdPassPipeline.cpp
 
 src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.i: cmake_force
@@ -188,7 +204,7 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o: src/engine/rendering/Ima
 src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o -MF CMakeFiles/engine.dir/rendering/Image.cpp.o.d -o CMakeFiles/engine.dir/rendering/Image.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/rendering/Image.cpp
 
 src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.i: cmake_force
@@ -204,7 +220,7 @@ src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o: src/engine/rendering/
 src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o -MF CMakeFiles/engine.dir/rendering/Material.cpp.o.d -o CMakeFiles/engine.dir/rendering/Material.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/rendering/Material.cpp
 
 src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.i: cmake_force
@@ -220,7 +236,7 @@ src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o: src/engine/renderi
 src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o -MF CMakeFiles/engine.dir/rendering/PassManager.cpp.o.d -o CMakeFiles/engine.dir/rendering/PassManager.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/rendering/PassManager.cpp
 
 src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.i: cmake_force
@@ -236,7 +252,7 @@ src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o: src/engine/rendering/S
 src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o -MF CMakeFiles/engine.dir/rendering/SubMesh.cpp.o.d -o CMakeFiles/engine.dir/rendering/SubMesh.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/rendering/SubMesh.cpp
 
 src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.i: cmake_force
@@ -252,7 +268,7 @@ src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.o: src/engine/rendering
 src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.o -MF CMakeFiles/engine.dir/rendering/Swapchain.cpp.o.d -o CMakeFiles/engine.dir/rendering/Swapchain.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/rendering/Swapchain.cpp
 
 src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.i: cmake_force
@@ -268,7 +284,7 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o: src/engine/
 src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o -MF CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o.d -o CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/DefaultPass.cpp
 
 src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.i: cmake_force
@@ -284,7 +300,7 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o: src/engine/renderi
 src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o -MF CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o.d -o CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/Pass.cpp
 
 src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.i: cmake_force
@@ -300,7 +316,7 @@ src/engine/CMakeFiles/engine.dir/vk_descriptors.cpp.o: src/engine/vk_descriptors
 src/engine/CMakeFiles/engine.dir/vk_descriptors.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/vk_descriptors.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/vk_descriptors.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/engine/CMakeFiles/engine.dir/vk_descriptors.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/engine/CMakeFiles/engine.dir/vk_descriptors.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/vk_descriptors.cpp.o -MF CMakeFiles/engine.dir/vk_descriptors.cpp.o.d -o CMakeFiles/engine.dir/vk_descriptors.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/vk_descriptors.cpp
 
 src/engine/CMakeFiles/engine.dir/vk_descriptors.cpp.i: cmake_force
@@ -316,7 +332,7 @@ src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o: src/engine/vk_engine.cpp
 src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o -MF CMakeFiles/engine.dir/vk_engine.cpp.o.d -o CMakeFiles/engine.dir/vk_engine.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/vk_engine.cpp
 
 src/engine/CMakeFiles/engine.dir/vk_engine.cpp.i: cmake_force
@@ -332,7 +348,7 @@ src/engine/CMakeFiles/engine.dir/vk_initializers.cpp.o: src/engine/vk_initialize
 src/engine/CMakeFiles/engine.dir/vk_initializers.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/vk_initializers.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/vk_initializers.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/engine/CMakeFiles/engine.dir/vk_initializers.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/engine/CMakeFiles/engine.dir/vk_initializers.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/vk_initializers.cpp.o -MF CMakeFiles/engine.dir/vk_initializers.cpp.o.d -o CMakeFiles/engine.dir/vk_initializers.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/vk_initializers.cpp
 
 src/engine/CMakeFiles/engine.dir/vk_initializers.cpp.i: cmake_force
@@ -348,7 +364,7 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: src/engine/vk_loader.cpp
 src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o -MF CMakeFiles/engine.dir/vk_loader.cpp.o.d -o CMakeFiles/engine.dir/vk_loader.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/vk_loader.cpp
 
 src/engine/CMakeFiles/engine.dir/vk_loader.cpp.i: cmake_force
@@ -364,7 +380,7 @@ src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.o: src/engine/vk_pipelines.cpp
 src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx
 src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.o: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.o: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.o"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx -MD -MT src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.o -MF CMakeFiles/engine.dir/vk_pipelines.cpp.o.d -o CMakeFiles/engine.dir/vk_pipelines.cpp.o -c /home/adgato/projects/vulkan/template-project/src/engine/vk_pipelines.cpp
 
 src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.i: cmake_force
@@ -378,6 +394,7 @@ src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.s: cmake_force
 # Object files for target engine
 engine_OBJECTS = \
 "CMakeFiles/engine.dir/Core.cpp.o" \
+"CMakeFiles/engine.dir/ImguiOverlay.cpp.o" \
 "CMakeFiles/engine.dir/camera.cpp.o" \
 "CMakeFiles/engine.dir/main.cpp.o" \
 "CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o" \
@@ -401,6 +418,7 @@ engine_EXTERNAL_OBJECTS =
 
 bin/engine: src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 bin/engine: src/engine/CMakeFiles/engine.dir/Core.cpp.o
+bin/engine: src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o
 bin/engine: src/engine/CMakeFiles/engine.dir/camera.cpp.o
 bin/engine: src/engine/CMakeFiles/engine.dir/main.cpp.o
 bin/engine: src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o
@@ -420,7 +438,7 @@ bin/engine: src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o
 bin/engine: src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.o
 bin/engine: src/engine/CMakeFiles/engine.dir/build.make
 bin/engine: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-bin/engine: src/directmath/libdirectmath.a
+bin/engine: src/serialisation/libserialisation.a
 bin/engine: /usr/lib/x86_64-linux-gnu/libvulkan.so
 bin/engine: include/fmt/libfmtd.a
 bin/engine: include/libvkbootstrap.a
@@ -430,7 +448,7 @@ bin/engine: /usr/lib/x86_64-linux-gnu/libvulkan.so
 bin/engine: /usr/lib/x86_64-linux-gnu/libSDL2.so
 bin/engine: include/fastgltf/libfastgltf_simdjson.a
 bin/engine: src/engine/CMakeFiles/engine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable ../../bin/engine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX executable ../../bin/engine"
 	cd /home/adgato/projects/vulkan/template-project/src/engine && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/engine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

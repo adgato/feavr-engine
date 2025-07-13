@@ -1,0 +1,510 @@
+{
+	"globsDependent" : 
+	[
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/shaders/*.comp",
+			"paths" : [],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/shaders/*.frag",
+			"paths" : [],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/shaders/*.hlsl",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/template-project/shaders/default_shader.hlsl",
+				"/home/adgato/projects/vulkan/template-project/shaders/unlit_shader.hlsl"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/shaders/*.vert",
+			"paths" : [],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/src/ecs/*.h",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h",
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h",
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/CommonEngine.h",
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h",
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h",
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h",
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h",
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h",
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h",
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h",
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h",
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/src/ecs/*.hpp",
+			"paths" : [],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/src/engine/*.cpp",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/template-project/src/engine/Core.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/camera.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/main.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/FwdPassPipeline.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/Image.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/Material.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/PassManager.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/SubMesh.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/Swapchain.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/DefaultPass.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/Pass.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/vk_descriptors.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/vk_engine.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/vk_initializers.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/vk_loader.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/engine/vk_pipelines.cpp"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/src/engine/*.h",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/template-project/src/engine/Core.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/camera.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/FwdPassPipeline.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/Image.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/Material.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/PassManager.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/SubMesh.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/Swapchain.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/DefaultPass.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/Pass.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassDirectory.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassInstance.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/rendering/shader_descriptors.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/vk_descriptors.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/vk_engine.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/vk_initializers.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/vk_loader.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/vk_new.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/vk_pipelines.h",
+				"/home/adgato/projects/vulkan/template-project/src/engine/vk_types.h"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/src/engine/*.hpp",
+			"paths" : [],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/src/serialisation/*.cpp",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/Empty.cpp"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/src/serialisation/*.h",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/Empty.h"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/src/serialisation/*.hpp",
+			"paths" : [],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/src/shader_drafter/*.c",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/template-project/src/shader_drafter/spirv_reflect.c"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/src/shader_drafter/*.cpp",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/template-project/src/shader_drafter/main.cpp"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/src/shader_drafter/*.h",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/template-project/src/shader_drafter/include/spirv/unified1/spirv.h",
+				"/home/adgato/projects/vulkan/template-project/src/shader_drafter/sample_spv.h",
+				"/home/adgato/projects/vulkan/template-project/src/shader_drafter/spirv_reflect.h"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/src/shader_drafter/*.hpp",
+			"paths" : [],
+			"recurse" : true
+		}
+	],
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"path" : "CMakeFiles/3.31.6/CMakeSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linux-Initialize.cmake"
+		},
+		{
+			"path" : "CMakeFiles/3.31.6/CMakeCCompiler.cmake"
+		},
+		{
+			"path" : "CMakeFiles/3.31.6/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linux.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/UnixPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linux-GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CMakeCLinkerInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CMakeCommonLinkerInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Linker/GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Linker/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linker/Linux-GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linker/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linker/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linux-GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CMakeCXXLinkerInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CMakeCommonLinkerInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Linker/GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Linker/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linker/Linux-GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linker/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindVulkan.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"path" : "include/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindVulkan.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FeatureSummary.cmake"
+		},
+		{
+			"path" : "include/fastgltf/CMakeLists.txt"
+		},
+		{
+			"path" : "include/fastgltf/cmake/add_source_directory.cmake"
+		},
+		{
+			"path" : "include/fastgltf/cmake/compiler_flags.cmake"
+		},
+		{
+			"path" : "include/fmt/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/GNUInstallDirs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CheckCXXCompilerFlag.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CheckFlagCommonConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CheckCXXSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake"
+		},
+		{
+			"path" : "include/fmt/support/cmake/JoinPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakePackageConfigHelpers.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/WriteBasicConfigVersionFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in"
+		},
+		{
+			"path" : "include/fmt/support/cmake/fmt.pc.in"
+		},
+		{
+			"path" : "include/fmt/support/cmake/fmt-config.cmake.in"
+		},
+		{
+			"path" : "src/ecs/CMakeLists.txt"
+		},
+		{
+			"path" : "src/serialisation/CMakeLists.txt"
+		},
+		{
+			"path" : "src/engine/CMakeLists.txt"
+		},
+		{
+			"path" : "shaders/CMakeLists.txt"
+		},
+		{
+			"path" : "src/shader_drafter/CMakeLists.txt"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "/home/adgato/projects/vulkan/template-project",
+		"source" : "/home/adgato/projects/vulkan/template-project"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 1
+	}
+}

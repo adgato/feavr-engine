@@ -163,20 +163,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-shaders/CMakeFiles/shader_binaries.dir/rule:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 shaders/CMakeFiles/shader_binaries.dir/rule
-.PHONY : shaders/CMakeFiles/shader_binaries.dir/rule
-
-# Convenience name for target.
-shader_binaries: shaders/CMakeFiles/shader_binaries.dir/rule
-.PHONY : shader_binaries
-
-# fast build rule for target.
-shader_binaries/fast:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f shaders/CMakeFiles/shader_binaries.dir/build.make shaders/CMakeFiles/shader_binaries.dir/build
-.PHONY : shader_binaries/fast
-
-# Convenience name for target.
 shaders/CMakeFiles/shaders.dir/rule:
 	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 shaders/CMakeFiles/shaders.dir/rule
 .PHONY : shaders/CMakeFiles/shaders.dir/rule
@@ -202,7 +188,6 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... shader_binaries"
 	@echo "... shaders"
 .PHONY : help
 

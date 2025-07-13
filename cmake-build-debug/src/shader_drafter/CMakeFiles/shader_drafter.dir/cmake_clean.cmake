@@ -1,0 +1,14 @@
+file(REMOVE_RECURSE
+  "/home/adgato/projects/vulkan/template-project/bin/shader_drafter"
+  "/home/adgato/projects/vulkan/template-project/bin/shader_drafter.pdb"
+  "CMakeFiles/shader_drafter.dir/link.d"
+  "CMakeFiles/shader_drafter.dir/main.cpp.o"
+  "CMakeFiles/shader_drafter.dir/main.cpp.o.d"
+  "CMakeFiles/shader_drafter.dir/spirv_reflect.c.o"
+  "CMakeFiles/shader_drafter.dir/spirv_reflect.c.o.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C CXX)
+  include(CMakeFiles/shader_drafter.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

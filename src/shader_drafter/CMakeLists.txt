@@ -16,3 +16,4 @@ target_compile_definitions(shader_drafter PUBLIC
 )
 
 target_link_libraries(shader_drafter PUBLIC Vulkan::Vulkan fmt::fmt)
+add_dependencies(shader_drafter shaders)
