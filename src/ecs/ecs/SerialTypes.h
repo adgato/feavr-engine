@@ -2,24 +2,25 @@
 #include <bitset>
 #include <vector>
 
-#include "array.h"
-#include "ByteStream.h"
+#include "serialisation/array.h"
+#include "serialisation/ReadByteStream.h"
+#include "serialisation/WriteByteStream.h"
 
-using TypeID = const int*;
+using OldTypeID = const int*;
 
 template <typename>
 struct TypeIdentifier
 {
     constexpr static int _id {};
 
-    static constexpr TypeID id()
+    static constexpr OldTypeID id()
     {
         return &_id;
     }
 };
 
 template <typename T>
-constexpr TypeID GetTypeID()
+constexpr OldTypeID GetTypeID()
 {
     return TypeIdentifier<T>::id();
 }
@@ -27,7 +28,7 @@ constexpr TypeID GetTypeID()
 namespace ecs
 {
     template <size_t N>
-    std::vector<uint32_t> ReadTypeString(ReadByteStream& data, const char* targetTypes)
+    std::vector<uint32_t> ReadTypeString(serial::ReadByteStream& data, const char* targetTypes)
     {
         constexpr std::hash<std::string> stringHash {};
 
@@ -96,7 +97,7 @@ namespace ecs
     }
 
     template <size_t N>
-    std::vector<std::bitset<N>> ReadBitset(ReadByteStream& data, size_t size, const std::vector<uint32_t>& remap)
+    std::vector<std::bitset<N>> ReadBitset(serial::ReadByteStream& data, size_t size, const std::vector<uint32_t>& remap)
     {
         std::vector<std::bitset<N>> bits(size);
         std::byte current { 0 };
@@ -115,131 +116,5 @@ namespace ecs
         return bits;
     }
 
-    class SerialManager
-    {
-        bool loading = false;
 
-        template <typename T> requires std::is_arithmetic_v<T>
-        void Serialize(T* pValue)
-        {
-            if (loading)
-                *pValue = reader.Read<T>();
-            else
-                writer.Write<T>(*pValue);
-        }
-
-    public:
-        WriteByteStream writer;
-        ReadByteStream reader;
-
-        void SetModeRead()
-        {
-            loading = true;
-        }
-
-        void SetModeWrite()
-        {
-            loading = false;
-            writer.Init();
-        }
-
-        void Reset()
-        {
-            reader.Destroy();
-            writer.Destroy();
-        }
-
-        bool SkipToTag(const uint_s tag)
-        {
-            if (!loading)
-                return true;
-
-            uint_s readTag = reader.Read<uint_s>();
-            while (readTag < tag)
-            {
-                reader.Skip(reader.Read<uint_s>());
-                readTag = reader.Read<uint_s>();
-            }
-            if (readTag > tag)
-                reader.Backup(sizeof(uint_s));
-
-            return readTag == tag;
-        }
-
-        template <typename T> requires std::is_arithmetic_v<T>
-        void SerializeVar(T* pValue, const uint_s tag)
-        {
-            if (loading)
-            {
-                if (!SkipToTag(tag))
-                    return;
-                const size_t size = reader.Read<uint_s>();
-                if (size == sizeof(T))
-                    *pValue = reader.Read<T>();
-                else
-                    reader.Skip(size);
-            } else
-            {
-                writer.Write<uint_s>(tag);
-                writer.Write<uint_s>(sizeof(T));
-                writer.Write<T>(*pValue);
-            }
-        }
-
-        template <IsSerialType T>
-        void SerializeCmp(T* pValue, const uint_s tag)
-        {
-            size_t offset = 0;
-            if (loading)
-            {
-                if (!SkipToTag(tag))
-                    return;
-                reader.Skip(sizeof(uint_s));
-            } else
-            {
-                writer.Write<uint_s>(tag);
-                offset = writer.Reserve<uint_s>();
-            }
-            pValue->Serialize();
-            if (!loading)
-                writer.WriteOver<uint_s>(writer.GetCount() - offset - sizeof(uint_s), offset);
-        }
-
-        template <Serializable T>
-        void SerializeArr(array<T>* pValue, const uint_s tag)
-        {
-            size_t offset = 0;
-            size_t count;
-            if (loading)
-            {
-                if (!SkipToTag(tag))
-                    return;
-                const size_t size = reader.Read<uint_s>();
-                count = reader.Read<uint_s>();
-                if constexpr (std::is_arithmetic_v<T>)
-                    if (size != count * sizeof(T) + sizeof(uint_s))
-                    {
-                        reader.Skip(size - sizeof(uint_s));
-                        return;
-                    }
-                pValue->Init(count);
-            } else
-            {
-                count = pValue->size();
-                writer.Write<uint_s>(tag);
-                offset = writer.Reserve<uint_s>();
-                writer.Write<uint_s>(count);
-            }
-            T* data = pValue->data();
-            for (size_t i = 0; i < count; ++i)
-            {
-                if constexpr (std::is_arithmetic_v<T>)
-                    Serialize(data + i);
-                else
-                    (data + i)->Serialize();
-            }
-            if (!loading)
-                writer.WriteOver<uint_s>(writer.GetCount() - offset - sizeof(uint_s), offset);
-        }
-    };
 }

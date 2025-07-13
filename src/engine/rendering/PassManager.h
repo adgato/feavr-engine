@@ -49,14 +49,14 @@ namespace rendering
         VulkanEngine* engine = nullptr;
         ecs::EntityManager* manager = nullptr;
 
-        std::vector<TypeID> order{};
+        std::vector<OldTypeID> order{};
         std::vector<uint32_t> drawMasks{};
 
     public:
         std::vector<std::shared_ptr<IPassGroup>> passGroups;
         std::vector<SubMesh> meshes;
 
-        void Init(VulkanEngine* e, ecs::EntityManager* m, const std::vector<std::tuple<TypeID, uint32_t>>& renderOrder);
+        void Init(VulkanEngine* e, ecs::EntityManager* m, const std::vector<std::tuple<OldTypeID, uint32_t>>& renderOrder);
 
         template <typename T> requires std::derived_from<T, passes::Pass>
         uint32_t GetPassCount()

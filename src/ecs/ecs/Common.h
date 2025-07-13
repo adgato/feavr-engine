@@ -1,4 +1,5 @@
 #pragma once
+#include <bitset>
 #include <functional>
 #include "ComponentTypeUniverse.h"
 
@@ -21,12 +22,13 @@ struct TypeUniverse
 
 namespace ecs
 {
-    inline constexpr size_t NumTypes = ComponentTypeUniverse::size();
+    using TypeID = uint16_t;
+    inline constexpr TypeID NumTypes = ComponentTypeUniverse::size();
 
     struct TypeInfo
     {
-        uint size;
-        uint align;
+        size_t size;
+        size_t align;
     };
 
     template <typename T, typename Universe>
@@ -37,7 +39,7 @@ namespace ecs
 
     template <typename T>
     concept ComponentType =
-            in_universe_v<T, ComponentTypeUniverse> && IsDestroyable<T> && IsSerialType<T>;
+            in_universe_v<T, ComponentTypeUniverse> && serial::IsDestroyable<T> && serial::IsSerialType<T>;
 
     template <typename>
     class UniverseInfo
@@ -52,7 +54,7 @@ namespace ecs
         }
 
         static void Destroy(void*, uint) { assert(false); }
-        static void Serialize(SerialManager*, void*, uint) { assert(false); }
+        static void Serialize(serial::SerialManager*, void*, uint) { assert(false); }
     };
 
     template <ComponentType... Ts>
@@ -60,7 +62,7 @@ namespace ecs
     {
         std::array<TypeInfo, sizeof...(Ts)> typeInfo {};
         std::array<std::function<void(void*)>, sizeof...(Ts)> destroyers {};
-        std::array<std::function<void(void*, SerialManager*)>, sizeof...(Ts)> serializers {};
+        std::array<std::function<void(void*, serial::SerialManager&)>, sizeof...(Ts)> serializers {};
         std::tuple<Ts...> defaults {};
 
         template <size_t I>
@@ -86,25 +88,25 @@ namespace ecs
             i = 0;
             ((destroyers[i++] = [](void* t) { static_cast<Ts*>(t)->Destroy(); }), ...);
             i = 0;
-            ((serializers[i++] = [](void* t, SerialManager* s) { static_cast<Ts*>(t)->Serialize(s); }), ...);
+            ((serializers[i++] = [](void* t, serial::SerialManager& s) { static_cast<Ts*>(t)->Serialize(s); }), ...);
         }
 
-        void CopyDefault(void* dest, const uint type) const
+        void CopyDefault(void* dest, const TypeID type) const
         {
             CopyDefaultRec<0>(dest, type);
         }
 
-        const TypeInfo& GetTypeInfo(uint type) const
+        const TypeInfo& GetTypeInfo(TypeID type) const
         {
             return typeInfo[type];
         }
 
-        void Destroy(void* data, uint type) const
+        void Destroy(void* data, TypeID type) const
         {
             destroyers[type](data);
         }
 
-        void Serialize(SerialManager* serialManager, void* data, uint type) const
+        void Serialize(serial::SerialManager& serialManager, void* data, TypeID type) const
         {
             serializers[type](data, serialManager);
         }
@@ -117,8 +119,8 @@ namespace ecs
     using signature = std::bitset<NumTypes>;
 
     template <ComponentType T>
-    constexpr uint GetComponentID()
+    constexpr TypeID GetComponentID()
     {
-        return static_cast<uint>(ComponentTypeUniverse::id<T>());
+        return static_cast<TypeID>(ComponentTypeUniverse::id<T>());
     }
 }

@@ -73,7 +73,7 @@
 				"include/fastgltf/libfastgltf_simdjson.a"
 			],
 			"targetId" : "fastgltf_simdjson::@a3dbcd8a98ddd83e69a7",
-			"targetIndex" : 2,
+			"targetIndex" : 3,
 			"type" : "target"
 		},
 		{
@@ -85,7 +85,7 @@
 			[
 				{
 					"id" : "fastgltf_simdjson::@a3dbcd8a98ddd83e69a7",
-					"index" : 2
+					"index" : 3
 				}
 			],
 			"paths" : 
@@ -118,7 +118,7 @@
 				"include/fastgltf/libfastgltf.a"
 			],
 			"targetId" : "fastgltf::@a3dbcd8a98ddd83e69a7",
-			"targetIndex" : 1,
+			"targetIndex" : 2,
 			"type" : "target"
 		},
 		{
@@ -130,7 +130,7 @@
 			[
 				{
 					"id" : "fastgltf::@a3dbcd8a98ddd83e69a7",
-					"index" : 1
+					"index" : 2
 				}
 			],
 			"paths" : 

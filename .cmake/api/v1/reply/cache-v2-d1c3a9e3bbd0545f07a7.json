@@ -1986,6 +1986,18 @@
 			"value" : "/usr/local"
 		},
 		{
+			"name" : "ecs_LIB_DEPENDS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Dependencies for the target"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "general;serialisation;"
+		},
+		{
 			"name" : "fastgltf_BINARY_DIR",
 			"properties" : 
 			[

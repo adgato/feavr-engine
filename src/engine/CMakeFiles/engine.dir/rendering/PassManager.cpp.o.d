@@ -58,44 +58,23 @@ src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o: \
  /usr/include/c++/13/iosfwd /usr/include/c++/13/bits/streambuf_iterator.h \
  /usr/include/c++/13/limits /usr/include/c++/13/string_view \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h \
- /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h \
- /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h \
  /usr/include/c++/13/bitset /usr/include/c++/13/bits/cxxabi_forced.h \
- /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h \
- /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h \
- /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h \
- /usr/include/c++/13/fstream /usr/include/c++/13/istream \
- /usr/include/c++/13/ios /usr/include/c++/13/ostream \
- /usr/include/c++/13/bits/istream.tcc /usr/include/c++/13/bits/codecvt.h \
- /usr/include/c++/13/bits/locale_classes.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
- /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/cerrno \
- /usr/include/errno.h /usr/include/c++/13/cassert /usr/include/assert.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h \
+ /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/array.h \
+ /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialConcepts.h \
+ /usr/include/c++/13/cstdint /usr/include/c++/13/cassert \
+ /usr/include/assert.h \
+ /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialManager.h \
+ /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/ReadByteStream.h \
+ /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/WriteByteStream.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h \
- /usr/include/c++/13/format /usr/include/c++/13/charconv \
- /usr/include/c++/13/bit /usr/include/c++/13/bits/charconv.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
- /usr/include/c++/13/locale /usr/include/c++/13/bits/localefwd.h \
- /usr/include/c++/13/bits/locale_facets.h \
- /usr/include/c++/13/bits/locale_facets_nonio.h /usr/include/c++/13/ctime \
- /usr/include/time.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
- /usr/include/libintl.h /usr/include/c++/13/bits/locale_facets_nonio.tcc \
- /usr/include/c++/13/bits/locale_conv.h /usr/include/c++/13/streambuf \
- /usr/include/c++/13/bits/stringfwd.h /usr/include/c++/13/variant \
- /usr/include/c++/13/bits/enable_special_members.h \
- /usr/include/c++/13/bits/exception_defines.h \
- /usr/include/c++/13/bits/parse_numbers.h \
- /usr/include/c++/13/bits/ranges_algobase.h \
  /usr/include/c++/13/unordered_set \
  /usr/include/c++/13/bits/unordered_set.h \
  /usr/include/c++/13/bits/hashtable.h /usr/include/c++/13/bits/erase_if.h \
  /usr/include/c++/13/ranges /usr/include/c++/13/bits/ranges_util.h \
- /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ArchetypeData.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassInstance.h \

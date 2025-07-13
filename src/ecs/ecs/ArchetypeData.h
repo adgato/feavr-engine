@@ -15,13 +15,13 @@ namespace ecs
     public:
         std::array<RawArray, NumTypes> data {};
         std::vector<EntityID> entities {};
-        std::vector<uint> types {};
+        std::vector<TypeID> types {};
 
         ArchetypeData() = default;
 
-        explicit ArchetypeData(const std::vector<uint>& order)
+        explicit ArchetypeData(const std::vector<TypeID>& type)
         {
-            types = order;
+            types = type;
             for (const size_t i : types)
             {
                 data[i] = RawArray(ComponentInfo.GetTypeInfo(i));
@@ -29,23 +29,16 @@ namespace ecs
             }
         }
 
-        std::byte* GetElem(const uint index, const uint order) const
+        std::byte* GetElem(const uint index, const TypeID type) const
         {
-            assert(index < count && data[order].data);
-            return data[order].GetElem(index);
+            assert(index < count && data[type].data);
+            return data[type].GetElem(index);
         }
 
-        void SetElem(const uint order, const std::byte* src)
+        void SetElem(const TypeID type, const std::byte* src) const
         {
-            assert(data[order].data);
-            data[order].SetElem(count - 1, src);
-        }
-
-        void DefaultAllElems() const
-        {
-            for (const size_t i : types)
-                for (size_t j = 0; j < count; ++j)
-                    ComponentInfo.CopyDefault(GetElem(j, i), i);
+            assert(data[type].data);
+            data[type].SetElem(count - 1, src);
         }
 
         size_t GetCount() const

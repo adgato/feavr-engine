@@ -1,0 +1,2 @@
+/usr/bin/ar qc libecs.a CMakeFiles/ecs.dir/ecs/Engine.cpp.o CMakeFiles/ecs.dir/ecs/RawArray.cpp.o CMakeFiles/ecs.dir/ecs/Serial.cpp.o
+/usr/bin/ranlib libecs.a

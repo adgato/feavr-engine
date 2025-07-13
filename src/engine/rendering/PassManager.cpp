@@ -2,7 +2,7 @@
 
 namespace rendering
 {
-    void PassManager::Init(VulkanEngine* e, ecs::EntityManager* m, const std::vector<std::tuple<TypeID, uint32_t>>& renderOrder)
+    void PassManager::Init(VulkanEngine* e, ecs::EntityManager* m, const std::vector<std::tuple<OldTypeID, uint32_t>>& renderOrder)
     {
         engine = e;
         manager = m;

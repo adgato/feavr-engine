@@ -26,21 +26,29 @@
 			"recurse" : true
 		},
 		{
+			"expression" : "/home/adgato/projects/vulkan/template-project/src/ecs/*.cpp",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Serial.cpp"
+			],
+			"recurse" : true
+		},
+		{
 			"expression" : "/home/adgato/projects/vulkan/template-project/src/ecs/*.h",
 			"paths" : 
 			[
-				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h",
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/ArchetypeData.h",
 				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h",
 				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/CommonEngine.h",
 				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h",
 				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h",
 				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h",
-				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h",
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Serial.h",
 				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h",
 				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h",
-				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h",
-				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h",
-				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h"
+				"/home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h"
 			],
 			"recurse" : true
 		},
@@ -115,7 +123,8 @@
 			"expression" : "/home/adgato/projects/vulkan/template-project/src/serialisation/*.cpp",
 			"paths" : 
 			[
-				"/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/Empty.cpp"
+				"/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/ReadByteStream.cpp",
+				"/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/WriteByteStream.cpp"
 			],
 			"recurse" : true
 		},
@@ -123,7 +132,11 @@
 			"expression" : "/home/adgato/projects/vulkan/template-project/src/serialisation/*.h",
 			"paths" : 
 			[
-				"/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/Empty.h"
+				"/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/ReadByteStream.h",
+				"/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialConcepts.h",
+				"/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialManager.h",
+				"/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/WriteByteStream.h",
+				"/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/array.h"
 			],
 			"recurse" : true
 		},

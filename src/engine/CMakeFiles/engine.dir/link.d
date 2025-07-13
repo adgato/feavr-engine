@@ -21,6 +21,7 @@
   CMakeFiles/engine.dir/vk_initializers.cpp.o \
   CMakeFiles/engine.dir/vk_loader.cpp.o \
   CMakeFiles/engine.dir/vk_pipelines.cpp.o \
+  ../ecs/libecs.a \
   ../serialisation/libserialisation.a \
   /usr/lib/x86_64-linux-gnu/libvulkan.so \
   ../../include/fmt/libfmtd.a \
@@ -304,6 +305,8 @@ CMakeFiles/engine.dir/vk_initializers.cpp.o:
 CMakeFiles/engine.dir/vk_loader.cpp.o:
 
 CMakeFiles/engine.dir/vk_pipelines.cpp.o:
+
+../ecs/libecs.a:
 
 ../serialisation/libserialisation.a:
 

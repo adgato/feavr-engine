@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/Empty.cpp" "src/serialisation/CMakeFiles/serialisation.dir/serialisation/Empty.cpp.o" "gcc" "src/serialisation/CMakeFiles/serialisation.dir/serialisation/Empty.cpp.o.d"
+  "/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/ReadByteStream.cpp" "src/serialisation/CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.o" "gcc" "src/serialisation/CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.o.d"
+  "/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/WriteByteStream.cpp" "src/serialisation/CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.o" "gcc" "src/serialisation/CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -5,10 +5,12 @@ file(GLOB_RECURSE ECS_HEADERS CONFIGURE_DEPENDS
         "${ECS_SOURCE_DIR}/*.h"
 )
 
-# Use INTERFACE for header-only libraries
-add_library(ecs INTERFACE)
-target_include_directories(ecs INTERFACE "${ECS_SOURCE_DIR}")
-target_compile_features(ecs INTERFACE cxx_std_20)
+file(GLOB_RECURSE ECS_SOURCES CONFIGURE_DEPENDS
+        "${ECS_SOURCE_DIR}/*.cpp"
+)
 
-# Optionally add headers to target for IDE
-target_sources(ecs INTERFACE ${ECS_HEADERS})
+add_library(ecs STATIC ${ECS_SOURCES} ${ECS_HEADERS})
+target_include_directories(ecs PUBLIC "${ECS_SOURCE_DIR}")
+target_compile_features(ecs PUBLIC cxx_std_20)
+
+target_link_libraries(ecs PUBLIC serialisation glm)

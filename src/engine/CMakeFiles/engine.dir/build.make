@@ -438,6 +438,7 @@ bin/engine: src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o
 bin/engine: src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.o
 bin/engine: src/engine/CMakeFiles/engine.dir/build.make
 bin/engine: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
+bin/engine: src/ecs/libecs.a
 bin/engine: src/serialisation/libserialisation.a
 bin/engine: /usr/lib/x86_64-linux-gnu/libvulkan.so
 bin/engine: include/fmt/libfmtd.a

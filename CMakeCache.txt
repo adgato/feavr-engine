@@ -391,6 +391,9 @@ Vulkan_INCLUDE_DIR:PATH=/usr/include
 //Path to a library.
 Vulkan_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libvulkan.so
 
+//Dependencies for the target
+ecs_LIB_DEPENDS:STATIC=general;serialisation;
+
 //Value Computed by CMake
 fastgltf_BINARY_DIR:STATIC=/home/adgato/projects/vulkan/template-project/include/fastgltf
 

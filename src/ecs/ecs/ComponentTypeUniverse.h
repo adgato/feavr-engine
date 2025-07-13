@@ -1,6 +1,7 @@
 #pragma once
-#include "SerialTypes.h"
-#include "array.h"
+#include "serialisation/array.h"
+#include "serialisation/SerialManager.h"
+#include "glm/matrix.hpp"
 
 template <typename... Ts>
 struct TypeUniverse;
@@ -11,11 +12,11 @@ struct TypeUniverse;
 
 struct Cat
 {
-    ecs::array<char> catSound {};
+    serial::array<char> catSound {};
 
-    void Serialize(ecs::SerialManager* m)
+    void Serialize(serial::SerialManager& m)
     {
-        m->SerializeArr(&catSound, 0);
+        m.SerializeArr(&catSound, 0);
     }
 
     void Destroy()
@@ -30,7 +31,7 @@ namespace rendering
     {
         glm::mat4 transform;
         static void Destroy() {}
-        static void Serialize(ecs::SerialManager*) {}
+        static void Serialize(serial::SerialManager&) {}
     };
 }
 

@@ -1,2 +1,2 @@
-/usr/bin/ar qc libserialisation.a CMakeFiles/serialisation.dir/serialisation/Empty.cpp.o
+/usr/bin/ar qc libserialisation.a CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.o CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.o
 /usr/bin/ranlib libserialisation.a

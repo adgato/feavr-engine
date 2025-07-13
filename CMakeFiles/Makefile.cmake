@@ -102,6 +102,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/DependInfo.cmake"
   "include/fastgltf/CMakeFiles/fastgltf.dir/DependInfo.cmake"
   "include/fmt/CMakeFiles/fmt.dir/DependInfo.cmake"
+  "src/ecs/CMakeFiles/ecs.dir/DependInfo.cmake"
   "src/serialisation/CMakeFiles/serialisation.dir/DependInfo.cmake"
   "src/engine/CMakeFiles/engine.dir/DependInfo.cmake"
   "shaders/CMakeFiles/shaders.dir/DependInfo.cmake"

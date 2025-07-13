@@ -1,8 +1,9 @@
 #pragma once
 
+#include <cstdint>
 #include <type_traits>
 
-namespace ecs
+namespace serial
 {
     class SerialManager;
 
@@ -15,12 +16,11 @@ namespace ecs
     };
 
     template <typename T>
-    concept IsSerialType = requires(T t, SerialManager* s)
+    concept IsSerialType = requires(T t, SerialManager& s)
     {
         { t.Serialize(s) } -> std::same_as<void>;
     } && std::is_trivially_copyable_v<T> && std::is_default_constructible_v<T>;
 
     template <typename T>
     concept Serializable = IsSerialType<T> || std::is_arithmetic_v<T>;
-
 }

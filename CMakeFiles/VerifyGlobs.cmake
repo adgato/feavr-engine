@@ -40,21 +40,31 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/CMakeFiles/cmake.verify_globs")
 endif()
 
+# ECS_SOURCES at src/ecs/CMakeLists.txt:8 (file)
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/ecs/*.cpp")
+set(OLD_GLOB
+  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.cpp"
+  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.cpp"
+  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Serial.cpp"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/CMakeFiles/cmake.verify_globs")
+endif()
+
 # ECS_HEADERS at src/ecs/CMakeLists.txt:3 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/ecs/*.h")
 set(OLD_GLOB
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h"
+  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/ArchetypeData.h"
   "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h"
   "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/CommonEngine.h"
   "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h"
   "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h"
   "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h"
+  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Serial.h"
   "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h"
   "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h"
   "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -140,27 +150,32 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/CMakeFiles/cmake.verify_globs")
 endif()
 
-# SERIAL_SOURCES at src/serialisation/CMakeLists.txt:3 (file)
+# SERIAL_SOURCES at src/serialisation/CMakeLists.txt:8 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/serialisation/*.cpp")
 set(OLD_GLOB
-  "/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/Empty.cpp"
+  "/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/ReadByteStream.cpp"
+  "/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/WriteByteStream.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
   file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/CMakeFiles/cmake.verify_globs")
 endif()
 
-# SERIAL_SOURCES at src/serialisation/CMakeLists.txt:3 (file)
+# SERIAL_HEADERS at src/serialisation/CMakeLists.txt:3 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/serialisation/*.h")
 set(OLD_GLOB
-  "/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/Empty.h"
+  "/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/ReadByteStream.h"
+  "/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialConcepts.h"
+  "/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialManager.h"
+  "/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/WriteByteStream.h"
+  "/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/array.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
   file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/CMakeFiles/cmake.verify_globs")
 endif()
 
-# SERIAL_SOURCES at src/serialisation/CMakeLists.txt:3 (file)
+# SERIAL_HEADERS at src/serialisation/CMakeLists.txt:3 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/serialisation/*.hpp")
 set(OLD_GLOB
   )

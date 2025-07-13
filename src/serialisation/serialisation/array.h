@@ -1,7 +1,8 @@
 #pragma once
-#include "TypeUniverse.h"
+#include "SerialConcepts.h"
+#include <cassert>
 
-namespace ecs
+namespace serial
 {
     template <typename T> requires IsDestroyable<T> || std::is_arithmetic_v<T>
     class array
@@ -20,6 +21,8 @@ namespace ecs
 
         void Init(const uint_s size)
         {
+            assert(static_cast<size_t>(size) * sizeof(T) <= 0xFFFF);
+            Destroy();
             ptr = new T[size];
             count = size;
         }

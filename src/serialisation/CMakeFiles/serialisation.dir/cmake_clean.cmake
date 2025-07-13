@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/serialisation.dir/serialisation/Empty.cpp.o"
-  "CMakeFiles/serialisation.dir/serialisation/Empty.cpp.o.d"
+  "CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.o"
+  "CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.o.d"
+  "CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.o"
+  "CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.o.d"
   "libserialisation.a"
   "libserialisation.pdb"
 )

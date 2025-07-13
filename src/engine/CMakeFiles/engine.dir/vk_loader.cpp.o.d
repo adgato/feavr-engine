@@ -133,32 +133,21 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/DefaultPass.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/../SubMesh.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h \
- /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h \
- /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h \
  /usr/include/c++/13/bitset \
- /home/adgato/projects/vulkan/template-project/src/ecs/ecs/array.h \
- /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeUniverse.h \
- /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ByteStream.h \
- /usr/include/c++/13/fstream \
- /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
- /usr/include/c++/13/bits/fstream.tcc /usr/include/c++/13/cerrno \
- /usr/include/errno.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h \
+ /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/array.h \
+ /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialConcepts.h \
+ /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialManager.h \
+ /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/ReadByteStream.h \
+ /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/WriteByteStream.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/Pass.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h \
- /usr/include/c++/13/format /usr/include/c++/13/charconv \
- /usr/include/c++/13/bit /usr/include/c++/13/bits/charconv.h \
- /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
- /usr/include/c++/13/variant \
- /usr/include/c++/13/bits/enable_special_members.h \
- /usr/include/c++/13/bits/exception_defines.h \
- /usr/include/c++/13/bits/ranges_algobase.h \
  /usr/include/c++/13/unordered_set \
  /usr/include/c++/13/bits/unordered_set.h \
  /usr/include/c++/13/bits/hashtable.h \
- /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ArchetypeData.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h \
+ /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassInstance.h \
@@ -231,7 +220,12 @@ src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o: \
  /home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/tools.hpp \
  /home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/types.hpp \
  /usr/include/c++/13/utility /usr/include/c++/13/bits/stl_relops.h \
+ /usr/include/c++/13/variant \
+ /usr/include/c++/13/bits/enable_special_members.h \
+ /usr/include/c++/13/bits/exception_defines.h \
  /home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/util.hpp \
- /usr/include/c++/13/memory_resource /usr/include/c++/13/shared_mutex \
+ /usr/include/c++/13/bit /usr/include/c++/13/memory_resource \
+ /usr/include/c++/13/shared_mutex \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h \
  /usr/include/c++/13/bits/std_mutex.h /usr/include/c++/13/bits/align.h \
  /home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/parser.hpp

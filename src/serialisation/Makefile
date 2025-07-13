@@ -176,29 +176,53 @@ serialisation/fast:
 	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/serialisation/CMakeFiles/serialisation.dir/build.make src/serialisation/CMakeFiles/serialisation.dir/build
 .PHONY : serialisation/fast
 
-serialisation/Empty.o: serialisation/Empty.cpp.o
-.PHONY : serialisation/Empty.o
+serialisation/ReadByteStream.o: serialisation/ReadByteStream.cpp.o
+.PHONY : serialisation/ReadByteStream.o
 
 # target to build an object file
-serialisation/Empty.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/serialisation/CMakeFiles/serialisation.dir/build.make src/serialisation/CMakeFiles/serialisation.dir/serialisation/Empty.cpp.o
-.PHONY : serialisation/Empty.cpp.o
+serialisation/ReadByteStream.cpp.o:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/serialisation/CMakeFiles/serialisation.dir/build.make src/serialisation/CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.o
+.PHONY : serialisation/ReadByteStream.cpp.o
 
-serialisation/Empty.i: serialisation/Empty.cpp.i
-.PHONY : serialisation/Empty.i
+serialisation/ReadByteStream.i: serialisation/ReadByteStream.cpp.i
+.PHONY : serialisation/ReadByteStream.i
 
 # target to preprocess a source file
-serialisation/Empty.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/serialisation/CMakeFiles/serialisation.dir/build.make src/serialisation/CMakeFiles/serialisation.dir/serialisation/Empty.cpp.i
-.PHONY : serialisation/Empty.cpp.i
+serialisation/ReadByteStream.cpp.i:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/serialisation/CMakeFiles/serialisation.dir/build.make src/serialisation/CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.i
+.PHONY : serialisation/ReadByteStream.cpp.i
 
-serialisation/Empty.s: serialisation/Empty.cpp.s
-.PHONY : serialisation/Empty.s
+serialisation/ReadByteStream.s: serialisation/ReadByteStream.cpp.s
+.PHONY : serialisation/ReadByteStream.s
 
 # target to generate assembly for a file
-serialisation/Empty.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/serialisation/CMakeFiles/serialisation.dir/build.make src/serialisation/CMakeFiles/serialisation.dir/serialisation/Empty.cpp.s
-.PHONY : serialisation/Empty.cpp.s
+serialisation/ReadByteStream.cpp.s:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/serialisation/CMakeFiles/serialisation.dir/build.make src/serialisation/CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.s
+.PHONY : serialisation/ReadByteStream.cpp.s
+
+serialisation/WriteByteStream.o: serialisation/WriteByteStream.cpp.o
+.PHONY : serialisation/WriteByteStream.o
+
+# target to build an object file
+serialisation/WriteByteStream.cpp.o:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/serialisation/CMakeFiles/serialisation.dir/build.make src/serialisation/CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.o
+.PHONY : serialisation/WriteByteStream.cpp.o
+
+serialisation/WriteByteStream.i: serialisation/WriteByteStream.cpp.i
+.PHONY : serialisation/WriteByteStream.i
+
+# target to preprocess a source file
+serialisation/WriteByteStream.cpp.i:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/serialisation/CMakeFiles/serialisation.dir/build.make src/serialisation/CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.i
+.PHONY : serialisation/WriteByteStream.cpp.i
+
+serialisation/WriteByteStream.s: serialisation/WriteByteStream.cpp.s
+.PHONY : serialisation/WriteByteStream.s
+
+# target to generate assembly for a file
+serialisation/WriteByteStream.cpp.s:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/serialisation/CMakeFiles/serialisation.dir/build.make src/serialisation/CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.s
+.PHONY : serialisation/WriteByteStream.cpp.s
 
 # Help Target
 help:
@@ -213,9 +237,12 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... serialisation"
-	@echo "... serialisation/Empty.o"
-	@echo "... serialisation/Empty.i"
-	@echo "... serialisation/Empty.s"
+	@echo "... serialisation/ReadByteStream.o"
+	@echo "... serialisation/ReadByteStream.i"
+	@echo "... serialisation/ReadByteStream.s"
+	@echo "... serialisation/WriteByteStream.o"
+	@echo "... serialisation/WriteByteStream.i"
+	@echo "... serialisation/WriteByteStream.s"
 .PHONY : help
 
 

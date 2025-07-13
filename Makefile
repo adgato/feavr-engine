@@ -228,6 +228,19 @@ fmt/fast:
 .PHONY : fmt/fast
 
 #=============================================================================
+# Target rules for targets named ecs
+
+# Build rule for target.
+ecs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ecs
+.PHONY : ecs
+
+# fast build rule for target.
+ecs/fast:
+	$(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/build
+.PHONY : ecs/fast
+
+#=============================================================================
 # Target rules for targets named serialisation
 
 # Build rule for target.
@@ -292,6 +305,7 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... shaders"
+	@echo "... ecs"
 	@echo "... engine"
 	@echo "... fastgltf"
 	@echo "... fastgltf_simdjson"

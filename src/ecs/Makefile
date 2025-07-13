@@ -162,6 +162,92 @@ depend:
 	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+# Convenience name for target.
+src/ecs/CMakeFiles/ecs.dir/rule:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ecs/CMakeFiles/ecs.dir/rule
+.PHONY : src/ecs/CMakeFiles/ecs.dir/rule
+
+# Convenience name for target.
+ecs: src/ecs/CMakeFiles/ecs.dir/rule
+.PHONY : ecs
+
+# fast build rule for target.
+ecs/fast:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/build
+.PHONY : ecs/fast
+
+ecs/Engine.o: ecs/Engine.cpp.o
+.PHONY : ecs/Engine.o
+
+# target to build an object file
+ecs/Engine.cpp.o:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.o
+.PHONY : ecs/Engine.cpp.o
+
+ecs/Engine.i: ecs/Engine.cpp.i
+.PHONY : ecs/Engine.i
+
+# target to preprocess a source file
+ecs/Engine.cpp.i:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.i
+.PHONY : ecs/Engine.cpp.i
+
+ecs/Engine.s: ecs/Engine.cpp.s
+.PHONY : ecs/Engine.s
+
+# target to generate assembly for a file
+ecs/Engine.cpp.s:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.s
+.PHONY : ecs/Engine.cpp.s
+
+ecs/RawArray.o: ecs/RawArray.cpp.o
+.PHONY : ecs/RawArray.o
+
+# target to build an object file
+ecs/RawArray.cpp.o:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.o
+.PHONY : ecs/RawArray.cpp.o
+
+ecs/RawArray.i: ecs/RawArray.cpp.i
+.PHONY : ecs/RawArray.i
+
+# target to preprocess a source file
+ecs/RawArray.cpp.i:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.i
+.PHONY : ecs/RawArray.cpp.i
+
+ecs/RawArray.s: ecs/RawArray.cpp.s
+.PHONY : ecs/RawArray.s
+
+# target to generate assembly for a file
+ecs/RawArray.cpp.s:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.s
+.PHONY : ecs/RawArray.cpp.s
+
+ecs/Serial.o: ecs/Serial.cpp.o
+.PHONY : ecs/Serial.o
+
+# target to build an object file
+ecs/Serial.cpp.o:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.o
+.PHONY : ecs/Serial.cpp.o
+
+ecs/Serial.i: ecs/Serial.cpp.i
+.PHONY : ecs/Serial.i
+
+# target to preprocess a source file
+ecs/Serial.cpp.i:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.i
+.PHONY : ecs/Serial.cpp.i
+
+ecs/Serial.s: ecs/Serial.cpp.s
+.PHONY : ecs/Serial.s
+
+# target to generate assembly for a file
+ecs/Serial.cpp.s:
+	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.s
+.PHONY : ecs/Serial.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -174,6 +260,16 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... ecs"
+	@echo "... ecs/Engine.o"
+	@echo "... ecs/Engine.i"
+	@echo "... ecs/Engine.s"
+	@echo "... ecs/RawArray.o"
+	@echo "... ecs/RawArray.i"
+	@echo "... ecs/RawArray.s"
+	@echo "... ecs/Serial.o"
+	@echo "... ecs/Serial.i"
+	@echo "... ecs/Serial.s"
 .PHONY : help
 
 

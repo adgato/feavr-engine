@@ -27,6 +27,7 @@
 /home/adgato/projects/vulkan/template-project/include/fmt/CMakeFiles/install.dir
 /home/adgato/projects/vulkan/template-project/include/fmt/CMakeFiles/install/local.dir
 /home/adgato/projects/vulkan/template-project/include/fmt/CMakeFiles/install/strip.dir
+/home/adgato/projects/vulkan/template-project/src/ecs/CMakeFiles/ecs.dir
 /home/adgato/projects/vulkan/template-project/src/ecs/CMakeFiles/edit_cache.dir
 /home/adgato/projects/vulkan/template-project/src/ecs/CMakeFiles/rebuild_cache.dir
 /home/adgato/projects/vulkan/template-project/src/ecs/CMakeFiles/list_install_components.dir

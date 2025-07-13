@@ -72,31 +72,47 @@ include src/serialisation/CMakeFiles/serialisation.dir/flags.make
 src/serialisation/CMakeFiles/serialisation.dir/codegen:
 .PHONY : src/serialisation/CMakeFiles/serialisation.dir/codegen
 
-src/serialisation/CMakeFiles/serialisation.dir/serialisation/Empty.cpp.o: src/serialisation/CMakeFiles/serialisation.dir/flags.make
-src/serialisation/CMakeFiles/serialisation.dir/serialisation/Empty.cpp.o: src/serialisation/serialisation/Empty.cpp
-src/serialisation/CMakeFiles/serialisation.dir/serialisation/Empty.cpp.o: src/serialisation/CMakeFiles/serialisation.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/serialisation/CMakeFiles/serialisation.dir/serialisation/Empty.cpp.o"
-	cd /home/adgato/projects/vulkan/template-project/src/serialisation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/serialisation/CMakeFiles/serialisation.dir/serialisation/Empty.cpp.o -MF CMakeFiles/serialisation.dir/serialisation/Empty.cpp.o.d -o CMakeFiles/serialisation.dir/serialisation/Empty.cpp.o -c /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/Empty.cpp
+src/serialisation/CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.o: src/serialisation/CMakeFiles/serialisation.dir/flags.make
+src/serialisation/CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.o: src/serialisation/serialisation/ReadByteStream.cpp
+src/serialisation/CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.o: src/serialisation/CMakeFiles/serialisation.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/serialisation/CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.o"
+	cd /home/adgato/projects/vulkan/template-project/src/serialisation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/serialisation/CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.o -MF CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.o.d -o CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.o -c /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/ReadByteStream.cpp
 
-src/serialisation/CMakeFiles/serialisation.dir/serialisation/Empty.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/serialisation.dir/serialisation/Empty.cpp.i"
-	cd /home/adgato/projects/vulkan/template-project/src/serialisation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/Empty.cpp > CMakeFiles/serialisation.dir/serialisation/Empty.cpp.i
+src/serialisation/CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.i"
+	cd /home/adgato/projects/vulkan/template-project/src/serialisation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/ReadByteStream.cpp > CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.i
 
-src/serialisation/CMakeFiles/serialisation.dir/serialisation/Empty.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/serialisation.dir/serialisation/Empty.cpp.s"
-	cd /home/adgato/projects/vulkan/template-project/src/serialisation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/Empty.cpp -o CMakeFiles/serialisation.dir/serialisation/Empty.cpp.s
+src/serialisation/CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.s"
+	cd /home/adgato/projects/vulkan/template-project/src/serialisation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/ReadByteStream.cpp -o CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.s
+
+src/serialisation/CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.o: src/serialisation/CMakeFiles/serialisation.dir/flags.make
+src/serialisation/CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.o: src/serialisation/serialisation/WriteByteStream.cpp
+src/serialisation/CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.o: src/serialisation/CMakeFiles/serialisation.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/serialisation/CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.o"
+	cd /home/adgato/projects/vulkan/template-project/src/serialisation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/serialisation/CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.o -MF CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.o.d -o CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.o -c /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/WriteByteStream.cpp
+
+src/serialisation/CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.i"
+	cd /home/adgato/projects/vulkan/template-project/src/serialisation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/WriteByteStream.cpp > CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.i
+
+src/serialisation/CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.s"
+	cd /home/adgato/projects/vulkan/template-project/src/serialisation && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/WriteByteStream.cpp -o CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.s
 
 # Object files for target serialisation
 serialisation_OBJECTS = \
-"CMakeFiles/serialisation.dir/serialisation/Empty.cpp.o"
+"CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.o" \
+"CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.o"
 
 # External object files for target serialisation
 serialisation_EXTERNAL_OBJECTS =
 
-src/serialisation/libserialisation.a: src/serialisation/CMakeFiles/serialisation.dir/serialisation/Empty.cpp.o
+src/serialisation/libserialisation.a: src/serialisation/CMakeFiles/serialisation.dir/serialisation/ReadByteStream.cpp.o
+src/serialisation/libserialisation.a: src/serialisation/CMakeFiles/serialisation.dir/serialisation/WriteByteStream.cpp.o
 src/serialisation/libserialisation.a: src/serialisation/CMakeFiles/serialisation.dir/build.make
 src/serialisation/libserialisation.a: src/serialisation/CMakeFiles/serialisation.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libserialisation.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libserialisation.a"
 	cd /home/adgato/projects/vulkan/template-project/src/serialisation && $(CMAKE_COMMAND) -P CMakeFiles/serialisation.dir/cmake_clean_target.cmake
 	cd /home/adgato/projects/vulkan/template-project/src/serialisation && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/serialisation.dir/link.txt --verbose=$(VERBOSE)
 

@@ -142,15 +142,15 @@
 				},
 				{
 					"backtrace" : 2,
+					"path" : "/home/adgato/projects/vulkan/template-project/include/glm"
+				},
+				{
+					"backtrace" : 2,
 					"path" : "/home/adgato/projects/vulkan/template-project/include/hlsl++"
 				},
 				{
 					"backtrace" : 2,
 					"path" : "/home/adgato/projects/vulkan/template-project/include/vma"
-				},
-				{
-					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/glm"
 				},
 				{
 					"backtrace" : 2,
@@ -282,15 +282,15 @@
 				},
 				{
 					"backtrace" : 2,
+					"path" : "/home/adgato/projects/vulkan/template-project/include/glm"
+				},
+				{
+					"backtrace" : 2,
 					"path" : "/home/adgato/projects/vulkan/template-project/include/hlsl++"
 				},
 				{
 					"backtrace" : 2,
 					"path" : "/home/adgato/projects/vulkan/template-project/include/vma"
-				},
-				{
-					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/glm"
 				},
 				{
 					"backtrace" : 2,
@@ -408,6 +408,10 @@
 		},
 		{
 			"backtrace" : 2,
+			"id" : "ecs::@c2559d1061ee4aea7157"
+		},
+		{
+			"backtrace" : 2,
 			"id" : "serialisation::@2cd91a746adb4e4116be"
 		}
 	],
@@ -423,6 +427,11 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "../ecs/libecs.a",
+				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
@@ -539,19 +548,7 @@
 				39,
 				40,
 				42,
-				43,
-				45,
-				46,
-				47,
-				48,
-				49,
-				50,
-				51,
-				52,
-				53,
-				54,
-				55,
-				56
+				43
 			]
 		},
 		{
@@ -808,66 +805,6 @@
 			"backtrace" : 0,
 			"path" : "src/engine/CMakeFiles/engine.dir/cmake_pch.hxx",
 			"sourceGroupIndex" : 2
-		},
-		{
-			"backtrace" : 2,
-			"path" : "src/ecs/ecs/ByteStream.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 2,
-			"path" : "src/ecs/ecs/Common.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 2,
-			"path" : "src/ecs/ecs/CommonEngine.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 2,
-			"path" : "src/ecs/ecs/ComponentTypeUniverse.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 2,
-			"path" : "src/ecs/ecs/Engine.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 2,
-			"path" : "src/ecs/ecs/RawArray.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 2,
-			"path" : "src/ecs/ecs/RawArrays.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 2,
-			"path" : "src/ecs/ecs/SerialTypes.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 2,
-			"path" : "src/ecs/ecs/TypeIndexer.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 2,
-			"path" : "src/ecs/ecs/TypeUniverse.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 2,
-			"path" : "src/ecs/ecs/UpdateQueue.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 2,
-			"path" : "src/ecs/ecs/array.h",
-			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

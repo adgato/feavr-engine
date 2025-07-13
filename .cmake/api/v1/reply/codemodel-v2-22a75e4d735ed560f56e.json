@@ -42,14 +42,14 @@
 					"source" : "include",
 					"targetIndexes" : 
 					[
-						4,
-						8
+						5,
+						9
 					]
 				},
 				{
 					"build" : "include/fastgltf",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-include.fastgltf-Debug-225936f71a57db811c38.json",
+					"jsonFile" : "directory-include.fastgltf-Debug-7766a9193977b39c1bd3.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.12"
@@ -59,14 +59,14 @@
 					"source" : "include/fastgltf",
 					"targetIndexes" : 
 					[
-						1,
-						2
+						2,
+						3
 					]
 				},
 				{
 					"build" : "include/fmt",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-include.fmt-Debug-d5adbeb911a22fa4d70b.json",
+					"jsonFile" : "directory-include.fmt-Debug-d1d35c3a15ea32d6060b.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.8"
@@ -76,7 +76,7 @@
 					"source" : "include/fmt",
 					"targetIndexes" : 
 					[
-						3
+						4
 					]
 				},
 				{
@@ -88,7 +88,11 @@
 					},
 					"parentIndex" : 0,
 					"projectIndex" : 0,
-					"source" : "src/ecs"
+					"source" : "src/ecs",
+					"targetIndexes" : 
+					[
+						0
+					]
 				},
 				{
 					"build" : "src/serialisation",
@@ -102,7 +106,7 @@
 					"source" : "src/serialisation",
 					"targetIndexes" : 
 					[
-						5
+						6
 					]
 				},
 				{
@@ -117,7 +121,7 @@
 					"source" : "src/engine",
 					"targetIndexes" : 
 					[
-						0
+						1
 					]
 				},
 				{
@@ -132,7 +136,7 @@
 					"source" : "shaders",
 					"targetIndexes" : 
 					[
-						7
+						8
 					]
 				},
 				{
@@ -147,7 +151,7 @@
 					"source" : "src/shader_drafter",
 					"targetIndexes" : 
 					[
-						6
+						7
 					]
 				}
 			],
@@ -174,11 +178,12 @@
 					"targetIndexes" : 
 					[
 						0,
-						4,
+						1,
 						5,
 						6,
 						7,
-						8
+						8,
+						9
 					]
 				},
 				{
@@ -190,8 +195,8 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						1,
-						2
+						2,
+						3
 					]
 				},
 				{
@@ -203,16 +208,23 @@
 					"parentIndex" : 0,
 					"targetIndexes" : 
 					[
-						3
+						4
 					]
 				}
 			],
 			"targets" : 
 			[
 				{
+					"directoryIndex" : 4,
+					"id" : "ecs::@c2559d1061ee4aea7157",
+					"jsonFile" : "target-ecs-Debug-53c23cff1a84f2b77250.json",
+					"name" : "ecs",
+					"projectIndex" : 0
+				},
+				{
 					"directoryIndex" : 6,
 					"id" : "engine::@d30147da1c6e0503853c",
-					"jsonFile" : "target-engine-Debug-4120285d3c0af6754279.json",
+					"jsonFile" : "target-engine-Debug-0202e31d8f97534e55bc.json",
 					"name" : "engine",
 					"projectIndex" : 0
 				},
@@ -247,7 +259,7 @@
 				{
 					"directoryIndex" : 5,
 					"id" : "serialisation::@2cd91a746adb4e4116be",
-					"jsonFile" : "target-serialisation-Debug-3e64a782fcc4f6ccc22c.json",
+					"jsonFile" : "target-serialisation-Debug-20baf73440ae4b540aa2.json",
 					"name" : "serialisation",
 					"projectIndex" : 0
 				},
