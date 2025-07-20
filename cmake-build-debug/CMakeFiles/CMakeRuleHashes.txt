@@ -1,6 +1,0 @@
-# Hashes of file build rules.
-2271134bc949f8b56c336272d27281ed /home/adgato/projects/vulkan/template-project/shaders/spv/default_shader_ps.spv
-b8ee1a4901d13b28930c4a5c285f8898 /home/adgato/projects/vulkan/template-project/shaders/spv/default_shader_vs.spv
-0ba1826fcd5f51a523a1bd8e104929f7 /home/adgato/projects/vulkan/template-project/shaders/spv/unlit_shader_ps.spv
-35164850ec766bcd408c3f40caf1d510 /home/adgato/projects/vulkan/template-project/shaders/spv/unlit_shader_vs.spv
-d4dc2bf1ba563aeac13d1095e70349a6 shaders/CMakeFiles/shaders
