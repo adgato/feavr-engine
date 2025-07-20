@@ -1,1 +1,0 @@
-/usr/bin/c++ -g -Wl,--dependency-file=CMakeFiles/shader_drafter.dir/link.d CMakeFiles/shader_drafter.dir/main.cpp.o CMakeFiles/shader_drafter.dir/spirv_reflect.c.o -o ../../bin/shader_drafter  /usr/lib/x86_64-linux-gnu/libvulkan.so ../../include/fmt/libfmtd.a

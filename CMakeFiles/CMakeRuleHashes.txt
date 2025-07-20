@@ -1,6 +1,0 @@
-# Hashes of file build rules.
-ae3ff759896dc79858b28ed927ee3b08 shaders/CMakeFiles/shaders
-210ae5781245260af27e1698bd7dd29d shaders/spv/default_shader_ps.spv
-c250a524cac2f3fb7cb8055525c1d9d2 shaders/spv/default_shader_vs.spv
-39bfb5d720858cc3aa66ba2a052dfa97 shaders/spv/unlit_shader_ps.spv
-5c3acbc782038e927a9601cc2200eaa2 shaders/spv/unlit_shader_vs.spv

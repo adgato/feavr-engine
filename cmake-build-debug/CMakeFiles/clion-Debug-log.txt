@@ -11,6 +11,6 @@ CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
 -- fastgltf: Found simdjson (Version 3.3.0)
 -- Version: 10.1.1
 -- Build type: Debug
--- Configuring done (0.4s)
--- Generating done (0.0s)
+-- Configuring done (0.3s)
+-- Generating done (0.1s)
 -- Build files have been written to: /home/adgato/projects/vulkan/template-project

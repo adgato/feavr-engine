@@ -22,12 +22,13 @@
   CMakeFiles/engine.dir/vk_loader.cpp.o \
   CMakeFiles/engine.dir/vk_pipelines.cpp.o \
   ../ecs/libecs.a \
-  ../serialisation/libserialisation.a \
+  ../assets-system/libasset_system.a \
   /usr/lib/x86_64-linux-gnu/libvulkan.so \
   ../../include/fmt/libfmtd.a \
   ../../include/libvkbootstrap.a \
   ../../include/libimgui.a \
   ../../include/fastgltf/libfastgltf.a \
+  /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/liblz4.so \
   /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libdl.a \
   /usr/lib/x86_64-linux-gnu/libvulkan.so \
   /usr/lib/x86_64-linux-gnu/libSDL2.so \
@@ -228,9 +229,7 @@
   /lib/i386-linux-gnu/libgcrypt.so.20 \
   /usr/lib/i386-linux-gnu/libgcrypt.so.20 \
   /lib/x86_64-linux-gnu/libgcrypt.so.20 \
-  /lib/i386-linux-gnu/liblz4.so.1 \
-  /usr/lib/i386-linux-gnu/liblz4.so.1 \
-  /lib/x86_64-linux-gnu/liblz4.so.1 \
+  /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/liblz4.so \
   /lib/i386-linux-gnu/liblzma.so.5 \
   /usr/lib/i386-linux-gnu/liblzma.so.5 \
   /lib/x86_64-linux-gnu/liblzma.so.5 \
@@ -308,7 +307,7 @@ CMakeFiles/engine.dir/vk_pipelines.cpp.o:
 
 ../ecs/libecs.a:
 
-../serialisation/libserialisation.a:
+../assets-system/libasset_system.a:
 
 /usr/lib/x86_64-linux-gnu/libvulkan.so:
 
@@ -319,6 +318,8 @@ CMakeFiles/engine.dir/vk_pipelines.cpp.o:
 ../../include/libimgui.a:
 
 ../../include/fastgltf/libfastgltf.a:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/liblz4.so:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/libdl.a:
 
@@ -720,11 +721,7 @@ CMakeFiles/engine.dir/vk_pipelines.cpp.o:
 
 /lib/x86_64-linux-gnu/libgcrypt.so.20:
 
-/lib/i386-linux-gnu/liblz4.so.1:
-
-/usr/lib/i386-linux-gnu/liblz4.so.1:
-
-/lib/x86_64-linux-gnu/liblz4.so.1:
+/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/liblz4.so:
 
 /lib/i386-linux-gnu/liblzma.so.5:
 

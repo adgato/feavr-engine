@@ -1,6 +1,5 @@
 #pragma once
 #include "SubMesh.h"
-#include "ecs/Common.h"
 #include "ecs/Engine.h"
 #include "passes/PassInstance.h"
 
@@ -43,6 +42,25 @@ namespace rendering
             return static_cast<uint32_t>(instances.size());
         }
     };
+
+    using OldTypeID = const int*;
+
+    template <typename>
+    struct TypeIdentifier
+    {
+        constexpr static int _id {};
+
+        static constexpr OldTypeID id()
+        {
+            return &_id;
+        }
+    };
+
+    template <typename T>
+    constexpr OldTypeID GetTypeID()
+    {
+        return TypeIdentifier<T>::id();
+    }
 
     class PassManager
     {

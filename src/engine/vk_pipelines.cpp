@@ -236,29 +236,10 @@ void PipelineBuilder::enable_depthtest(bool depthWriteEnable, VkCompareOp op)
 //< depth_enable
 
 //> load_shader
-VkShaderModule vkutil::load_shader_module(const char* filePath, const VkDevice device)
+VkShaderModule vkutil::load_shader_module(const std::vector<std::byte>& buffer, const VkDevice device)
 {
     // open the file. With cursor at the end
-    std::ifstream file(filePath, std::ios::ate | std::ios::binary);
 
-    assert(file.is_open() && "File not found");
-
-    // find what the size of the file is by looking up the location of the cursor
-    // because the cursor is at the end, it gives the size directly in bytes
-    const size_t fileSize = file.tellg();
-
-    // spirv expects the buffer to be on uint32, so make sure to reserve a int
-    // vector big enough for the entire file
-    std::vector<uint32_t> buffer(fileSize / sizeof(uint32_t));
-
-    // put file cursor at beginning
-    file.seekg(0);
-
-    // load the entire file into the buffer
-    file.read((char*)buffer.data(), fileSize);
-
-    // now that the file is loaded into the buffer, we can close it
-    file.close();
 
     // create a new shader module, using the buffer we loaded
     VkShaderModuleCreateInfo createInfo = {};
@@ -267,8 +248,8 @@ VkShaderModule vkutil::load_shader_module(const char* filePath, const VkDevice d
 
     // codeSize has to be in bytes, so multply the ints in the buffer by size of
     // int to know the real size of the buffer
-    createInfo.codeSize = buffer.size() * sizeof(uint32_t);
-    createInfo.pCode = buffer.data();
+    createInfo.codeSize = buffer.size();
+    createInfo.pCode = reinterpret_cast<const uint32_t*>(buffer.data());
 
     // check that the creation goes well.
     VkShaderModule module;

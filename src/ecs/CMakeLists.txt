@@ -13,4 +13,4 @@ add_library(ecs STATIC ${ECS_SOURCES} ${ECS_HEADERS})
 target_include_directories(ecs PUBLIC "${ECS_SOURCE_DIR}")
 target_compile_features(ecs PUBLIC cxx_std_20)
 
-target_link_libraries(ecs PUBLIC serialisation glm)
+target_link_libraries(ecs PUBLIC asset_system glm)

@@ -20,8 +20,6 @@ namespace ecs
         return res;
     }
 
-    // tag at end of each component. used to jump to when the number of fields in a component has changed since their data was saved.
-    char MAX_TAG = 0xFF;
 
     void Serial::Save(const char* filePath, EntityManager& e)
     {
@@ -58,7 +56,6 @@ namespace ecs
                 const size_t offset = m.writer.Reserve<serial::uint_s>();
 
                 ComponentInfo.Serialize(m, data.GetElem(index, type), type);
-                m.writer.Write<char>(MAX_TAG);
 
                 m.writer.WriteOver<serial::uint_s>(m.writer.GetCount() - offset - sizeof(serial::uint_s), offset);
             }
@@ -112,15 +109,13 @@ namespace ecs
                 const TypeID type = remap[retype];
                 if (type >= NumTypes)
                 {
-                    m.reader.Skip(size);
+                    m.reader.Jump(size);
                     continue;
                 }
 
                 std::byte* data = components[type].get();
                 ComponentInfo.CopyDefault(data, type);
                 ComponentInfo.Serialize(m, data, type);
-                m.SkipToTag(MAX_TAG);
-
                 e.AddComponent(entity, data, type);
             }
         }

@@ -28,6 +28,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FeatureSummary.cmake"
   "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake"
   "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPackageMessage.cmake"
+  "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPkgConfig.cmake"
   "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindVulkan.cmake"
   "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/GNUInstallDirs.cmake"
   "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CMakeCLinkerInformation.cmake"
@@ -64,11 +65,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "include/fmt/support/cmake/JoinPaths.cmake"
   "include/fmt/support/cmake/fmt-config.cmake.in"
   "include/fmt/support/cmake/fmt.pc.in"
-  "shaders/CMakeLists.txt"
+  "src/assets-system/CMakeLists.txt"
   "src/ecs/CMakeLists.txt"
   "src/engine/CMakeLists.txt"
-  "src/serialisation/CMakeLists.txt"
-  "src/shader_drafter/CMakeLists.txt"
   "/usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config-version.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config.cmake"
   )
@@ -89,10 +88,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "include/fmt/fmt-config.cmake"
   "include/fmt/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/ecs/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "src/serialisation/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/assets-system/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/engine/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "shaders/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "src/shader_drafter/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -103,8 +100,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "include/fastgltf/CMakeFiles/fastgltf.dir/DependInfo.cmake"
   "include/fmt/CMakeFiles/fmt.dir/DependInfo.cmake"
   "src/ecs/CMakeFiles/ecs.dir/DependInfo.cmake"
-  "src/serialisation/CMakeFiles/serialisation.dir/DependInfo.cmake"
+  "src/assets-system/CMakeFiles/asset_system.dir/DependInfo.cmake"
   "src/engine/CMakeFiles/engine.dir/DependInfo.cmake"
-  "shaders/CMakeFiles/shaders.dir/DependInfo.cmake"
-  "src/shader_drafter/CMakeFiles/shader_drafter.dir/DependInfo.cmake"
   )

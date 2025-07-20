@@ -60,22 +60,27 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o: \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h \
  /usr/include/c++/13/bitset /usr/include/c++/13/bits/cxxabi_forced.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/array.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialConcepts.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/array.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/SerialConcepts.h \
  /usr/include/c++/13/cstdint /usr/include/c++/13/cassert \
  /usr/include/assert.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialManager.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/ReadByteStream.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/WriteByteStream.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/SerialManager.h \
+ /usr/include/c++/13/algorithm /usr/include/c++/13/bits/ranges_algo.h \
+ /usr/include/c++/13/bits/ranges_algobase.h \
+ /usr/include/c++/13/bits/ranges_util.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/pstl/execution_defs.h /usr/include/c++/13/numeric \
+ /usr/include/c++/13/bits/stl_numeric.h /usr/include/c++/13/bit \
+ /usr/include/c++/13/pstl/glue_numeric_defs.h /usr/include/c++/13/ranges \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/ReadByteStream.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/WriteByteStream.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/Pass.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h \
  /usr/include/c++/13/unordered_set \
  /usr/include/c++/13/bits/unordered_set.h \
  /usr/include/c++/13/bits/hashtable.h /usr/include/c++/13/bits/erase_if.h \
- /usr/include/c++/13/ranges /usr/include/c++/13/bits/ranges_util.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ArchetypeData.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h \
- /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassInstance.h \
@@ -117,10 +122,56 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o: \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/shader_descriptors.h \
  /home/adgato/projects/vulkan/template-project/src/engine/vk_new.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetLookup.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetID.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassDirectory.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Material.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/PassManager.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Swapchain.h \
  /usr/include/SDL2/SDL_video.h \
- /home/adgato/projects/vulkan/template-project/src/engine/vk_pipelines.h
+ /home/adgato/projects/vulkan/template-project/src/engine/vk_pipelines.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetFile.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetManager.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/include/json.hpp \
+ /usr/include/c++/13/utility /usr/include/c++/13/bits/stl_relops.h \
+ /usr/include/c++/13/forward_list /usr/include/c++/13/bits/forward_list.h \
+ /usr/include/c++/13/bits/forward_list.tcc /usr/include/c++/13/valarray \
+ /usr/include/c++/13/bits/valarray_array.h \
+ /usr/include/c++/13/bits/valarray_array.tcc \
+ /usr/include/c++/13/bits/valarray_before.h \
+ /usr/include/c++/13/bits/slice_array.h \
+ /usr/include/c++/13/bits/valarray_after.h \
+ /usr/include/c++/13/bits/gslice.h \
+ /usr/include/c++/13/bits/gslice_array.h \
+ /usr/include/c++/13/bits/mask_array.h \
+ /usr/include/c++/13/bits/indirect_array.h /usr/include/c++/13/exception \
+ /usr/include/c++/13/version /usr/include/c++/13/filesystem \
+ /usr/include/c++/13/bits/fs_fwd.h /usr/include/c++/13/system_error \
+ /usr/include/c++/13/bits/chrono.h /usr/include/c++/13/ratio \
+ /usr/include/c++/13/ctime /usr/include/time.h \
+ /usr/include/c++/13/bits/parse_numbers.h \
+ /usr/include/c++/13/bits/fs_path.h /usr/include/c++/13/locale \
+ /usr/include/c++/13/bits/localefwd.h \
+ /usr/include/c++/13/bits/locale_classes.h \
+ /usr/include/c++/13/bits/locale_facets.h \
+ /usr/include/c++/13/bits/locale_facets_nonio.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/13/bits/codecvt.h \
+ /usr/include/c++/13/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/13/bits/locale_conv.h /usr/include/c++/13/streambuf \
+ /usr/include/c++/13/bits/stringfwd.h /usr/include/c++/13/iomanip \
+ /usr/include/c++/13/bits/ios_base.h \
+ /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/sstream \
+ /usr/include/c++/13/istream /usr/include/c++/13/ios \
+ /usr/include/c++/13/ostream /usr/include/c++/13/bits/istream.tcc \
+ /usr/include/c++/13/bits/alloc_traits.h \
+ /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/codecvt \
+ /usr/include/c++/13/ext/concurrence.h \
+ /usr/include/c++/13/bits/shared_ptr.h \
+ /usr/include/c++/13/bits/unique_ptr.h /usr/include/c++/13/bits/fs_dir.h \
+ /usr/include/c++/13/bits/iterator_concepts.h \
+ /usr/include/c++/13/bits/fs_ops.h /usr/include/c++/13/clocale \
+ /usr/include/locale.h /usr/include/c++/13/cctype \
+ /usr/include/c++/13/cerrno /usr/include/errno.h /usr/include/c++/13/any

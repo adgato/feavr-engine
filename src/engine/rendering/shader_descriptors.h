@@ -3,11 +3,12 @@
 #include <cassert>
 #include "vk_types.h"
 #include "vk_new.h"
+#include "assets-system/AssetLookup.h"
 
 // Auto-generated shader descriptor set layouts
 // DO NOT EDIT MANUALLY
 
-namespace shader_layouts 
+namespace shader_layouts
 {
     inline DescriptorSetLayoutInfo CreateSetLayout(const VkDevice device, std::vector<VkDescriptorSetLayoutBinding>* bindings)
     {
@@ -41,10 +42,8 @@ namespace shader_layouts
 
     namespace default_shader
     {
-        constexpr auto pixel_entry = "frag";
-        constexpr auto vertex_entry = "vert";
-        constexpr auto pixel_filename = PROJECT_ROOT "/shaders/spv/default_shader_ps.spv";
-        constexpr auto vertex_filename = PROJECT_ROOT "/shaders/spv/default_shader_vs.spv";
+        constexpr auto pixel_asset = assets_system::lookup::SHAD_default_shader_ps;
+        constexpr auto vertex_asset = assets_system::lookup::SHAD_default_shader_vs;
         constexpr auto GLTFMaterialData_binding = VkDescriptorSetLayoutBinding{
             .binding = 0,
             .descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
@@ -73,10 +72,8 @@ namespace shader_layouts
 
     namespace unlit_shader
     {
-        constexpr auto pixel_entry = "frag";
-        constexpr auto vertex_entry = "vert";
-        constexpr auto pixel_filename = PROJECT_ROOT "/shaders/spv/unlit_shader_ps.spv";
-        constexpr auto vertex_filename = PROJECT_ROOT "/shaders/spv/unlit_shader_vs.spv";
+        constexpr auto pixel_asset = assets_system::lookup::SHAD_unlit_shader_ps;
+        constexpr auto vertex_asset = assets_system::lookup::SHAD_unlit_shader_vs;
         constexpr auto colorTex_binding = VkDescriptorSetLayoutBinding{
             .binding = 1,
             .descriptorType = VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE,

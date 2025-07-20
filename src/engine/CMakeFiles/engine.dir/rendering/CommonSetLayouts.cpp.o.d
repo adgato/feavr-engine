@@ -57,4 +57,18 @@ src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o: \
  /usr/include/c++/13/iterator /usr/include/c++/13/bits/stream_iterator.h \
  /usr/include/c++/13/iosfwd /usr/include/c++/13/bits/streambuf_iterator.h \
  /usr/include/c++/13/limits /usr/include/c++/13/string_view \
- /home/adgato/projects/vulkan/template-project/src/engine/vk_new.h
+ /home/adgato/projects/vulkan/template-project/src/engine/vk_new.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetLookup.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetID.h \
+ /usr/include/c++/13/cstdint \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/SerialManager.h \
+ /usr/include/c++/13/algorithm /usr/include/c++/13/bits/ranges_algo.h \
+ /usr/include/c++/13/bits/ranges_algobase.h \
+ /usr/include/c++/13/bits/ranges_util.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/pstl/execution_defs.h /usr/include/c++/13/numeric \
+ /usr/include/c++/13/bits/stl_numeric.h /usr/include/c++/13/bit \
+ /usr/include/c++/13/pstl/glue_numeric_defs.h /usr/include/c++/13/ranges \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/ReadByteStream.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/WriteByteStream.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/SerialConcepts.h

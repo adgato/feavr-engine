@@ -40,15 +40,67 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/cmake-build-debug/CMakeFiles/cmake.verify_globs")
 endif()
 
+# LIBRARY_SOURCES at src/assets-system/CMakeLists.txt:8 (file)
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/assets-system/*.cpp")
+set(OLD_GLOB
+  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/GenAssetsMeta.cpp"
+  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/TextAssetManager.cpp"
+  "/home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/ReadByteStream.cpp"
+  "/home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/WriteByteStream.cpp"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/cmake-build-debug/CMakeFiles/cmake.verify_globs")
+endif()
+
+# LIBRARY_HEADERS at src/assets-system/CMakeLists.txt:3 (file)
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/assets-system/*.h")
+set(OLD_GLOB
+  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/GenAssetsMeta.h"
+  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/TextAssetManager.h"
+  "/home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/ReadByteStream.h"
+  "/home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/SerialConcepts.h"
+  "/home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/SerialManager.h"
+  "/home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/WriteByteStream.h"
+  "/home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/array.h"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/cmake-build-debug/CMakeFiles/cmake.verify_globs")
+endif()
+
+# LIBRARY_HEADERS at src/assets-system/CMakeLists.txt:3 (file)
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/assets-system/*.hpp")
+set(OLD_GLOB
+  "/home/adgato/projects/vulkan/template-project/src/assets-system/include/json.hpp"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/cmake-build-debug/CMakeFiles/cmake.verify_globs")
+endif()
+
+# ECS_SOURCES at src/ecs/CMakeLists.txt:8 (file)
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/ecs/*.cpp")
+set(OLD_GLOB
+  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.cpp"
+  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.cpp"
+  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Serial.cpp"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/cmake-build-debug/CMakeFiles/cmake.verify_globs")
+endif()
+
 # ECS_HEADERS at src/ecs/CMakeLists.txt:3 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/ecs/*.h")
 set(OLD_GLOB
+  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/ArchetypeData.h"
   "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h"
   "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/CommonEngine.h"
   "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h"
   "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h"
   "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArrays.h"
+  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Serial.h"
   "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h"
   "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h"
   )
@@ -129,34 +181,6 @@ endif()
 
 # ENGINE_SOURCES at src/engine/CMakeLists.txt:3 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/engine/*.hpp")
-set(OLD_GLOB
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/cmake-build-debug/CMakeFiles/cmake.verify_globs")
-endif()
-
-# SERIAL_SOURCES at src/serialisation/CMakeLists.txt:3 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/serialisation/*.cpp")
-set(OLD_GLOB
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/cmake-build-debug/CMakeFiles/cmake.verify_globs")
-endif()
-
-# SERIAL_SOURCES at src/serialisation/CMakeLists.txt:3 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/serialisation/*.h")
-set(OLD_GLOB
-  "/home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialTypes.h"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/cmake-build-debug/CMakeFiles/cmake.verify_globs")
-endif()
-
-# SERIAL_SOURCES at src/serialisation/CMakeLists.txt:3 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/serialisation/*.hpp")
 set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

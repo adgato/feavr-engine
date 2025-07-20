@@ -57,17 +57,24 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o: \
  /usr/include/c++/13/bits/stl_tempbuf.h /usr/include/c++/13/cstdlib \
  /usr/include/c++/13/bits/ranges_cmp.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/array.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialConcepts.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/array.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/SerialConcepts.h \
  /usr/include/c++/13/cstdint \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialManager.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/ReadByteStream.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/WriteByteStream.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/SerialManager.h \
+ /usr/include/c++/13/algorithm /usr/include/c++/13/bits/ranges_algo.h \
+ /usr/include/c++/13/bits/ranges_algobase.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/pstl/execution_defs.h /usr/include/c++/13/numeric \
+ /usr/include/c++/13/bits/stl_numeric.h /usr/include/c++/13/bit \
+ /usr/include/c++/13/limits /usr/include/c++/13/pstl/glue_numeric_defs.h \
+ /home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/core.h \
+ /usr/include/c++/13/cstdio /usr/include/stdio.h \
+ /usr/include/c++/13/memory \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/ReadByteStream.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/WriteByteStream.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h \
- /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h \
- /usr/include/c++/13/memory \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/SubMesh.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h \
  /home/adgato/projects/vulkan/template-project/src/engine/vk_types.h \
@@ -77,9 +84,6 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o: \
  /usr/include/c++/13/source_location /usr/include/c++/13/stdexcept \
  /usr/include/vulkan/vulkan.h \
  /home/adgato/projects/vulkan/template-project/include/vma/vk_mem_alloc.h \
- /home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/core.h \
- /usr/include/c++/13/cstdio /usr/include/stdio.h \
- /usr/include/c++/13/limits \
  /home/adgato/projects/vulkan/template-project/src/engine/vk_engine.h \
  /home/adgato/projects/vulkan/template-project/src/engine/camera.h \
  /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_stdinc.h \
@@ -118,6 +122,8 @@ src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o: \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/shader_descriptors.h \
  /home/adgato/projects/vulkan/template-project/src/engine/vk_new.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetLookup.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetID.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassDirectory.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/DefaultPass.h \

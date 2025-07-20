@@ -228,17 +228,30 @@ fmt/fast:
 .PHONY : fmt/fast
 
 #=============================================================================
-# Target rules for targets named serialisation
+# Target rules for targets named ecs
 
 # Build rule for target.
-serialisation: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 serialisation
-.PHONY : serialisation
+ecs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ecs
+.PHONY : ecs
 
 # fast build rule for target.
-serialisation/fast:
-	$(MAKE) $(MAKESILENT) -f src/serialisation/CMakeFiles/serialisation.dir/build.make src/serialisation/CMakeFiles/serialisation.dir/build
-.PHONY : serialisation/fast
+ecs/fast:
+	$(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/build
+.PHONY : ecs/fast
+
+#=============================================================================
+# Target rules for targets named asset_system
+
+# Build rule for target.
+asset_system: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 asset_system
+.PHONY : asset_system
+
+# fast build rule for target.
+asset_system/fast:
+	$(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/build
+.PHONY : asset_system/fast
 
 #=============================================================================
 # Target rules for targets named engine
@@ -292,12 +305,13 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... shaders"
+	@echo "... asset_system"
+	@echo "... ecs"
 	@echo "... engine"
 	@echo "... fastgltf"
 	@echo "... fastgltf_simdjson"
 	@echo "... fmt"
 	@echo "... imgui"
-	@echo "... serialisation"
 	@echo "... shader_drafter"
 	@echo "... vkbootstrap"
 .PHONY : help

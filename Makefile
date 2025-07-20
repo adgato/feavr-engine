@@ -241,17 +241,17 @@ ecs/fast:
 .PHONY : ecs/fast
 
 #=============================================================================
-# Target rules for targets named serialisation
+# Target rules for targets named asset_system
 
 # Build rule for target.
-serialisation: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 serialisation
-.PHONY : serialisation
+asset_system: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 asset_system
+.PHONY : asset_system
 
 # fast build rule for target.
-serialisation/fast:
-	$(MAKE) $(MAKESILENT) -f src/serialisation/CMakeFiles/serialisation.dir/build.make src/serialisation/CMakeFiles/serialisation.dir/build
-.PHONY : serialisation/fast
+asset_system/fast:
+	$(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/build
+.PHONY : asset_system/fast
 
 #=============================================================================
 # Target rules for targets named engine
@@ -266,32 +266,6 @@ engine/fast:
 	$(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/build
 .PHONY : engine/fast
 
-#=============================================================================
-# Target rules for targets named shaders
-
-# Build rule for target.
-shaders: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 shaders
-.PHONY : shaders
-
-# fast build rule for target.
-shaders/fast:
-	$(MAKE) $(MAKESILENT) -f shaders/CMakeFiles/shaders.dir/build.make shaders/CMakeFiles/shaders.dir/build
-.PHONY : shaders/fast
-
-#=============================================================================
-# Target rules for targets named shader_drafter
-
-# Build rule for target.
-shader_drafter: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 shader_drafter
-.PHONY : shader_drafter
-
-# fast build rule for target.
-shader_drafter/fast:
-	$(MAKE) $(MAKESILENT) -f src/shader_drafter/CMakeFiles/shader_drafter.dir/build.make src/shader_drafter/CMakeFiles/shader_drafter.dir/build
-.PHONY : shader_drafter/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -304,15 +278,13 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... shaders"
+	@echo "... asset_system"
 	@echo "... ecs"
 	@echo "... engine"
 	@echo "... fastgltf"
 	@echo "... fastgltf_simdjson"
 	@echo "... fmt"
 	@echo "... imgui"
-	@echo "... serialisation"
-	@echo "... shader_drafter"
 	@echo "... vkbootstrap"
 .PHONY : help
 

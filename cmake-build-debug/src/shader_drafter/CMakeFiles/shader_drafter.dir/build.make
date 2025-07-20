@@ -112,7 +112,6 @@ shader_drafter_EXTERNAL_OBJECTS =
 /home/adgato/projects/vulkan/template-project/bin/shader_drafter: src/shader_drafter/CMakeFiles/shader_drafter.dir/spirv_reflect.c.o
 /home/adgato/projects/vulkan/template-project/bin/shader_drafter: src/shader_drafter/CMakeFiles/shader_drafter.dir/build.make
 /home/adgato/projects/vulkan/template-project/bin/shader_drafter: src/shader_drafter/CMakeFiles/shader_drafter.dir/compiler_depend.ts
-/home/adgato/projects/vulkan/template-project/bin/shader_drafter: /usr/lib/x86_64-linux-gnu/libvulkan.so
 /home/adgato/projects/vulkan/template-project/bin/shader_drafter: include/fmt/libfmtd.a
 /home/adgato/projects/vulkan/template-project/bin/shader_drafter: src/shader_drafter/CMakeFiles/shader_drafter.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adgato/projects/vulkan/template-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable /home/adgato/projects/vulkan/template-project/bin/shader_drafter"

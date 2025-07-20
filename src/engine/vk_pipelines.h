@@ -39,5 +39,5 @@ public:
 
 namespace vkutil
 {
-    VkShaderModule load_shader_module(const char* filePath, VkDevice device);
+    VkShaderModule load_shader_module(const std::vector<std::byte>& buffer, VkDevice device);
 }

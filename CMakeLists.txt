@@ -12,7 +12,5 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin")
 set (CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin")
 
 add_subdirectory(src/ecs)
-add_subdirectory(src/serialisation)
+add_subdirectory(src/assets-system)
 add_subdirectory(src/engine)
-add_subdirectory(shaders)
-add_subdirectory(src/shader_drafter)

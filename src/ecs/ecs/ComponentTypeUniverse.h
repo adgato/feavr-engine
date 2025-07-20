@@ -8,20 +8,21 @@ struct TypeUniverse;
 
 #define COMPONENT_TYPE_UNIVERSE(...) \
     using ComponentTypeUniverse = TypeUniverse<__VA_ARGS__>; \
-    inline constexpr const char* ComponentTypeNames = #__VA_ARGS__; \
+    inline constexpr const char* ComponentTypeNames = #__VA_ARGS__;
 
 struct Cat
 {
-    serial::array<char> catSound {};
+    SERIALIZABLE(0, serial::array<char>) catSound;
+    SERIALIZABLE(1, int) cat;
 
     void Serialize(serial::SerialManager& m)
     {
-        m.SerializeArr(&catSound, 0);
+        m.SerializeComponent(catSound, cat);
     }
 
     void Destroy()
     {
-        catSound.Destroy();
+        catSound->Destroy();
     }
 };
 

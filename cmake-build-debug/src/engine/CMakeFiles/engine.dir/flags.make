@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DFASTGLTF_DISABLE_CUSTOM_MEMORY_POOL=0 -DFASTGLTF_ENABLE_DEPRECATED_EXT=0 -DFASTGLTF_USE_64BIT_FLOAT=0 -DFASTGLTF_USE_CUSTOM_SMALLVECTOR=0 -DGLM_FORCE_DEPTH_ZERO_TO_ONE -DPROJECT_ROOT=\"/home/adgato/projects/vulkan/template-project\"
 
-CXX_INCLUDES = -I/home/adgato/projects/vulkan/template-project/src/engine -I/home/adgato/projects/vulkan/template-project/src/ecs -I/home/adgato/projects/vulkan/template-project/src/serialisation -I/home/adgato/projects/vulkan/template-project/include/hlsl++ -I/home/adgato/projects/vulkan/template-project/include/vma -I/home/adgato/projects/vulkan/template-project/include/glm -I/home/adgato/projects/vulkan/template-project/include/fmt/include -I/home/adgato/projects/vulkan/template-project/include/vkbootstrap -I/home/adgato/projects/vulkan/template-project/include/imgui -I/home/adgato/projects/vulkan/template-project/include/fastgltf/include -isystem /usr/include/SDL2
+CXX_INCLUDES = -I/home/adgato/projects/vulkan/template-project/src/engine -I/home/adgato/projects/vulkan/template-project/src/ecs -I/home/adgato/projects/vulkan/template-project/src/assets-system -I/home/adgato/projects/vulkan/template-project/include/fmt/include -I/home/adgato/projects/vulkan/template-project/include/glm -I/home/adgato/projects/vulkan/template-project/include/hlsl++ -I/home/adgato/projects/vulkan/template-project/include/vma -I/home/adgato/projects/vulkan/template-project/include/vkbootstrap -I/home/adgato/projects/vulkan/template-project/include/imgui -I/home/adgato/projects/vulkan/template-project/include/fastgltf/include -isystem /usr/include/SDL2
 
 CXX_FLAGS = -g -std=gnu++20 -Og
 

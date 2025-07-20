@@ -438,8 +438,8 @@ engine_EXTERNAL_OBJECTS =
 /home/adgato/projects/vulkan/template-project/bin/engine: src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.o
 /home/adgato/projects/vulkan/template-project/bin/engine: src/engine/CMakeFiles/engine.dir/build.make
 /home/adgato/projects/vulkan/template-project/bin/engine: src/engine/CMakeFiles/engine.dir/compiler_depend.ts
-/home/adgato/projects/vulkan/template-project/bin/engine: src/serialisation/libserialisation.a
-/home/adgato/projects/vulkan/template-project/bin/engine: /usr/lib/x86_64-linux-gnu/libvulkan.so
+/home/adgato/projects/vulkan/template-project/bin/engine: src/ecs/libecs.a
+/home/adgato/projects/vulkan/template-project/bin/engine: src/assets-system/libasset_system.a
 /home/adgato/projects/vulkan/template-project/bin/engine: include/fmt/libfmtd.a
 /home/adgato/projects/vulkan/template-project/bin/engine: include/libvkbootstrap.a
 /home/adgato/projects/vulkan/template-project/bin/engine: include/libimgui.a

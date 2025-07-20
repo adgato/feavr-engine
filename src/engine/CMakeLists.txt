@@ -15,7 +15,7 @@ target_compile_definitions(engine PUBLIC
     PROJECT_ROOT="${PROJECT_SOURCE_DIR}"
 )
 
-target_link_libraries(engine PUBLIC ecs serialisation hlslpp vma glm Vulkan::Vulkan fmt::fmt stb_image vkbootstrap imgui fastgltf::fastgltf)
+target_link_libraries(engine PUBLIC ecs asset_system hlslpp vma glm Vulkan::Vulkan fmt::fmt stb_image vkbootstrap imgui fastgltf::fastgltf)
 target_link_libraries(engine ${SDL2_LIBRARIES})
 target_include_directories(engine PRIVATE ${SDL2_INCLUDE_DIRS})
 

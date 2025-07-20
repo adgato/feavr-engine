@@ -59,10 +59,17 @@ src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o: \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h \
  /usr/include/c++/13/bitset /usr/include/c++/13/bits/cxxabi_forced.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/array.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialConcepts.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/array.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/SerialConcepts.h \
  /usr/include/c++/13/cstdint /usr/include/c++/13/cassert \
  /usr/include/assert.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialManager.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/ReadByteStream.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/WriteByteStream.h
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/SerialManager.h \
+ /usr/include/c++/13/algorithm /usr/include/c++/13/bits/ranges_algo.h \
+ /usr/include/c++/13/bits/ranges_algobase.h \
+ /usr/include/c++/13/bits/ranges_util.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/pstl/execution_defs.h /usr/include/c++/13/numeric \
+ /usr/include/c++/13/bits/stl_numeric.h /usr/include/c++/13/bit \
+ /usr/include/c++/13/pstl/glue_numeric_defs.h /usr/include/c++/13/ranges \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/ReadByteStream.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/WriteByteStream.h

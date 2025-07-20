@@ -2,6 +2,9 @@
 #include "vk_engine.h"
 #include "vk_pipelines.h"
 #include "../shader_descriptors.h"
+#include "assets-system/AssetFile.h"
+#include "assets-system/AssetManager.h"
+#include "include/json.hpp"
 
 namespace rendering::passes
 {
@@ -85,11 +88,22 @@ namespace rendering::passes
 
     VkPipeline DefaultPass::CreatePipeline(const VkPipelineLayout pipelineLayout)
     {
-        const VkShaderModule meshFragShader = vkutil::load_shader_module(shader::pixel_filename, device);
-        const VkShaderModule meshVertexShader = vkutil::load_shader_module(shader::vertex_filename, device);
+        // TODO - Assets::Load<VkShaderModule> returns modules + metadata
+
+        assets_system::AssetFile vertAsset = assets_system::AssetManager::LoadAsset(shader::vertex_asset);
+        assets_system::AssetFile fragAsset = assets_system::AssetManager::LoadAsset(shader::pixel_asset);
+
+        const VkShaderModule meshVertexShader = vkutil::load_shader_module(vertAsset.blob, device);
+        const VkShaderModule meshFragShader = vkutil::load_shader_module(fragAsset.blob, device);
+
+        nlohmann::json vertMetadata = nlohmann::json::parse(vertAsset.json);
+        nlohmann::json fragMetadata = nlohmann::json::parse(fragAsset.json);
+
+        std::string vertEntry = vertMetadata["entry"];
+        std::string fragEntry = fragMetadata["entry"];
 
         PipelineBuilder pipelineBuilder;
-        pipelineBuilder.set_shaders(meshVertexShader, meshFragShader, shader::vertex_entry, shader::pixel_entry);
+        pipelineBuilder.set_shaders(meshVertexShader, meshFragShader, vertEntry.c_str(), fragEntry.c_str());
         pipelineBuilder.set_input_topology(VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
         pipelineBuilder.set_polygon_mode(VK_POLYGON_MODE_FILL);
         pipelineBuilder.set_cull_mode(VK_CULL_MODE_NONE, VK_FRONT_FACE_CLOCKWISE);

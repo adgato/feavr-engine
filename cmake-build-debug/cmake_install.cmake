@@ -46,7 +46,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/adgato/projects/vulkan/template-project/cmake-build-debug/include/cmake_install.cmake")
   include("/home/adgato/projects/vulkan/template-project/cmake-build-debug/src/ecs/cmake_install.cmake")
-  include("/home/adgato/projects/vulkan/template-project/cmake-build-debug/src/serialisation/cmake_install.cmake")
+  include("/home/adgato/projects/vulkan/template-project/cmake-build-debug/src/assets-system/cmake_install.cmake")
   include("/home/adgato/projects/vulkan/template-project/cmake-build-debug/src/engine/cmake_install.cmake")
   include("/home/adgato/projects/vulkan/template-project/cmake-build-debug/shaders/cmake_install.cmake")
   include("/home/adgato/projects/vulkan/template-project/cmake-build-debug/src/shader_drafter/cmake_install.cmake")

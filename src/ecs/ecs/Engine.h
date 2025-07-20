@@ -5,7 +5,6 @@
 #include <cstring>
 
 #include "ArchetypeData.h"
-#include "SerialTypes.h"
 #include "TypeIndexer.h"
 #include "UpdateQueue.h"
 

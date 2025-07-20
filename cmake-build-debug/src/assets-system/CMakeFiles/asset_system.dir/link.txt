@@ -1,0 +1,2 @@
+/usr/bin/ar qc libasset_system.a "CMakeFiles/asset_system.dir/assets-system/GenAssetsMeta.cpp.o" "CMakeFiles/asset_system.dir/assets-system/TextAssetManager.cpp.o" CMakeFiles/asset_system.dir/serialisation/ReadByteStream.cpp.o CMakeFiles/asset_system.dir/serialisation/WriteByteStream.cpp.o
+/usr/bin/ranlib libasset_system.a

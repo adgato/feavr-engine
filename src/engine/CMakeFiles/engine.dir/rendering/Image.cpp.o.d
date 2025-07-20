@@ -97,6 +97,19 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o: \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/shader_descriptors.h \
  /usr/include/c++/13/cassert /usr/include/assert.h \
  /home/adgato/projects/vulkan/template-project/src/engine/vk_new.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetLookup.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetID.h \
+ /usr/include/c++/13/cstdint \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/SerialManager.h \
+ /usr/include/c++/13/algorithm /usr/include/c++/13/bits/ranges_algo.h \
+ /usr/include/c++/13/bits/ranges_algobase.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/pstl/execution_defs.h /usr/include/c++/13/numeric \
+ /usr/include/c++/13/bits/stl_numeric.h /usr/include/c++/13/bit \
+ /usr/include/c++/13/pstl/glue_numeric_defs.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/ReadByteStream.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/WriteByteStream.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/SerialConcepts.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassDirectory.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/DefaultPass.h \
@@ -104,12 +117,7 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o: \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h \
  /usr/include/c++/13/bitset /usr/include/c++/13/bits/cxxabi_forced.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/array.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialConcepts.h \
- /usr/include/c++/13/cstdint \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/SerialManager.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/ReadByteStream.h \
- /home/adgato/projects/vulkan/template-project/src/serialisation/serialisation/WriteByteStream.h \
+ /home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/array.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/Pass.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h \
  /usr/include/c++/13/unordered_set \
@@ -117,7 +125,6 @@ src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o: \
  /usr/include/c++/13/bits/hashtable.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/ArchetypeData.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h \
- /home/adgato/projects/vulkan/template-project/src/ecs/ecs/SerialTypes.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h \
  /home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h \
  /home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassInstance.h \

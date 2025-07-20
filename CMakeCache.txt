@@ -376,6 +376,12 @@ FMT_WERROR:BOOL=OFF
 //Path to a program.
 GLSL_VALIDATOR:FILEPATH=/usr/bin/glslangValidator
 
+//Arguments to supply to pkg-config
+PKG_CONFIG_ARGN:STRING=
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
+
 //The directory containing a CMake configuration file for SDL2.
 SDL2_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/SDL2
 
@@ -392,7 +398,10 @@ Vulkan_INCLUDE_DIR:PATH=/usr/include
 Vulkan_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libvulkan.so
 
 //Dependencies for the target
-ecs_LIB_DEPENDS:STATIC=general;serialisation;
+asset_system_LIB_DEPENDS:STATIC=general;fmt::fmt;general;lz4;
+
+//Dependencies for the target
+ecs_LIB_DEPENDS:STATIC=general;asset_system;
 
 //Value Computed by CMake
 fastgltf_BINARY_DIR:STATIC=/home/adgato/projects/vulkan/template-project/include/fastgltf
@@ -405,6 +414,18 @@ fastgltf_SOURCE_DIR:STATIC=/home/adgato/projects/vulkan/template-project/include
 
 //Dependencies for the target
 imgui_LIB_DEPENDS:STATIC=general;Vulkan::Vulkan;general;SDL2::SDL2;
+
+//The directory containing a CMake configuration file for lz4.
+lz4_DIR:PATH=lz4_DIR-NOTFOUND
+
+//Path to a library.
+pkgcfg_lib_LZ4_lz4:FILEPATH=/usr/lib/x86_64-linux-gnu/liblz4.so
+
+//Path to a library.
+pkgcfg_lib_lz4_lz4:FILEPATH=/usr/lib/x86_64-linux-gnu/liblz4.so
+
+//Dependencies for the target
+serialisation_LIB_DEPENDS:STATIC=general;fmt::fmt;
 
 //Value Computed by CMake
 template_BINARY_DIR:STATIC=/home/adgato/projects/vulkan/template-project
@@ -557,7 +578,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -602,8 +623,49 @@ CMAKE_TAPI-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v1.8.1()]
 //Details about finding Vulkan
 FIND_PACKAGE_MESSAGE_DETAILS_Vulkan:INTERNAL=[/usr/lib/x86_64-linux-gnu/libvulkan.so][/usr/include][cfound components: glslangValidator missing components: glslc][v1.3.275()]
+LZ4_CFLAGS:INTERNAL=-I/usr/include
+LZ4_CFLAGS_I:INTERNAL=
+LZ4_CFLAGS_OTHER:INTERNAL=
+LZ4_FOUND:INTERNAL=1
+LZ4_INCLUDEDIR:INTERNAL=/usr/include
+LZ4_INCLUDE_DIRS:INTERNAL=/usr/include
+LZ4_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-llz4
+LZ4_LDFLAGS_OTHER:INTERNAL=
+LZ4_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+LZ4_LIBRARIES:INTERNAL=lz4
+LZ4_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+LZ4_LIBS:INTERNAL=
+LZ4_LIBS_L:INTERNAL=
+LZ4_LIBS_OTHER:INTERNAL=
+LZ4_LIBS_PATHS:INTERNAL=
+LZ4_MODULE_NAME:INTERNAL=liblz4
+LZ4_PREFIX:INTERNAL=/usr
+LZ4_STATIC_CFLAGS:INTERNAL=-I/usr/include
+LZ4_STATIC_CFLAGS_I:INTERNAL=
+LZ4_STATIC_CFLAGS_OTHER:INTERNAL=
+LZ4_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+LZ4_STATIC_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-llz4
+LZ4_STATIC_LDFLAGS_OTHER:INTERNAL=
+LZ4_STATIC_LIBDIR:INTERNAL=
+LZ4_STATIC_LIBRARIES:INTERNAL=lz4
+LZ4_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+LZ4_STATIC_LIBS:INTERNAL=
+LZ4_STATIC_LIBS_L:INTERNAL=
+LZ4_STATIC_LIBS_OTHER:INTERNAL=
+LZ4_STATIC_LIBS_PATHS:INTERNAL=
+LZ4_VERSION:INTERNAL=1.9.4
+LZ4_liblz4_INCLUDEDIR:INTERNAL=
+LZ4_liblz4_LIBDIR:INTERNAL=
+LZ4_liblz4_PREFIX:INTERNAL=
+LZ4_liblz4_VERSION:INTERNAL=
+//ADVANCED property for variable: PKG_CONFIG_ARGN
+PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Vulkan_GLSLANG_VALIDATOR_EXECUTABLE
 Vulkan_GLSLANG_VALIDATOR_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Vulkan_GLSLC_EXECUTABLE
@@ -620,4 +682,48 @@ _CMAKE_C_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
+__pkg_config_arguments_LZ4:INTERNAL=REQUIRED;liblz4
+__pkg_config_arguments_lz4:INTERNAL=REQUIRED;IMPORTED_TARGET;liblz4
+__pkg_config_checked_LZ4:INTERNAL=1
+__pkg_config_checked_lz4:INTERNAL=1
+lz4_CFLAGS:INTERNAL=-I/usr/include
+lz4_CFLAGS_I:INTERNAL=
+lz4_CFLAGS_OTHER:INTERNAL=
+lz4_FOUND:INTERNAL=1
+lz4_INCLUDEDIR:INTERNAL=/usr/include
+lz4_INCLUDE_DIRS:INTERNAL=/usr/include
+lz4_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-llz4
+lz4_LDFLAGS_OTHER:INTERNAL=
+lz4_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+lz4_LIBRARIES:INTERNAL=lz4
+lz4_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+lz4_LIBS:INTERNAL=
+lz4_LIBS_L:INTERNAL=
+lz4_LIBS_OTHER:INTERNAL=
+lz4_LIBS_PATHS:INTERNAL=
+lz4_MODULE_NAME:INTERNAL=liblz4
+lz4_PREFIX:INTERNAL=/usr
+lz4_STATIC_CFLAGS:INTERNAL=-I/usr/include
+lz4_STATIC_CFLAGS_I:INTERNAL=
+lz4_STATIC_CFLAGS_OTHER:INTERNAL=
+lz4_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+lz4_STATIC_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-llz4
+lz4_STATIC_LDFLAGS_OTHER:INTERNAL=
+lz4_STATIC_LIBDIR:INTERNAL=
+lz4_STATIC_LIBRARIES:INTERNAL=lz4
+lz4_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+lz4_STATIC_LIBS:INTERNAL=
+lz4_STATIC_LIBS_L:INTERNAL=
+lz4_STATIC_LIBS_OTHER:INTERNAL=
+lz4_STATIC_LIBS_PATHS:INTERNAL=
+lz4_VERSION:INTERNAL=1.9.4
+lz4_liblz4_INCLUDEDIR:INTERNAL=
+lz4_liblz4_LIBDIR:INTERNAL=
+lz4_liblz4_PREFIX:INTERNAL=
+lz4_liblz4_VERSION:INTERNAL=
+//ADVANCED property for variable: pkgcfg_lib_LZ4_lz4
+pkgcfg_lib_LZ4_lz4-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_lz4_lz4
+pkgcfg_lib_lz4_lz4-ADVANCED:INTERNAL=1
+prefix_result:INTERNAL=/usr/lib/x86_64-linux-gnu
 

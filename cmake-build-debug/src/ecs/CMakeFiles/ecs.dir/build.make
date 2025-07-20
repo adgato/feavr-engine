@@ -72,6 +72,70 @@ include src/ecs/CMakeFiles/ecs.dir/flags.make
 src/ecs/CMakeFiles/ecs.dir/codegen:
 .PHONY : src/ecs/CMakeFiles/ecs.dir/codegen
 
+src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.o: src/ecs/CMakeFiles/ecs.dir/flags.make
+src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.o: /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.cpp
+src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.o: src/ecs/CMakeFiles/ecs.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.o"
+	cd /home/adgato/projects/vulkan/template-project/cmake-build-debug/src/ecs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.o -MF CMakeFiles/ecs.dir/ecs/Engine.cpp.o.d -o CMakeFiles/ecs.dir/ecs/Engine.cpp.o -c /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.cpp
+
+src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ecs.dir/ecs/Engine.cpp.i"
+	cd /home/adgato/projects/vulkan/template-project/cmake-build-debug/src/ecs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.cpp > CMakeFiles/ecs.dir/ecs/Engine.cpp.i
+
+src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/ecs/Engine.cpp.s"
+	cd /home/adgato/projects/vulkan/template-project/cmake-build-debug/src/ecs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.cpp -o CMakeFiles/ecs.dir/ecs/Engine.cpp.s
+
+src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.o: src/ecs/CMakeFiles/ecs.dir/flags.make
+src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.o: /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.cpp
+src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.o: src/ecs/CMakeFiles/ecs.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.o"
+	cd /home/adgato/projects/vulkan/template-project/cmake-build-debug/src/ecs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.o -MF CMakeFiles/ecs.dir/ecs/RawArray.cpp.o.d -o CMakeFiles/ecs.dir/ecs/RawArray.cpp.o -c /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.cpp
+
+src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ecs.dir/ecs/RawArray.cpp.i"
+	cd /home/adgato/projects/vulkan/template-project/cmake-build-debug/src/ecs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.cpp > CMakeFiles/ecs.dir/ecs/RawArray.cpp.i
+
+src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/ecs/RawArray.cpp.s"
+	cd /home/adgato/projects/vulkan/template-project/cmake-build-debug/src/ecs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.cpp -o CMakeFiles/ecs.dir/ecs/RawArray.cpp.s
+
+src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.o: src/ecs/CMakeFiles/ecs.dir/flags.make
+src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.o: /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Serial.cpp
+src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.o: src/ecs/CMakeFiles/ecs.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.o"
+	cd /home/adgato/projects/vulkan/template-project/cmake-build-debug/src/ecs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.o -MF CMakeFiles/ecs.dir/ecs/Serial.cpp.o.d -o CMakeFiles/ecs.dir/ecs/Serial.cpp.o -c /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Serial.cpp
+
+src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ecs.dir/ecs/Serial.cpp.i"
+	cd /home/adgato/projects/vulkan/template-project/cmake-build-debug/src/ecs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Serial.cpp > CMakeFiles/ecs.dir/ecs/Serial.cpp.i
+
+src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/ecs/Serial.cpp.s"
+	cd /home/adgato/projects/vulkan/template-project/cmake-build-debug/src/ecs && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/template-project/src/ecs/ecs/Serial.cpp -o CMakeFiles/ecs.dir/ecs/Serial.cpp.s
+
+# Object files for target ecs
+ecs_OBJECTS = \
+"CMakeFiles/ecs.dir/ecs/Engine.cpp.o" \
+"CMakeFiles/ecs.dir/ecs/RawArray.cpp.o" \
+"CMakeFiles/ecs.dir/ecs/Serial.cpp.o"
+
+# External object files for target ecs
+ecs_EXTERNAL_OBJECTS =
+
+src/ecs/libecs.a: src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.o
+src/ecs/libecs.a: src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.o
+src/ecs/libecs.a: src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.o
+src/ecs/libecs.a: src/ecs/CMakeFiles/ecs.dir/build.make
+src/ecs/libecs.a: src/ecs/CMakeFiles/ecs.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adgato/projects/vulkan/template-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libecs.a"
+	cd /home/adgato/projects/vulkan/template-project/cmake-build-debug/src/ecs && $(CMAKE_COMMAND) -P CMakeFiles/ecs.dir/cmake_clean_target.cmake
+	cd /home/adgato/projects/vulkan/template-project/cmake-build-debug/src/ecs && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ecs.dir/link.txt --verbose=$(VERBOSE)
+
+# Rule to build all files generated by this target.
+src/ecs/CMakeFiles/ecs.dir/build: src/ecs/libecs.a
+.PHONY : src/ecs/CMakeFiles/ecs.dir/build
+
 src/ecs/CMakeFiles/ecs.dir/clean:
 	cd /home/adgato/projects/vulkan/template-project/cmake-build-debug/src/ecs && $(CMAKE_COMMAND) -P CMakeFiles/ecs.dir/cmake_clean.cmake
 .PHONY : src/ecs/CMakeFiles/ecs.dir/clean

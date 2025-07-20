@@ -1,7 +1,24 @@
-find_package(Vulkan REQUIRED)
-
 # Use system SDL2 instead of bundled version
 find_package(SDL2 REQUIRED)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(LZ4 REQUIRED liblz4)
+
+# Create an imported library target
+add_library(lz4 INTERFACE IMPORTED)
+
+# Set the properties on the imported target
+set_target_properties(lz4 PROPERTIES
+        INTERFACE_INCLUDE_DIRECTORIES "${LZ4_INCLUDE_DIRS}"
+        INTERFACE_LINK_LIBRARIES "${LZ4_LIBRARIES}"
+        INTERFACE_COMPILE_OPTIONS "${LZ4_CFLAGS_OTHER}"
+)
+
+# If there are library directories, add them
+if(LZ4_LIBRARY_DIRS)
+  set_target_properties(lz4 PROPERTIES
+          INTERFACE_LINK_DIRECTORIES "${LZ4_LIBRARY_DIRS}"
+  )
+endif()
 
 add_library(vkbootstrap STATIC)
 add_library(glm INTERFACE)
@@ -16,7 +33,7 @@ add_subdirectory(fmt EXCLUDE_FROM_ALL)
 # Remove this line - we're using system SDL2 now
 # add_subdirectory(SDL EXCLUDE_FROM_ALL)
 
-target_sources(vkbootstrap PRIVATE 
+target_sources(vkbootstrap PRIVATE
   vkbootstrap/VkBootstrap.h
   vkbootstrap/VkBootstrap.cpp
   )
