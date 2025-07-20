@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.cpp" "src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.o" "gcc" "src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.o.d"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.cpp" "src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.o" "gcc" "src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.o.d"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Serial.cpp" "src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.o" "gcc" "src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.o.d"
+  "/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/Engine.cpp" "src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.o" "gcc" "src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.o.d"
+  "/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/RawArray.cpp" "src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.o" "gcc" "src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.o.d"
+  "/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/Serial.cpp" "src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.o" "gcc" "src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

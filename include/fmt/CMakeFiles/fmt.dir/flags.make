@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/adgato/projects/vulkan/template-project/include/fmt/include
+CXX_INCLUDES = -I/home/adgato/projects/vulkan/feavr-engine/include/fmt/include
 
 CXX_FLAGS = -g -fdiagnostics-color=always
 

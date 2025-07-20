@@ -57,18 +57,18 @@ RM = /home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmak
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
+	/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/template-project/CMakeFiles /home/adgato/projects/vulkan/template-project/include/fastgltf//CMakeFiles/progress.marks
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fastgltf/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/template-project/CMakeFiles 0
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/feavr-engine/CMakeFiles /home/adgato/projects/vulkan/feavr-engine/include/fastgltf//CMakeFiles/progress.marks
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fastgltf/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/feavr-engine/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fastgltf/clean
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fastgltf/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,23 +148,23 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fastgltf/preinstall
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fastgltf/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fastgltf/preinstall
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fastgltf/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/template-project/CMakeFiles/VerifyGlobs.cmake
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/feavr-engine/CMakeFiles/VerifyGlobs.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/rule:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/rule
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/rule
 .PHONY : include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/rule
 
 # Convenience name for target.
@@ -173,12 +173,12 @@ fastgltf_simdjson: include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/rule
 
 # fast build rule for target.
 fastgltf_simdjson/fast:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/build.make include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/build
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/build.make include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/build
 .PHONY : fastgltf_simdjson/fast
 
 # Convenience name for target.
 include/fastgltf/CMakeFiles/fastgltf.dir/rule:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fastgltf/CMakeFiles/fastgltf.dir/rule
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fastgltf/CMakeFiles/fastgltf.dir/rule
 .PHONY : include/fastgltf/CMakeFiles/fastgltf.dir/rule
 
 # Convenience name for target.
@@ -187,7 +187,7 @@ fastgltf: include/fastgltf/CMakeFiles/fastgltf.dir/rule
 
 # fast build rule for target.
 fastgltf/fast:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf.dir/build.make include/fastgltf/CMakeFiles/fastgltf.dir/build
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf.dir/build.make include/fastgltf/CMakeFiles/fastgltf.dir/build
 .PHONY : fastgltf/fast
 
 deps/simdjson/simdjson.o: deps/simdjson/simdjson.cpp.o
@@ -195,7 +195,7 @@ deps/simdjson/simdjson.o: deps/simdjson/simdjson.cpp.o
 
 # target to build an object file
 deps/simdjson/simdjson.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/build.make include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/deps/simdjson/simdjson.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/build.make include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/deps/simdjson/simdjson.cpp.o
 .PHONY : deps/simdjson/simdjson.cpp.o
 
 deps/simdjson/simdjson.i: deps/simdjson/simdjson.cpp.i
@@ -203,7 +203,7 @@ deps/simdjson/simdjson.i: deps/simdjson/simdjson.cpp.i
 
 # target to preprocess a source file
 deps/simdjson/simdjson.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/build.make include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/deps/simdjson/simdjson.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/build.make include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/deps/simdjson/simdjson.cpp.i
 .PHONY : deps/simdjson/simdjson.cpp.i
 
 deps/simdjson/simdjson.s: deps/simdjson/simdjson.cpp.s
@@ -211,7 +211,7 @@ deps/simdjson/simdjson.s: deps/simdjson/simdjson.cpp.s
 
 # target to generate assembly for a file
 deps/simdjson/simdjson.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/build.make include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/deps/simdjson/simdjson.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/build.make include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/deps/simdjson/simdjson.cpp.s
 .PHONY : deps/simdjson/simdjson.cpp.s
 
 src/base64.o: src/base64.cpp.o
@@ -219,7 +219,7 @@ src/base64.o: src/base64.cpp.o
 
 # target to build an object file
 src/base64.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf.dir/build.make include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf.dir/build.make include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.o
 .PHONY : src/base64.cpp.o
 
 src/base64.i: src/base64.cpp.i
@@ -227,7 +227,7 @@ src/base64.i: src/base64.cpp.i
 
 # target to preprocess a source file
 src/base64.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf.dir/build.make include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf.dir/build.make include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.i
 .PHONY : src/base64.cpp.i
 
 src/base64.s: src/base64.cpp.s
@@ -235,7 +235,7 @@ src/base64.s: src/base64.cpp.s
 
 # target to generate assembly for a file
 src/base64.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf.dir/build.make include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf.dir/build.make include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.s
 .PHONY : src/base64.cpp.s
 
 src/fastgltf.o: src/fastgltf.cpp.o
@@ -243,7 +243,7 @@ src/fastgltf.o: src/fastgltf.cpp.o
 
 # target to build an object file
 src/fastgltf.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf.dir/build.make include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf.dir/build.make include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o
 .PHONY : src/fastgltf.cpp.o
 
 src/fastgltf.i: src/fastgltf.cpp.i
@@ -251,7 +251,7 @@ src/fastgltf.i: src/fastgltf.cpp.i
 
 # target to preprocess a source file
 src/fastgltf.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf.dir/build.make include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf.dir/build.make include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.i
 .PHONY : src/fastgltf.cpp.i
 
 src/fastgltf.s: src/fastgltf.cpp.s
@@ -259,7 +259,7 @@ src/fastgltf.s: src/fastgltf.cpp.s
 
 # target to generate assembly for a file
 src/fastgltf.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf.dir/build.make include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fastgltf/CMakeFiles/fastgltf.dir/build.make include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.s
 .PHONY : src/fastgltf.cpp.s
 
 # Help Target
@@ -296,7 +296,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/template-project/CMakeFiles/VerifyGlobs.cmake
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/feavr-engine/CMakeFiles/VerifyGlobs.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

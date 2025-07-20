@@ -53,10 +53,10 @@ RM = /home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmak
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 # Include any dependencies generated for this target.
 include include/CMakeFiles/vkbootstrap.dir/depend.make
@@ -75,16 +75,16 @@ include/CMakeFiles/vkbootstrap.dir/codegen:
 include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o: include/CMakeFiles/vkbootstrap.dir/flags.make
 include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o: include/vkbootstrap/VkBootstrap.cpp
 include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o: include/CMakeFiles/vkbootstrap.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o"
-	cd /home/adgato/projects/vulkan/template-project/include && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o -MF CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o.d -o CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o -c /home/adgato/projects/vulkan/template-project/include/vkbootstrap/VkBootstrap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/feavr-engine/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o"
+	cd /home/adgato/projects/vulkan/feavr-engine/include && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o -MF CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o.d -o CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o -c /home/adgato/projects/vulkan/feavr-engine/include/vkbootstrap/VkBootstrap.cpp
 
 include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.i"
-	cd /home/adgato/projects/vulkan/template-project/include && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/template-project/include/vkbootstrap/VkBootstrap.cpp > CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine/include && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/feavr-engine/include/vkbootstrap/VkBootstrap.cpp > CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.i
 
 include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.s"
-	cd /home/adgato/projects/vulkan/template-project/include && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/template-project/include/vkbootstrap/VkBootstrap.cpp -o CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine/include && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/feavr-engine/include/vkbootstrap/VkBootstrap.cpp -o CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.s
 
 # Object files for target vkbootstrap
 vkbootstrap_OBJECTS = \
@@ -96,19 +96,19 @@ vkbootstrap_EXTERNAL_OBJECTS =
 include/libvkbootstrap.a: include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o
 include/libvkbootstrap.a: include/CMakeFiles/vkbootstrap.dir/build.make
 include/libvkbootstrap.a: include/CMakeFiles/vkbootstrap.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libvkbootstrap.a"
-	cd /home/adgato/projects/vulkan/template-project/include && $(CMAKE_COMMAND) -P CMakeFiles/vkbootstrap.dir/cmake_clean_target.cmake
-	cd /home/adgato/projects/vulkan/template-project/include && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vkbootstrap.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adgato/projects/vulkan/feavr-engine/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libvkbootstrap.a"
+	cd /home/adgato/projects/vulkan/feavr-engine/include && $(CMAKE_COMMAND) -P CMakeFiles/vkbootstrap.dir/cmake_clean_target.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine/include && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vkbootstrap.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 include/CMakeFiles/vkbootstrap.dir/build: include/libvkbootstrap.a
 .PHONY : include/CMakeFiles/vkbootstrap.dir/build
 
 include/CMakeFiles/vkbootstrap.dir/clean:
-	cd /home/adgato/projects/vulkan/template-project/include && $(CMAKE_COMMAND) -P CMakeFiles/vkbootstrap.dir/cmake_clean.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine/include && $(CMAKE_COMMAND) -P CMakeFiles/vkbootstrap.dir/cmake_clean.cmake
 .PHONY : include/CMakeFiles/vkbootstrap.dir/clean
 
 include/CMakeFiles/vkbootstrap.dir/depend:
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/adgato/projects/vulkan/template-project /home/adgato/projects/vulkan/template-project/include /home/adgato/projects/vulkan/template-project /home/adgato/projects/vulkan/template-project/include /home/adgato/projects/vulkan/template-project/include/CMakeFiles/vkbootstrap.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/adgato/projects/vulkan/feavr-engine /home/adgato/projects/vulkan/feavr-engine/include /home/adgato/projects/vulkan/feavr-engine /home/adgato/projects/vulkan/feavr-engine/include /home/adgato/projects/vulkan/feavr-engine/include/CMakeFiles/vkbootstrap.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : include/CMakeFiles/vkbootstrap.dir/depend
 

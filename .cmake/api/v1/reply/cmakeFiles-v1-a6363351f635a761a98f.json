@@ -1,0 +1,1137 @@
+{
+	"globsDependent" : 
+	[
+		{
+			"expression" : "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/*.c",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/include/spirv_reflect.c"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/*.cpp",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/AssetFile.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/AssetManager.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/GenerateShaderLookup.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/ShaderAssetManager.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/TextAssetManager.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/serialisation/ReadByteStream.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/serialisation/WriteByteStream.cpp"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/*.h",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/AssetFile.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/AssetID.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/AssetLookup.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/AssetManager.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/GenerateShaderLookup.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/ShaderAssetManager.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/TextAssetManager.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/include/include/spirv/unified1/spirv.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/include/spirv_reflect.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/serialisation/ReadByteStream.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/serialisation/SerialConcepts.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/serialisation/SerialManager.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/serialisation/WriteByteStream.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/serialisation/array.h"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/*.hpp",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/feavr-engine/src/assets-system/include/json.hpp"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/feavr-engine/src/ecs/*.cpp",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/Engine.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/RawArray.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/Serial.cpp"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/feavr-engine/src/ecs/*.h",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/ArchetypeData.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/Common.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/CommonEngine.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/ComponentTypeUniverse.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/Engine.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/RawArray.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/Serial.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/TypeIndexer.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/UpdateQueue.h"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/feavr-engine/src/ecs/*.hpp",
+			"paths" : [],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/feavr-engine/src/engine/*.cpp",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/Core.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/ImguiOverlay.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/camera.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/main.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/CommonSetLayouts.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/CommonTextures.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/FwdPassPipeline.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/Image.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/Material.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/PassManager.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/SubMesh.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/Swapchain.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/passes/DefaultPass.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/passes/Pass.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_descriptors.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_engine.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_initializers.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_loader.cpp",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_pipelines.cpp"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/feavr-engine/src/engine/*.h",
+			"paths" : 
+			[
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/Core.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/ImguiOverlay.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/camera.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/Buffer.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/CommonSetLayouts.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/CommonTextures.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/FwdPassPipeline.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/Image.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/Material.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/PassManager.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/SubMesh.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/Swapchain.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/passes/DefaultPass.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/passes/Pass.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/passes/PassDirectory.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/passes/PassInstance.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/shader_descriptors.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_descriptors.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_engine.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_initializers.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_loader.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_new.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_pipelines.h",
+				"/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_types.h"
+			],
+			"recurse" : true
+		},
+		{
+			"expression" : "/home/adgato/projects/vulkan/feavr-engine/src/engine/*.hpp",
+			"paths" : [],
+			"recurse" : true
+		}
+	],
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeDetermineSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeSystem.cmake.in"
+		},
+		{
+			"path" : "CMakeFiles/3.31.6/CMakeSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeUnixFindMake.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linux-Initialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeDetermineCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeDetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCompilerIdDetection.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/ADSP-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/ARMCC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/ARMClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/AppleClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Clang-DetermineCompilerInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Borland-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Bruce-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Clang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Clang-DetermineCompilerInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Compaq-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Cray-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/CrayClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Embarcadero-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Fujitsu-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/GHS-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/GNU-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/HP-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/IAR-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Intel-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/LCC-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/MSVC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/NVHPC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/NVIDIA-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/OrangeC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/PGI-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/PathScale-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/SCO-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/SDCC-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/SunPro-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/TI-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/TIClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Tasking-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Watcom-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/XL-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/XLClang-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/zOS-C-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeFindBinUtils.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/GNU-FindBinUtils.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCCompiler.cmake.in"
+		},
+		{
+			"path" : "CMakeFiles/3.31.6/CMakeCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeDetermineCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeDetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linux-Determine-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCompilerIdDetection.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/ADSP-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/ARMCC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/ARMClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/AppleClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Clang-DetermineCompilerInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Borland-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Clang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Clang-DetermineCompilerInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Cray-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/CrayClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Embarcadero-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Fujitsu-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/GHS-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/HP-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/IAR-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Intel-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/MSVC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/NVHPC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/NVIDIA-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/OrangeC-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/PGI-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/PathScale-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/SCO-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/TI-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/TIClang-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Tasking-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/Watcom-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/XL-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeFindBinUtils.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/GNU-FindBinUtils.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCXXCompiler.cmake.in"
+		},
+		{
+			"path" : "CMakeFiles/3.31.6/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linux.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/UnixPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linux-GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeTestCompilerCommon.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CMakeDetermineLinkerId.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeParseImplicitIncludeInfo.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeParseImplicitLinkInfo.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeParseLibraryArchitecture.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeTestCompilerCommon.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCCompilerABI.c"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeDetermineCompilerSupport.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/FeatureTesting.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCCompiler.cmake.in"
+		},
+		{
+			"path" : "CMakeFiles/3.31.6/CMakeCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CMakeCLinkerInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CMakeCommonLinkerInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Linker/GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Linker/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linker/Linux-GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linker/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linker/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linux-GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeTestCompilerCommon.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CMakeDetermineLinkerId.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeParseImplicitIncludeInfo.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeParseImplicitLinkInfo.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeParseLibraryArchitecture.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeTestCompilerCommon.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeDetermineCompilerSupport.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/FeatureTesting.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCXXCompiler.cmake.in"
+		},
+		{
+			"path" : "CMakeFiles/3.31.6/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CMakeCXXLinkerInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CMakeCommonLinkerInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Linker/GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Linker/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linker/Linux-GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Platform/Linker/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindVulkan.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"path" : "include/CMakeLists.txt"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FeatureSummary.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPkgConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"path" : "include/fastgltf/CMakeLists.txt"
+		},
+		{
+			"path" : "include/fastgltf/cmake/add_source_directory.cmake"
+		},
+		{
+			"path" : "include/fastgltf/cmake/compiler_flags.cmake"
+		},
+		{
+			"path" : "include/fmt/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/GNUInstallDirs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CheckCXXCompilerFlag.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CheckCompilerFlag.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CheckFlagCommonConfig.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CheckCXXSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/Internal/CheckSourceCompiles.cmake"
+		},
+		{
+			"path" : "include/fmt/support/cmake/JoinPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakePackageConfigHelpers.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/WriteBasicConfigVersionFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/share/cmake-3.31/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in"
+		},
+		{
+			"path" : "include/fmt/support/cmake/fmt.pc.in"
+		},
+		{
+			"path" : "include/fmt/support/cmake/fmt-config.cmake.in"
+		},
+		{
+			"path" : "src/ecs/CMakeLists.txt"
+		},
+		{
+			"path" : "src/assets-system/CMakeLists.txt"
+		},
+		{
+			"path" : "src/engine/CMakeLists.txt"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "/home/adgato/projects/vulkan/feavr-engine",
+		"source" : "/home/adgato/projects/vulkan/feavr-engine"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 1
+	}
+}

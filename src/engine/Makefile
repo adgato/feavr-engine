@@ -57,18 +57,18 @@ RM = /home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmak
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
+	/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/template-project/CMakeFiles /home/adgato/projects/vulkan/template-project/src/engine//CMakeFiles/progress.marks
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/engine/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/template-project/CMakeFiles 0
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/feavr-engine/CMakeFiles /home/adgato/projects/vulkan/feavr-engine/src/engine//CMakeFiles/progress.marks
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/engine/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/feavr-engine/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/engine/clean
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/engine/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,23 +148,23 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/engine/preinstall
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/engine/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/engine/preinstall
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/engine/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/template-project/CMakeFiles/VerifyGlobs.cmake
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/feavr-engine/CMakeFiles/VerifyGlobs.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/engine/CMakeFiles/engine.dir/rule:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/engine/CMakeFiles/engine.dir/rule
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/engine/CMakeFiles/engine.dir/rule
 .PHONY : src/engine/CMakeFiles/engine.dir/rule
 
 # Convenience name for target.
@@ -173,7 +173,7 @@ engine: src/engine/CMakeFiles/engine.dir/rule
 
 # fast build rule for target.
 engine/fast:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/build
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/build
 .PHONY : engine/fast
 
 Core.o: Core.cpp.o
@@ -181,7 +181,7 @@ Core.o: Core.cpp.o
 
 # target to build an object file
 Core.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/Core.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/Core.cpp.o
 .PHONY : Core.cpp.o
 
 Core.i: Core.cpp.i
@@ -189,7 +189,7 @@ Core.i: Core.cpp.i
 
 # target to preprocess a source file
 Core.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/Core.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/Core.cpp.i
 .PHONY : Core.cpp.i
 
 Core.s: Core.cpp.s
@@ -197,7 +197,7 @@ Core.s: Core.cpp.s
 
 # target to generate assembly for a file
 Core.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/Core.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/Core.cpp.s
 .PHONY : Core.cpp.s
 
 ImguiOverlay.o: ImguiOverlay.cpp.o
@@ -205,7 +205,7 @@ ImguiOverlay.o: ImguiOverlay.cpp.o
 
 # target to build an object file
 ImguiOverlay.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.o
 .PHONY : ImguiOverlay.cpp.o
 
 ImguiOverlay.i: ImguiOverlay.cpp.i
@@ -213,7 +213,7 @@ ImguiOverlay.i: ImguiOverlay.cpp.i
 
 # target to preprocess a source file
 ImguiOverlay.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.i
 .PHONY : ImguiOverlay.cpp.i
 
 ImguiOverlay.s: ImguiOverlay.cpp.s
@@ -221,7 +221,7 @@ ImguiOverlay.s: ImguiOverlay.cpp.s
 
 # target to generate assembly for a file
 ImguiOverlay.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/ImguiOverlay.cpp.s
 .PHONY : ImguiOverlay.cpp.s
 
 camera.o: camera.cpp.o
@@ -229,7 +229,7 @@ camera.o: camera.cpp.o
 
 # target to build an object file
 camera.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/camera.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/camera.cpp.o
 .PHONY : camera.cpp.o
 
 camera.i: camera.cpp.i
@@ -237,7 +237,7 @@ camera.i: camera.cpp.i
 
 # target to preprocess a source file
 camera.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/camera.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/camera.cpp.i
 .PHONY : camera.cpp.i
 
 camera.s: camera.cpp.s
@@ -245,22 +245,22 @@ camera.s: camera.cpp.s
 
 # target to generate assembly for a file
 camera.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/camera.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/camera.cpp.s
 .PHONY : camera.cpp.s
 
 # target to build an object file
 cmake_pch.hxx.gch:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.gch
 .PHONY : cmake_pch.hxx.gch
 
 # target to preprocess a source file
 cmake_pch.hxx.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.i
 .PHONY : cmake_pch.hxx.i
 
 # target to generate assembly for a file
 cmake_pch.hxx.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/cmake_pch.hxx.s
 .PHONY : cmake_pch.hxx.s
 
 main.o: main.cpp.o
@@ -268,7 +268,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/main.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -276,7 +276,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/main.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -284,7 +284,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/main.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 rendering/CommonSetLayouts.o: rendering/CommonSetLayouts.cpp.o
@@ -292,7 +292,7 @@ rendering/CommonSetLayouts.o: rendering/CommonSetLayouts.cpp.o
 
 # target to build an object file
 rendering/CommonSetLayouts.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.o
 .PHONY : rendering/CommonSetLayouts.cpp.o
 
 rendering/CommonSetLayouts.i: rendering/CommonSetLayouts.cpp.i
@@ -300,7 +300,7 @@ rendering/CommonSetLayouts.i: rendering/CommonSetLayouts.cpp.i
 
 # target to preprocess a source file
 rendering/CommonSetLayouts.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.i
 .PHONY : rendering/CommonSetLayouts.cpp.i
 
 rendering/CommonSetLayouts.s: rendering/CommonSetLayouts.cpp.s
@@ -308,7 +308,7 @@ rendering/CommonSetLayouts.s: rendering/CommonSetLayouts.cpp.s
 
 # target to generate assembly for a file
 rendering/CommonSetLayouts.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/CommonSetLayouts.cpp.s
 .PHONY : rendering/CommonSetLayouts.cpp.s
 
 rendering/CommonTextures.o: rendering/CommonTextures.cpp.o
@@ -316,7 +316,7 @@ rendering/CommonTextures.o: rendering/CommonTextures.cpp.o
 
 # target to build an object file
 rendering/CommonTextures.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.o
 .PHONY : rendering/CommonTextures.cpp.o
 
 rendering/CommonTextures.i: rendering/CommonTextures.cpp.i
@@ -324,7 +324,7 @@ rendering/CommonTextures.i: rendering/CommonTextures.cpp.i
 
 # target to preprocess a source file
 rendering/CommonTextures.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.i
 .PHONY : rendering/CommonTextures.cpp.i
 
 rendering/CommonTextures.s: rendering/CommonTextures.cpp.s
@@ -332,7 +332,7 @@ rendering/CommonTextures.s: rendering/CommonTextures.cpp.s
 
 # target to generate assembly for a file
 rendering/CommonTextures.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/CommonTextures.cpp.s
 .PHONY : rendering/CommonTextures.cpp.s
 
 rendering/FwdPassPipeline.o: rendering/FwdPassPipeline.cpp.o
@@ -340,7 +340,7 @@ rendering/FwdPassPipeline.o: rendering/FwdPassPipeline.cpp.o
 
 # target to build an object file
 rendering/FwdPassPipeline.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.o
 .PHONY : rendering/FwdPassPipeline.cpp.o
 
 rendering/FwdPassPipeline.i: rendering/FwdPassPipeline.cpp.i
@@ -348,7 +348,7 @@ rendering/FwdPassPipeline.i: rendering/FwdPassPipeline.cpp.i
 
 # target to preprocess a source file
 rendering/FwdPassPipeline.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.i
 .PHONY : rendering/FwdPassPipeline.cpp.i
 
 rendering/FwdPassPipeline.s: rendering/FwdPassPipeline.cpp.s
@@ -356,7 +356,7 @@ rendering/FwdPassPipeline.s: rendering/FwdPassPipeline.cpp.s
 
 # target to generate assembly for a file
 rendering/FwdPassPipeline.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/FwdPassPipeline.cpp.s
 .PHONY : rendering/FwdPassPipeline.cpp.s
 
 rendering/Image.o: rendering/Image.cpp.o
@@ -364,7 +364,7 @@ rendering/Image.o: rendering/Image.cpp.o
 
 # target to build an object file
 rendering/Image.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.o
 .PHONY : rendering/Image.cpp.o
 
 rendering/Image.i: rendering/Image.cpp.i
@@ -372,7 +372,7 @@ rendering/Image.i: rendering/Image.cpp.i
 
 # target to preprocess a source file
 rendering/Image.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.i
 .PHONY : rendering/Image.cpp.i
 
 rendering/Image.s: rendering/Image.cpp.s
@@ -380,7 +380,7 @@ rendering/Image.s: rendering/Image.cpp.s
 
 # target to generate assembly for a file
 rendering/Image.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Image.cpp.s
 .PHONY : rendering/Image.cpp.s
 
 rendering/Material.o: rendering/Material.cpp.o
@@ -388,7 +388,7 @@ rendering/Material.o: rendering/Material.cpp.o
 
 # target to build an object file
 rendering/Material.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.o
 .PHONY : rendering/Material.cpp.o
 
 rendering/Material.i: rendering/Material.cpp.i
@@ -396,7 +396,7 @@ rendering/Material.i: rendering/Material.cpp.i
 
 # target to preprocess a source file
 rendering/Material.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.i
 .PHONY : rendering/Material.cpp.i
 
 rendering/Material.s: rendering/Material.cpp.s
@@ -404,7 +404,7 @@ rendering/Material.s: rendering/Material.cpp.s
 
 # target to generate assembly for a file
 rendering/Material.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Material.cpp.s
 .PHONY : rendering/Material.cpp.s
 
 rendering/PassManager.o: rendering/PassManager.cpp.o
@@ -412,7 +412,7 @@ rendering/PassManager.o: rendering/PassManager.cpp.o
 
 # target to build an object file
 rendering/PassManager.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.o
 .PHONY : rendering/PassManager.cpp.o
 
 rendering/PassManager.i: rendering/PassManager.cpp.i
@@ -420,7 +420,7 @@ rendering/PassManager.i: rendering/PassManager.cpp.i
 
 # target to preprocess a source file
 rendering/PassManager.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.i
 .PHONY : rendering/PassManager.cpp.i
 
 rendering/PassManager.s: rendering/PassManager.cpp.s
@@ -428,7 +428,7 @@ rendering/PassManager.s: rendering/PassManager.cpp.s
 
 # target to generate assembly for a file
 rendering/PassManager.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/PassManager.cpp.s
 .PHONY : rendering/PassManager.cpp.s
 
 rendering/SubMesh.o: rendering/SubMesh.cpp.o
@@ -436,7 +436,7 @@ rendering/SubMesh.o: rendering/SubMesh.cpp.o
 
 # target to build an object file
 rendering/SubMesh.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.o
 .PHONY : rendering/SubMesh.cpp.o
 
 rendering/SubMesh.i: rendering/SubMesh.cpp.i
@@ -444,7 +444,7 @@ rendering/SubMesh.i: rendering/SubMesh.cpp.i
 
 # target to preprocess a source file
 rendering/SubMesh.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.i
 .PHONY : rendering/SubMesh.cpp.i
 
 rendering/SubMesh.s: rendering/SubMesh.cpp.s
@@ -452,7 +452,7 @@ rendering/SubMesh.s: rendering/SubMesh.cpp.s
 
 # target to generate assembly for a file
 rendering/SubMesh.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/SubMesh.cpp.s
 .PHONY : rendering/SubMesh.cpp.s
 
 rendering/Swapchain.o: rendering/Swapchain.cpp.o
@@ -460,7 +460,7 @@ rendering/Swapchain.o: rendering/Swapchain.cpp.o
 
 # target to build an object file
 rendering/Swapchain.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.o
 .PHONY : rendering/Swapchain.cpp.o
 
 rendering/Swapchain.i: rendering/Swapchain.cpp.i
@@ -468,7 +468,7 @@ rendering/Swapchain.i: rendering/Swapchain.cpp.i
 
 # target to preprocess a source file
 rendering/Swapchain.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.i
 .PHONY : rendering/Swapchain.cpp.i
 
 rendering/Swapchain.s: rendering/Swapchain.cpp.s
@@ -476,7 +476,7 @@ rendering/Swapchain.s: rendering/Swapchain.cpp.s
 
 # target to generate assembly for a file
 rendering/Swapchain.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/Swapchain.cpp.s
 .PHONY : rendering/Swapchain.cpp.s
 
 rendering/passes/DefaultPass.o: rendering/passes/DefaultPass.cpp.o
@@ -484,7 +484,7 @@ rendering/passes/DefaultPass.o: rendering/passes/DefaultPass.cpp.o
 
 # target to build an object file
 rendering/passes/DefaultPass.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.o
 .PHONY : rendering/passes/DefaultPass.cpp.o
 
 rendering/passes/DefaultPass.i: rendering/passes/DefaultPass.cpp.i
@@ -492,7 +492,7 @@ rendering/passes/DefaultPass.i: rendering/passes/DefaultPass.cpp.i
 
 # target to preprocess a source file
 rendering/passes/DefaultPass.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.i
 .PHONY : rendering/passes/DefaultPass.cpp.i
 
 rendering/passes/DefaultPass.s: rendering/passes/DefaultPass.cpp.s
@@ -500,7 +500,7 @@ rendering/passes/DefaultPass.s: rendering/passes/DefaultPass.cpp.s
 
 # target to generate assembly for a file
 rendering/passes/DefaultPass.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/passes/DefaultPass.cpp.s
 .PHONY : rendering/passes/DefaultPass.cpp.s
 
 rendering/passes/Pass.o: rendering/passes/Pass.cpp.o
@@ -508,7 +508,7 @@ rendering/passes/Pass.o: rendering/passes/Pass.cpp.o
 
 # target to build an object file
 rendering/passes/Pass.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.o
 .PHONY : rendering/passes/Pass.cpp.o
 
 rendering/passes/Pass.i: rendering/passes/Pass.cpp.i
@@ -516,7 +516,7 @@ rendering/passes/Pass.i: rendering/passes/Pass.cpp.i
 
 # target to preprocess a source file
 rendering/passes/Pass.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.i
 .PHONY : rendering/passes/Pass.cpp.i
 
 rendering/passes/Pass.s: rendering/passes/Pass.cpp.s
@@ -524,7 +524,7 @@ rendering/passes/Pass.s: rendering/passes/Pass.cpp.s
 
 # target to generate assembly for a file
 rendering/passes/Pass.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/rendering/passes/Pass.cpp.s
 .PHONY : rendering/passes/Pass.cpp.s
 
 vk_descriptors.o: vk_descriptors.cpp.o
@@ -532,7 +532,7 @@ vk_descriptors.o: vk_descriptors.cpp.o
 
 # target to build an object file
 vk_descriptors.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_descriptors.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_descriptors.cpp.o
 .PHONY : vk_descriptors.cpp.o
 
 vk_descriptors.i: vk_descriptors.cpp.i
@@ -540,7 +540,7 @@ vk_descriptors.i: vk_descriptors.cpp.i
 
 # target to preprocess a source file
 vk_descriptors.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_descriptors.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_descriptors.cpp.i
 .PHONY : vk_descriptors.cpp.i
 
 vk_descriptors.s: vk_descriptors.cpp.s
@@ -548,7 +548,7 @@ vk_descriptors.s: vk_descriptors.cpp.s
 
 # target to generate assembly for a file
 vk_descriptors.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_descriptors.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_descriptors.cpp.s
 .PHONY : vk_descriptors.cpp.s
 
 vk_engine.o: vk_engine.cpp.o
@@ -556,7 +556,7 @@ vk_engine.o: vk_engine.cpp.o
 
 # target to build an object file
 vk_engine.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_engine.cpp.o
 .PHONY : vk_engine.cpp.o
 
 vk_engine.i: vk_engine.cpp.i
@@ -564,7 +564,7 @@ vk_engine.i: vk_engine.cpp.i
 
 # target to preprocess a source file
 vk_engine.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_engine.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_engine.cpp.i
 .PHONY : vk_engine.cpp.i
 
 vk_engine.s: vk_engine.cpp.s
@@ -572,7 +572,7 @@ vk_engine.s: vk_engine.cpp.s
 
 # target to generate assembly for a file
 vk_engine.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_engine.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_engine.cpp.s
 .PHONY : vk_engine.cpp.s
 
 vk_initializers.o: vk_initializers.cpp.o
@@ -580,7 +580,7 @@ vk_initializers.o: vk_initializers.cpp.o
 
 # target to build an object file
 vk_initializers.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_initializers.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_initializers.cpp.o
 .PHONY : vk_initializers.cpp.o
 
 vk_initializers.i: vk_initializers.cpp.i
@@ -588,7 +588,7 @@ vk_initializers.i: vk_initializers.cpp.i
 
 # target to preprocess a source file
 vk_initializers.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_initializers.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_initializers.cpp.i
 .PHONY : vk_initializers.cpp.i
 
 vk_initializers.s: vk_initializers.cpp.s
@@ -596,7 +596,7 @@ vk_initializers.s: vk_initializers.cpp.s
 
 # target to generate assembly for a file
 vk_initializers.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_initializers.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_initializers.cpp.s
 .PHONY : vk_initializers.cpp.s
 
 vk_loader.o: vk_loader.cpp.o
@@ -604,7 +604,7 @@ vk_loader.o: vk_loader.cpp.o
 
 # target to build an object file
 vk_loader.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_loader.cpp.o
 .PHONY : vk_loader.cpp.o
 
 vk_loader.i: vk_loader.cpp.i
@@ -612,7 +612,7 @@ vk_loader.i: vk_loader.cpp.i
 
 # target to preprocess a source file
 vk_loader.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_loader.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_loader.cpp.i
 .PHONY : vk_loader.cpp.i
 
 vk_loader.s: vk_loader.cpp.s
@@ -620,7 +620,7 @@ vk_loader.s: vk_loader.cpp.s
 
 # target to generate assembly for a file
 vk_loader.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_loader.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_loader.cpp.s
 .PHONY : vk_loader.cpp.s
 
 vk_pipelines.o: vk_pipelines.cpp.o
@@ -628,7 +628,7 @@ vk_pipelines.o: vk_pipelines.cpp.o
 
 # target to build an object file
 vk_pipelines.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.o
 .PHONY : vk_pipelines.cpp.o
 
 vk_pipelines.i: vk_pipelines.cpp.i
@@ -636,7 +636,7 @@ vk_pipelines.i: vk_pipelines.cpp.i
 
 # target to preprocess a source file
 vk_pipelines.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.i
 .PHONY : vk_pipelines.cpp.i
 
 vk_pipelines.s: vk_pipelines.cpp.s
@@ -644,7 +644,7 @@ vk_pipelines.s: vk_pipelines.cpp.s
 
 # target to generate assembly for a file
 vk_pipelines.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/engine/CMakeFiles/engine.dir/build.make src/engine/CMakeFiles/engine.dir/vk_pipelines.cpp.s
 .PHONY : vk_pipelines.cpp.s
 
 # Help Target
@@ -731,7 +731,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/template-project/CMakeFiles/VerifyGlobs.cmake
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/feavr-engine/CMakeFiles/VerifyGlobs.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

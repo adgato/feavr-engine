@@ -3,15 +3,15 @@
 
 # compile C with /usr/bin/cc
 # compile CXX with /usr/bin/c++
-C_DEFINES = -DPROJECT_ROOT=\"/home/adgato/projects/vulkan/template-project\"
+C_DEFINES = -DPROJECT_ROOT=\"/home/adgato/projects/vulkan/feavr-engine\"
 
-C_INCLUDES = -I/home/adgato/projects/vulkan/template-project/src/assets-system -I/home/adgato/projects/vulkan/template-project/include/fmt/include
+C_INCLUDES = -I/home/adgato/projects/vulkan/feavr-engine/src/assets-system -I/home/adgato/projects/vulkan/feavr-engine/include/fmt/include
 
 C_FLAGS = -g -fdiagnostics-color=always
 
-CXX_DEFINES = -DPROJECT_ROOT=\"/home/adgato/projects/vulkan/template-project\"
+CXX_DEFINES = -DPROJECT_ROOT=\"/home/adgato/projects/vulkan/feavr-engine\"
 
-CXX_INCLUDES = -I/home/adgato/projects/vulkan/template-project/src/assets-system -I/home/adgato/projects/vulkan/template-project/include/fmt/include
+CXX_INCLUDES = -I/home/adgato/projects/vulkan/feavr-engine/src/assets-system -I/home/adgato/projects/vulkan/feavr-engine/include/fmt/include
 
 CXX_FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
 

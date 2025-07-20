@@ -53,10 +53,10 @@ RM = /home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmak
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 # Include any dependencies generated for this target.
 include include/fastgltf/CMakeFiles/fastgltf.dir/depend.make
@@ -75,30 +75,30 @@ include/fastgltf/CMakeFiles/fastgltf.dir/codegen:
 include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o: include/fastgltf/CMakeFiles/fastgltf.dir/flags.make
 include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o: include/fastgltf/src/fastgltf.cpp
 include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o: include/fastgltf/CMakeFiles/fastgltf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o"
-	cd /home/adgato/projects/vulkan/template-project/include/fastgltf && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o -MF CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o.d -o CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o -c /home/adgato/projects/vulkan/template-project/include/fastgltf/src/fastgltf.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/feavr-engine/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o"
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fastgltf && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o -MF CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o.d -o CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o -c /home/adgato/projects/vulkan/feavr-engine/include/fastgltf/src/fastgltf.cpp
 
 include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/fastgltf.dir/src/fastgltf.cpp.i"
-	cd /home/adgato/projects/vulkan/template-project/include/fastgltf && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/template-project/include/fastgltf/src/fastgltf.cpp > CMakeFiles/fastgltf.dir/src/fastgltf.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fastgltf && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/feavr-engine/include/fastgltf/src/fastgltf.cpp > CMakeFiles/fastgltf.dir/src/fastgltf.cpp.i
 
 include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/fastgltf.dir/src/fastgltf.cpp.s"
-	cd /home/adgato/projects/vulkan/template-project/include/fastgltf && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/template-project/include/fastgltf/src/fastgltf.cpp -o CMakeFiles/fastgltf.dir/src/fastgltf.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fastgltf && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/feavr-engine/include/fastgltf/src/fastgltf.cpp -o CMakeFiles/fastgltf.dir/src/fastgltf.cpp.s
 
 include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.o: include/fastgltf/CMakeFiles/fastgltf.dir/flags.make
 include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.o: include/fastgltf/src/base64.cpp
 include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.o: include/fastgltf/CMakeFiles/fastgltf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.o"
-	cd /home/adgato/projects/vulkan/template-project/include/fastgltf && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.o -MF CMakeFiles/fastgltf.dir/src/base64.cpp.o.d -o CMakeFiles/fastgltf.dir/src/base64.cpp.o -c /home/adgato/projects/vulkan/template-project/include/fastgltf/src/base64.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/feavr-engine/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.o"
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fastgltf && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.o -MF CMakeFiles/fastgltf.dir/src/base64.cpp.o.d -o CMakeFiles/fastgltf.dir/src/base64.cpp.o -c /home/adgato/projects/vulkan/feavr-engine/include/fastgltf/src/base64.cpp
 
 include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/fastgltf.dir/src/base64.cpp.i"
-	cd /home/adgato/projects/vulkan/template-project/include/fastgltf && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/template-project/include/fastgltf/src/base64.cpp > CMakeFiles/fastgltf.dir/src/base64.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fastgltf && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/feavr-engine/include/fastgltf/src/base64.cpp > CMakeFiles/fastgltf.dir/src/base64.cpp.i
 
 include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/fastgltf.dir/src/base64.cpp.s"
-	cd /home/adgato/projects/vulkan/template-project/include/fastgltf && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/template-project/include/fastgltf/src/base64.cpp -o CMakeFiles/fastgltf.dir/src/base64.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fastgltf && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/feavr-engine/include/fastgltf/src/base64.cpp -o CMakeFiles/fastgltf.dir/src/base64.cpp.s
 
 # Object files for target fastgltf
 fastgltf_OBJECTS = \
@@ -112,19 +112,19 @@ include/fastgltf/libfastgltf.a: include/fastgltf/CMakeFiles/fastgltf.dir/src/fas
 include/fastgltf/libfastgltf.a: include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.o
 include/fastgltf/libfastgltf.a: include/fastgltf/CMakeFiles/fastgltf.dir/build.make
 include/fastgltf/libfastgltf.a: include/fastgltf/CMakeFiles/fastgltf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libfastgltf.a"
-	cd /home/adgato/projects/vulkan/template-project/include/fastgltf && $(CMAKE_COMMAND) -P CMakeFiles/fastgltf.dir/cmake_clean_target.cmake
-	cd /home/adgato/projects/vulkan/template-project/include/fastgltf && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/fastgltf.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adgato/projects/vulkan/feavr-engine/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libfastgltf.a"
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fastgltf && $(CMAKE_COMMAND) -P CMakeFiles/fastgltf.dir/cmake_clean_target.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fastgltf && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/fastgltf.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 include/fastgltf/CMakeFiles/fastgltf.dir/build: include/fastgltf/libfastgltf.a
 .PHONY : include/fastgltf/CMakeFiles/fastgltf.dir/build
 
 include/fastgltf/CMakeFiles/fastgltf.dir/clean:
-	cd /home/adgato/projects/vulkan/template-project/include/fastgltf && $(CMAKE_COMMAND) -P CMakeFiles/fastgltf.dir/cmake_clean.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fastgltf && $(CMAKE_COMMAND) -P CMakeFiles/fastgltf.dir/cmake_clean.cmake
 .PHONY : include/fastgltf/CMakeFiles/fastgltf.dir/clean
 
 include/fastgltf/CMakeFiles/fastgltf.dir/depend:
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/adgato/projects/vulkan/template-project /home/adgato/projects/vulkan/template-project/include/fastgltf /home/adgato/projects/vulkan/template-project /home/adgato/projects/vulkan/template-project/include/fastgltf /home/adgato/projects/vulkan/template-project/include/fastgltf/CMakeFiles/fastgltf.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/adgato/projects/vulkan/feavr-engine /home/adgato/projects/vulkan/feavr-engine/include/fastgltf /home/adgato/projects/vulkan/feavr-engine /home/adgato/projects/vulkan/feavr-engine/include/fastgltf /home/adgato/projects/vulkan/feavr-engine/include/fastgltf/CMakeFiles/fastgltf.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : include/fastgltf/CMakeFiles/fastgltf.dir/depend
 

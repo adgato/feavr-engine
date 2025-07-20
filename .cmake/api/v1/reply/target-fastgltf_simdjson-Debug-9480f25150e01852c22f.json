@@ -93,7 +93,7 @@
 			[
 				{
 					"backtrace" : 7,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/fastgltf/deps/simdjson"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/deps/simdjson"
 				}
 			],
 			"language" : "CXX",

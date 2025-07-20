@@ -64,7 +64,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/vkbootstrap"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/vkbootstrap"
 				}
 			],
 			"language" : "CXX",

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/adgato/projects/vulkan/template-project/include/vkbootstrap
+CXX_INCLUDES = -I/home/adgato/projects/vulkan/feavr-engine/include/vkbootstrap
 
 CXX_FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
 

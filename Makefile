@@ -57,18 +57,18 @@ RM = /home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmak
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
+	/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -132,9 +132,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/template-project/CMakeFiles /home/adgato/projects/vulkan/template-project//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/feavr-engine/CMakeFiles /home/adgato/projects/vulkan/feavr-engine//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/template-project/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/feavr-engine/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -158,7 +158,7 @@ preinstall/fast:
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/template-project/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/feavr-engine/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -297,7 +297,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/template-project/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/feavr-engine/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

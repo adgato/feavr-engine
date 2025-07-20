@@ -57,18 +57,18 @@ RM = /home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmak
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
+	/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/template-project/CMakeFiles /home/adgato/projects/vulkan/template-project/include//CMakeFiles/progress.marks
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/template-project/CMakeFiles 0
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/feavr-engine/CMakeFiles /home/adgato/projects/vulkan/feavr-engine/include//CMakeFiles/progress.marks
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/feavr-engine/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/clean
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,23 +148,23 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/preinstall
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/preinstall
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/template-project/CMakeFiles/VerifyGlobs.cmake
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/feavr-engine/CMakeFiles/VerifyGlobs.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 include/CMakeFiles/vkbootstrap.dir/rule:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/CMakeFiles/vkbootstrap.dir/rule
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/CMakeFiles/vkbootstrap.dir/rule
 .PHONY : include/CMakeFiles/vkbootstrap.dir/rule
 
 # Convenience name for target.
@@ -173,12 +173,12 @@ vkbootstrap: include/CMakeFiles/vkbootstrap.dir/rule
 
 # fast build rule for target.
 vkbootstrap/fast:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/vkbootstrap.dir/build.make include/CMakeFiles/vkbootstrap.dir/build
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/vkbootstrap.dir/build.make include/CMakeFiles/vkbootstrap.dir/build
 .PHONY : vkbootstrap/fast
 
 # Convenience name for target.
 include/CMakeFiles/imgui.dir/rule:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/CMakeFiles/imgui.dir/rule
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/CMakeFiles/imgui.dir/rule
 .PHONY : include/CMakeFiles/imgui.dir/rule
 
 # Convenience name for target.
@@ -187,7 +187,7 @@ imgui: include/CMakeFiles/imgui.dir/rule
 
 # fast build rule for target.
 imgui/fast:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/build
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/build
 .PHONY : imgui/fast
 
 imgui/imgui.o: imgui/imgui.cpp.o
@@ -195,7 +195,7 @@ imgui/imgui.o: imgui/imgui.cpp.o
 
 # target to build an object file
 imgui/imgui.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui.cpp.o
 .PHONY : imgui/imgui.cpp.o
 
 imgui/imgui.i: imgui/imgui.cpp.i
@@ -203,7 +203,7 @@ imgui/imgui.i: imgui/imgui.cpp.i
 
 # target to preprocess a source file
 imgui/imgui.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui.cpp.i
 .PHONY : imgui/imgui.cpp.i
 
 imgui/imgui.s: imgui/imgui.cpp.s
@@ -211,7 +211,7 @@ imgui/imgui.s: imgui/imgui.cpp.s
 
 # target to generate assembly for a file
 imgui/imgui.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui.cpp.s
 .PHONY : imgui/imgui.cpp.s
 
 imgui/imgui_demo.o: imgui/imgui_demo.cpp.o
@@ -219,7 +219,7 @@ imgui/imgui_demo.o: imgui/imgui_demo.cpp.o
 
 # target to build an object file
 imgui/imgui_demo.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_demo.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_demo.cpp.o
 .PHONY : imgui/imgui_demo.cpp.o
 
 imgui/imgui_demo.i: imgui/imgui_demo.cpp.i
@@ -227,7 +227,7 @@ imgui/imgui_demo.i: imgui/imgui_demo.cpp.i
 
 # target to preprocess a source file
 imgui/imgui_demo.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_demo.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_demo.cpp.i
 .PHONY : imgui/imgui_demo.cpp.i
 
 imgui/imgui_demo.s: imgui/imgui_demo.cpp.s
@@ -235,7 +235,7 @@ imgui/imgui_demo.s: imgui/imgui_demo.cpp.s
 
 # target to generate assembly for a file
 imgui/imgui_demo.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_demo.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_demo.cpp.s
 .PHONY : imgui/imgui_demo.cpp.s
 
 imgui/imgui_draw.o: imgui/imgui_draw.cpp.o
@@ -243,7 +243,7 @@ imgui/imgui_draw.o: imgui/imgui_draw.cpp.o
 
 # target to build an object file
 imgui/imgui_draw.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_draw.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_draw.cpp.o
 .PHONY : imgui/imgui_draw.cpp.o
 
 imgui/imgui_draw.i: imgui/imgui_draw.cpp.i
@@ -251,7 +251,7 @@ imgui/imgui_draw.i: imgui/imgui_draw.cpp.i
 
 # target to preprocess a source file
 imgui/imgui_draw.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_draw.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_draw.cpp.i
 .PHONY : imgui/imgui_draw.cpp.i
 
 imgui/imgui_draw.s: imgui/imgui_draw.cpp.s
@@ -259,7 +259,7 @@ imgui/imgui_draw.s: imgui/imgui_draw.cpp.s
 
 # target to generate assembly for a file
 imgui/imgui_draw.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_draw.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_draw.cpp.s
 .PHONY : imgui/imgui_draw.cpp.s
 
 imgui/imgui_impl_sdl2.o: imgui/imgui_impl_sdl2.cpp.o
@@ -267,7 +267,7 @@ imgui/imgui_impl_sdl2.o: imgui/imgui_impl_sdl2.cpp.o
 
 # target to build an object file
 imgui/imgui_impl_sdl2.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_impl_sdl2.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_impl_sdl2.cpp.o
 .PHONY : imgui/imgui_impl_sdl2.cpp.o
 
 imgui/imgui_impl_sdl2.i: imgui/imgui_impl_sdl2.cpp.i
@@ -275,7 +275,7 @@ imgui/imgui_impl_sdl2.i: imgui/imgui_impl_sdl2.cpp.i
 
 # target to preprocess a source file
 imgui/imgui_impl_sdl2.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_impl_sdl2.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_impl_sdl2.cpp.i
 .PHONY : imgui/imgui_impl_sdl2.cpp.i
 
 imgui/imgui_impl_sdl2.s: imgui/imgui_impl_sdl2.cpp.s
@@ -283,7 +283,7 @@ imgui/imgui_impl_sdl2.s: imgui/imgui_impl_sdl2.cpp.s
 
 # target to generate assembly for a file
 imgui/imgui_impl_sdl2.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_impl_sdl2.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_impl_sdl2.cpp.s
 .PHONY : imgui/imgui_impl_sdl2.cpp.s
 
 imgui/imgui_impl_vulkan.o: imgui/imgui_impl_vulkan.cpp.o
@@ -291,7 +291,7 @@ imgui/imgui_impl_vulkan.o: imgui/imgui_impl_vulkan.cpp.o
 
 # target to build an object file
 imgui/imgui_impl_vulkan.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_impl_vulkan.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_impl_vulkan.cpp.o
 .PHONY : imgui/imgui_impl_vulkan.cpp.o
 
 imgui/imgui_impl_vulkan.i: imgui/imgui_impl_vulkan.cpp.i
@@ -299,7 +299,7 @@ imgui/imgui_impl_vulkan.i: imgui/imgui_impl_vulkan.cpp.i
 
 # target to preprocess a source file
 imgui/imgui_impl_vulkan.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_impl_vulkan.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_impl_vulkan.cpp.i
 .PHONY : imgui/imgui_impl_vulkan.cpp.i
 
 imgui/imgui_impl_vulkan.s: imgui/imgui_impl_vulkan.cpp.s
@@ -307,7 +307,7 @@ imgui/imgui_impl_vulkan.s: imgui/imgui_impl_vulkan.cpp.s
 
 # target to generate assembly for a file
 imgui/imgui_impl_vulkan.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_impl_vulkan.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_impl_vulkan.cpp.s
 .PHONY : imgui/imgui_impl_vulkan.cpp.s
 
 imgui/imgui_tables.o: imgui/imgui_tables.cpp.o
@@ -315,7 +315,7 @@ imgui/imgui_tables.o: imgui/imgui_tables.cpp.o
 
 # target to build an object file
 imgui/imgui_tables.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_tables.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_tables.cpp.o
 .PHONY : imgui/imgui_tables.cpp.o
 
 imgui/imgui_tables.i: imgui/imgui_tables.cpp.i
@@ -323,7 +323,7 @@ imgui/imgui_tables.i: imgui/imgui_tables.cpp.i
 
 # target to preprocess a source file
 imgui/imgui_tables.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_tables.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_tables.cpp.i
 .PHONY : imgui/imgui_tables.cpp.i
 
 imgui/imgui_tables.s: imgui/imgui_tables.cpp.s
@@ -331,7 +331,7 @@ imgui/imgui_tables.s: imgui/imgui_tables.cpp.s
 
 # target to generate assembly for a file
 imgui/imgui_tables.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_tables.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_tables.cpp.s
 .PHONY : imgui/imgui_tables.cpp.s
 
 imgui/imgui_widgets.o: imgui/imgui_widgets.cpp.o
@@ -339,7 +339,7 @@ imgui/imgui_widgets.o: imgui/imgui_widgets.cpp.o
 
 # target to build an object file
 imgui/imgui_widgets.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.o
 .PHONY : imgui/imgui_widgets.cpp.o
 
 imgui/imgui_widgets.i: imgui/imgui_widgets.cpp.i
@@ -347,7 +347,7 @@ imgui/imgui_widgets.i: imgui/imgui_widgets.cpp.i
 
 # target to preprocess a source file
 imgui/imgui_widgets.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.i
 .PHONY : imgui/imgui_widgets.cpp.i
 
 imgui/imgui_widgets.s: imgui/imgui_widgets.cpp.s
@@ -355,7 +355,7 @@ imgui/imgui_widgets.s: imgui/imgui_widgets.cpp.s
 
 # target to generate assembly for a file
 imgui/imgui_widgets.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/imgui.dir/build.make include/CMakeFiles/imgui.dir/imgui/imgui_widgets.cpp.s
 .PHONY : imgui/imgui_widgets.cpp.s
 
 vkbootstrap/VkBootstrap.o: vkbootstrap/VkBootstrap.cpp.o
@@ -363,7 +363,7 @@ vkbootstrap/VkBootstrap.o: vkbootstrap/VkBootstrap.cpp.o
 
 # target to build an object file
 vkbootstrap/VkBootstrap.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/vkbootstrap.dir/build.make include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/vkbootstrap.dir/build.make include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o
 .PHONY : vkbootstrap/VkBootstrap.cpp.o
 
 vkbootstrap/VkBootstrap.i: vkbootstrap/VkBootstrap.cpp.i
@@ -371,7 +371,7 @@ vkbootstrap/VkBootstrap.i: vkbootstrap/VkBootstrap.cpp.i
 
 # target to preprocess a source file
 vkbootstrap/VkBootstrap.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/vkbootstrap.dir/build.make include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/vkbootstrap.dir/build.make include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.i
 .PHONY : vkbootstrap/VkBootstrap.cpp.i
 
 vkbootstrap/VkBootstrap.s: vkbootstrap/VkBootstrap.cpp.s
@@ -379,7 +379,7 @@ vkbootstrap/VkBootstrap.s: vkbootstrap/VkBootstrap.cpp.s
 
 # target to generate assembly for a file
 vkbootstrap/VkBootstrap.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/vkbootstrap.dir/build.make include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/CMakeFiles/vkbootstrap.dir/build.make include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.s
 .PHONY : vkbootstrap/VkBootstrap.cpp.s
 
 # Help Target
@@ -431,7 +431,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/template-project/CMakeFiles/VerifyGlobs.cmake
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/feavr-engine/CMakeFiles/VerifyGlobs.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

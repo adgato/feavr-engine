@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/adgato/projects/vulkan/template-project"
+			"value" : "/home/adgato/projects/vulkan/feavr-engine"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -115,11 +115,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "Enable/Disable color output during build."
+					"value" : ""
 				}
 			],
-			"type" : "BOOL",
-			"value" : "ON"
+			"type" : "UNINITIALIZED",
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_COMMAND",
@@ -170,7 +170,7 @@
 					"value" : "CXX compiler"
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/c++"
 		},
 		{
@@ -298,7 +298,7 @@
 					"value" : "C compiler"
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/cc"
 		},
 		{
@@ -430,18 +430,6 @@
 			"value" : "CMAKE_DLLTOOL-NOTFOUND"
 		},
 		{
-			"name" : "CMAKE_EDIT_COMMAND",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to cache edit program executable."
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "/usr/bin/cmake-gui"
-		},
-		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
 			"properties" : 
 			[
@@ -571,7 +559,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/adgato/projects/vulkan/template-project/CMakeFiles/pkgRedirects"
+			"value" : "/home/adgato/projects/vulkan/feavr-engine/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -631,7 +619,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/adgato/projects/vulkan/template-project"
+			"value" : "/home/adgato/projects/vulkan/feavr-engine"
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -1490,18 +1478,6 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "DXC_COMPILER",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to a program."
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "/home/adgato/portable/dxc/bin/dxc"
-		},
-		{
 			"name" : "FASTGLTF_DISABLE_CUSTOM_MEMORY_POOL",
 			"properties" : 
 			[
@@ -1655,7 +1631,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/adgato/projects/vulkan/template-project/include/fmt"
+			"value" : "/home/adgato/projects/vulkan/feavr-engine/include/fmt"
 		},
 		{
 			"name" : "FMT_CMAKE_DIR",
@@ -1823,7 +1799,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/adgato/projects/vulkan/template-project/include/fmt"
+			"value" : "/home/adgato/projects/vulkan/feavr-engine/include/fmt"
 		},
 		{
 			"name" : "FMT_SYSTEM_HEADERS",
@@ -1860,18 +1836,6 @@
 			],
 			"type" : "BOOL",
 			"value" : "OFF"
-		},
-		{
-			"name" : "GLSL_VALIDATOR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to a program."
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "/usr/bin/glslangValidator"
 		},
 		{
 			"name" : "LZ4_CFLAGS",
@@ -2462,31 +2426,7 @@
 			"value" : "REQUIRED;liblz4"
 		},
 		{
-			"name" : "__pkg_config_arguments_lz4",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "REQUIRED;IMPORTED_TARGET;liblz4"
-		},
-		{
 			"name" : "__pkg_config_checked_LZ4",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "1"
-		},
-		{
-			"name" : "__pkg_config_checked_lz4",
 			"properties" : 
 			[
 				{
@@ -2531,7 +2471,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/adgato/projects/vulkan/template-project/include/fastgltf"
+			"value" : "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf"
 		},
 		{
 			"name" : "fastgltf_IS_TOP_LEVEL",
@@ -2555,7 +2495,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/adgato/projects/vulkan/template-project/include/fastgltf"
+			"value" : "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf"
 		},
 		{
 			"name" : "imgui_LIB_DEPENDS",
@@ -2570,455 +2510,7 @@
 			"value" : "general;Vulkan::Vulkan;general;SDL2::SDL2;"
 		},
 		{
-			"name" : "lz4_CFLAGS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "-I/usr/include"
-		},
-		{
-			"name" : "lz4_CFLAGS_I",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_CFLAGS_OTHER",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "The directory containing a CMake configuration file for lz4."
-				}
-			],
-			"type" : "PATH",
-			"value" : "lz4_DIR-NOTFOUND"
-		},
-		{
-			"name" : "lz4_FOUND",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "1"
-		},
-		{
-			"name" : "lz4_INCLUDEDIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "/usr/include"
-		},
-		{
-			"name" : "lz4_INCLUDE_DIRS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "/usr/include"
-		},
-		{
-			"name" : "lz4_LDFLAGS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "-L/usr/lib/x86_64-linux-gnu;-llz4"
-		},
-		{
-			"name" : "lz4_LDFLAGS_OTHER",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_LIBDIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "/usr/lib/x86_64-linux-gnu"
-		},
-		{
-			"name" : "lz4_LIBRARIES",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "lz4"
-		},
-		{
-			"name" : "lz4_LIBRARY_DIRS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "/usr/lib/x86_64-linux-gnu"
-		},
-		{
-			"name" : "lz4_LIBS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_LIBS_L",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_LIBS_OTHER",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_LIBS_PATHS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_MODULE_NAME",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "liblz4"
-		},
-		{
-			"name" : "lz4_PREFIX",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "/usr"
-		},
-		{
-			"name" : "lz4_STATIC_CFLAGS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "-I/usr/include"
-		},
-		{
-			"name" : "lz4_STATIC_CFLAGS_I",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_STATIC_CFLAGS_OTHER",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_STATIC_INCLUDE_DIRS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "/usr/include"
-		},
-		{
-			"name" : "lz4_STATIC_LDFLAGS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "-L/usr/lib/x86_64-linux-gnu;-llz4"
-		},
-		{
-			"name" : "lz4_STATIC_LDFLAGS_OTHER",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_STATIC_LIBDIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_STATIC_LIBRARIES",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "lz4"
-		},
-		{
-			"name" : "lz4_STATIC_LIBRARY_DIRS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "/usr/lib/x86_64-linux-gnu"
-		},
-		{
-			"name" : "lz4_STATIC_LIBS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_STATIC_LIBS_L",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_STATIC_LIBS_OTHER",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_STATIC_LIBS_PATHS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_VERSION",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "1.9.4"
-		},
-		{
-			"name" : "lz4_liblz4_INCLUDEDIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_liblz4_LIBDIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_liblz4_PREFIX",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
-			"name" : "lz4_liblz4_VERSION",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : ""
-		},
-		{
 			"name" : "pkgcfg_lib_LZ4_lz4",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to a library."
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "/usr/lib/x86_64-linux-gnu/liblz4.so"
-		},
-		{
-			"name" : "pkgcfg_lib_lz4_lz4",
 			"properties" : 
 			[
 				{
@@ -3046,18 +2538,6 @@
 			"value" : "/usr/lib/x86_64-linux-gnu"
 		},
 		{
-			"name" : "serialisation_LIB_DEPENDS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Dependencies for the target"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "general;fmt::fmt;"
-		},
-		{
 			"name" : "template_BINARY_DIR",
 			"properties" : 
 			[
@@ -3067,7 +2547,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/adgato/projects/vulkan/template-project"
+			"value" : "/home/adgato/projects/vulkan/feavr-engine"
 		},
 		{
 			"name" : "template_IS_TOP_LEVEL",
@@ -3091,7 +2571,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/adgato/projects/vulkan/template-project"
+			"value" : "/home/adgato/projects/vulkan/feavr-engine"
 		},
 		{
 			"name" : "vkbootstrap_LIB_DEPENDS",

@@ -57,18 +57,18 @@ RM = /home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmak
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
+	/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/template-project/CMakeFiles /home/adgato/projects/vulkan/template-project/include/fmt//CMakeFiles/progress.marks
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fmt/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/template-project/CMakeFiles 0
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/feavr-engine/CMakeFiles /home/adgato/projects/vulkan/feavr-engine/include/fmt//CMakeFiles/progress.marks
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fmt/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/feavr-engine/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fmt/clean
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fmt/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,23 +148,23 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fmt/preinstall
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fmt/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fmt/preinstall
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fmt/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/template-project/CMakeFiles/VerifyGlobs.cmake
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/feavr-engine/CMakeFiles/VerifyGlobs.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 include/fmt/CMakeFiles/fmt.dir/rule:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fmt/CMakeFiles/fmt.dir/rule
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 include/fmt/CMakeFiles/fmt.dir/rule
 .PHONY : include/fmt/CMakeFiles/fmt.dir/rule
 
 # Convenience name for target.
@@ -173,7 +173,7 @@ fmt: include/fmt/CMakeFiles/fmt.dir/rule
 
 # fast build rule for target.
 fmt/fast:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fmt/CMakeFiles/fmt.dir/build.make include/fmt/CMakeFiles/fmt.dir/build
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fmt/CMakeFiles/fmt.dir/build.make include/fmt/CMakeFiles/fmt.dir/build
 .PHONY : fmt/fast
 
 src/format.o: src/format.cc.o
@@ -181,7 +181,7 @@ src/format.o: src/format.cc.o
 
 # target to build an object file
 src/format.cc.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fmt/CMakeFiles/fmt.dir/build.make include/fmt/CMakeFiles/fmt.dir/src/format.cc.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fmt/CMakeFiles/fmt.dir/build.make include/fmt/CMakeFiles/fmt.dir/src/format.cc.o
 .PHONY : src/format.cc.o
 
 src/format.i: src/format.cc.i
@@ -189,7 +189,7 @@ src/format.i: src/format.cc.i
 
 # target to preprocess a source file
 src/format.cc.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fmt/CMakeFiles/fmt.dir/build.make include/fmt/CMakeFiles/fmt.dir/src/format.cc.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fmt/CMakeFiles/fmt.dir/build.make include/fmt/CMakeFiles/fmt.dir/src/format.cc.i
 .PHONY : src/format.cc.i
 
 src/format.s: src/format.cc.s
@@ -197,7 +197,7 @@ src/format.s: src/format.cc.s
 
 # target to generate assembly for a file
 src/format.cc.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fmt/CMakeFiles/fmt.dir/build.make include/fmt/CMakeFiles/fmt.dir/src/format.cc.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fmt/CMakeFiles/fmt.dir/build.make include/fmt/CMakeFiles/fmt.dir/src/format.cc.s
 .PHONY : src/format.cc.s
 
 src/os.o: src/os.cc.o
@@ -205,7 +205,7 @@ src/os.o: src/os.cc.o
 
 # target to build an object file
 src/os.cc.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fmt/CMakeFiles/fmt.dir/build.make include/fmt/CMakeFiles/fmt.dir/src/os.cc.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fmt/CMakeFiles/fmt.dir/build.make include/fmt/CMakeFiles/fmt.dir/src/os.cc.o
 .PHONY : src/os.cc.o
 
 src/os.i: src/os.cc.i
@@ -213,7 +213,7 @@ src/os.i: src/os.cc.i
 
 # target to preprocess a source file
 src/os.cc.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fmt/CMakeFiles/fmt.dir/build.make include/fmt/CMakeFiles/fmt.dir/src/os.cc.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fmt/CMakeFiles/fmt.dir/build.make include/fmt/CMakeFiles/fmt.dir/src/os.cc.i
 .PHONY : src/os.cc.i
 
 src/os.s: src/os.cc.s
@@ -221,7 +221,7 @@ src/os.s: src/os.cc.s
 
 # target to generate assembly for a file
 src/os.cc.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f include/fmt/CMakeFiles/fmt.dir/build.make include/fmt/CMakeFiles/fmt.dir/src/os.cc.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f include/fmt/CMakeFiles/fmt.dir/build.make include/fmt/CMakeFiles/fmt.dir/src/os.cc.s
 .PHONY : src/os.cc.s
 
 # Help Target
@@ -254,7 +254,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/template-project/CMakeFiles/VerifyGlobs.cmake
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/feavr-engine/CMakeFiles/VerifyGlobs.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

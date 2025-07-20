@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/adgato/projects/vulkan/template-project/include/fastgltf/deps/simdjson
+CXX_INCLUDES = -I/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/deps/simdjson
 
 CXX_FLAGS = -g -fdiagnostics-color=always -Og -finline-functions
 

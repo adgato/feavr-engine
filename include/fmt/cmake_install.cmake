@@ -1,4 +1,4 @@
-# Install script for directory: /home/adgato/projects/vulkan/template-project/include/fmt
+# Install script for directory: /home/adgato/projects/vulkan/feavr-engine/include/fmt
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -43,31 +43,31 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/adgato/projects/vulkan/template-project/include/fmt/libfmtd.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/adgato/projects/vulkan/feavr-engine/include/fmt/libfmtd.a")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/fmt" TYPE FILE FILES
-    "/home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/args.h"
-    "/home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/chrono.h"
-    "/home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/color.h"
-    "/home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/compile.h"
-    "/home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/core.h"
-    "/home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/format.h"
-    "/home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/format-inl.h"
-    "/home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/os.h"
-    "/home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/ostream.h"
-    "/home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/printf.h"
-    "/home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/ranges.h"
-    "/home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/std.h"
-    "/home/adgato/projects/vulkan/template-project/include/fmt/include/fmt/xchar.h"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include/fmt/args.h"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include/fmt/chrono.h"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include/fmt/color.h"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include/fmt/compile.h"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include/fmt/core.h"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include/fmt/format.h"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include/fmt/format-inl.h"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include/fmt/os.h"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include/fmt/ostream.h"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include/fmt/printf.h"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include/fmt/ranges.h"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include/fmt/std.h"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include/fmt/xchar.h"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/fmt" TYPE FILE FILES
-    "/home/adgato/projects/vulkan/template-project/include/fmt/fmt-config.cmake"
-    "/home/adgato/projects/vulkan/template-project/include/fmt/fmt-config-version.cmake"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fmt/fmt-config.cmake"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fmt/fmt-config-version.cmake"
     )
 endif()
 
@@ -75,7 +75,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/fmt/fmt-targets.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/fmt/fmt-targets.cmake"
-         "/home/adgato/projects/vulkan/template-project/include/fmt/CMakeFiles/Export/b834597d9b1628ff12ae4314c3a2e4b8/fmt-targets.cmake")
+         "/home/adgato/projects/vulkan/feavr-engine/include/fmt/CMakeFiles/Export/b834597d9b1628ff12ae4314c3a2e4b8/fmt-targets.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/fmt/fmt-targets-*.cmake")
       if(_cmake_old_config_files)
@@ -88,19 +88,19 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     endif()
     unset(_cmake_export_file_changed)
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/fmt" TYPE FILE FILES "/home/adgato/projects/vulkan/template-project/include/fmt/CMakeFiles/Export/b834597d9b1628ff12ae4314c3a2e4b8/fmt-targets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/fmt" TYPE FILE FILES "/home/adgato/projects/vulkan/feavr-engine/include/fmt/CMakeFiles/Export/b834597d9b1628ff12ae4314c3a2e4b8/fmt-targets.cmake")
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/fmt" TYPE FILE FILES "/home/adgato/projects/vulkan/template-project/include/fmt/CMakeFiles/Export/b834597d9b1628ff12ae4314c3a2e4b8/fmt-targets-debug.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/fmt" TYPE FILE FILES "/home/adgato/projects/vulkan/feavr-engine/include/fmt/CMakeFiles/Export/b834597d9b1628ff12ae4314c3a2e4b8/fmt-targets-debug.cmake")
   endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/adgato/projects/vulkan/template-project/include/fmt/fmt.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/adgato/projects/vulkan/feavr-engine/include/fmt/fmt.pc")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/adgato/projects/vulkan/template-project/include/fmt/install_local_manifest.txt"
+  file(WRITE "/home/adgato/projects/vulkan/feavr-engine/include/fmt/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

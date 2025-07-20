@@ -154,11 +154,11 @@
 			[
 				{
 					"backtrace" : 13,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/fastgltf/include"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/include"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/fastgltf/deps/simdjson"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/deps/simdjson"
 				}
 			],
 			"language" : "CXX",

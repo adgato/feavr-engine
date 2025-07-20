@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/adgato/projects/vulkan/template-project/include/fmt/src/format.cc" "include/fmt/CMakeFiles/fmt.dir/src/format.cc.o" "gcc" "include/fmt/CMakeFiles/fmt.dir/src/format.cc.o.d"
-  "/home/adgato/projects/vulkan/template-project/include/fmt/src/os.cc" "include/fmt/CMakeFiles/fmt.dir/src/os.cc.o" "gcc" "include/fmt/CMakeFiles/fmt.dir/src/os.cc.o.d"
+  "/home/adgato/projects/vulkan/feavr-engine/include/fmt/src/format.cc" "include/fmt/CMakeFiles/fmt.dir/src/format.cc.o" "gcc" "include/fmt/CMakeFiles/fmt.dir/src/format.cc.o.d"
+  "/home/adgato/projects/vulkan/feavr-engine/include/fmt/src/os.cc" "include/fmt/CMakeFiles/fmt.dir/src/os.cc.o" "gcc" "include/fmt/CMakeFiles/fmt.dir/src/os.cc.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

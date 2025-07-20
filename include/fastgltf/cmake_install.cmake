@@ -1,4 +1,4 @@
-# Install script for directory: /home/adgato/projects/vulkan/template-project/include/fastgltf
+# Install script for directory: /home/adgato/projects/vulkan/feavr-engine/include/fastgltf
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -43,18 +43,18 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES "/home/adgato/projects/vulkan/template-project/include/fastgltf/deps/simdjson/simdjson.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/deps/simdjson/simdjson.h")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/adgato/projects/vulkan/template-project/include/fastgltf/libfastgltf_simdjson.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/libfastgltf_simdjson.a")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/fastgltf/fastgltf_simdjsonTargets.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/fastgltf/fastgltf_simdjsonTargets.cmake"
-         "/home/adgato/projects/vulkan/template-project/include/fastgltf/CMakeFiles/Export/14b504216a8c2b5661a6a7c88f3023ae/fastgltf_simdjsonTargets.cmake")
+         "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/CMakeFiles/Export/14b504216a8c2b5661a6a7c88f3023ae/fastgltf_simdjsonTargets.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/fastgltf/fastgltf_simdjsonTargets-*.cmake")
       if(_cmake_old_config_files)
@@ -67,32 +67,32 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     endif()
     unset(_cmake_export_file_changed)
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/fastgltf" TYPE FILE FILES "/home/adgato/projects/vulkan/template-project/include/fastgltf/CMakeFiles/Export/14b504216a8c2b5661a6a7c88f3023ae/fastgltf_simdjsonTargets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/fastgltf" TYPE FILE FILES "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/CMakeFiles/Export/14b504216a8c2b5661a6a7c88f3023ae/fastgltf_simdjsonTargets.cmake")
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/fastgltf" TYPE FILE FILES "/home/adgato/projects/vulkan/template-project/include/fastgltf/CMakeFiles/Export/14b504216a8c2b5661a6a7c88f3023ae/fastgltf_simdjsonTargets-debug.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/fastgltf" TYPE FILE FILES "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/CMakeFiles/Export/14b504216a8c2b5661a6a7c88f3023ae/fastgltf_simdjsonTargets-debug.cmake")
   endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/fastgltf" TYPE FILE FILES
-    "/home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/base64.hpp"
-    "/home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/glm_element_traits.hpp"
-    "/home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/parser.hpp"
-    "/home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/tools.hpp"
-    "/home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/types.hpp"
-    "/home/adgato/projects/vulkan/template-project/include/fastgltf/include/fastgltf/util.hpp"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/include/fastgltf/base64.hpp"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/include/fastgltf/glm_element_traits.hpp"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/include/fastgltf/parser.hpp"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/include/fastgltf/tools.hpp"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/include/fastgltf/types.hpp"
+    "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/include/fastgltf/util.hpp"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/adgato/projects/vulkan/template-project/include/fastgltf/libfastgltf.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/libfastgltf.a")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/fastgltf/fastgltfConfig.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/fastgltf/fastgltfConfig.cmake"
-         "/home/adgato/projects/vulkan/template-project/include/fastgltf/CMakeFiles/Export/14b504216a8c2b5661a6a7c88f3023ae/fastgltfConfig.cmake")
+         "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/CMakeFiles/Export/14b504216a8c2b5661a6a7c88f3023ae/fastgltfConfig.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/fastgltf/fastgltfConfig-*.cmake")
       if(_cmake_old_config_files)
@@ -105,15 +105,15 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     endif()
     unset(_cmake_export_file_changed)
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/fastgltf" TYPE FILE FILES "/home/adgato/projects/vulkan/template-project/include/fastgltf/CMakeFiles/Export/14b504216a8c2b5661a6a7c88f3023ae/fastgltfConfig.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/fastgltf" TYPE FILE FILES "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/CMakeFiles/Export/14b504216a8c2b5661a6a7c88f3023ae/fastgltfConfig.cmake")
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/fastgltf" TYPE FILE FILES "/home/adgato/projects/vulkan/template-project/include/fastgltf/CMakeFiles/Export/14b504216a8c2b5661a6a7c88f3023ae/fastgltfConfig-debug.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/fastgltf" TYPE FILE FILES "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/CMakeFiles/Export/14b504216a8c2b5661a6a7c88f3023ae/fastgltfConfig-debug.cmake")
   endif()
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/adgato/projects/vulkan/template-project/include/fastgltf/install_local_manifest.txt"
+  file(WRITE "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

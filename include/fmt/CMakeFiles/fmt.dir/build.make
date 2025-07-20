@@ -53,10 +53,10 @@ RM = /home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmak
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 # Include any dependencies generated for this target.
 include include/fmt/CMakeFiles/fmt.dir/depend.make
@@ -75,30 +75,30 @@ include/fmt/CMakeFiles/fmt.dir/codegen:
 include/fmt/CMakeFiles/fmt.dir/src/format.cc.o: include/fmt/CMakeFiles/fmt.dir/flags.make
 include/fmt/CMakeFiles/fmt.dir/src/format.cc.o: include/fmt/src/format.cc
 include/fmt/CMakeFiles/fmt.dir/src/format.cc.o: include/fmt/CMakeFiles/fmt.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object include/fmt/CMakeFiles/fmt.dir/src/format.cc.o"
-	cd /home/adgato/projects/vulkan/template-project/include/fmt && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT include/fmt/CMakeFiles/fmt.dir/src/format.cc.o -MF CMakeFiles/fmt.dir/src/format.cc.o.d -o CMakeFiles/fmt.dir/src/format.cc.o -c /home/adgato/projects/vulkan/template-project/include/fmt/src/format.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/feavr-engine/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object include/fmt/CMakeFiles/fmt.dir/src/format.cc.o"
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fmt && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT include/fmt/CMakeFiles/fmt.dir/src/format.cc.o -MF CMakeFiles/fmt.dir/src/format.cc.o.d -o CMakeFiles/fmt.dir/src/format.cc.o -c /home/adgato/projects/vulkan/feavr-engine/include/fmt/src/format.cc
 
 include/fmt/CMakeFiles/fmt.dir/src/format.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/fmt.dir/src/format.cc.i"
-	cd /home/adgato/projects/vulkan/template-project/include/fmt && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/template-project/include/fmt/src/format.cc > CMakeFiles/fmt.dir/src/format.cc.i
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fmt && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/feavr-engine/include/fmt/src/format.cc > CMakeFiles/fmt.dir/src/format.cc.i
 
 include/fmt/CMakeFiles/fmt.dir/src/format.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/fmt.dir/src/format.cc.s"
-	cd /home/adgato/projects/vulkan/template-project/include/fmt && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/template-project/include/fmt/src/format.cc -o CMakeFiles/fmt.dir/src/format.cc.s
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fmt && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/feavr-engine/include/fmt/src/format.cc -o CMakeFiles/fmt.dir/src/format.cc.s
 
 include/fmt/CMakeFiles/fmt.dir/src/os.cc.o: include/fmt/CMakeFiles/fmt.dir/flags.make
 include/fmt/CMakeFiles/fmt.dir/src/os.cc.o: include/fmt/src/os.cc
 include/fmt/CMakeFiles/fmt.dir/src/os.cc.o: include/fmt/CMakeFiles/fmt.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object include/fmt/CMakeFiles/fmt.dir/src/os.cc.o"
-	cd /home/adgato/projects/vulkan/template-project/include/fmt && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT include/fmt/CMakeFiles/fmt.dir/src/os.cc.o -MF CMakeFiles/fmt.dir/src/os.cc.o.d -o CMakeFiles/fmt.dir/src/os.cc.o -c /home/adgato/projects/vulkan/template-project/include/fmt/src/os.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/adgato/projects/vulkan/feavr-engine/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object include/fmt/CMakeFiles/fmt.dir/src/os.cc.o"
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fmt && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT include/fmt/CMakeFiles/fmt.dir/src/os.cc.o -MF CMakeFiles/fmt.dir/src/os.cc.o.d -o CMakeFiles/fmt.dir/src/os.cc.o -c /home/adgato/projects/vulkan/feavr-engine/include/fmt/src/os.cc
 
 include/fmt/CMakeFiles/fmt.dir/src/os.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/fmt.dir/src/os.cc.i"
-	cd /home/adgato/projects/vulkan/template-project/include/fmt && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/template-project/include/fmt/src/os.cc > CMakeFiles/fmt.dir/src/os.cc.i
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fmt && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adgato/projects/vulkan/feavr-engine/include/fmt/src/os.cc > CMakeFiles/fmt.dir/src/os.cc.i
 
 include/fmt/CMakeFiles/fmt.dir/src/os.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/fmt.dir/src/os.cc.s"
-	cd /home/adgato/projects/vulkan/template-project/include/fmt && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/template-project/include/fmt/src/os.cc -o CMakeFiles/fmt.dir/src/os.cc.s
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fmt && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adgato/projects/vulkan/feavr-engine/include/fmt/src/os.cc -o CMakeFiles/fmt.dir/src/os.cc.s
 
 # Object files for target fmt
 fmt_OBJECTS = \
@@ -112,19 +112,19 @@ include/fmt/libfmtd.a: include/fmt/CMakeFiles/fmt.dir/src/format.cc.o
 include/fmt/libfmtd.a: include/fmt/CMakeFiles/fmt.dir/src/os.cc.o
 include/fmt/libfmtd.a: include/fmt/CMakeFiles/fmt.dir/build.make
 include/fmt/libfmtd.a: include/fmt/CMakeFiles/fmt.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adgato/projects/vulkan/template-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libfmtd.a"
-	cd /home/adgato/projects/vulkan/template-project/include/fmt && $(CMAKE_COMMAND) -P CMakeFiles/fmt.dir/cmake_clean_target.cmake
-	cd /home/adgato/projects/vulkan/template-project/include/fmt && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/fmt.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/adgato/projects/vulkan/feavr-engine/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libfmtd.a"
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fmt && $(CMAKE_COMMAND) -P CMakeFiles/fmt.dir/cmake_clean_target.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fmt && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/fmt.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 include/fmt/CMakeFiles/fmt.dir/build: include/fmt/libfmtd.a
 .PHONY : include/fmt/CMakeFiles/fmt.dir/build
 
 include/fmt/CMakeFiles/fmt.dir/clean:
-	cd /home/adgato/projects/vulkan/template-project/include/fmt && $(CMAKE_COMMAND) -P CMakeFiles/fmt.dir/cmake_clean.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine/include/fmt && $(CMAKE_COMMAND) -P CMakeFiles/fmt.dir/cmake_clean.cmake
 .PHONY : include/fmt/CMakeFiles/fmt.dir/clean
 
 include/fmt/CMakeFiles/fmt.dir/depend:
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/adgato/projects/vulkan/template-project /home/adgato/projects/vulkan/template-project/include/fmt /home/adgato/projects/vulkan/template-project /home/adgato/projects/vulkan/template-project/include/fmt /home/adgato/projects/vulkan/template-project/include/fmt/CMakeFiles/fmt.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/adgato/projects/vulkan/feavr-engine /home/adgato/projects/vulkan/feavr-engine/include/fmt /home/adgato/projects/vulkan/feavr-engine /home/adgato/projects/vulkan/feavr-engine/include/fmt /home/adgato/projects/vulkan/feavr-engine/include/fmt/CMakeFiles/fmt.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : include/fmt/CMakeFiles/fmt.dir/depend
 

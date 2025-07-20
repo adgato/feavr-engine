@@ -57,18 +57,18 @@ RM = /home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmak
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
+	/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/template-project/CMakeFiles /home/adgato/projects/vulkan/template-project/src/assets-system//CMakeFiles/progress.marks
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/assets-system/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/template-project/CMakeFiles 0
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/feavr-engine/CMakeFiles /home/adgato/projects/vulkan/feavr-engine/src/assets-system//CMakeFiles/progress.marks
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/assets-system/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/feavr-engine/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/assets-system/clean
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/assets-system/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,23 +148,23 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/assets-system/preinstall
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/assets-system/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/assets-system/preinstall
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/assets-system/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/template-project/CMakeFiles/VerifyGlobs.cmake
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/feavr-engine/CMakeFiles/VerifyGlobs.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/assets-system/CMakeFiles/asset_system.dir/rule:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/assets-system/CMakeFiles/asset_system.dir/rule
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/assets-system/CMakeFiles/asset_system.dir/rule
 .PHONY : src/assets-system/CMakeFiles/asset_system.dir/rule
 
 # Convenience name for target.
@@ -173,7 +173,7 @@ asset_system: src/assets-system/CMakeFiles/asset_system.dir/rule
 
 # fast build rule for target.
 asset_system/fast:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/build
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/build
 .PHONY : asset_system/fast
 
 assets-system/AssetFile.o: assets-system/AssetFile.cpp.o
@@ -181,7 +181,7 @@ assets-system/AssetFile.o: assets-system/AssetFile.cpp.o
 
 # target to build an object file
 assets-system/AssetFile.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/AssetFile.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/AssetFile.cpp.o
 .PHONY : assets-system/AssetFile.cpp.o
 
 assets-system/AssetFile.i: assets-system/AssetFile.cpp.i
@@ -189,7 +189,7 @@ assets-system/AssetFile.i: assets-system/AssetFile.cpp.i
 
 # target to preprocess a source file
 assets-system/AssetFile.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/AssetFile.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/AssetFile.cpp.i
 .PHONY : assets-system/AssetFile.cpp.i
 
 assets-system/AssetFile.s: assets-system/AssetFile.cpp.s
@@ -197,7 +197,7 @@ assets-system/AssetFile.s: assets-system/AssetFile.cpp.s
 
 # target to generate assembly for a file
 assets-system/AssetFile.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/AssetFile.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/AssetFile.cpp.s
 .PHONY : assets-system/AssetFile.cpp.s
 
 assets-system/AssetManager.o: assets-system/AssetManager.cpp.o
@@ -205,7 +205,7 @@ assets-system/AssetManager.o: assets-system/AssetManager.cpp.o
 
 # target to build an object file
 assets-system/AssetManager.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/AssetManager.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/AssetManager.cpp.o
 .PHONY : assets-system/AssetManager.cpp.o
 
 assets-system/AssetManager.i: assets-system/AssetManager.cpp.i
@@ -213,7 +213,7 @@ assets-system/AssetManager.i: assets-system/AssetManager.cpp.i
 
 # target to preprocess a source file
 assets-system/AssetManager.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/AssetManager.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/AssetManager.cpp.i
 .PHONY : assets-system/AssetManager.cpp.i
 
 assets-system/AssetManager.s: assets-system/AssetManager.cpp.s
@@ -221,7 +221,7 @@ assets-system/AssetManager.s: assets-system/AssetManager.cpp.s
 
 # target to generate assembly for a file
 assets-system/AssetManager.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/AssetManager.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/AssetManager.cpp.s
 .PHONY : assets-system/AssetManager.cpp.s
 
 assets-system/GenerateShaderLookup.o: assets-system/GenerateShaderLookup.cpp.o
@@ -229,7 +229,7 @@ assets-system/GenerateShaderLookup.o: assets-system/GenerateShaderLookup.cpp.o
 
 # target to build an object file
 assets-system/GenerateShaderLookup.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/GenerateShaderLookup.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/GenerateShaderLookup.cpp.o
 .PHONY : assets-system/GenerateShaderLookup.cpp.o
 
 assets-system/GenerateShaderLookup.i: assets-system/GenerateShaderLookup.cpp.i
@@ -237,7 +237,7 @@ assets-system/GenerateShaderLookup.i: assets-system/GenerateShaderLookup.cpp.i
 
 # target to preprocess a source file
 assets-system/GenerateShaderLookup.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/GenerateShaderLookup.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/GenerateShaderLookup.cpp.i
 .PHONY : assets-system/GenerateShaderLookup.cpp.i
 
 assets-system/GenerateShaderLookup.s: assets-system/GenerateShaderLookup.cpp.s
@@ -245,7 +245,7 @@ assets-system/GenerateShaderLookup.s: assets-system/GenerateShaderLookup.cpp.s
 
 # target to generate assembly for a file
 assets-system/GenerateShaderLookup.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/GenerateShaderLookup.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/GenerateShaderLookup.cpp.s
 .PHONY : assets-system/GenerateShaderLookup.cpp.s
 
 assets-system/ShaderAssetManager.o: assets-system/ShaderAssetManager.cpp.o
@@ -253,7 +253,7 @@ assets-system/ShaderAssetManager.o: assets-system/ShaderAssetManager.cpp.o
 
 # target to build an object file
 assets-system/ShaderAssetManager.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/ShaderAssetManager.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/ShaderAssetManager.cpp.o
 .PHONY : assets-system/ShaderAssetManager.cpp.o
 
 assets-system/ShaderAssetManager.i: assets-system/ShaderAssetManager.cpp.i
@@ -261,7 +261,7 @@ assets-system/ShaderAssetManager.i: assets-system/ShaderAssetManager.cpp.i
 
 # target to preprocess a source file
 assets-system/ShaderAssetManager.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/ShaderAssetManager.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/ShaderAssetManager.cpp.i
 .PHONY : assets-system/ShaderAssetManager.cpp.i
 
 assets-system/ShaderAssetManager.s: assets-system/ShaderAssetManager.cpp.s
@@ -269,7 +269,7 @@ assets-system/ShaderAssetManager.s: assets-system/ShaderAssetManager.cpp.s
 
 # target to generate assembly for a file
 assets-system/ShaderAssetManager.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/ShaderAssetManager.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/ShaderAssetManager.cpp.s
 .PHONY : assets-system/ShaderAssetManager.cpp.s
 
 assets-system/TextAssetManager.o: assets-system/TextAssetManager.cpp.o
@@ -277,7 +277,7 @@ assets-system/TextAssetManager.o: assets-system/TextAssetManager.cpp.o
 
 # target to build an object file
 assets-system/TextAssetManager.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/TextAssetManager.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/TextAssetManager.cpp.o
 .PHONY : assets-system/TextAssetManager.cpp.o
 
 assets-system/TextAssetManager.i: assets-system/TextAssetManager.cpp.i
@@ -285,7 +285,7 @@ assets-system/TextAssetManager.i: assets-system/TextAssetManager.cpp.i
 
 # target to preprocess a source file
 assets-system/TextAssetManager.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/TextAssetManager.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/TextAssetManager.cpp.i
 .PHONY : assets-system/TextAssetManager.cpp.i
 
 assets-system/TextAssetManager.s: assets-system/TextAssetManager.cpp.s
@@ -293,7 +293,7 @@ assets-system/TextAssetManager.s: assets-system/TextAssetManager.cpp.s
 
 # target to generate assembly for a file
 assets-system/TextAssetManager.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/TextAssetManager.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/assets-system/TextAssetManager.cpp.s
 .PHONY : assets-system/TextAssetManager.cpp.s
 
 include/spirv_reflect.o: include/spirv_reflect.c.o
@@ -301,7 +301,7 @@ include/spirv_reflect.o: include/spirv_reflect.c.o
 
 # target to build an object file
 include/spirv_reflect.c.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/include/spirv_reflect.c.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/include/spirv_reflect.c.o
 .PHONY : include/spirv_reflect.c.o
 
 include/spirv_reflect.i: include/spirv_reflect.c.i
@@ -309,7 +309,7 @@ include/spirv_reflect.i: include/spirv_reflect.c.i
 
 # target to preprocess a source file
 include/spirv_reflect.c.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/include/spirv_reflect.c.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/include/spirv_reflect.c.i
 .PHONY : include/spirv_reflect.c.i
 
 include/spirv_reflect.s: include/spirv_reflect.c.s
@@ -317,7 +317,7 @@ include/spirv_reflect.s: include/spirv_reflect.c.s
 
 # target to generate assembly for a file
 include/spirv_reflect.c.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/include/spirv_reflect.c.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/include/spirv_reflect.c.s
 .PHONY : include/spirv_reflect.c.s
 
 serialisation/ReadByteStream.o: serialisation/ReadByteStream.cpp.o
@@ -325,7 +325,7 @@ serialisation/ReadByteStream.o: serialisation/ReadByteStream.cpp.o
 
 # target to build an object file
 serialisation/ReadByteStream.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/serialisation/ReadByteStream.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/serialisation/ReadByteStream.cpp.o
 .PHONY : serialisation/ReadByteStream.cpp.o
 
 serialisation/ReadByteStream.i: serialisation/ReadByteStream.cpp.i
@@ -333,7 +333,7 @@ serialisation/ReadByteStream.i: serialisation/ReadByteStream.cpp.i
 
 # target to preprocess a source file
 serialisation/ReadByteStream.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/serialisation/ReadByteStream.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/serialisation/ReadByteStream.cpp.i
 .PHONY : serialisation/ReadByteStream.cpp.i
 
 serialisation/ReadByteStream.s: serialisation/ReadByteStream.cpp.s
@@ -341,7 +341,7 @@ serialisation/ReadByteStream.s: serialisation/ReadByteStream.cpp.s
 
 # target to generate assembly for a file
 serialisation/ReadByteStream.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/serialisation/ReadByteStream.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/serialisation/ReadByteStream.cpp.s
 .PHONY : serialisation/ReadByteStream.cpp.s
 
 serialisation/WriteByteStream.o: serialisation/WriteByteStream.cpp.o
@@ -349,7 +349,7 @@ serialisation/WriteByteStream.o: serialisation/WriteByteStream.cpp.o
 
 # target to build an object file
 serialisation/WriteByteStream.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/serialisation/WriteByteStream.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/serialisation/WriteByteStream.cpp.o
 .PHONY : serialisation/WriteByteStream.cpp.o
 
 serialisation/WriteByteStream.i: serialisation/WriteByteStream.cpp.i
@@ -357,7 +357,7 @@ serialisation/WriteByteStream.i: serialisation/WriteByteStream.cpp.i
 
 # target to preprocess a source file
 serialisation/WriteByteStream.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/serialisation/WriteByteStream.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/serialisation/WriteByteStream.cpp.i
 .PHONY : serialisation/WriteByteStream.cpp.i
 
 serialisation/WriteByteStream.s: serialisation/WriteByteStream.cpp.s
@@ -365,7 +365,7 @@ serialisation/WriteByteStream.s: serialisation/WriteByteStream.cpp.s
 
 # target to generate assembly for a file
 serialisation/WriteByteStream.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/serialisation/WriteByteStream.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/assets-system/CMakeFiles/asset_system.dir/build.make src/assets-system/CMakeFiles/asset_system.dir/serialisation/WriteByteStream.cpp.s
 .PHONY : serialisation/WriteByteStream.cpp.s
 
 # Help Target
@@ -416,7 +416,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/template-project/CMakeFiles/VerifyGlobs.cmake
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/feavr-engine/CMakeFiles/VerifyGlobs.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -106,7 +106,7 @@
 					"fragment" : "-Og"
 				},
 				{
-					"fragment" : "-Winvalid-pch -x c++-header -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx"
+					"fragment" : "-Winvalid-pch -x c++-header -include /home/adgato/projects/vulkan/feavr-engine/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx"
 				}
 			],
 			"defines" : 
@@ -133,50 +133,50 @@
 				},
 				{
 					"backtrace" : 10,
-					"define" : "PROJECT_ROOT=\"/home/adgato/projects/vulkan/template-project\""
+					"define" : "PROJECT_ROOT=\"/home/adgato/projects/vulkan/feavr-engine\""
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 11,
-					"path" : "/home/adgato/projects/vulkan/template-project/src/engine"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/src/engine"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/src/ecs"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/src/ecs"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/src/assets-system"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/src/assets-system"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/fmt/include"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/glm"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/glm"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/hlsl++"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/hlsl++"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/vma"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/vma"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/vkbootstrap"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/vkbootstrap"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/imgui"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/imgui"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/fastgltf/include"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/include"
 				},
 				{
 					"backtrace" : 2,
@@ -246,7 +246,7 @@
 					"fragment" : "-Og"
 				},
 				{
-					"fragment" : "-Winvalid-pch -include /home/adgato/projects/vulkan/template-project/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx"
+					"fragment" : "-Winvalid-pch -include /home/adgato/projects/vulkan/feavr-engine/src/engine/CMakeFiles/engine.dir/cmake_pch.hxx"
 				}
 			],
 			"defines" : 
@@ -273,50 +273,50 @@
 				},
 				{
 					"backtrace" : 10,
-					"define" : "PROJECT_ROOT=\"/home/adgato/projects/vulkan/template-project\""
+					"define" : "PROJECT_ROOT=\"/home/adgato/projects/vulkan/feavr-engine\""
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 11,
-					"path" : "/home/adgato/projects/vulkan/template-project/src/engine"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/src/engine"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/src/ecs"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/src/ecs"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/src/assets-system"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/src/assets-system"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/fmt/include"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/glm"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/glm"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/hlsl++"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/hlsl++"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/vma"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/vma"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/vkbootstrap"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/vkbootstrap"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/imgui"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/imgui"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/fastgltf/include"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/include"
 				},
 				{
 					"backtrace" : 2,

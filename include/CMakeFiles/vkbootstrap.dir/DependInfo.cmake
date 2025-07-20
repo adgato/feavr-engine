@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/adgato/projects/vulkan/template-project/include/vkbootstrap/VkBootstrap.cpp" "include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o" "gcc" "include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o.d"
+  "/home/adgato/projects/vulkan/feavr-engine/include/vkbootstrap/VkBootstrap.cpp" "include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o" "gcc" "include/CMakeFiles/vkbootstrap.dir/vkbootstrap/VkBootstrap.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

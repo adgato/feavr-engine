@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/adgato/projects/vulkan/template-project/include/fastgltf/src/base64.cpp" "include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.o" "gcc" "include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.o.d"
-  "/home/adgato/projects/vulkan/template-project/include/fastgltf/src/fastgltf.cpp" "include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o" "gcc" "include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o.d"
+  "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/src/base64.cpp" "include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.o" "gcc" "include/fastgltf/CMakeFiles/fastgltf.dir/src/base64.cpp.o.d"
+  "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/src/fastgltf.cpp" "include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o" "gcc" "include/fastgltf/CMakeFiles/fastgltf.dir/src/fastgltf.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

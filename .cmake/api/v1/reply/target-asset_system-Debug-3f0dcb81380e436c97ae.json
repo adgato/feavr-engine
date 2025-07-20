@@ -71,18 +71,18 @@
 			[
 				{
 					"backtrace" : 3,
-					"define" : "PROJECT_ROOT=\"/home/adgato/projects/vulkan/template-project\""
+					"define" : "PROJECT_ROOT=\"/home/adgato/projects/vulkan/feavr-engine\""
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 4,
-					"path" : "/home/adgato/projects/vulkan/template-project/src/assets-system"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/src/assets-system"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/fmt/include"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include"
 				}
 			],
 			"language" : "CXX",
@@ -117,18 +117,18 @@
 			[
 				{
 					"backtrace" : 3,
-					"define" : "PROJECT_ROOT=\"/home/adgato/projects/vulkan/template-project\""
+					"define" : "PROJECT_ROOT=\"/home/adgato/projects/vulkan/feavr-engine\""
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 4,
-					"path" : "/home/adgato/projects/vulkan/template-project/src/assets-system"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/src/assets-system"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/adgato/projects/vulkan/template-project/include/fmt/include"
+					"path" : "/home/adgato/projects/vulkan/feavr-engine/include/fmt/include"
 				}
 			],
 			"language" : "C",

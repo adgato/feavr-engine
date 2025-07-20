@@ -3,169 +3,169 @@
 cmake_policy(SET CMP0009 NEW)
 
 # LIBRARY_SOURCES at src/assets-system/CMakeLists.txt:8 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/assets-system/*.c")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/*.c")
 set(OLD_GLOB
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/include/spirv_reflect.c"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/include/spirv_reflect.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/feavr-engine/CMakeFiles/cmake.verify_globs")
 endif()
 
 # LIBRARY_SOURCES at src/assets-system/CMakeLists.txt:8 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/assets-system/*.cpp")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/*.cpp")
 set(OLD_GLOB
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetFile.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetManager.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/GenerateShaderLookup.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/ShaderAssetManager.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/TextAssetManager.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/ReadByteStream.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/WriteByteStream.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/AssetFile.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/AssetManager.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/GenerateShaderLookup.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/ShaderAssetManager.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/TextAssetManager.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/serialisation/ReadByteStream.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/serialisation/WriteByteStream.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/feavr-engine/CMakeFiles/cmake.verify_globs")
 endif()
 
 # LIBRARY_HEADERS at src/assets-system/CMakeLists.txt:3 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/assets-system/*.h")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/*.h")
 set(OLD_GLOB
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetFile.h"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetID.h"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetLookup.h"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/AssetManager.h"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/GenerateShaderLookup.h"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/ShaderAssetManager.h"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/assets-system/TextAssetManager.h"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/include/include/spirv/unified1/spirv.h"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/include/spirv_reflect.h"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/ReadByteStream.h"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/SerialConcepts.h"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/SerialManager.h"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/WriteByteStream.h"
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/serialisation/array.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/AssetFile.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/AssetID.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/AssetLookup.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/AssetManager.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/GenerateShaderLookup.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/ShaderAssetManager.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/assets-system/TextAssetManager.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/include/include/spirv/unified1/spirv.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/include/spirv_reflect.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/serialisation/ReadByteStream.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/serialisation/SerialConcepts.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/serialisation/SerialManager.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/serialisation/WriteByteStream.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/serialisation/array.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/feavr-engine/CMakeFiles/cmake.verify_globs")
 endif()
 
 # LIBRARY_HEADERS at src/assets-system/CMakeLists.txt:3 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/assets-system/*.hpp")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/*.hpp")
 set(OLD_GLOB
-  "/home/adgato/projects/vulkan/template-project/src/assets-system/include/json.hpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/assets-system/include/json.hpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/feavr-engine/CMakeFiles/cmake.verify_globs")
 endif()
 
 # ECS_SOURCES at src/ecs/CMakeLists.txt:8 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/ecs/*.cpp")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/feavr-engine/src/ecs/*.cpp")
 set(OLD_GLOB
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Serial.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/Engine.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/RawArray.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/Serial.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/feavr-engine/CMakeFiles/cmake.verify_globs")
 endif()
 
 # ECS_HEADERS at src/ecs/CMakeLists.txt:3 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/ecs/*.h")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/feavr-engine/src/ecs/*.h")
 set(OLD_GLOB
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/ArchetypeData.h"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Common.h"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/CommonEngine.h"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/ComponentTypeUniverse.h"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Engine.h"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/RawArray.h"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/Serial.h"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/TypeIndexer.h"
-  "/home/adgato/projects/vulkan/template-project/src/ecs/ecs/UpdateQueue.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/ArchetypeData.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/Common.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/CommonEngine.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/ComponentTypeUniverse.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/Engine.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/RawArray.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/Serial.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/TypeIndexer.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/ecs/ecs/UpdateQueue.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/feavr-engine/CMakeFiles/cmake.verify_globs")
 endif()
 
 # ECS_HEADERS at src/ecs/CMakeLists.txt:3 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/ecs/*.hpp")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/feavr-engine/src/ecs/*.hpp")
 set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/feavr-engine/CMakeFiles/cmake.verify_globs")
 endif()
 
 # ENGINE_SOURCES at src/engine/CMakeLists.txt:3 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/engine/*.cpp")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/feavr-engine/src/engine/*.cpp")
 set(OLD_GLOB
-  "/home/adgato/projects/vulkan/template-project/src/engine/Core.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/camera.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/main.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/FwdPassPipeline.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/Image.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/Material.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/PassManager.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/SubMesh.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/Swapchain.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/DefaultPass.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/Pass.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/vk_descriptors.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/vk_engine.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/vk_initializers.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/vk_loader.cpp"
-  "/home/adgato/projects/vulkan/template-project/src/engine/vk_pipelines.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/Core.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/ImguiOverlay.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/camera.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/main.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/CommonSetLayouts.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/CommonTextures.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/FwdPassPipeline.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/Image.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/Material.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/PassManager.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/SubMesh.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/Swapchain.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/passes/DefaultPass.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/passes/Pass.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_descriptors.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_engine.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_initializers.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_loader.cpp"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_pipelines.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/feavr-engine/CMakeFiles/cmake.verify_globs")
 endif()
 
 # ENGINE_SOURCES at src/engine/CMakeLists.txt:3 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/engine/*.h")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/feavr-engine/src/engine/*.h")
 set(OLD_GLOB
-  "/home/adgato/projects/vulkan/template-project/src/engine/Core.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/ImguiOverlay.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/camera.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/Buffer.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonSetLayouts.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/CommonTextures.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/FwdPassPipeline.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/Image.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/Material.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/PassManager.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/SubMesh.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/Swapchain.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/DefaultPass.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/Pass.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassDirectory.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/passes/PassInstance.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/rendering/shader_descriptors.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/vk_descriptors.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/vk_engine.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/vk_initializers.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/vk_loader.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/vk_new.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/vk_pipelines.h"
-  "/home/adgato/projects/vulkan/template-project/src/engine/vk_types.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/Core.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/ImguiOverlay.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/camera.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/Buffer.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/CommonSetLayouts.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/CommonTextures.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/FwdPassPipeline.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/Image.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/Material.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/PassManager.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/SubMesh.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/Swapchain.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/passes/DefaultPass.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/passes/Pass.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/passes/PassDirectory.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/passes/PassInstance.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/rendering/shader_descriptors.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_descriptors.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_engine.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_initializers.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_loader.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_new.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_pipelines.h"
+  "/home/adgato/projects/vulkan/feavr-engine/src/engine/vk_types.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/feavr-engine/CMakeFiles/cmake.verify_globs")
 endif()
 
 # ENGINE_SOURCES at src/engine/CMakeLists.txt:3 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/template-project/src/engine/*.hpp")
+file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/adgato/projects/vulkan/feavr-engine/src/engine/*.hpp")
 set(OLD_GLOB
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/template-project/CMakeFiles/cmake.verify_globs")
+  file(TOUCH_NOCREATE "/home/adgato/projects/vulkan/feavr-engine/CMakeFiles/cmake.verify_globs")
 endif()

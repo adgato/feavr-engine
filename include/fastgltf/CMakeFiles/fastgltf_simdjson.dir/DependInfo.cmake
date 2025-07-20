@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/adgato/projects/vulkan/template-project/include/fastgltf/deps/simdjson/simdjson.cpp" "include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/deps/simdjson/simdjson.cpp.o" "gcc" "include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/deps/simdjson/simdjson.cpp.o.d"
+  "/home/adgato/projects/vulkan/feavr-engine/include/fastgltf/deps/simdjson/simdjson.cpp" "include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/deps/simdjson/simdjson.cpp.o" "gcc" "include/fastgltf/CMakeFiles/fastgltf_simdjson.dir/deps/simdjson/simdjson.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

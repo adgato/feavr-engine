@@ -57,18 +57,18 @@ RM = /home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmak
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_SOURCE_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/template-project
+CMAKE_BINARY_DIR = /home/adgato/projects/vulkan/feavr-engine
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
+	/home/adgato/portable/jetbrains/clion-2025.1.2/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/template-project/CMakeFiles /home/adgato/projects/vulkan/template-project/src/ecs//CMakeFiles/progress.marks
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ecs/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/template-project/CMakeFiles 0
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/feavr-engine/CMakeFiles /home/adgato/projects/vulkan/feavr-engine/src/ecs//CMakeFiles/progress.marks
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ecs/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adgato/projects/vulkan/feavr-engine/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ecs/clean
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ecs/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,23 +148,23 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ecs/preinstall
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ecs/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ecs/preinstall
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ecs/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/template-project/CMakeFiles/VerifyGlobs.cmake
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/feavr-engine/CMakeFiles/VerifyGlobs.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/ecs/CMakeFiles/ecs.dir/rule:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ecs/CMakeFiles/ecs.dir/rule
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/ecs/CMakeFiles/ecs.dir/rule
 .PHONY : src/ecs/CMakeFiles/ecs.dir/rule
 
 # Convenience name for target.
@@ -173,7 +173,7 @@ ecs: src/ecs/CMakeFiles/ecs.dir/rule
 
 # fast build rule for target.
 ecs/fast:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/build
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/build
 .PHONY : ecs/fast
 
 ecs/Engine.o: ecs/Engine.cpp.o
@@ -181,7 +181,7 @@ ecs/Engine.o: ecs/Engine.cpp.o
 
 # target to build an object file
 ecs/Engine.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.o
 .PHONY : ecs/Engine.cpp.o
 
 ecs/Engine.i: ecs/Engine.cpp.i
@@ -189,7 +189,7 @@ ecs/Engine.i: ecs/Engine.cpp.i
 
 # target to preprocess a source file
 ecs/Engine.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.i
 .PHONY : ecs/Engine.cpp.i
 
 ecs/Engine.s: ecs/Engine.cpp.s
@@ -197,7 +197,7 @@ ecs/Engine.s: ecs/Engine.cpp.s
 
 # target to generate assembly for a file
 ecs/Engine.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Engine.cpp.s
 .PHONY : ecs/Engine.cpp.s
 
 ecs/RawArray.o: ecs/RawArray.cpp.o
@@ -205,7 +205,7 @@ ecs/RawArray.o: ecs/RawArray.cpp.o
 
 # target to build an object file
 ecs/RawArray.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.o
 .PHONY : ecs/RawArray.cpp.o
 
 ecs/RawArray.i: ecs/RawArray.cpp.i
@@ -213,7 +213,7 @@ ecs/RawArray.i: ecs/RawArray.cpp.i
 
 # target to preprocess a source file
 ecs/RawArray.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.i
 .PHONY : ecs/RawArray.cpp.i
 
 ecs/RawArray.s: ecs/RawArray.cpp.s
@@ -221,7 +221,7 @@ ecs/RawArray.s: ecs/RawArray.cpp.s
 
 # target to generate assembly for a file
 ecs/RawArray.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/RawArray.cpp.s
 .PHONY : ecs/RawArray.cpp.s
 
 ecs/Serial.o: ecs/Serial.cpp.o
@@ -229,7 +229,7 @@ ecs/Serial.o: ecs/Serial.cpp.o
 
 # target to build an object file
 ecs/Serial.cpp.o:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.o
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.o
 .PHONY : ecs/Serial.cpp.o
 
 ecs/Serial.i: ecs/Serial.cpp.i
@@ -237,7 +237,7 @@ ecs/Serial.i: ecs/Serial.cpp.i
 
 # target to preprocess a source file
 ecs/Serial.cpp.i:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.i
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.i
 .PHONY : ecs/Serial.cpp.i
 
 ecs/Serial.s: ecs/Serial.cpp.s
@@ -245,7 +245,7 @@ ecs/Serial.s: ecs/Serial.cpp.s
 
 # target to generate assembly for a file
 ecs/Serial.cpp.s:
-	cd /home/adgato/projects/vulkan/template-project && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.s
+	cd /home/adgato/projects/vulkan/feavr-engine && $(MAKE) $(MAKESILENT) -f src/ecs/CMakeFiles/ecs.dir/build.make src/ecs/CMakeFiles/ecs.dir/ecs/Serial.cpp.s
 .PHONY : ecs/Serial.cpp.s
 
 # Help Target
@@ -281,7 +281,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/template-project/CMakeFiles/VerifyGlobs.cmake
-	cd /home/adgato/projects/vulkan/template-project && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -P /home/adgato/projects/vulkan/feavr-engine/CMakeFiles/VerifyGlobs.cmake
+	cd /home/adgato/projects/vulkan/feavr-engine && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

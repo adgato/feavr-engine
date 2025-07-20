@@ -1,4 +1,4 @@
-# Install script for directory: /home/adgato/projects/vulkan/template-project
+# Install script for directory: /home/adgato/projects/vulkan/feavr-engine
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,17 +44,17 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/adgato/projects/vulkan/template-project/include/cmake_install.cmake")
-  include("/home/adgato/projects/vulkan/template-project/src/ecs/cmake_install.cmake")
-  include("/home/adgato/projects/vulkan/template-project/src/assets-system/cmake_install.cmake")
-  include("/home/adgato/projects/vulkan/template-project/src/engine/cmake_install.cmake")
+  include("/home/adgato/projects/vulkan/feavr-engine/include/cmake_install.cmake")
+  include("/home/adgato/projects/vulkan/feavr-engine/src/ecs/cmake_install.cmake")
+  include("/home/adgato/projects/vulkan/feavr-engine/src/assets-system/cmake_install.cmake")
+  include("/home/adgato/projects/vulkan/feavr-engine/src/engine/cmake_install.cmake")
 
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/adgato/projects/vulkan/template-project/install_local_manifest.txt"
+  file(WRITE "/home/adgato/projects/vulkan/feavr-engine/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -70,6 +70,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/adgato/projects/vulkan/template-project/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/home/adgato/projects/vulkan/feavr-engine/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
