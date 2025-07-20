@@ -1,13 +1,13 @@
 #include "ShaderAssetManager.h"
 
 #include <fmt/core.h>
+#include <json.hpp>
 #include <cstring>
 #include <filesystem>
 #include <fstream>
 #include <regex>
 
 #include "AssetManager.h"
-#include "include/json.hpp"
 
 namespace assets_system
 {

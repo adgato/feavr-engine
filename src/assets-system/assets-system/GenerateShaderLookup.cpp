@@ -1,5 +1,6 @@
 #include "GenerateShaderLookup.h"
 
+#include <spirv_reflect.h>
 #include <cassert>
 #include <filesystem>
 #include <fstream>
@@ -10,7 +11,6 @@
 #include <map>
 #include <ranges>
 #include <fmt/core.h>
-#include "include/spirv_reflect.h"
 
 #include "AssetFile.h"
 
