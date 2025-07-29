@@ -1,6 +1,6 @@
 #include "AssetManager.h"
 
-#include <fmt/core.h>
+#include <fmt/format.h>
 #include <cassert>
 #include <filesystem>
 #include <fstream>
@@ -9,8 +9,8 @@
 #include <vector>
 
 #include "GenerateShaderLookup.h"
-#include "ShaderAssetManager.h"
-#include "TextAssetManager.h"
+#include "ShaderAssetGenerator.h"
+#include "TextAssetGenerator.h"
 
 namespace assets_system
 {
@@ -97,9 +97,9 @@ namespace assets_system
         const std::string extension = readPath.extension().string();
 
         if (".txt" == extension)
-            return TextAssetManager::GenerateAssets(assetPath, std::move(buffer));
+            return TextAssetGenerator::GenerateAssets(assetPath, std::move(buffer));
         if (".hlsl" == extension)
-            return ShaderAssetManager::GenerateAssets(assetPath, std::move(buffer));
+            return ShaderAssetGenerator::GenerateAssets(assetPath, std::move(buffer));
 
         return {};
     }
@@ -257,7 +257,7 @@ namespace assets_system
         return true;
     }
 
-    AssetFile AssetManager::LoadAsset(AssetID assetId, const char* typeCheck /* = nullptr */)
+    AssetFile AssetManager::LoadAsset(AssetID assetId)
     {
         constexpr auto GEN_ASSET_INDEX = PROJECT_ROOT"/assets-meta/gen_assets_index.csv";
 
@@ -287,12 +287,7 @@ namespace assets_system
 
             const std::string assetFilename = GEN_ASSET_DIR + assetPaths[assetId.idx];
             AssetFile result = AssetFile::Load(assetFilename.c_str());
-            assert(typeCheck == nullptr ||
-                typeCheck[0] == result.type[0] &&
-                typeCheck[1] == result.type[1] &&
-                typeCheck[2] == result.type[2] &&
-                typeCheck[3] == result.type[3] && "Type mismatch"
-            );
+
 
             return result;
         }

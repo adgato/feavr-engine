@@ -1,12 +1,13 @@
 #pragma once
 #include <array>
+#include <vector>
 #include <cassert>
 
-#include "Common.h"
 #include "RawArray.h"
 
 namespace ecs
 {
+    template <size_t NumTypes>
     class ArchetypeData
     {
         size_t count = 0;
@@ -19,25 +20,28 @@ namespace ecs
 
         ArchetypeData() = default;
 
-        explicit ArchetypeData(const std::vector<TypeID>& type)
+        explicit ArchetypeData(const std::vector<TypeInfo>& typesInfo)
         {
-            types = type;
-            for (const size_t i : types)
+            types.reserve(typesInfo.size());
+            for (size_t i = 0; i < typesInfo.size(); ++i)
             {
-                data[i] = RawArray(ComponentInfo.GetTypeInfo(i));
-                data[i].Realloc(capacity, 0);
+                const TypeInfo& info = typesInfo[i];
+                TypeID type = info.type;
+
+                types.push_back(type);
+                data[type] = RawArray(info);
+                data[type].Realloc(capacity, 0);
             }
         }
 
         std::byte* GetElem(const uint index, const TypeID type) const
         {
-            assert(index < count && data[type].data);
+            assert(index < count);
             return data[type].GetElem(index);
         }
 
         void SetElem(const TypeID type, const std::byte* src) const
         {
-            assert(data[type].data);
             data[type].SetElem(count - 1, src);
         }
 
@@ -53,36 +57,21 @@ namespace ecs
             if (++count < capacity)
                 return;
 
-            size_t new_capacity = 4 * capacity;
+            const size_t new_capacity = capacity + (capacity >> 1);
 
-            bool badalloc = false;
             for (const uint i : types)
-            {
-                if (data[i].Realloc(new_capacity, capacity))
-                    continue;
-                badalloc = true;
-                break;
-            }
-
-            if (badalloc)
-            {
-                new_capacity = 2 * capacity;
-                for (const uint i : types)
-                {
-                    if (!data[i].Realloc(new_capacity, capacity))
-                        throw std::bad_alloc();
-                }
-            }
+                if (!data[i].Realloc(new_capacity, capacity))
+                    throw std::bad_alloc();
 
             capacity = new_capacity;
+            assert(count <= capacity);
         }
 
         Entity RemoveElem(const uint index)
         {
             assert(index < count);
 
-            count--;
-            if (index < count)
+            if (index < --count)
             {
                 for (const uint i : types)
                     data[i].ReplaceElem(index, count);

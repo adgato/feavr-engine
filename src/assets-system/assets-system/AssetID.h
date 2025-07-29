@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 
-#include "serialisation/SerialManager.h"
+#include "serialisation/Stream.h"
 
 namespace assets_system
 {
@@ -12,7 +12,7 @@ namespace assets_system
         // index of file generated from asset
         SERIALIZABLE(1, uint32_t) idx;
 
-        void Serialize(serial::SerialManager& m)
+        void Serialize(serial::Stream& m)
         {
             m.SerializeComponent(id, idx);
         }

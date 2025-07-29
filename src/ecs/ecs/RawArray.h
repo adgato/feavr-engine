@@ -1,7 +1,11 @@
 #pragma once
+#include <cassert>
+#include <cstddef>
+#include <cstdlib>
 #include <cstring>
 
-#include "Common.h"
+#include "ComponentConcepts.h"
+
 
 namespace ecs
 {
@@ -22,7 +26,7 @@ namespace ecs
         ~RawArray()
         {
             if (data)
-                free(data);
+                std::free(data);
             data = nullptr;
         }
 
@@ -49,19 +53,22 @@ namespace ecs
 
         std::byte* GetElem(const size_t index) const
         {
+            assert(data);
             return data + index * stride;
         }
 
         void SetElem(const size_t index, const std::byte* src) const
         {
+            assert(data);
             std::memcpy(data + index * stride, src, stride);
         }
 
         void ReplaceElem(const size_t dst, const size_t src) const
         {
+            assert(data);
             std::memcpy(data + dst * stride, data + src * stride, stride);
         }
 
-        bool Realloc(const size_t new_capacity, const size_t old_capacity);
+        bool Realloc(size_t new_capacity, size_t old_capacity);
     };
 }

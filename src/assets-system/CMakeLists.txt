@@ -13,9 +13,15 @@ file(GLOB_RECURSE LIBRARY_SOURCES CONFIGURE_DEPENDS
 
 add_library(asset_system STATIC ${LIBRARY_SOURCES} ${LIBRARY_HEADERS})
 target_include_directories(asset_system PUBLIC "${LIBRARY_SOURCE_DIR}")
-target_compile_features(asset_system PUBLIC cxx_std_20)
-target_link_libraries(asset_system PUBLIC fmt::fmt lz4 json spirv_reflect)
+target_link_libraries(asset_system PUBLIC fmt::fmt lz4 spirv_reflect)
 
 target_compile_definitions(asset_system PUBLIC
         PROJECT_ROOT="${PROJECT_SOURCE_DIR}"
+)
+
+target_precompile_headers(asset_system PUBLIC
+        <vector>
+        <string>
+        <memory>
+        <array>
 )

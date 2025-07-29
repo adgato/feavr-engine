@@ -1,31 +1,47 @@
-set(ENGINE_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src/engine")
+set(LIBRARY_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src/engine")
 
-file(GLOB_RECURSE ENGINE_SOURCES CONFIGURE_DEPENDS
-    "${ENGINE_SOURCE_DIR}/*.cpp"
-    "${ENGINE_SOURCE_DIR}/*.hpp"
-    "${ENGINE_SOURCE_DIR}/*.h"
+file(GLOB_RECURSE LIBRARY_HEADERS CONFIGURE_DEPENDS
+        "${LIBRARY_SOURCE_DIR}/*.hpp"
+        "${LIBRARY_SOURCE_DIR}/*.h"
 )
 
-add_executable(engine ${ENGINE_SOURCES})
-target_include_directories(engine PUBLIC "${ENGINE_SOURCE_DIR}")
-set_property(TARGET engine PROPERTY CXX_STANDARD 20)
-
-target_compile_definitions(engine PUBLIC 
-    GLM_FORCE_DEPTH_ZERO_TO_ONE 
-    PROJECT_ROOT="${PROJECT_SOURCE_DIR}"
+file(GLOB_RECURSE LIBRARY_SOURCES CONFIGURE_DEPENDS
+        "${LIBRARY_SOURCE_DIR}/*.cpp"
+        "${LIBRARY_SOURCE_DIR}/*.c"
 )
 
-target_link_libraries(engine PUBLIC ecs asset_system hlslpp vma glm Vulkan::Vulkan fmt::fmt stb_image vkbootstrap imgui fastgltf::fastgltf)
+add_executable(engine rendering/main.cpp)
+
+target_sources(engine PUBLIC ${LIBRARY_SOURCES} ${LIBRARY_HEADERS})
+
+target_include_directories(engine PUBLIC "${LIBRARY_SOURCE_DIR}")
+
+target_compile_definitions(engine PUBLIC
+        GLM_FORCE_DEPTH_ZERO_TO_ONE
+        PROJECT_ROOT="${PROJECT_SOURCE_DIR}"
+)
+
+target_link_libraries(engine PUBLIC ecs asset_system hlslpp vma glm Vulkan::Vulkan fmt::fmt stb_image vkbootstrap imgui fastgltf::fastgltf stdc++exp)
 target_link_libraries(engine ${SDL2_LIBRARIES})
 target_include_directories(engine PRIVATE ${SDL2_INCLUDE_DIRS})
 
-target_precompile_headers(engine PUBLIC 
-    <optional> 
-    <vector> 
-    <memory> 
-    <string> 
-    <unordered_map> 
-    <glm/mat4x4.hpp>  
-    <glm/vec4.hpp> 
-    <vulkan/vulkan.h>
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-nullability-completeness")
+
+target_precompile_headers(engine PUBLIC
+        # Vulkan - huge header, used everywhere in graphics code
+        <vulkan/vulkan.h>
+
+        # SDL2 - stable, commonly included
+        <SDL2/SDL.h>
+
+        # ImGui - if you use it across many files
+        <imgui.h>
+        <imgui_impl_vulkan.h>
+        <imgui_impl_sdl2.h>
+
+        # Standard library headers you use a lot
+        <string>
+        <memory>
+        <unordered_map>
+        <array>
 )

@@ -1,6 +1,5 @@
 #pragma once
-#include "shader_descriptors.h"
-#include "vk_types.h"
+#include "pass-system/shader_descriptors.h"
 
 namespace rendering
 {

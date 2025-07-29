@@ -10,7 +10,7 @@
 #include <cctype>
 #include <map>
 #include <ranges>
-#include <fmt/core.h>
+#include <fmt/format.h>
 
 #include "AssetFile.h"
 
@@ -57,8 +57,6 @@ namespace assets_system
         switch (stage)
         {
             case SPV_REFLECT_SHADER_STAGE_VERTEX_BIT: return "vertex";
-            case SPV_REFLECT_SHADER_STAGE_TESSELLATION_CONTROL_BIT: return "tesselation_control";
-            case SPV_REFLECT_SHADER_STAGE_TESSELLATION_EVALUATION_BIT: return "tesselation_evaluation";
             case SPV_REFLECT_SHADER_STAGE_GEOMETRY_BIT: return "geometry";
             case SPV_REFLECT_SHADER_STAGE_FRAGMENT_BIT: return "pixel";
             case SPV_REFLECT_SHADER_STAGE_COMPUTE_BIT: return "compute";
@@ -91,9 +89,7 @@ namespace assets_system
         if (result.ends_with("_vs") ||
             result.ends_with("_ps") ||
             result.ends_with("_cs") ||
-            result.ends_with("_gs") ||
-            result.ends_with("_hs") ||
-            result.ends_with("_ds"))
+            result.ends_with("_gs"))
             result.resize(result.size() - 3);
 
         return ReplaceSymbols(result);

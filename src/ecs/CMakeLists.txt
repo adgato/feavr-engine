@@ -1,16 +1,26 @@
-set(ECS_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src/ecs")
+set(LIBRARY_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src/ecs")
 
-file(GLOB_RECURSE ECS_HEADERS CONFIGURE_DEPENDS
-        "${ECS_SOURCE_DIR}/*.hpp"
-        "${ECS_SOURCE_DIR}/*.h"
+file(GLOB_RECURSE LIBRARY_HEADERS CONFIGURE_DEPENDS
+        "${LIBRARY_SOURCE_DIR}/*.hpp"
+        "${LIBRARY_SOURCE_DIR}/*.h"
 )
 
-file(GLOB_RECURSE ECS_SOURCES CONFIGURE_DEPENDS
-        "${ECS_SOURCE_DIR}/*.cpp"
+file(GLOB_RECURSE LIBRARY_SOURCES CONFIGURE_DEPENDS
+        "${LIBRARY_SOURCE_DIR}/*.cpp"
+        "${LIBRARY_SOURCE_DIR}/*.c"
 )
 
-add_library(ecs STATIC ${ECS_SOURCES} ${ECS_HEADERS})
-target_include_directories(ecs PUBLIC "${ECS_SOURCE_DIR}")
-target_compile_features(ecs PUBLIC cxx_std_20)
 
-target_link_libraries(ecs PUBLIC asset_system glm)
+add_library(ecs STATIC ${LIBRARY_SOURCES} ${LIBRARY_HEADERS})
+target_include_directories(ecs PUBLIC "${LIBRARY_SOURCE_DIR}")
+target_link_libraries(ecs PUBLIC asset_system)
+
+target_compile_definitions(ecs PUBLIC
+        PROJECT_ROOT="${PROJECT_SOURCE_DIR}"
+)
+
+target_precompile_headers(ecs PUBLIC
+        <string>
+        <memory>
+        <array>
+)

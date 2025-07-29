@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <new>
+#include <span>
 #include <string>
 #include <type_traits>
 
@@ -21,6 +22,7 @@ namespace serial
         void Destroy();
 
         void SaveToFile(const char* filePath) const;
+        std::span<std::byte> AsSpan() const { return std::span(data, count); };
 
         size_t GetCount() const { return count; }
 
@@ -37,8 +39,8 @@ namespace serial
         {
             if (count + sizeof(T) > capacity)
             {
-                while (count + sizeof(T) > capacity)
-                    capacity *= 2;
+                capacity = count + sizeof(T);
+                capacity += capacity >> 1;
 
                 data = static_cast<std::byte*>(std::realloc(data, capacity));
                 if (!data)
@@ -64,8 +66,8 @@ namespace serial
         {
             if (count + sizeof(T) * size > capacity)
             {
-                while (count + sizeof(T) * size > capacity)
-                    capacity *= 2;
+                capacity = count + sizeof(T) * size;
+                capacity += capacity >> 1;
 
                 data = static_cast<std::byte*>(std::realloc(data, capacity));
                 if (!data)

@@ -2,13 +2,16 @@
 
 #include <cstdint>
 #include <type_traits>
+#include <concepts>
 
 namespace serial
 {
-    class SerialManager;
+    class Stream;
 
     using TagID = uint8_t;
-    using uint_s = uint16_t;
+
+    // expecting file size << 4GB
+    using uint = uint32_t;
 
     template <typename T>
     concept IsDestroyable = requires(T t)
@@ -17,7 +20,7 @@ namespace serial
     };
 
     template <typename T>
-    concept IsSerialType = requires(T t, SerialManager& s)
+    concept IsSerialType = requires(T t, Stream& s)
     {
         { t.Serialize(s) } -> std::same_as<void>;
     } && std::is_trivially_copyable_v<T> && std::is_default_constructible_v<T>;
@@ -26,14 +29,8 @@ namespace serial
     concept IsSerializable = IsSerialType<T> || std::is_arithmetic_v<T>;
 
     template<TagID...>
-    constexpr bool not_in_arr = true;
+    constexpr bool is_ordered = true;
 
-    template<TagID value, TagID head, TagID... tail>
-    constexpr bool not_in_arr<value, head, tail...> = value != head && not_in_arr<value, tail...>;
-
-    template<TagID...>
-    constexpr bool is_distinct = true;
-
-    template <TagID head, TagID... tail>
-    constexpr bool is_distinct<head, tail...> = not_in_arr<head, tail...> && is_distinct<tail...>;
+    template <TagID first, TagID second, TagID... tail>
+    constexpr bool is_ordered<first, second, tail...> = first < second && is_ordered<second, tail...>;
 }

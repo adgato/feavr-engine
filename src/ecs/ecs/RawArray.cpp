@@ -1,5 +1,7 @@
 #include "RawArray.h"
 
+#include <algorithm>
+
 namespace ecs
 {
     bool RawArray::Realloc(const size_t new_capacity, const size_t old_capacity)

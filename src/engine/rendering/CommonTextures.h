@@ -1,5 +1,5 @@
 #pragma once
-#include "Image.h"
+#include "rendering/resources/Image.h"
 
 class VulkanEngine;
 
@@ -10,7 +10,7 @@ namespace rendering
     public:
         Image errorCheckerboard; 
         
-        void Init(VulkanEngine* engine, SwapchainRenderer* swapchainRenderer);
+        void Init(EngineResources* swapchainRenderer);
         void Destroy();
     };    
 }

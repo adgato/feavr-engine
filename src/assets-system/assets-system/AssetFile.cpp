@@ -2,47 +2,70 @@
 
 #include <fstream>
 
+#include "serialisation/Stream.h"
+
 namespace assets_system
 {
-    void AssetFile::Save(const char* filePath) const
+    void AssetFile::Serialize(serial::Stream& m)
     {
-        std::ofstream file(filePath, std::ios::binary);
+        uint32_t blobSize = 0;
+        if (m.loading)
+        {
+            const uint32_t typeInt = m.reader.Read<uint32_t>();
+            version = m.reader.Read<uint32_t>();
+            blobSize = m.reader.Read<uint32_t>();
 
-        if (!file.is_open())
-            throw std::ios::failure("Could not open file");
+            std::memcpy(type, &typeInt, sizeof(uint32_t));
+            blob.resize(blobSize);
+        } else
+        {
+            blobSize = blob.size();
 
-        const uint32_t jsonlength = json.size();
-        const uint32_t bloblength = blob.size();
+            uint32_t typeInt;
+            std::memcpy(&typeInt, type, sizeof(uint32_t));
 
-        file.write(type, 4);
-        file.write(reinterpret_cast<const char*>(&version), sizeof(uint32_t));
-        file.write(reinterpret_cast<const char*>(&jsonlength), sizeof(uint32_t));
-        file.write(reinterpret_cast<const char*>(&bloblength), sizeof(uint32_t));
-        file.write(json.data(), jsonlength);
-        file.write(reinterpret_cast<const char*>(blob.data()), bloblength);
+            m.writer.Write<uint32_t>(typeInt);
+            m.writer.Write<uint32_t>(version);
+            m.writer.Write<uint32_t>(blobSize);
+        }
+        header.Serialize(m);
+        m.SerializeArray(blob.data(), blobSize);
+    }
+
+    void AssetFile::Save(const char* filePath)
+    {
+        serial::Stream m {};
+
+        m.InitWrite();
+        Serialize(m);
+        m.writer.SaveToFile(filePath);
+    }
+
+    serial::Stream AssetFile::ReadFromBlob()
+    {
+        serial::Stream m {};
+        m.InitRead();
+        m.reader.LoadFromSpan(std::span(blob.data(), blob.size()));
+        return m;
+    }
+
+    void AssetFile::WriteToBlob(const serial::Stream& m)
+    {
+        assert(!m.loading);
+        const std::span<std::byte> span = m.writer.AsSpan();
+
+        blob.resize(span.size());
+        std::memcpy(blob.data(), span.data(), span.size());
     }
 
     AssetFile AssetFile::Load(const char* filePath)
     {
-        AssetFile assetFile;
-        std::ifstream file(filePath, std::ios::binary);
+        serial::Stream m {};
+        AssetFile assetFile {};
 
-        if (!file.is_open())
-            throw std::ios::failure("Could not open file");
-
-        uint32_t jsonlength = 0;
-        uint32_t bloblength = 0;
-
-        file.read(assetFile.type, 4);
-        file.read(reinterpret_cast<char*>(&assetFile.version), sizeof(uint32_t));
-        file.read(reinterpret_cast<char*>(&jsonlength), sizeof(uint32_t));
-        file.read(reinterpret_cast<char*>(&bloblength), sizeof(uint32_t));
-
-        assetFile.json.resize(jsonlength);
-        assetFile.blob.resize(bloblength);
-
-        file.read(assetFile.json.data(), jsonlength);
-        file.read(reinterpret_cast<char*>(assetFile.blob.data()), bloblength);
+        m.InitRead();
+        m.reader.LoadFromFile(filePath);
+        assetFile.Serialize(m);
 
         return assetFile;
     }

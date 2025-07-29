@@ -2,6 +2,7 @@
 
 #include <cstddef>
 #include <cstring>
+#include <span>
 #include <string>
 #include <type_traits>
 
@@ -14,6 +15,7 @@ namespace serial
 
     public:
         void LoadFromFile(const char* filePath);
+        void LoadFromSpan(const std::span<std::byte>& span);
 
         void Destroy();
 

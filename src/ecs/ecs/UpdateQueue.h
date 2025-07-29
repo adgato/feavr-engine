@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Common.h"
 #include <memory>
+#include "ComponentConcepts.h"
 
 namespace ecs
 {
@@ -23,11 +23,9 @@ namespace ecs
             return instr;
         }
 
-        static UpdateInstr NewRawAdd(const std::byte* data, const TypeID type)
+        static UpdateInstr NewRawAdd(const std::byte* data, const TypeID type, const size_t size)
         {
             UpdateInstr instr;
-
-            const size_t size = ComponentInfo.GetTypeInfo(type).size;
 
             instr.type = type;
             instr.data = std::make_unique<std::byte[]>(size);

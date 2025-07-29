@@ -1,5 +1,4 @@
 #include "CommonSetLayouts.h"
-#include "shader_descriptors.h"
 
 using namespace shader_layouts::global;
 
@@ -17,4 +16,3 @@ namespace rendering
         GPUSceneData.set = nullptr;
     }
 }
-

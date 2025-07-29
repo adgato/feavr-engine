@@ -20,7 +20,7 @@ namespace assets_system
     public:
         static bool RefreshAssets(bool refreshAll = false);
 
-        static AssetFile LoadAsset(AssetID assetId, const char* typeCheck = nullptr);
+        static AssetFile LoadAsset(AssetID assetId);
 
         static std::string PrettyNameOfAsset(const std::string& relativeAssetPath);
     };
