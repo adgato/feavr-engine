@@ -29,27 +29,11 @@ namespace serial
 
     class Stream
     {
-        bool MatchNextTag(const TagID tag)
-        {
-            if (!loading)
-            {
-                writer.Write<TagID>(tag);
-                return true;
-            }
+        bool MatchNextTag(TagID tag);
 
-            TagID readTag = reader.Read<TagID>();
-            while (readTag < tag)
-            {
-                reader.Jump(reader.Read<uint>());
-                readTag = reader.Read<TagID>();
-            }
-            if (readTag > tag)
-                reader.Jump(-sizeof(TagID));
-
-            return readTag == tag;
-        }
 
     public:
+        int32_t entityOffset = 0;
         bool loading = false;
         WriteByteStream writer;
         ReadByteStream reader;
@@ -121,6 +105,8 @@ namespace serial
             else
                 writer.WriteArray<T>(data, size);
         }
+
+        void SerializeEntity(uint32_t& entityID);
     };
 
     template <TagID tag, IsSerializable T>
@@ -130,7 +116,7 @@ namespace serial
         {
             if (m.loading)
             {
-                const size_t size = m.reader.Read<uint>();
+                const size_t size = m.reader.Read<fsize>();
                 if (size == sizeof(T))
                     value = m.reader.Read<T>();
                 else
@@ -140,7 +126,7 @@ namespace serial
                 }
             } else
             {
-                m.writer.Write<uint>(sizeof(T));
+                m.writer.Write<fsize>(sizeof(T));
                 m.writer.Write<T>(value);
             }
         } else
@@ -149,10 +135,10 @@ namespace serial
             size_t size = 0;
             if (m.loading)
             {
-                size = m.reader.Read<uint>();
+                size = m.reader.Read<fsize>();
                 offset = m.reader.GetCount();
             } else
-                offset = m.writer.Reserve<uint>();
+                offset = m.writer.Reserve<fsize>();
 
             value.Serialize(m);
 
@@ -165,7 +151,7 @@ namespace serial
                     value = {};
                 }
             } else
-                m.writer.WriteOver<uint>(m.writer.GetCount() - offset - sizeof(uint), offset);
+                m.writer.WriteOver<fsize>(m.writer.GetCount() - offset - sizeof(fsize), offset);
         }
     }
 }

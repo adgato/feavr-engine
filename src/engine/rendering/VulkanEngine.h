@@ -7,6 +7,8 @@
 #include "rendering/CommonTextures.h"
 #include "pass-system/Material.h"
 
+class Core;
+
 struct GPUSceneData
 {
     glm::mat4 view;
@@ -26,9 +28,8 @@ struct FrameData
 // TODO - still needs a lot of clean up
 class VulkanEngine
 {
-    rendering::EngineResources* swapchainRenderer = nullptr;
-
 public:
+    rendering::EngineResources* engineResources = nullptr;
     FrameData frameData[2];
 
     Camera mainCamera;
@@ -44,9 +45,8 @@ public:
     rendering::Image drawImage;
     rendering::Image depthImage;
 
-    ecs::MainEntityManager ecsMain;
-    ecs::PassEntityManager ecsPass;
-    rendering::PassMeshManager passMeshManager;
+    ecs::SingletonEntity<ecs::MainEntityManager, ecs::PassEntityManager, rendering::PassMeshManager> sys =
+            SINGLETON_ENTITY(ecs::MainEntityManager, ecs::PassEntityManager, rendering::PassMeshManager);
 
     GPUSceneData sceneData;
 
@@ -58,6 +58,10 @@ public:
     void Init(rendering::EngineResources* swapchainRenderer);
 
     void Draw(uint32_t frameCount, VkCommandBuffer cmd, rendering::Image& targetImage);
+
+    // TODO - this method should be moved out of this class eventually
+    void SaveScene(const char* filePath);
+    void LoadScene(assets_system::AssetID other);
 
     void Destroy();
 };

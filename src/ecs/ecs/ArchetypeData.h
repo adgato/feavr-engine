@@ -70,6 +70,7 @@ namespace ecs
         Entity RemoveElem(const uint index)
         {
             assert(index < count);
+            assert(count > 0);
 
             if (index < --count)
             {

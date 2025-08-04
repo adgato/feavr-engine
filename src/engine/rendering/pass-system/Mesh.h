@@ -3,6 +3,11 @@
 #include "glm/vec4.hpp"
 #include "rendering/resources/Buffer.h"
 
+namespace serial
+{
+    class Stream;
+}
+
 namespace rendering
 {
     struct Vertex
@@ -20,6 +25,11 @@ namespace rendering
         Buffer<uint32_t> indexBuffer;
 
         VkDeviceAddress vertexBufferAddress;
+
+        bool IsValid() const
+        {
+            return vertexBuffer.buffer && indexBuffer.buffer && vertexBufferAddress;
+        }
 
         void Destroy()
         {

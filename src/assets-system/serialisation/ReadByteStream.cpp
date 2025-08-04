@@ -24,7 +24,7 @@ namespace serial
         file.close();
     }
 
-    void ReadByteStream::LoadFromSpan(const std::span<std::byte>& span)
+    void ReadByteStream::LoadFrom(const std::span<const std::byte>& span)
     {
         data = static_cast<std::byte*>(std::malloc(span.size_bytes()));
         if (!data)

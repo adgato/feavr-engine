@@ -50,20 +50,8 @@ namespace shader_layouts
             .descriptorCount = 1,
             .stageFlags = 0x00000001,
         };
-        constexpr auto colorTex_binding = VkDescriptorSetLayoutBinding{
-            .binding = 1,
-            .descriptorType = VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE,
-            .descriptorCount = 1,
-            .stageFlags = 0x00000010,
-        };
-        constexpr auto colorTexSampler_binding = VkDescriptorSetLayoutBinding{
-            .binding = 2,
-            .descriptorType = VK_DESCRIPTOR_TYPE_SAMPLER,
-            .descriptorCount = 1,
-            .stageFlags = 0x00000010,
-        };
 
-        inline std::vector bindings_1 = {GLTFMaterialData_binding, colorTex_binding, colorTexSampler_binding, };
+        inline std::vector bindings_1 = {GLTFMaterialData_binding, };
         inline DescriptorSetLayoutInfo CreateSetLayout_1(const VkDevice device)
         {
             return CreateSetLayout(device, &bindings_1);

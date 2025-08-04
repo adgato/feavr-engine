@@ -27,10 +27,10 @@ namespace serial
         size_t GetCount() const { return count; }
 
         template <typename T>
-        size_t Reserve()
+        size_t Reserve(const size_t size = 1)
         {
             const size_t index = count;
-            count += sizeof(T);
+            count += sizeof(T) * size;
             return index;
         }
 
@@ -54,6 +54,12 @@ namespace serial
         void WriteOver(const T& value, const size_t offset)
         {
             std::memcpy(data + offset, &value, sizeof(T));
+        }
+
+        template <typename T> requires std::is_trivially_copyable_v<T>
+        void WriteOverArray(const T* values, const size_t size, const size_t offset)
+        {
+            std::memcpy(data + offset, values, sizeof(T) * size);
         }
 
         void WriteString(const std::string& value)

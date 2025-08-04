@@ -8,9 +8,8 @@
 #include <unordered_set>
 #include <vector>
 
-#include "GenerateShaderLookup.h"
-#include "ShaderAssetGenerator.h"
-#include "TextAssetGenerator.h"
+#include "generators/GenerateShaderLookup.h"
+#include "generators/IAssetGenerator.h"
 
 namespace assets_system
 {
@@ -82,7 +81,7 @@ namespace assets_system
         const std::filesystem::path readPath(assetPath);
         std::filesystem::create_directories(GEN_ASSET_DIR + readPath.parent_path().string());
 
-        std::ifstream assetFile(PROJECT_ROOT"/assets/" + assetPath, std::ios::binary | std::ios::ate);
+        std::ifstream assetFile(ASSET_DIR + assetPath, std::ios::binary | std::ios::ate);
 
         if (!assetFile.is_open())
             throw std::ios::failure("Could not open file");
@@ -94,14 +93,10 @@ namespace assets_system
         assetFile.read(reinterpret_cast<char*>(buffer.data()), fileSize);
         assetFile.close();
 
-        const std::string extension = readPath.extension().string();
+        std::string extension = readPath.extension().string();
+        auto it = assetGenerators.find(std::hash<std::string> {}(extension.c_str()));
 
-        if (".txt" == extension)
-            return TextAssetGenerator::GenerateAssets(assetPath, std::move(buffer));
-        if (".hlsl" == extension)
-            return ShaderAssetGenerator::GenerateAssets(assetPath, std::move(buffer));
-
-        return {};
+        return it == assetGenerators.end() ? std::vector<std::string>() : it->second->GenerateAssets(assetPath, std::move(buffer));
     }
 
     void AssetManager::WriteAssetLookup(const std::unordered_map<uint32_t, std::vector<std::string>>& assetNames)
@@ -113,7 +108,7 @@ namespace assets_system
             for (uint32_t idx = 0; idx < names.size(); ++idx)
             {
                 std::string field = PrettyNameOfAsset(names[idx]);
-                result += fmt::format("    constexpr AssetID {} = {{ {{ {} }}, {{ {} }} }};\n", field, id, idx);
+                result += fmt::format("    constexpr AssetID {} = {{ {}, {} }};\n", field, id, idx);
             }
         result += "}";
 
@@ -123,6 +118,13 @@ namespace assets_system
             throw std::ios::failure("Could not open file");
 
         writer.write(result.c_str(), result.size());
+    }
+
+    void AssetManager::AddAssetGenerator(const char* extension, const char* assetType, IAssetGenerator* delegate)
+    {
+        const size_t hash = std::hash<std::string> {}(extension);
+        assetTypes.insert_or_assign(hash, assetType);
+        assetGenerators.insert_or_assign(hash, delegate);
     }
 
     bool AssetManager::RefreshAssets(bool refreshAll)
@@ -227,7 +229,7 @@ namespace assets_system
 
         // a bit messy, but this is a special case. no point making a general system for managers to do post processing
         if (anyShadersDirty)
-            GenerateMetadata(GEN_ASSET_DIR, ".hlsl.asset", PROJECT_ROOT"/src/engine/rendering/shader_descriptors.h");
+            GenerateShaderMetadata(GEN_ASSET_DIR, ".hlsl.asset", PROJECT_ROOT"/src/engine/rendering/shader_descriptors.h");
 
         // mark all assets not dirty
         std::ofstream assetWriter(ASSET_INDEX);
@@ -288,7 +290,6 @@ namespace assets_system
             const std::string assetFilename = GEN_ASSET_DIR + assetPaths[assetId.idx];
             AssetFile result = AssetFile::Load(assetFilename.c_str());
 
-
             return result;
         }
         return AssetFile::Invalid();
@@ -302,13 +303,9 @@ namespace assets_system
             path = path.stem();
 
         const std::string extension = path.extension().string();
-        std::string type;
-        if (".txt" == extension)
-            type = "TEXT";
-        else if (".hlsl" == extension)
-            type = "SHAD";
-        else
-            type = "";
+        const auto it = assetTypes.find(std::hash<std::string> {}(extension));
+
+        std::string type = it == assetTypes.end() ? "____" : it->second;
 
         std::string field = fmt::format("{}_{}", type, path.stem().string());
         for (size_t i = 0; i < field.size(); ++i)

@@ -1,5 +1,5 @@
 #pragma once
-#include "ecs/ComponentTypeInfo.h"
+#include "ecs/SerialEntity.h"
 #include "serialisation/array.h"
 
 namespace rendering::passes
@@ -8,6 +8,8 @@ namespace rendering::passes
     struct PassComponent
     {
         SERIALIZABLE(0, uint32_t) passGroup;
+
+        // entites from another ECS, we have to manually offset these when unioning
         SERIALIZABLE(1, serial::array<ecs::EntityID>) entities;
 
         void Serialize(serial::Stream& m)

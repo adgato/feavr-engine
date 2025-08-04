@@ -70,7 +70,7 @@ float4 frag(const VSOutput i) : SV_TARGET
 {
     float lightValue = max(dot(i.normal, sunlightDirection.xyz), 0.1f);
 
-    float3 color = i.color * colorTex.Sample(colorTexSampler, i.uv).xyz;
+    float3 color = 1;//i.color * colorTex.Sample(colorTexSampler, i.uv).xyz;
     float3 ambient = color * ambientColor.xyz;
 
     return float4(color * lightValue *  sunlightColor.w + ambient, 1.0f);

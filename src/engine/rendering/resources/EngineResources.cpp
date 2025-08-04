@@ -182,18 +182,17 @@ namespace rendering
         // at this point, the submission has finished executing
     }
 
-    rendering::Mesh EngineResources::UploadMesh(const std::span<uint32_t> indices, const std::span<Vertex> vertices) const
+    Mesh EngineResources::UploadMesh(const std::span<uint32_t> indices, const std::span<Vertex> vertices) const
     {
         const size_t vertexBufferSize = vertices.size() * sizeof(Vertex);
         const size_t indexBufferSize = indices.size() * sizeof(uint32_t);
 
-        rendering::Mesh newSurface;
+        Mesh newSurface;
 
         //create vertex buffer
         newSurface.vertexBuffer = Buffer<Vertex>::Allocate(resource, vertices.size(),
                                                            VK_BUFFER_USAGE_STORAGE_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT |
-                                                           VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT,
-                                                           VMA_MEMORY_USAGE_GPU_ONLY);
+                                                           VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT, HostAccess::NONE, VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE);
 
         //find the adress of the vertex buffer
         const VkBufferDeviceAddressInfo deviceAdressInfo { .sType = VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO, .buffer = newSurface.vertexBuffer.buffer };
@@ -202,15 +201,12 @@ namespace rendering
         //create index buffer
         newSurface.indexBuffer = Buffer<uint32_t>::Allocate(resource, indices.size(),
                                                             VK_BUFFER_USAGE_INDEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT,
-                                                            VMA_MEMORY_USAGE_GPU_ONLY);
+                                                            HostAccess::NONE, VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE);
 
-        Buffer<std::byte> staging = Buffer<std::byte>::Allocate(resource, vertexBufferSize + indexBufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_ONLY);
+        Buffer<std::byte> staging = Buffer<std::byte>::Allocate(resource, vertexBufferSize + indexBufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, HostAccess::SEQUENTIAL_WRITE);
 
-        staging.Access([&](std::byte* data)
-        {
-            std::memcpy(data, vertices.data(), vertexBufferSize);
-            std::memcpy(data + vertexBufferSize, indices.data(), indexBufferSize);
-        });
+        std::memcpy(staging.Access(), vertices.data(), vertexBufferSize);
+        std::memcpy(staging.Access() + vertexBufferSize, indices.data(), indexBufferSize);
 
         ImmediateSumbit([&](const VkCommandBuffer cmd)
         {

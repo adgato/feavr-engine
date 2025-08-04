@@ -3,12 +3,15 @@
 
 namespace ecs
 {
-    std::vector<size_t> split(const std::string& s, const std::string& delimiter)
+    std::vector<size_t> split(std::string&& s, const std::string& delimiter)
     {
         size_t pos_start = 0;
         size_t pos_end;
         const size_t delim_len = delimiter.length();
         std::vector<size_t> res {};
+
+        if (s.ends_with('\0'))
+            s.erase(s.find_first_of('\0'));
 
         while ((pos_end = s.find(delimiter, pos_start)) != std::string::npos)
         {
@@ -52,13 +55,11 @@ namespace ecs
         Destroy();
         *this = {};
 
-        const std::string targetTypeNames = m.reader.ReadString();
-
-        const auto targetSplit = split(targetTypeNames, ", ");
+        const auto targetSplit = split(m.reader.ReadString(), ", ");
         const auto sourceSplit = split(componentInfo.GetTypeNames(), ", ");
 
         const uint targetNumTypes = targetSplit.size();
-        assert(targetNumTypes == NumTypes);
+        assert(sourceSplit.size() == NumTypes);
 
         std::vector remap(targetNumTypes, NumTypes);
         for (size_t i = 0; i < targetSplit.size(); ++i)
@@ -83,7 +84,7 @@ namespace ecs
             for (uint componentCount = m.reader.Read<uint>(); componentCount > 0; --componentCount)
             {
                 const TypeID retype = m.reader.Read<TypeID>();
-                const size_t size = m.reader.Read<serial::uint>();
+                const size_t size = m.reader.Read<serial::fsize>();
                 const TypeID type = remap[retype];
                 if (type >= NumTypes)
                 {
@@ -130,11 +131,11 @@ namespace ecs
                     continue;
 
                 m.writer.Write<TypeID>(type);
-                const size_t offset = m.writer.Reserve<serial::uint>();
+                const size_t offset = m.writer.Reserve<serial::fsize>();
 
                 componentInfo.Serialize(m, data.GetElem(index, type), type);
 
-                m.writer.WriteOver<serial::uint>(m.writer.GetCount() - offset - sizeof(serial::uint), offset);
+                m.writer.WriteOver<serial::fsize>(m.writer.GetCount() - offset - sizeof(serial::fsize), offset);
             }
         }
     }

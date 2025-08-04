@@ -86,7 +86,7 @@ void loadGltf(Core* core, std::string_view filePath)
     fmt::print("Loading GLTF: {}", filePath);
 
     // rendering::PassManager& passManager = core->engine.passManager;
-    rendering::PassMeshManager& passMeshManager = core->engine.passMeshManager;
+    rendering::PassMeshManager& passMeshManager = core->engine.sys.Get<rendering::PassMeshManager>();
     rendering::Material<default_pass::Pass>& defaultMaterial = core->engine.defaultMaterial;
 
     fastgltf::Parser parser{};
@@ -150,7 +150,7 @@ void loadGltf(Core* core, std::string_view filePath)
             loadPrimitiveVertices(gltf, primitive, vertices);
         }
 
-        const uint32_t meshIndex = passMeshManager.AddMesh(core->swapchain.UploadMesh(indices, vertices));
+        const uint32_t meshIndex = passMeshManager.AddMesh(core->swapchain.UploadMesh(indices, vertices), rendering::MeshAssetSource{});
 
         uint32_t cumCount = 0;
         for (auto&& p : mesh.primitives)
@@ -162,9 +162,7 @@ void loadGltf(Core* core, std::string_view filePath)
             cumCount += count;
         }
     }
-
-    core->engine.ecsPass.RefreshComponents();
-    auto view = core->engine.ecsPass.CreateView<rendering::SubMesh, default_pass::Component>();
+    core->engine.sys.Get<ecs::PassEntityManager>().RefreshComponents();
 
     // load all nodes and their meshes
     for (fastgltf::Node& node : gltf.nodes)
@@ -175,7 +173,7 @@ void loadGltf(Core* core, std::string_view filePath)
         rendering::Transform newNode;
         std::visit(fastgltf::visitor
                    {
-                       [&](const fastgltf::Node::TransformMatrix& matrix) { memcpy(&newNode.transform, matrix.data(), sizeof(matrix)); },
+                       [&](const fastgltf::Node::TransformMatrix& matrix) { std::memcpy(&newNode.transform, matrix.data(), sizeof(matrix)); },
                        [&](const fastgltf::Node::TRS& transform)
                        {
                            const glm::vec3 tl(transform.translation[0], transform.translation[1], transform.translation[2]);
@@ -185,16 +183,16 @@ void loadGltf(Core* core, std::string_view filePath)
                        }
                    }, node.transform
         );
-        
-        ecs::Entity e = core->engine.ecsMain.NewEntity<rendering::Transform>(newNode);
+
+        ecs::Entity e = core->engine.sys.Get<ecs::MainEntityManager>().NewEntity<rendering::Transform>(newNode);
 
         uint32_t meshIdx = static_cast<uint32_t>(*node.meshIndex);
 
-        for (const auto& [submeshId, passMesh, data] : view)
+        for (const auto& [submeshId, passMesh, data] : core->engine.sys.Get<ecs::PassEntityManager>().View<rendering::SubMesh, default_pass::Component>())
         {
             if (passMesh.meshIndex == meshIdx)
                 data.entities->push_back(e);
         }
     }
-    core->engine.ecsMain.RefreshComponents();
+    core->engine.sys.Get<ecs::MainEntityManager>().RefreshComponents();
 }

@@ -11,7 +11,7 @@ namespace serial
     using TagID = uint8_t;
 
     // expecting file size << 4GB
-    using uint = uint32_t;
+    using fsize = uint32_t;
 
     template <typename T>
     concept IsDestroyable = requires(T t)
@@ -23,10 +23,10 @@ namespace serial
     concept IsSerialType = requires(T t, Stream& s)
     {
         { t.Serialize(s) } -> std::same_as<void>;
-    } && std::is_trivially_copyable_v<T> && std::is_default_constructible_v<T>;
+    }  && std::is_default_constructible_v<T>;
 
     template <typename T>
-    concept IsSerializable = IsSerialType<T> || std::is_arithmetic_v<T>;
+    concept IsSerializable = IsSerialType<T> && std::is_trivially_copyable_v<T> || std::is_arithmetic_v<T>;
 
     template<TagID...>
     constexpr bool is_ordered = true;

@@ -1,6 +1,6 @@
 #pragma once
-#include "glm/matrix.hpp"
 #include "serialisation/array.h"
+#include "glm/gtc/type_ptr.hpp"
 
 namespace rendering
 {
@@ -43,6 +43,9 @@ namespace rendering
     {
         glm::mat4 transform;
         static void Destroy() {}
-        static void Serialize(serial::Stream&) {}
+        void Serialize(serial::Stream& m)
+        {
+            m.SerializeArray<float>(glm::value_ptr(transform), 16);
+        }
     };
 }

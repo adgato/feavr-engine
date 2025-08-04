@@ -10,27 +10,27 @@ namespace serial
     class array
     {
         T* ptr = nullptr;
-        uint count = 0;
-        uint capacity = 0;
+        fsize count = 0;
+        fsize capacity = 0;
 
     public:
         array() = default;
 
-        static array NewOfSize(const uint size)
+        static array NewOfSize(const fsize size)
         {
             array arr {};
             arr.Resize(size);
             return arr;
         }
 
-        static array NewReserve(const uint capacity)
+        static array NewReserve(const fsize capacity)
         {
             array arr {};
             arr.Reserve(capacity);
             return arr;
         }
 
-        static array NewFromData(const T* data, const uint size)
+        static array NewFromData(const T* data, const fsize size)
         {
             array arr = NewOfSize(size);
             std::memcpy(arr.ptr, data, size * sizeof(T));
@@ -38,7 +38,7 @@ namespace serial
         }
 
     private:
-        void IncreaseCapacity(const uint amount)
+        void IncreaseCapacity(const fsize amount)
         {
             assert(capacity < UINT32_MAX - amount);
 
@@ -64,7 +64,7 @@ namespace serial
 
             if constexpr (IsDestroyable<T>)
             {
-                for (uint i = 0; i < count; ++i)
+                for (fsize i = 0; i < count; ++i)
                     ptr[i].Destroy();
             }
             delete[] ptr;
@@ -74,14 +74,14 @@ namespace serial
             capacity = 0;
         }
 
-        void Resize(const uint count)
+        void Resize(const fsize count)
         {
             this->capacity = 0;
             IncreaseCapacity(count);
             this->count = count;
         }
 
-        void Reserve(const uint capacity)
+        void Reserve(const fsize capacity)
         {
             this->capacity = 0;
             IncreaseCapacity(capacity);
@@ -119,19 +119,19 @@ namespace serial
             return ptr;
         }
 
-        uint size() const { return count; }
+        fsize size() const { return count; }
 
         void Serialize(Stream& m)
         {
             if (m.loading)
-                Resize(m.reader.Read<uint>());
+                Resize(m.reader.Read<fsize>());
             else
-                m.writer.Write<uint>(count);
+                m.writer.Write<fsize>(count);
 
             if constexpr (std::is_arithmetic_v<T>)
                 m.SerializeArray<T>(ptr, count);
             else
-                for (uint i = 0; i < count; ++i)
+                for (fsize i = 0; i < count; ++i)
                     ptr[i].Serialize(m);
         }
     };

@@ -1,22 +1,22 @@
 #pragma once
-#include <cstdint>
-
-#include "serialisation/Stream.h"
 
 namespace assets_system
 {
     struct AssetID
     {
         // identifier of asset
-        SERIALIZABLE(0, uint32_t) id;
+        uint32_t id;
         // index of file generated from asset
-        SERIALIZABLE(1, uint32_t) idx;
+        uint32_t idx;
 
-        void Serialize(serial::Stream& m)
+        bool IsInvalid() const
         {
-            m.SerializeComponent(id, idx);
+            return id == ~0u && idx == ~0u;
         }
-        static void Destroy() {}
-    };
 
+        static AssetID Invalid()
+        {
+            return { ~0u, ~0u };
+        }
+    };
 }

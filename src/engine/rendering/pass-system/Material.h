@@ -5,20 +5,16 @@
 
 namespace rendering
 {
-    template <ManagedPass... Passes>
+    template <typename... Passes>
     class Material
     {
-        PassMeshManager* meshManager = nullptr;
-        ecs::PassEntityManager* entityManager = nullptr;
+        ecs::SingletonView<ecs::PassEntityManager, PassMeshManager> sys;
         std::array<uint32_t, sizeof...(Passes)> passGroups {};
 
     public:
-        static Material Init(PassMeshManager* passManager, ecs::PassEntityManager* entityManager)
+        void Init(const ecs::SingletonView<ecs::PassEntityManager, PassMeshManager>& systems)
         {
-            Material material;
-            material.meshManager = passManager;
-            material.entityManager = entityManager;
-            return material;
+            sys = systems;
         }
 
         template <ManagedPass T> requires (ecs::one_of_v<T, Passes...>)
@@ -36,13 +32,13 @@ namespace rendering
         template <ManagedPass T> requires (ecs::one_of_v<T, Passes...>)
         T& Get()
         {
-            return meshManager->GetPass<T>();
+            return sys.Get<PassMeshManager>().passes.Get<T>();
         }
 
         ecs::Entity AddSubMesh(const uint32_t meshIndex, const uint32_t firstIndex = 0, const uint32_t indexCount = ~0u)
         {
-            return entityManager->NewEntity<SubMesh, passes::PassComponent<Passes>...>
-            (meshManager->ReferenceMesh(meshIndex, firstIndex, indexCount), passes::PassComponent<Passes>
+            return sys.Get<ecs::PassEntityManager>().NewEntity<SubMesh, passes::PassComponent<Passes>...>
+            (sys.Get<PassMeshManager>().ReferenceMesh(meshIndex, firstIndex, indexCount), passes::PassComponent<Passes>
              {
                  .passGroup = { passGroups[ecs::index_of_type_v<Passes, Passes...>] },
                  .entities = { serial::array<ecs::EntityID>::NewReserve(32) }
@@ -51,7 +47,7 @@ namespace rendering
 
         void RemoveMesh(ecs::Entity subMeshID)
         {
-            entityManager->RemoveComponents<Passes...>(subMeshID);
+            sys.Get<ecs::PassEntityManager>().RemoveComponents<Passes...>(subMeshID);
         }
     };
 }

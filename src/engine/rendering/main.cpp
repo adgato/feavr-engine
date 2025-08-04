@@ -1,8 +1,11 @@
 #include "rendering/VulkanEngine.h"
 
+#include "assets-system/generators/StandardAssetGenerators.h"
+
 #include "Core.h"
 #include "assets-system/AssetManager.h"
 #include "ecs/EngineAliases.h"
+#include "generators/SceneAssetGenerator.h"
 
 //#include <iostream>
 //#include "mathx.h"
@@ -49,9 +52,19 @@ void ECSTestLoad()
     manager.Destroy();
 }
 
+void RegisterAssetGenerators()
+{
+    AssetAssetGenerator::Register();
+    ShaderAssetGenerator::Register();
+    TextAssetGenerator::Register();
+    SceneAssetGenerator::Register();
+}
+
 int main()
 {
-    //assets_system::AssetManager::RefreshAssets(true);
+    RegisterAssetGenerators();
+
+    assets_system::AssetManager::RefreshAssets();
 
     ECSTestSave();
     ECSTestLoad();

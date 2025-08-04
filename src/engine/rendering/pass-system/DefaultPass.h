@@ -4,6 +4,10 @@
 #include "rendering/utility/Descriptors.h"
 #include "rendering/utility/DescriptorSetLayoutInfo.h"
 
+namespace serial {
+    class Stream;
+}
+
 namespace rendering
 {
     struct Mesh;
@@ -37,6 +41,8 @@ namespace rendering::passes
         Buffer<MaterialConstants> matConstProperty;
 
         DescriptorSetLayoutInfo materialLayout;
+
+        static void Serialize(serial::Stream&) {};
 
         void Init(VulkanEngine* engine);
 

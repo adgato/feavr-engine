@@ -1,16 +1,12 @@
 id,path,dirty
-18,__metadata__,0
+29,__metadata__,0
 0,Shared/T_Stud_N_FlipY.png,0
-1,copyright.txt,0
 2,Shared/T_Bevel_N_FlipY.png,0
-3,lost_empire-RGB.png,0
 4,Shared/T_InletBorder_AO.png,0
 5,Shared/T_InletCenter_AO.png,0
 6,Shared/T_InletCenter_N.png,0
 7,Shared/T_Bevel_N.png,0
 8,Shared/T_Stud_N.png,0
-9,lost_empire-Alpha.png,0
-10,lost_empire-RGBA.png,0
 11,Shared/T_InletBorder_N.png,0
 12,Shared/T_Bumpy_N_FlipY.png,0
 13,Shared/T_InletCenter_N_FlipY.png,0
@@ -18,3 +14,5 @@ id,path,dirty
 15,Shared/T_InletBorder_N_FlipY.png,0
 16,shaders/default_shader.hlsl,0
 17,shaders/unlit_shader.hlsl,0
+18,basicmesh.glb,0
+28,structure.glb,0

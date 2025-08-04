@@ -15,13 +15,14 @@ namespace serial
 
     public:
         void LoadFromFile(const char* filePath);
-        void LoadFromSpan(const std::span<std::byte>& span);
+        void LoadFrom(const std::span<const std::byte>& span);
 
         void Destroy();
 
         size_t GetCount() const { return count; }
 
         void Jump(const long size) { count += size; }
+        void JumpAbs(const long size) { count = size; }
 
         template <typename T> requires std::is_trivially_copyable_v<T>
         T Read()

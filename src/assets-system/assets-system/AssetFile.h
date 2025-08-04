@@ -20,7 +20,7 @@ namespace assets_system
         AssetFile() = default;
 
     public:
-        AssetFile(const char* type, const uint32_t version) : version(version)
+        AssetFile(const char type[4], const uint32_t version) : version(version)
         {
             std::memcpy(this->type, type, 4);
         }
@@ -29,18 +29,18 @@ namespace assets_system
 
         void Save(const char* filePath);
 
-        serial::Stream ReadFromBlob();
+        serial::Stream ReadFromBlob(size_t offset = 0, size_t size = ~0ul) const;
         void WriteToBlob(const serial::Stream& m);
 
         static AssetFile Load(const char* filePath);
 
-        static const AssetFile& Invalid()
+        static AssetFile Invalid()
         {
             static AssetFile empty;
             return empty;
         }
 
-        bool HasFormat(const char* expectedType, const uint32_t expectedVersion) const
+        bool HasFormat(const char expectedType[4], const uint32_t expectedVersion) const
         {
             return
                     type[0] == expectedType[0] &&

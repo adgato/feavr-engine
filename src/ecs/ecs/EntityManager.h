@@ -140,12 +140,12 @@ namespace ecs
         void RefreshComponents();
 
         ECS_VA_TEMPLATE(Ts)
-        class View
+        class EntityView
         {
             EntityManager* manager;
 
         public:
-            explicit View(EntityManager* manager) : manager(manager) {}
+            explicit EntityView(EntityManager* manager) : manager(manager) {}
 
             class iterator
             {
@@ -221,12 +221,12 @@ namespace ecs
         };
 
         ECS_VA_TEMPLATE(Ts)
-        View<Ts...> CreateView() { return View<Ts...>(this); }
+        EntityView<Ts...> View() { return EntityView<Ts...>(this); }
     };
 
     template <typename... Components>
     ECS_VA_TEMPLATE(Ts)
-    typename EntityManager<Components...>::signature EntityManager<Components...>::View<Ts...>::iterator::viewSignature = []
+    typename EntityManager<Components...>::signature EntityManager<Components...>::EntityView<Ts...>::iterator::viewSignature = []
     {
         signature viewtype;
         (viewtype.set(typeID<Ts>), ...);

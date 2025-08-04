@@ -23,4 +23,5 @@ target_precompile_headers(ecs PUBLIC
         <string>
         <memory>
         <array>
+        <vector>
 )

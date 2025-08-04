@@ -43,6 +43,24 @@ namespace serial
             return simple_json_value_t(this, std::move(key));
         }
 
+        const std::string* GetIfString(const std::string& key) const
+        {
+            const auto it = strings.find(key);
+            return it == strings.end() ? nullptr : &it->second;
+        }
+
+        const uint64_t* GetIfInt(const std::string& key) const
+        {
+            const auto it = ints.find(key);
+            return it == ints.end() ? nullptr : &it->second;
+        }
+
+        const double* GetIfReal(const std::string& key) const
+        {
+            const auto it = reals.find(key);
+            return it == reals.end() ? nullptr : &it->second;
+        }
+
         void Serialize(Stream& m);
     };
 }

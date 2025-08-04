@@ -41,11 +41,11 @@ namespace assets_system
         m.writer.SaveToFile(filePath);
     }
 
-    serial::Stream AssetFile::ReadFromBlob()
+    serial::Stream AssetFile::ReadFromBlob(const size_t offset /* = 0 */, const size_t size /* = ~0ul */) const
     {
         serial::Stream m {};
         m.InitRead();
-        m.reader.LoadFromSpan(std::span(blob.data(), blob.size()));
+        m.reader.LoadFrom(std::span(blob.data() + offset, std::min(blob.size(), size)));
         return m;
     }
 
@@ -64,8 +64,16 @@ namespace assets_system
         AssetFile assetFile {};
 
         m.InitRead();
-        m.reader.LoadFromFile(filePath);
-        assetFile.Serialize(m);
+
+        try
+        {
+            m.reader.LoadFromFile(filePath);
+            assetFile.Serialize(m);
+        } catch (std::exception)
+        {
+            fmt::println(stderr, "Unknown asset file: {}",  filePath);
+            return Invalid();
+        }
 
         return assetFile;
     }

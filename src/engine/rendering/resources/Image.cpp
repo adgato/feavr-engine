@@ -20,18 +20,44 @@ namespace rendering
         newImage.currentLayout = VK_IMAGE_LAYOUT_UNDEFINED;
         newImage.aspectFlags = aspectFlags;
 
-        VkImageCreateInfo img_info = vkinit::image_create_info(format, usage | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_TRANSFER_SRC_BIT, size);
+        auto img_info = vkinit::New<VkImageCreateInfo>(); {
+            img_info.imageType = VK_IMAGE_TYPE_2D;
+
+            img_info.format = format;
+            img_info.extent = size;
+
+            img_info.mipLevels = 1;
+            img_info.arrayLayers = 1;
+
+            //for MSAA. we will not be using it by default, so default it to 1 sample per pixel.
+            img_info.samples = VK_SAMPLE_COUNT_1_BIT;
+
+            //optimal tiling, which means the image is stored on the best gpu format
+            img_info.tiling = VK_IMAGE_TILING_OPTIMAL;
+            img_info.usage = usage | VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_TRANSFER_SRC_BIT;
+        }
+
         if (mipmapped)
             img_info.mipLevels = static_cast<uint32_t>(std::floor(std::log2(std::max(size.width, size.height)))) + 1;
 
         // always allocate images on dedicated GPU memory
         VmaAllocationCreateInfo allocinfo = {};
-        allocinfo.usage = VMA_MEMORY_USAGE_GPU_ONLY;
+        allocinfo.usage = VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE;
         allocinfo.requiredFlags = static_cast<VkMemoryPropertyFlags>(VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
 
         VK_CHECK(vmaCreateImage(renderer->resource, &img_info, &allocinfo, &newImage.image, &newImage.allocation, nullptr));
 
-        VkImageViewCreateInfo view_info = vkinit::imageview_create_info(format, newImage.image, aspectFlags);
+        // build a image-view for the depth image to use for rendering
+        auto view_info = vkinit::New<VkImageViewCreateInfo>(); {
+            view_info.viewType = VK_IMAGE_VIEW_TYPE_2D;
+            view_info.image = newImage.image;
+            view_info.format = format;
+            view_info.subresourceRange.baseMipLevel = 0;
+            view_info.subresourceRange.levelCount = 1;
+            view_info.subresourceRange.baseArrayLayer = 0;
+            view_info.subresourceRange.layerCount = 1;
+            view_info.subresourceRange.aspectMask = aspectFlags;
+        }
         view_info.subresourceRange.levelCount = img_info.mipLevels;
 
         VK_CHECK(vkCreateImageView(renderer->resource, &view_info, nullptr, &newImage.imageView));
@@ -43,7 +69,7 @@ namespace rendering
     {
         const size_t data_size = static_cast<size_t>(imageExtent.depth) * imageExtent.width * imageExtent.height * 4;
 
-        Buffer<std::byte> uploadBuffer = Buffer<std::byte>::Allocate(renderer->resource, data_size, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU);
+        Buffer<std::byte> uploadBuffer = Buffer<std::byte>::Allocate(renderer->resource, data_size, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, HostAccess::SEQUENTIAL_WRITE);
         uploadBuffer.Write(static_cast<const std::byte*>(data));
 
         renderer->ImmediateSumbit([&](const VkCommandBuffer cmd)

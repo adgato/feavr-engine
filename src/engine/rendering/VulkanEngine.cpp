@@ -14,6 +14,8 @@
 
 #include <glm/gtx/transform.hpp>
 
+#include "assets-system/AssetManager.h"
+#include "fmt/ranges.h"
 #include "rendering/utility/OLD_loader.h"
 #include "rendering/utility/Initializers.h"
 #include "rendering/resources/Image.h"
@@ -21,13 +23,13 @@
 
 using namespace rendering;
 
-ResourceHandles& VulkanEngine::Resource() const { return swapchainRenderer->resource; }
+ResourceHandles& VulkanEngine::Resource() const { return engineResources->resource; }
 
 void VulkanEngine::Init(EngineResources* swapchainRenderer)
 {
     // We initialize SDL and create a window with it.
 
-    this->swapchainRenderer = swapchainRenderer;
+    this->engineResources = swapchainRenderer;
 
     //depth image size will match the window
     constexpr VkExtent3D drawImageExtent = { windowSize.width, windowSize.height, 1 };
@@ -59,10 +61,9 @@ void VulkanEngine::Init(EngineResources* swapchainRenderer)
     sampl.minFilter = VK_FILTER_LINEAR;
     vkCreateSampler(Resource(), &sampl, nullptr, &defaultSamplerLinear);
 
+    sys.Get<PassMeshManager>().Init(this);
 
-    passMeshManager.Init(this);
-
-    defaultMaterial = Material<default_pass::Pass>::Init(&passMeshManager, &ecsPass);
+    defaultMaterial.Init(sys.View<ecs::PassEntityManager, PassMeshManager>());
 
     mainCamera.velocity = glm::vec3(0.f);
     mainCamera.position = glm::vec3(30.f, -00.f, -085.f);
@@ -130,7 +131,7 @@ void VulkanEngine::Draw(const uint32_t frameCount, VkCommandBuffer cmd, Image& t
     vkCmdSetScissor(cmd, 0, 1, &scissor);
 
     //allocate a new uniform buffer for the scene data
-    sceneDataBuffer = Buffer<GPUSceneData>::Allocate(Resource(), 1, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU);
+    sceneDataBuffer = Buffer<GPUSceneData>::Allocate(Resource(), 1, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, HostAccess::SEQUENTIAL_WRITE);
     sceneDataBuffer.Write(&sceneData);
 
     //create a descriptor set that binds that buffer and update it
@@ -138,10 +139,40 @@ void VulkanEngine::Draw(const uint32_t frameCount, VkCommandBuffer cmd, Image& t
     gpuSceneDescriptorSet.StageBuffer(shader_layouts::global::SceneData_binding, sceneDataBuffer);
     gpuSceneDescriptorSet.PerformWrites();
 
-    passMeshManager.Draw(cmd);
+    sys.Get<PassMeshManager>().Draw(cmd);
     vkCmdEndRendering(cmd);
 
     drawImage.BlitCopyTo(cmd, targetImage);
+}
+
+void VulkanEngine::SaveScene(const char* filePath)
+{
+    serial::Stream m;
+    m.InitWrite();
+    sys.Serialize(m);
+
+    assets_system::AssetFile saveAsset("SCNE", 0);
+
+    saveAsset.header["MeshesStart"] = static_cast<uint64_t>(sys.Get<PassMeshManager>().serializeInfo.meshesStart);
+    saveAsset.header["MeshesSize"] = static_cast<uint64_t>(sys.Get<PassMeshManager>().serializeInfo.meshesSizeBytes);
+
+    saveAsset.WriteToBlob(m);
+    saveAsset.Save(filePath);
+}
+
+void VulkanEngine::LoadScene(const assets_system::AssetID other)
+{
+    const assets_system::AssetFile loadAsset = assets_system::AssetManager::LoadAsset(other);
+    assert(loadAsset.HasFormat("SCNE", 0));
+
+    serial::Stream m = loadAsset.ReadFromBlob();
+
+    sys.Destroy();
+    sys = SINGLETON_ENTITY(ecs::MainEntityManager, ecs::PassEntityManager, rendering::PassMeshManager);
+    sys.Get<PassMeshManager>().Init(this);
+    sys.Serialize(m);
+    sys.Get<PassMeshManager>().ReplaceInvalidAssetSources(other);
+    sys.Get<PassMeshManager>().FixupReferences(sys.Get<ecs::PassEntityManager>());
 }
 
 void VulkanEngine::Destroy()
@@ -155,11 +186,9 @@ void VulkanEngine::Destroy()
         frameDescriptors.DestroyPools();
     }
 
-    ecsPass.Destroy();
-    ecsMain.Destroy();
+    sys.Destroy();
 
     commonTextures.Destroy();
-    passMeshManager.Destroy();
 
     vkDestroySampler(Resource(), defaultSamplerNearest, nullptr);
     vkDestroySampler(Resource(), defaultSamplerLinear, nullptr);

@@ -20,7 +20,9 @@ META = "__metadata__"
 TRACK_EXTS = [ 
     ".txt", 
     ".png",
-    ".hlsl"
+    ".hlsl",
+    ".glb",
+    ".gltf"
 ]
 
 

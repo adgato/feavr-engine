@@ -57,13 +57,13 @@ namespace rendering::passes
         vertexShader.Destroy();
         fragmentShader.Destroy();
 
-        matConstProperty = Buffer<MaterialConstants>::Allocate(engine->Resource(), 1, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VMA_MEMORY_USAGE_CPU_TO_GPU);
+        matConstProperty = Buffer<MaterialConstants>::Allocate(engine->Resource(), 1, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, HostAccess::SEQUENTIAL_WRITE);
 
-        matConstProperty.Access([](MaterialConstants* data)
-        {
-            data->colorFactors = glm::vec4 { 1, 1, 1, 1 };
-            data->metal_rough_factors = glm::vec4 { 1, 0.5, 0, 0 };
-        });
+        MaterialConstants data;
+        data.colorFactors = glm::vec4 { 1, 1, 1, 1 };
+        data.metal_rough_factors = glm::vec4 { 1, 0.5, 0, 0 };
+
+        matConstProperty.Write(&data);
 
         properties.AllocateSet(engine->Resource(), materialLayout);
         // default values
@@ -80,9 +80,11 @@ namespace rendering::passes
         const VkDescriptorSet sets[] = { engine->gpuSceneDescriptorSet.descriptorSet, properties.descriptorSet };
         vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, layout, 0, std::size(sets), sets, 0, nullptr);
 
-        for (const auto& [submeshID, passMesh, data] : engine->ecsPass.CreateView<SubMesh, default_pass::Component>())
+        for (const auto& [submeshID, passMesh, data] : engine->sys.Get<ecs::PassEntityManager>().View<SubMesh, default_pass::Component>())
         {
             const Mesh& mesh = meshes[passMesh.meshIndex];
+            if (!mesh.IsValid())
+                continue;
 
             vkCmdBindIndexBuffer(cmd, mesh.indexBuffer.buffer, 0, VK_INDEX_TYPE_UINT32);
 
@@ -91,7 +93,7 @@ namespace rendering::passes
                 ecs::Entity entity = data.entities->data()[i];
 
                 const PushConstants pushConstants {
-                    engine->ecsMain.GetComponent<Transform>(entity).transform, mesh.vertexBufferAddress
+                    engine->sys.Get<ecs::MainEntityManager>().GetComponent<Transform>(entity).transform, mesh.vertexBufferAddress
                 };
 
                 vkCmdPushConstants(cmd, layout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(PushConstants), &pushConstants);

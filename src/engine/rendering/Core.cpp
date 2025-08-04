@@ -12,7 +12,7 @@ void Core::Init()
     swapchain.Init();
     imguiOverlay.Init(swapchain.resource);
     engine.Init(&swapchain);
-    loadGltf(this, {PROJECT_ROOT"/assets/structure.glb"});
+    engine.LoadScene(assets_system::lookup::SCNE_structure);
 }
 
 bool Core::Next()
