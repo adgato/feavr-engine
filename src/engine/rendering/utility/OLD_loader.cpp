@@ -8,6 +8,8 @@
 #include <fastgltf/parser.hpp>
 #include <fastgltf/tools.hpp>
 
+#include "ecs/EngineView.h"
+
 void loadPrimitiveIndices(const fastgltf::Asset& gltf, const fastgltf::Primitive& primitive, std::vector<uint32_t>& indices, const size_t vertexOffset)
 {
     if (!primitive.indicesAccessor.has_value())
@@ -86,7 +88,7 @@ void loadGltf(Core* core, std::string_view filePath)
     fmt::print("Loading GLTF: {}", filePath);
 
     // rendering::PassManager& passManager = core->engine.passManager;
-    rendering::PassMeshManager& passMeshManager = core->engine.sys.Get<rendering::PassMeshManager>();
+    rendering::PassMeshManager& passMeshManager = core->engine.passManager;
     rendering::Material<default_pass::Pass>& defaultMaterial = core->engine.defaultMaterial;
 
     fastgltf::Parser parser{};
@@ -162,7 +164,9 @@ void loadGltf(Core* core, std::string_view filePath)
             cumCount += count;
         }
     }
-    core->engine.sys.Get<ecs::PassEntityManager>().RefreshComponents();
+    core->engine.ecsEngine.Refresh();
+
+    ecs::EngineView<rendering::SubMesh, default_pass::Component> view(core->engine.ecsEngine);
 
     // load all nodes and their meshes
     for (fastgltf::Node& node : gltf.nodes)
@@ -184,15 +188,17 @@ void loadGltf(Core* core, std::string_view filePath)
                    }, node.transform
         );
 
-        ecs::Entity e = core->engine.sys.Get<ecs::MainEntityManager>().NewEntity<rendering::Transform>(newNode);
+        ecs::Entity e = core->engine.ecsEngine.New();
+        core->engine.ecsEngine.Add<rendering::Transform>(e, newNode);
 
         uint32_t meshIdx = static_cast<uint32_t>(*node.meshIndex);
 
-        for (const auto& [submeshId, passMesh, data] : core->engine.sys.Get<ecs::PassEntityManager>().View<rendering::SubMesh, default_pass::Component>())
+
+        for (const auto& [submeshId, passMesh, data] : view)
         {
             if (passMesh.meshIndex == meshIdx)
                 data.entities->push_back(e);
         }
     }
-    core->engine.sys.Get<ecs::MainEntityManager>().RefreshComponents();
+    core->engine.ecsEngine.Refresh();
 }

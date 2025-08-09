@@ -10,6 +10,9 @@
 #include <fastgltf/tools.hpp>
 
 #include "assets-system/AssetManager.h"
+#include "ecs/EngineExtensions.h"
+#include "ecs/EngineView.h"
+#include "fmt/ranges.h"
 #include "rendering/Core.h"
 
 void load_primitive_indices(const fastgltf::Asset& gltf, const fastgltf::Primitive& primitive, std::vector<uint32_t>& indices, const size_t vertexOffset)
@@ -87,12 +90,11 @@ void load_primitive_vertices(const fastgltf::Asset& gltf, const fastgltf::Primit
 
 std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& assetPath, std::vector<std::byte>&& contents)
 {
-    auto sys = SINGLETON_ENTITY(rendering::PassMeshManager, ecs::PassEntityManager, ecs::MainEntityManager);
+    rendering::PassMeshManager passManager;
+    ecs::Engine engine;
 
-    rendering::PassMeshManager& passMeshManager = sys.Get<rendering::PassMeshManager>();
 
-    rendering::Material<default_pass::Pass> defaultMaterial;
-    defaultMaterial.Init(sys.View<ecs::PassEntityManager, rendering::PassMeshManager>());
+    rendering::Material<default_pass::Pass> defaultMaterial(engine, passManager);
 
     fastgltf::Parser parser {};
 
@@ -156,7 +158,7 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
             load_primitive_vertices(gltf, primitive, vertices);
         }
 
-        const uint32_t meshIndex = passMeshManager.AddMesh(rendering::Mesh {}, rendering::MeshDirectSource { vertices, indices });
+        const uint32_t meshIndex = passManager.AddMesh(rendering::Mesh {}, rendering::MeshDirectSource { vertices, indices });
 
         uint32_t cumCount = 0;
         for (auto&& p : mesh.primitives)
@@ -168,7 +170,9 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
             cumCount += count;
         }
     }
-    sys.Get<ecs::PassEntityManager>().RefreshComponents();
+    engine.Refresh();
+
+    ecs::EngineView<rendering::SubMesh, default_pass::Component> view(engine);
 
     // load all nodes and their meshes
     for (fastgltf::Node& node : gltf.nodes)
@@ -190,29 +194,34 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
                    }, node.transform
         );
 
-        ecs::Entity e = sys.Get<ecs::MainEntityManager>().NewEntity<rendering::Transform>(newNode);
+        ecs::Entity e = engine.New();
+        engine.Add<rendering::Transform>(e, newNode);
 
         uint32_t meshIdx = static_cast<uint32_t>(*node.meshIndex);
 
-        for (const auto& [submeshId, passMesh, data] : sys.Get<ecs::PassEntityManager>().View<rendering::SubMesh, default_pass::Component>())
+        for (const auto& [submeshId, passMesh, data] : view)
         {
             if (passMesh.meshIndex == meshIdx)
                 data.entities->push_back(e);
         }
     }
-    sys.Get<ecs::MainEntityManager>().RefreshComponents();
+    engine.Refresh();
 
     const std::string sceneFileName = assetPath + ".asset";
     const std::string fullPath = assets_system::GEN_ASSET_DIR + sceneFileName;
 
     serial::Stream m;
     m.InitWrite();
-    sys.Serialize(m);
+
+    using namespace rendering;
+
+    passManager.Serialize(m);
+    ECS_SERIALIZE(engine, m, Transform, SubMesh, default_pass::Component);
 
     assets_system::AssetFile sceneAsset("SCNE", 0);
 
-    sceneAsset.header["MeshesStart"] = static_cast<uint64_t>(sys.Get<rendering::PassMeshManager>().serializeInfo.meshesStart);
-    sceneAsset.header["MeshesSize"] = static_cast<uint64_t>(sys.Get<rendering::PassMeshManager>().serializeInfo.meshesSizeBytes);
+    sceneAsset.header["MeshesStart"] = static_cast<uint64_t>(passManager.serializeInfo.meshesStart);
+    sceneAsset.header["MeshesSize"] = static_cast<uint64_t>(passManager.serializeInfo.meshesSizeBytes);
 
     sceneAsset.WriteToBlob(m);
 

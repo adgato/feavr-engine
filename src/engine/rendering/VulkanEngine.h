@@ -1,8 +1,7 @@
 ﻿#pragma once
 
 #include "Camera.h"
-#include "ecs/EngineAliases.h"
-#include "ecs/EntityManager.h"
+#include "ecs/Engine.h"
 #include "rendering/CommonSetLayouts.h"
 #include "rendering/CommonTextures.h"
 #include "pass-system/Material.h"
@@ -45,12 +44,12 @@ public:
     rendering::Image drawImage;
     rendering::Image depthImage;
 
-    ecs::SingletonEntity<ecs::MainEntityManager, ecs::PassEntityManager, rendering::PassMeshManager> sys =
-            SINGLETON_ENTITY(ecs::MainEntityManager, ecs::PassEntityManager, rendering::PassMeshManager);
+    ecs::Engine ecsEngine;
+    rendering::PassMeshManager passManager;
 
     GPUSceneData sceneData;
 
-    rendering::Material<default_pass::Pass> defaultMaterial;
+    rendering::Material<default_pass::Pass> defaultMaterial { ecsEngine, passManager };
 
     // Easy way to get resources the rendering engine is using. Resources are implicitly cast to pass whatever is needed to a method
     rendering::ResourceHandles& Resource() const;

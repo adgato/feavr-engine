@@ -15,6 +15,8 @@
 #include <glm/gtx/transform.hpp>
 
 #include "assets-system/AssetManager.h"
+#include "ecs/EngineExtensions.h"
+#include "ecs/EngineView.h"
 #include "fmt/ranges.h"
 #include "rendering/utility/OLD_loader.h"
 #include "rendering/utility/Initializers.h"
@@ -61,9 +63,7 @@ void VulkanEngine::Init(EngineResources* swapchainRenderer)
     sampl.minFilter = VK_FILTER_LINEAR;
     vkCreateSampler(Resource(), &sampl, nullptr, &defaultSamplerLinear);
 
-    sys.Get<PassMeshManager>().Init(this);
-
-    defaultMaterial.Init(sys.View<ecs::PassEntityManager, PassMeshManager>());
+    passManager.Init(this);
 
     mainCamera.velocity = glm::vec3(0.f);
     mainCamera.position = glm::vec3(30.f, -00.f, -085.f);
@@ -139,7 +139,7 @@ void VulkanEngine::Draw(const uint32_t frameCount, VkCommandBuffer cmd, Image& t
     gpuSceneDescriptorSet.StageBuffer(shader_layouts::global::SceneData_binding, sceneDataBuffer);
     gpuSceneDescriptorSet.PerformWrites();
 
-    sys.Get<PassMeshManager>().Draw(cmd);
+    passManager.Draw(cmd);
     vkCmdEndRendering(cmd);
 
     drawImage.BlitCopyTo(cmd, targetImage);
@@ -149,12 +149,13 @@ void VulkanEngine::SaveScene(const char* filePath)
 {
     serial::Stream m;
     m.InitWrite();
-    sys.Serialize(m);
+    passManager.Serialize(m);
+    ECS_SERIALIZE(ecsEngine, m, Transform, SubMesh, default_pass::Component);
 
     assets_system::AssetFile saveAsset("SCNE", 0);
 
-    saveAsset.header["MeshesStart"] = static_cast<uint64_t>(sys.Get<PassMeshManager>().serializeInfo.meshesStart);
-    saveAsset.header["MeshesSize"] = static_cast<uint64_t>(sys.Get<PassMeshManager>().serializeInfo.meshesSizeBytes);
+    saveAsset.header["MeshesStart"] = static_cast<uint64_t>(passManager.serializeInfo.meshesStart);
+    saveAsset.header["MeshesSize"] = static_cast<uint64_t>(passManager.serializeInfo.meshesSizeBytes);
 
     saveAsset.WriteToBlob(m);
     saveAsset.Save(filePath);
@@ -167,12 +168,13 @@ void VulkanEngine::LoadScene(const assets_system::AssetID other)
 
     serial::Stream m = loadAsset.ReadFromBlob();
 
-    sys.Destroy();
-    sys = SINGLETON_ENTITY(ecs::MainEntityManager, ecs::PassEntityManager, rendering::PassMeshManager);
-    sys.Get<PassMeshManager>().Init(this);
-    sys.Serialize(m);
-    sys.Get<PassMeshManager>().ReplaceInvalidAssetSources(other);
-    sys.Get<PassMeshManager>().FixupReferences(sys.Get<ecs::PassEntityManager>());
+    passManager.Destroy();
+    ecsEngine.Destroy();
+    passManager.Init(this);
+    passManager.Serialize(m);
+    ECS_SERIALIZE(ecsEngine, m, Transform, SubMesh, default_pass::Component);
+    passManager.ReplaceInvalidAssetSources(other);
+    passManager.FixupReferences(ecsEngine);
 }
 
 void VulkanEngine::Destroy()
@@ -186,7 +188,8 @@ void VulkanEngine::Destroy()
         frameDescriptors.DestroyPools();
     }
 
-    sys.Destroy();
+    passManager.Destroy();
+    ecsEngine.Destroy();
 
     commonTextures.Destroy();
 

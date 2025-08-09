@@ -6,18 +6,14 @@
 #include "PassDirectory.h"
 #include "SubMesh.h"
 #include "assets-system/AssetFile.h"
-#include "ecs/EngineAliases.h"
-#include "ecs/SingletonEntity.h"
-
-// convenience of management
-#define PASSES default_pass::Pass
+#include "ecs/Engine.h"
 
 class VulkanEngine;
 
 namespace rendering
 {
     template <typename T>
-    concept ManagedPass = ecs::one_of_v<T, PASSES>;
+    concept ManagedPass = ecs::one_of_v<T, default_pass::Pass>;
 
     struct MeshAssetSource
     {
@@ -55,6 +51,7 @@ namespace rendering
 
         EngineResources* resources = nullptr;
 
+        default_pass::Pass defaultPass {};
     public:
         struct
         {
@@ -62,7 +59,13 @@ namespace rendering
             serial::fsize meshesSizeBytes;
         } serializeInfo;
 
-        ecs::SingletonEntity<PASSES> passes = SINGLETON_ENTITY(default_pass::Pass);
+        template <ManagedPass T>
+        T& GetPass()
+        {
+            if constexpr (std::is_same_v<default_pass::Pass, T>)
+                return defaultPass;
+            return 0;
+        }
 
         void Init(VulkanEngine* e);
 
@@ -83,10 +86,8 @@ namespace rendering
         void DereferenceMesh(uint32_t meshIndex);
 
         void ReplaceInvalidAssetSources(assets_system::AssetID sourceAsset);
-        void FixupReferences(ecs::PassEntityManager& passECS);
+        void FixupReferences(const ecs::Engine& passECS);
 
         void Destroy();
     };
 }
-
-#undef PASSES

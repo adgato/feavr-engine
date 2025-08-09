@@ -1,15 +1,22 @@
 #pragma once
 #include "glm/vec3.hpp"
 #include "glm/vec4.hpp"
+#include "glm/gtc/type_ptr.hpp"
 #include "rendering/resources/Buffer.h"
-
-namespace serial
-{
-    class Stream;
-}
+#include "serialisation/Stream.h"
 
 namespace rendering
 {
+    struct Transform
+    {
+        glm::mat4 transform;
+
+        void Serialize(serial::Stream& m)
+        {
+            m.SerializeArray<float>(glm::value_ptr(transform), 16);
+        }
+    };
+
     struct Vertex
     {
         glm::vec3 position;

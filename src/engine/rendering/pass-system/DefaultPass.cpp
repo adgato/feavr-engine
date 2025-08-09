@@ -3,7 +3,7 @@
 #include "rendering/VulkanEngine.h"
 #include "rendering/utility/Pipelines.h"
 #include "shader_descriptors.h"
-#include "ecs/EngineAliases.h"
+#include "ecs/EngineView.h"
 #include "rendering/engine-assets/ShaderAssetData.h"
 #include "rendering/resources/EngineResources.h"
 
@@ -80,7 +80,8 @@ namespace rendering::passes
         const VkDescriptorSet sets[] = { engine->gpuSceneDescriptorSet.descriptorSet, properties.descriptorSet };
         vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, layout, 0, std::size(sets), sets, 0, nullptr);
 
-        for (const auto& [submeshID, passMesh, data] : engine->sys.Get<ecs::PassEntityManager>().View<SubMesh, default_pass::Component>())
+        ecs::EngineView<SubMesh, default_pass::Component> view(engine->ecsEngine);
+        for (const auto& [submeshID, passMesh, data] : view)
         {
             const Mesh& mesh = meshes[passMesh.meshIndex];
             if (!mesh.IsValid())
@@ -93,7 +94,7 @@ namespace rendering::passes
                 ecs::Entity entity = data.entities->data()[i];
 
                 const PushConstants pushConstants {
-                    engine->sys.Get<ecs::MainEntityManager>().GetComponent<Transform>(entity).transform, mesh.vertexBufferAddress
+                    engine->ecsEngine.Get<Transform>(entity).transform, mesh.vertexBufferAddress
                 };
 
                 vkCmdPushConstants(cmd, layout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(PushConstants), &pushConstants);

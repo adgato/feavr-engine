@@ -4,6 +4,7 @@
 #include <map>
 
 #include "assets-system/AssetManager.h"
+#include "ecs/EngineView.h"
 #include "rendering/VulkanEngine.h"
 #include "rendering/resources/EngineResources.h"
 
@@ -20,12 +21,12 @@ namespace rendering
     void PassMeshManager::Init(VulkanEngine* e)
     {
         resources = e->engineResources;
-        passes.Get<default_pass::Pass>().Init(e);
+        defaultPass.Init(e);
     }
 
     void PassMeshManager::Draw(const VkCommandBuffer cmd)
     {
-        passes.Get<default_pass::Pass>().Draw(cmd, meshes);
+        defaultPass.Draw(cmd, meshes);
     }
 
     void MeshAssetsToDirectSources(std::vector<std::shared_ptr<MeshDirectSource>>& directSources, const assets_system::AssetID& sourceFileID,
@@ -177,7 +178,7 @@ namespace rendering
         else
             WriteMeshes(m);
 
-        passes.Serialize(m);
+        defaultPass.Serialize(m);
     }
 
     uint32_t PassMeshManager::AddMesh(Mesh&& mesh, MeshAssetSource&& metaData)
@@ -256,12 +257,13 @@ namespace rendering
         }
     }
 
-    void PassMeshManager::FixupReferences(ecs::PassEntityManager& passECS)
+    void PassMeshManager::FixupReferences(const ecs::Engine& passECS)
     {
         refCounts.clear();
         refCounts.resize(meshes.size());
 
-        for (auto [_, submesh] : passECS.View<SubMesh>())
+        ecs::EngineView<SubMesh> view(passECS);
+        for (auto [_, submesh] : view)
         {
             submesh.passMeshManager = this;
             ++refCounts[submesh.meshIndex];
@@ -288,6 +290,6 @@ namespace rendering
         refCounts.clear();
         nextFreeMesh = 0;
 
-        passes.Destroy();
+        defaultPass.Destroy();
     }
 }

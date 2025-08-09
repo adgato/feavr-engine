@@ -1,6 +1,7 @@
 #include "Engine.h"
 
 #include <algorithm>
+#include <numeric>
 
 namespace ecs
 {
@@ -291,10 +292,11 @@ namespace ecs
         assert(!m.reading);
         m.writer.WriteString(serialTypes);
 
-        std::vector<TypeID> sortedTypes = types;
-        std::sort(sortedTypes.begin(), sortedTypes.end());
+        std::vector<size_t> argSortedTypes(types.size());
+        std::iota(argSortedTypes.begin(), argSortedTypes.end(), 0);
+        std::sort(argSortedTypes.begin(), argSortedTypes.end(), [&types](const size_t i, const size_t j) { return types[i] < types[j]; });
 
-        std::vector<TypeID> intersect {};
+        std::vector<size_t> intersect {};
 
         const EntityID entityCount = entities.size();
         m.writer.Write<EntityID>(entityCount);
@@ -314,13 +316,13 @@ namespace ecs
 
             intersect.clear();
             size_t i = 0, j = 0;
-            while (i < sortedTypes.size() && j < data.types.size())
+            while (i < types.size() && j < data.types.size())
             {
-                const TypeID ti = sortedTypes[i];
+                const TypeID ti = types[argSortedTypes[i]];
                 const TypeID tj = data.types[j];
                 if (ti == tj)
                 {
-                    intersect.emplace_back(ti);
+                    intersect.emplace_back(argSortedTypes[i]);
                     ++i;
                     ++j;
                 } else if (ti < tj) ++i;
@@ -328,9 +330,10 @@ namespace ecs
             }
 
             m.writer.Write<uint>(intersect.size());
-            for (TypeID type : intersect)
+            for (const size_t idx : intersect)
             {
-                m.writer.Write<TypeID>(type);
+                m.writer.Write<TypeID>(idx);
+                const TypeID type = types[idx];
                 const size_t offset = m.writer.Reserve<serial::fsize>();
 
                 TypeRegistry::Serialize(type, data.GetElem(index, type), m);
