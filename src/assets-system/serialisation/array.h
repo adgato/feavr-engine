@@ -123,7 +123,7 @@ namespace serial
 
         void Serialize(Stream& m)
         {
-            if (m.loading)
+            if (m.reading)
                 Resize(m.reader.Read<fsize>());
             else
                 m.writer.Write<fsize>(count);

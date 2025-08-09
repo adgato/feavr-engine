@@ -1,0 +1,103 @@
+#pragma once
+#include <unordered_map>
+#include <vector>
+
+#include "Archetype.h"
+#include "UpdateQueue.h"
+
+namespace ecs
+{
+    class Engine;
+
+    template <ComponentType...>
+    class EngineView;
+    template <ComponentType...>
+    class ArchetypeIterator;
+
+    struct EntityLocation
+    {
+        uint archetype;
+        uint index;
+    };
+
+    class Engine
+    {
+        template <ComponentType...>
+        friend class EngineView;
+        template <ComponentType...>
+        friend class ArchetypeIterator;
+
+        template <typename... Ts>
+        friend void Serialize(Engine& engine, const char* serialTypes, serial::Stream& m);
+
+        std::vector<Archetype> archetypes = std::vector<Archetype>(1);
+        std::vector<EntityLocation> entities;
+
+        std::vector<EntityID> deleted;
+        std::vector<std::vector<UpdateInstr>> entityUpdateQueue {};
+        std::unordered_map<size_t, std::vector<uint>> archetypeMap { { std::_Hash_impl::hash(nullptr, 0), { 0 } } };
+
+        uint FindArchetype(const std::vector<TypeID>& types);
+
+        void RawAdd(Entity e, const std::byte* data, const TypeInfo& typeInfo);
+
+        void ReadEngineTypes(const char* serialTypes, const std::vector<TypeID>& types, serial::Stream& m);
+        void WriteEngineTypes(const char* serialTypes, const std::vector<TypeID>& types, serial::Stream& m) const;
+
+    public:
+        Entity New(bool canUseDeleted = true);
+
+        bool IsValid(Entity e) const;
+
+        template <ComponentType T>
+        void Add(Entity e, const T& data)
+        {
+            assert(IsValid(e));
+            TypeRegistry::Register<T>();
+            entityUpdateQueue[e].emplace_back(UpdateInstr::Add(data, TypeRegistry::GetID<T>()));
+        }
+
+        template <ComponentType T>
+        void Remove(Entity e)
+        {
+            assert(IsValid(e));
+            TypeRegistry::Register<T>();
+            entityUpdateQueue[e].emplace_back(UpdateInstr::Remove(TypeRegistry::GetID<T>()));
+        }
+
+        void RemoveAll(Entity e);
+
+        void Delete(Entity e);
+
+        template <ComponentType T>
+        T& Get(Entity e)
+        {
+            assert(e < entities.size());
+            auto [archetype, index] = entities[e];
+            return *reinterpret_cast<T*>(archetypes[archetype].GetElem(index, TypeRegistry::GetID<T>()));
+        }
+
+        template <ComponentType T>
+        T* TryGet(Entity e)
+        {
+            assert(e < entities.size());
+            auto [archetype, index] = entities[e];
+            const auto& elems = archetypes[archetype];
+            return elems.StoresType(TypeRegistry::GetID<T>()) ? reinterpret_cast<T*>(elems.GetElem(index, TypeRegistry::GetID<T>())) : nullptr;
+        }
+
+        template <ComponentType T>
+        bool Has(Entity e) const
+        {
+            return e < entities.size() && archetypes[entities[e].archetype].StoresType(TypeRegistry::GetID<T>());
+        }
+
+        void Refresh();
+
+        void Destroy();
+
+        /// works by writing all types of @code other@endcode, then reading into @code this@endcode.
+        /// therefore, only what is serialized is copied into @code this@endcode.
+        void Union(const Engine& other);
+    };
+}

@@ -30,7 +30,7 @@ namespace ecs
 
                 types.push_back(type);
                 data[type] = RawArray(info);
-                data[type].Realloc(capacity, 0);
+                data[type].Realloc(capacity);
             }
         }
 
@@ -60,7 +60,7 @@ namespace ecs
             const size_t new_capacity = capacity + (capacity >> 1);
 
             for (const uint i : types)
-                if (!data[i].Realloc(new_capacity, capacity))
+                if (!data[i].Realloc(new_capacity))
                     throw std::bad_alloc();
 
             capacity = new_capacity;

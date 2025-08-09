@@ -172,7 +172,7 @@ namespace rendering
 
     void PassMeshManager::Serialize(serial::Stream& m)
     {
-        if (m.loading)
+        if (m.reading)
             ReadMeshes(m);
         else
             WriteMeshes(m);

@@ -22,6 +22,8 @@ namespace serial
         void Destroy();
 
         void SaveToFile(const char* filePath) const;
+
+        // returns data view (not a copy)
         std::span<std::byte> AsSpan() const { return std::span(data, count); };
 
         size_t GetCount() const { return count; }

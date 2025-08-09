@@ -2,6 +2,7 @@
 
 #include <memory>
 #include "ComponentConcepts.h"
+#include "TypeRegistry.h"
 
 namespace ecs
 {
@@ -11,7 +12,7 @@ namespace ecs
         std::unique_ptr<std::byte[]> data;
 
         template <ComponentType T>
-        static UpdateInstr NewAdd(const T& data, const TypeID type)
+        static UpdateInstr Add(const T& data, const TypeID type)
         {
             UpdateInstr instr;
 
@@ -23,7 +24,7 @@ namespace ecs
             return instr;
         }
 
-        static UpdateInstr NewRawAdd(const std::byte* data, const TypeID type, const size_t size)
+        static UpdateInstr RawAdd(const std::byte* data, const TypeID type, const size_t size)
         {
             UpdateInstr instr;
 
@@ -35,14 +36,9 @@ namespace ecs
             return instr;
         }
 
-        static UpdateInstr NewRemove(const TypeID type)
+        static UpdateInstr Remove(const TypeID type)
         {
-            UpdateInstr instr;
-
-            instr.type = type;
-            instr.data = nullptr;
-        
-            return instr;
+            return { type, nullptr };
         }
     };
 }

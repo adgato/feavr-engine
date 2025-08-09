@@ -4,7 +4,7 @@ namespace serial
 {
     bool Stream::MatchNextTag(const TagID tag)
     {
-        if (!loading)
+        if (!reading)
         {
             writer.Write<TagID>(tag);
             return true;
@@ -20,13 +20,5 @@ namespace serial
             reader.Jump(-sizeof(TagID));
 
         return readTag == tag;
-    }
-
-    void Stream::SerializeEntity(uint32_t& entityID)
-    {
-        if (loading)
-            entityID = reader.Read<uint32_t>() + entityOffset;
-        else
-            writer.Write<uint32_t>(entityID + entityOffset);
     }
 }

@@ -22,7 +22,7 @@ namespace ecs
     concept IsSerialTypeAndDestroyable = serial::IsDestroyable<T> && serial::IsSerialType<T>;
 
     template <typename T>
-    concept ComponentType = IsSerialTypeAndDestroyable<T> && std::is_trivially_copyable_v<T>;
+    concept ComponentType = std::is_trivially_copyable_v<T>;
 
     template<typename T, typename... Ts>
     inline constexpr bool one_of_v = std::disjunction_v<std::is_same<T, Ts>...>;

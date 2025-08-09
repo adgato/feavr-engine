@@ -10,7 +10,7 @@ namespace serial
     {
         uint count = array.size();
 
-        if (m.loading)
+        if (m.reading)
             count = m.reader.Read<uint>();
         else
             m.writer.Write<uint>(count);

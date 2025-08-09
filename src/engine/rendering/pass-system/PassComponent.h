@@ -1,5 +1,5 @@
 #pragma once
-#include "ecs/SerialEntity.h"
+#include "ecs/ComponentConcepts.h"
 #include "serialisation/array.h"
 
 namespace rendering::passes

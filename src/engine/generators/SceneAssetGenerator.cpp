@@ -85,8 +85,6 @@ void load_primitive_vertices(const fastgltf::Asset& gltf, const fastgltf::Primit
     }
 }
 
-void loadGltf(VulkanEngine* engine, std::string_view filePath) {}
-
 std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& assetPath, std::vector<std::byte>&& contents)
 {
     auto sys = SINGLETON_ENTITY(rendering::PassMeshManager, ecs::PassEntityManager, ecs::MainEntityManager);

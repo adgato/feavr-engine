@@ -12,10 +12,16 @@ namespace serial
     {
         std::byte* data = nullptr;
         size_t count = 0;
+        bool needsDestroy = true;
 
     public:
         void LoadFromFile(const char* filePath);
-        void LoadFrom(const std::span<const std::byte>& span);
+
+        // copies span data into reader
+        void CopyFrom(const std::span<const std::byte>& span);
+
+        // does not copy span data into reader, make sure data sticks around until destroy
+        void ViewFrom(const std::span<std::byte>& span);
 
         void Destroy();
 

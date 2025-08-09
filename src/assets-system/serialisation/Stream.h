@@ -1,4 +1,5 @@
 #pragma once
+#include <any>
 #include <cassert>
 #include <fmt/base.h>
 
@@ -33,8 +34,8 @@ namespace serial
 
 
     public:
-        int32_t entityOffset = 0;
-        bool loading = false;
+        std::any userData;
+        bool reading = false;
         WriteByteStream writer;
         ReadByteStream reader;
 
@@ -43,17 +44,17 @@ namespace serial
         Stream(const Stream& other) = delete;
         Stream(Stream&& other) noexcept = default;
         Stream& operator=(const Stream& other) = delete;
-        Stream& operator=(Stream&& other) noexcept = default;
+        Stream& operator=(Stream&& other) noexcept = delete;
 
         void InitRead()
         {
-            loading = true;
+            reading = true;
             Destroy();
         }
 
         void InitWrite()
         {
-            loading = false;
+            reading = false;
             Destroy();
             writer.Init();
         }
@@ -100,13 +101,11 @@ namespace serial
         template <typename T> requires std::is_trivially_copyable_v<T>
         void SerializeArray(T* data, const size_t size)
         {
-            if (loading)
+            if (reading)
                 reader.ReadArray<T>(data, size);
             else
                 writer.WriteArray<T>(data, size);
         }
-
-        void SerializeEntity(uint32_t& entityID);
     };
 
     template <TagID tag, IsSerializable T>
@@ -114,7 +113,7 @@ namespace serial
     {
         if constexpr (std::is_arithmetic_v<T>)
         {
-            if (m.loading)
+            if (m.reading)
             {
                 const size_t size = m.reader.Read<fsize>();
                 if (size == sizeof(T))
@@ -133,7 +132,7 @@ namespace serial
         {
             size_t offset;
             size_t size = 0;
-            if (m.loading)
+            if (m.reading)
             {
                 size = m.reader.Read<fsize>();
                 offset = m.reader.GetCount();
@@ -142,7 +141,7 @@ namespace serial
 
             value.Serialize(m);
 
-            if (m.loading)
+            if (m.reading)
             {
                 if (m.reader.GetCount() - offset != size)
                 {

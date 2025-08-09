@@ -1,11 +1,9 @@
 #pragma once
 #include <cassert>
 #include <cstddef>
-#include <cstdlib>
 #include <cstring>
 
 #include "ComponentConcepts.h"
-
 
 namespace ecs
 {
@@ -13,14 +11,13 @@ namespace ecs
     {
         std::byte* data = nullptr;
         size_t stride = 0;
-        size_t align = 0;
 
         RawArray() = default;
 
         explicit RawArray(const TypeInfo& typeInfo) noexcept
         {
+            assert(typeInfo.align <= alignof(std::max_align_t));
             stride = (typeInfo.size + typeInfo.align - 1) & ~(typeInfo.align - 1);
-            align = typeInfo.align;
         }
 
         ~RawArray()
@@ -69,6 +66,9 @@ namespace ecs
             std::memcpy(data + dst * stride, data + src * stride, stride);
         }
 
-        bool Realloc(size_t new_capacity, size_t old_capacity);
+        bool Realloc(const size_t capacity)
+        {
+            return data = static_cast<std::byte*>(std::realloc(data, capacity * stride));
+        }
     };
 }

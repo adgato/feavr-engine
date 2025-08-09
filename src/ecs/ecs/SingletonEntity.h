@@ -65,7 +65,7 @@ namespace ecs
             };
 
             // similar implementation to that of EntityManager
-            if (m.loading)
+            if (m.reading)
             {
                 const auto targetSplit = split(m.reader.ReadString(), ", ");
                 const auto sourceSplit = split(componentNames, ", ");

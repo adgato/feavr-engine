@@ -64,7 +64,7 @@ namespace serial
 
     void simple_json::Serialize(Stream& m)
     {
-        if (m.loading)
+        if (m.reading)
         {
             const std::vector<std::string> stringKeys = split(m.reader.ReadString());
             const std::vector<std::string> intKeys = split(m.reader.ReadString());

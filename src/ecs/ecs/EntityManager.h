@@ -92,14 +92,14 @@ namespace ecs
         void AddComponent(Entity e, const T& data)
         {
             assert(e < entityLocations.size());
-            entityUpdateQueue[e].push_back(UpdateInstr::NewAdd(data, typeID<T>));
+            entityUpdateQueue[e].push_back(UpdateInstr::Add(data, typeID<T>));
         }
 
         ECS_TEMPLATE(T)
         void RemoveComponent(Entity e)
         {
             assert(e < entityLocations.size());
-            entityUpdateQueue[e].push_back(UpdateInstr::NewRemove(typeID<T>()));
+            entityUpdateQueue[e].push_back(UpdateInstr::Remove(typeID<T>()));
         }
 
         ECS_TEMPLATE(T)

@@ -46,7 +46,7 @@ namespace ecs
     void EntityManager<Components...>::AddComponent(Entity e, const std::byte* data, const TypeID type)
     {
         assert(e < entityLocations.size());
-        entityUpdateQueue[e].push_back(UpdateInstr::NewRawAdd(data, type, componentInfo.GetTypeInfo(type).size));
+        entityUpdateQueue[e].push_back(UpdateInstr::RawAdd(data, type, componentInfo.GetTypeInfo(type).size));
     }
 
     template <typename ... Components>
@@ -156,14 +156,14 @@ namespace ecs
         for (uint type = 0; type < NumTypes; ++type)
         {
             if (archetype.test(type))
-                entityUpdateQueue[e].push_back(UpdateInstr::NewRemove(type));
+                entityUpdateQueue[e].push_back(UpdateInstr::Remove(type));
         }
     }
 
     template <typename ... Components>
     void EntityManager<Components...>::Serialize(serial::Stream& m)
     {
-        if (m.loading)
+        if (m.reading)
             Read(m);
         else
             Write(m);

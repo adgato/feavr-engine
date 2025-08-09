@@ -26,7 +26,7 @@ namespace serial
     }  && std::is_default_constructible_v<T>;
 
     template <typename T>
-    concept IsSerializable = IsSerialType<T> && std::is_trivially_copyable_v<T> || std::is_arithmetic_v<T>;
+    concept IsSerializable = IsSerialType<T> || std::is_trivially_copyable_v<T>;
 
     template<TagID...>
     constexpr bool is_ordered = true;

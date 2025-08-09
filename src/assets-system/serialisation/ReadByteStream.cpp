@@ -15,6 +15,7 @@ namespace serial
         const size_t fileSize = file.tellg();
 
         data = static_cast<std::byte*>(std::malloc(fileSize));
+        needsDestroy = true;
         if (!data)
             throw std::bad_alloc();
         count = 0;
@@ -24,9 +25,10 @@ namespace serial
         file.close();
     }
 
-    void ReadByteStream::LoadFrom(const std::span<const std::byte>& span)
+    void ReadByteStream::CopyFrom(const std::span<const std::byte>& span)
     {
         data = static_cast<std::byte*>(std::malloc(span.size_bytes()));
+        needsDestroy = true;
         if (!data)
             throw std::bad_alloc();
 
@@ -34,9 +36,15 @@ namespace serial
         count = 0;
     }
 
+    void ReadByteStream::ViewFrom(const std::span<std::byte>& span)
+    {
+        data = span.data();
+        needsDestroy = false;
+    }
+
     void ReadByteStream::Destroy()
     {
-        if (data)
+        if (needsDestroy && data)
             std::free(data);
         data = nullptr;
     }

@@ -9,7 +9,7 @@ namespace assets_system
     void AssetFile::Serialize(serial::Stream& m)
     {
         uint32_t blobSize = 0;
-        if (m.loading)
+        if (m.reading)
         {
             const uint32_t typeInt = m.reader.Read<uint32_t>();
             version = m.reader.Read<uint32_t>();
@@ -45,13 +45,13 @@ namespace assets_system
     {
         serial::Stream m {};
         m.InitRead();
-        m.reader.LoadFrom(std::span(blob.data() + offset, std::min(blob.size(), size)));
+        m.reader.CopyFrom(std::span(blob.data() + offset, std::min(blob.size(), size)));
         return m;
     }
 
     void AssetFile::WriteToBlob(const serial::Stream& m)
     {
-        assert(!m.loading);
+        assert(!m.reading);
         const std::span<std::byte> span = m.writer.AsSpan();
 
         blob.resize(span.size());
