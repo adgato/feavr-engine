@@ -6,6 +6,7 @@
 #include "PassDirectory.h"
 #include "SubMesh.h"
 #include "assets-system/AssetFile.h"
+#include "assets-system/AssetID.h"
 #include "ecs/Engine.h"
 
 class VulkanEngine;

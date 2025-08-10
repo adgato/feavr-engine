@@ -28,7 +28,7 @@ namespace ecs
         friend class ArchetypeIterator;
 
         template <typename... Ts>
-        friend void Serialize(Engine& engine, const char* serialTypes, serial::Stream& m);
+        friend void SerializeOnly(Engine& engine, serial::Stream& m);
 
         std::vector<Archetype> archetypes = std::vector<Archetype>(1);
         std::vector<EntityLocation> entities;
@@ -53,7 +53,6 @@ namespace ecs
         void Add(Entity e, const T& data)
         {
             assert(IsValid(e));
-            TypeRegistry::Register<T>();
             entityUpdateQueue[e].emplace_back(UpdateInstr::Add(data, TypeRegistry::GetID<T>()));
         }
 
@@ -61,7 +60,6 @@ namespace ecs
         void Remove(Entity e)
         {
             assert(IsValid(e));
-            TypeRegistry::Register<T>();
             entityUpdateQueue[e].emplace_back(UpdateInstr::Remove(TypeRegistry::GetID<T>()));
         }
 
@@ -96,8 +94,10 @@ namespace ecs
 
         void Destroy();
 
-        /// works by writing all types of @code other@endcode, then reading into @code this@endcode.
-        /// therefore, only what is serialized is copied into @code this@endcode.
-        void Union(const Engine& other);
+        void Serialize(serial::Stream& m);
+
+        void Wiget();
+
+        void Insert(const Engine& other);
     };
 }

@@ -3,6 +3,7 @@
 #include "rendering/VulkanEngine.h"
 #include "rendering/utility/Pipelines.h"
 #include "shader_descriptors.h"
+#include "assets-system/lookup/Asset16.h"
 #include "ecs/EngineView.h"
 #include "rendering/engine-assets/ShaderAssetData.h"
 #include "rendering/resources/EngineResources.h"
@@ -32,8 +33,8 @@ namespace rendering::passes
 
         VK_CHECK(vkCreatePipelineLayout(device, &mesh_layout_info, nullptr, &layout));
 
-        auto vertexShader = engine_assets::ShaderAssetData::Load(device, default_pass::vertex_asset);
-        auto fragmentShader = engine_assets::ShaderAssetData::Load(device, default_pass::pixel_asset);
+        auto vertexShader = engine_assets::ShaderAssetData::Load(device, assets_system::lookup::SHAD_default_shader_vs);
+        auto fragmentShader = engine_assets::ShaderAssetData::Load(device, assets_system::lookup::SHAD_default_shader_ps);
 
         // TODO - most of these can be defaults?
         PipelineBuilder pipelineBuilder;
@@ -68,8 +69,8 @@ namespace rendering::passes
         properties.AllocateSet(engine->Resource(), materialLayout);
         // default values
         properties.StageBuffer(default_pass::GLTFMaterialData_binding, matConstProperty);
-        properties.StageImage(default_pass::colorTex_binding, engine->commonTextures.errorCheckerboard);
-        properties.StageSampler(default_pass::colorTexSampler_binding, engine->defaultSamplerNearest);
+        // properties.StageImage(default_pass::colorTex_binding, engine->commonTextures.errorCheckerboard);
+        // properties.StageSampler(default_pass::colorTexSampler_binding, engine->defaultSamplerNearest);
         properties.PerformWrites();
     }
 
@@ -94,7 +95,8 @@ namespace rendering::passes
                 ecs::Entity entity = data.entities->data()[i];
 
                 const PushConstants pushConstants {
-                    engine->ecsEngine.Get<Transform>(entity).transform, mesh.vertexBufferAddress
+                    engine->ecsEngine.Get<Transform>(entity).transform,
+                    mesh.vertexBufferAddress
                 };
 
                 vkCmdPushConstants(cmd, layout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(PushConstants), &pushConstants);

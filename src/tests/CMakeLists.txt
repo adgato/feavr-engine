@@ -22,7 +22,7 @@ target_compile_definitions(tests PUBLIC
 
 target_link_libraries(tests PUBLIC ecs asset_system)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-nullability-completeness -g3 -O0 -fno-omit-frame-pointer -fno-optimize-sibling-calls")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-nullability-completeness") # -g3 -O0 -fno-omit-frame-pointer -fno-optimize-sibling-calls
 
 target_precompile_headers(tests PUBLIC
         <string>

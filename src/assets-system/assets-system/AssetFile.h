@@ -30,7 +30,7 @@ namespace assets_system
         void Save(const char* filePath);
 
         serial::Stream ReadFromBlob(size_t offset = 0, size_t size = ~0ul) const;
-        void WriteToBlob(const serial::Stream& m);
+        void WriteToBlob(const serial::Stream& m, bool compress = false);
 
         static AssetFile Load(const char* filePath);
 

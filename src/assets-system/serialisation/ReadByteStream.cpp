@@ -1,5 +1,5 @@
 #include "ReadByteStream.h"
-
+#include "lz4.h"
 #include <fstream>
 #include <cstddef>
 

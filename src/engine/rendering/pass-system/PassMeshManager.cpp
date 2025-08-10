@@ -41,7 +41,7 @@ namespace rendering
             return;
         }
 
-        serial::Stream mSource = sourceFile.ReadFromBlob((uint64_t)sourceFile.header["MeshesStart"], (uint64_t)sourceFile.header["MeshesSize"]);
+        serial::Stream mSource = sourceFile.ReadFromBlob((uint64_t)sourceFile.header["Meshes Start"], (uint64_t)sourceFile.header["Meshes Size"]);
 
         const size_t sourceMeshCount = mSource.reader.Read<serial::fsize>();
 

@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "Camera.h"
-#include "ecs/Engine.h"
 #include "rendering/CommonSetLayouts.h"
 #include "rendering/CommonTextures.h"
 #include "pass-system/Material.h"

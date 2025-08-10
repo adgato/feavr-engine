@@ -150,12 +150,14 @@ void VulkanEngine::SaveScene(const char* filePath)
     serial::Stream m;
     m.InitWrite();
     passManager.Serialize(m);
-    ECS_SERIALIZE(ecsEngine, m, Transform, SubMesh, default_pass::Component);
+
+    ecsEngine.Refresh();
+    ecsEngine.Serialize(m);
 
     assets_system::AssetFile saveAsset("SCNE", 0);
 
-    saveAsset.header["MeshesStart"] = static_cast<uint64_t>(passManager.serializeInfo.meshesStart);
-    saveAsset.header["MeshesSize"] = static_cast<uint64_t>(passManager.serializeInfo.meshesSizeBytes);
+    saveAsset.header["Meshes Start"] = static_cast<uint64_t>(passManager.serializeInfo.meshesStart);
+    saveAsset.header["Meshes Size"] = static_cast<uint64_t>(passManager.serializeInfo.meshesSizeBytes);
 
     saveAsset.WriteToBlob(m);
     saveAsset.Save(filePath);
@@ -172,7 +174,8 @@ void VulkanEngine::LoadScene(const assets_system::AssetID other)
     ecsEngine.Destroy();
     passManager.Init(this);
     passManager.Serialize(m);
-    ECS_SERIALIZE(ecsEngine, m, Transform, SubMesh, default_pass::Component);
+    ecsEngine.Serialize(m);
+    ecsEngine.Refresh();
     passManager.ReplaceInvalidAssetSources(other);
     passManager.FixupReferences(ecsEngine);
 }

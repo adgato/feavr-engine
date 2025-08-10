@@ -1,13 +1,11 @@
 #pragma once
 
 #include <filesystem>
-#include "ecs/Engine.h"
 #include "ecs/EngineView.h"
 #include <vector>
 #include <algorithm>
 
 #include "assets-system/AssetFile.h"
-#include "ecs/EngineExtensions.h"
 
 namespace ecs::tests
 {
@@ -376,7 +374,7 @@ namespace ecs::tests
         assert(intCountBefore == 1); // Just e2_2
 
         // Union engine1 into engine2
-        engine2.Union(engine1);
+        engine2.Insert(engine1);
         engine2.Refresh();
 
         // Count components after union
@@ -463,7 +461,7 @@ namespace ecs::tests
         EntityID e1 = engine1.New();
         engine1.Add<int>(e1, 1);
         engine1.Refresh();
-        engine2.Union(engine1);
+        engine2.Insert(engine1);
         engine2.Refresh();
 
         assert(engine2.IsValid(e1));
@@ -729,7 +727,7 @@ namespace ecs::tests
         for (auto [entity, pos] : worldEntities) beforeCount++;
 
         // Union second world into main world
-        gameWorld.Union(secondWorld);
+        gameWorld.Insert(secondWorld);
         gameWorld.Refresh();
 
         // Count entities after union

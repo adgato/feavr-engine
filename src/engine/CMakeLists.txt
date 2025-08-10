@@ -25,7 +25,7 @@ target_link_libraries(engine PUBLIC ecs asset_system hlslpp vma glm Vulkan::Vulk
 target_link_libraries(engine ${SDL2_LIBRARIES})
 target_include_directories(engine PRIVATE ${SDL2_INCLUDE_DIRS})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-nullability-completeness -g3 -O0 -fno-omit-frame-pointer -fno-optimize-sibling-calls")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-nullability-completeness") # -g3 -O0 -fno-omit-frame-pointer -fno-optimize-sibling-calls
 
 target_precompile_headers(engine PUBLIC
         # Vulkan - huge header, used everywhere in graphics code

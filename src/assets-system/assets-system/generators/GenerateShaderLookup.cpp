@@ -102,9 +102,6 @@ namespace assets_system
         result += fmt::format("    namespace {}\n", shader.name);
         result += fmt::format("    {{\n");
 
-        for (auto& [field, name] : shader.names)
-            result += fmt::format("        constexpr auto {}_asset = assets_system::lookup::SHAD_{};\n", field, name);
-
         // Generate binding constants for this shader
         for (const auto& set : shader.descriptorSets | std::views::values)
         {
@@ -150,10 +147,9 @@ namespace assets_system
     {
         std::string header = R"(#pragma once
 #include <vector>
-#include <cassert>
-#include "vk_types.h"
-#include "vk_new.h"
-#include "assets-system/AssetLookup.h"
+#include "rendering/utility/DescriptorSetLayoutInfo.h"
+#include "rendering/utility/VulkanCheck.h"
+#include "rendering/utility/VulkanNew.h"
 
 // Auto-generated shader descriptor set layouts
 // DO NOT EDIT MANUALLY
@@ -331,7 +327,7 @@ namespace shader_layouts
     {
         if (!std::filesystem::exists(shaderDir))
         {
-            fmt::println("Directory does not exist: {}", shaderDir);
+            fmt::println(stderr, "Directory does not exist: {}", shaderDir);
             return false;
         }
 
@@ -366,15 +362,24 @@ namespace shader_layouts
 
         const std::string headerCode = GenerateHeader(shaders);
 
-        std::ofstream file(outputFile);
-        if (file.is_open())
+        std::ifstream reader(outputFile);
+        if (reader.is_open())
         {
-            file << headerCode;
-            file.close();
-            fmt::println("\nGenerated header written to: {}", outputFile);
+            std::string existingContent((std::istreambuf_iterator(reader)), std::istreambuf_iterator<char>());
+            reader.close();
+
+            if (existingContent == headerCode)
+                return true;
+        }
+
+        std::ofstream writer(outputFile);
+        if (writer.is_open())
+        {
+            writer.write(headerCode.c_str(), headerCode.size());
+            writer.close();
         } else
         {
-            fmt::println("\nFailed to open output file: {}", outputFile);
+            fmt::println(stderr, "\nFailed to open output file: {}", outputFile);
             return false;
         }
 

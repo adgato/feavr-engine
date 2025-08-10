@@ -1,6 +1,7 @@
 #include "AssetFile.h"
 
 #include <fstream>
+#include <lz4.h>
 
 #include "serialisation/Stream.h"
 
@@ -45,17 +46,40 @@ namespace assets_system
     {
         serial::Stream m {};
         m.InitRead();
-        m.reader.CopyFrom(std::span(blob.data() + offset, std::min(blob.size(), size)));
+
+        if (const uint64_t* decompressedSize = header.GetIfInt("Decompressed Size"))
+        {
+            char* dest = static_cast<char*>(std::malloc(*decompressedSize));
+
+            const int writtenSize = LZ4_decompress_safe(reinterpret_cast<const char*>(blob.data()), dest, blob.size(), *decompressedSize);
+            assert(writtenSize > 0);
+            m.reader.CopyFrom(std::span(reinterpret_cast<std::byte*>(dest) + offset, std::min(static_cast<size_t>(writtenSize), size)));
+
+            std::free(dest);
+        } else
+            m.reader.CopyFrom(std::span(blob.data() + offset, std::min(blob.size(), size)));
+
         return m;
     }
 
-    void AssetFile::WriteToBlob(const serial::Stream& m)
+    void AssetFile::WriteToBlob(const serial::Stream& m, const bool compress /* = false*/)
     {
         assert(!m.reading);
         const std::span<std::byte> span = m.writer.AsSpan();
 
-        blob.resize(span.size());
-        std::memcpy(blob.data(), span.data(), span.size());
+        if (compress)
+        {
+            const int bound = LZ4_compressBound(span.size());
+            blob.resize(bound);
+            const int size = LZ4_compress_default(reinterpret_cast<const char*>(span.data()), reinterpret_cast<char*>(blob.data()), span.size(), blob.size());
+            assert(size > 0);
+            blob.resize(size);
+            header["Decompressed Size"] = span.size();
+        } else
+        {
+            blob.resize(span.size());
+            std::memcpy(blob.data(), span.data(), span.size());
+        }
     }
 
     AssetFile AssetFile::Load(const char* filePath)
@@ -71,7 +95,7 @@ namespace assets_system
             assetFile.Serialize(m);
         } catch (std::exception)
         {
-            fmt::println(stderr, "Unknown asset file: {}",  filePath);
+            fmt::println(stderr, "Unknown asset file: {}", filePath);
             return Invalid();
         }
 

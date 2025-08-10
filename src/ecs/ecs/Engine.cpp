@@ -232,20 +232,32 @@ namespace ecs
     {
         assert(m.reading);
         const size_t numTypes = types.size();
-        const auto targetSplit = split(m.reader.ReadString(), ", ");
-        const auto sourceSplit = split(serialTypes, ", ");
+        const auto targetSplit = split(m.reader.ReadString(), "; ");
+        const auto sourceSplit = split(serialTypes, "; ");
 
         const uint targetNumTypes = targetSplit.size();
         assert(sourceSplit.size() == numTypes);
 
-        std::vector remap(targetNumTypes, BadMaxType);
+        std::vector<size_t> remap(targetNumTypes, BadMaxType);
+        std::vector sourceUsed(numTypes, false);
+
         for (size_t i = 0; i < targetSplit.size(); ++i)
             for (size_t j = 0; j < numTypes; ++j)
                 if (targetSplit[i] == sourceSplit[j])
                 {
                     remap[i] = j;
+                    sourceUsed[j] = true;
                     break;
                 }
+
+        for (size_t i = 0; i < remap.size(); ++i)
+            if (remap[i] == BadMaxType)
+                fmt::println("Note: Unknown type {}", targetSplit[i]);
+
+        for (size_t j = 0; j < sourceUsed.size(); ++j)
+            if (!sourceUsed[j])
+                fmt::println("Note: Ignoring type {}", sourceSplit[j]);
+
 
         std::vector<std::unique_ptr<std::byte[]>> defaultTypeData;
         defaultTypeData.reserve(numTypes);
@@ -343,17 +355,73 @@ namespace ecs
         }
     }
 
-    void Engine::Union(const Engine& other)
+    void Engine::Serialize(serial::Stream& m)
     {
         const size_t count = TypeRegistry::RegisteredCount();
         std::string serialTypes {};
-        std::vector<TypeID> types(count);
+        std::vector<TypeID> types;
+        types.reserve(count);
         for (TypeID i = 0; i < count; ++i)
         {
-            types[i] = TypeRegistry::GetInfo(i).type;
-            serialTypes += std::to_string(types[i]);
+            TypeInfo info = TypeRegistry::GetInfo(i);
+            types.emplace_back(info.type);
+            serialTypes += info.name;
             if (i < count - 1)
-                serialTypes += ", ";
+                serialTypes += "; ";
+        }
+
+        if (m.reading)
+            ReadEngineTypes(serialTypes.c_str(), types, m);
+        else
+            WriteEngineTypes(serialTypes.c_str(), types, m);
+    }
+
+    void Engine::Wiget()
+    {
+        if (ImGui::BeginChild("Engine View", ImVec2(0, 0), true, ImGuiWindowFlags_HorizontalScrollbar))
+        {
+            for (EntityID e = 0; e < entities.size(); ++e)
+            {
+                if (!IsValid(e))
+                    continue;
+
+                // TreeNode allows for more customization
+                std::string entityLabel = "Entity " + std::to_string(e);
+                if (ImGui::TreeNode(entityLabel.c_str()))
+                {
+                    auto [archetype, index] = entities[e];
+                    auto& elem = archetypes[archetype];
+
+                    for (const TypeID type : elem.types)
+                    {
+                        if (ImGui::TreeNode(TypeRegistry::GetInfo(type).name))
+                        {
+                            TypeRegistry::Widget(type, elem.GetElem(index, type));
+                            ImGui::TreePop();
+                        }
+                    }
+
+                    // Important: Always call TreePop() after TreeNode()
+                    ImGui::TreePop();
+                }
+            }
+        }
+        ImGui::EndChild();
+    }
+
+    void Engine::Insert(const Engine& other)
+    {
+        const size_t count = TypeRegistry::RegisteredCount();
+        std::string serialTypes {};
+        std::vector<TypeID> types;
+        types.reserve(count);
+        for (TypeID i = 0; i < count; ++i)
+        {
+            TypeInfo info = TypeRegistry::GetInfo(i);
+            types.emplace_back(info.type);
+            serialTypes += info.name;
+            if (i < count - 1)
+                serialTypes += "; ";
         }
 
         serial::Stream w;

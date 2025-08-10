@@ -13,6 +13,7 @@ namespace ecs
 
     struct TypeInfo
     {
+        const char* name;
         TypeID type;
         size_t size;
         size_t align;

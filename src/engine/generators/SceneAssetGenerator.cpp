@@ -205,8 +205,6 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
                 data.entities->push_back(e);
         }
     }
-    engine.Refresh();
-
     const std::string sceneFileName = assetPath + ".asset";
     const std::string fullPath = assets_system::GEN_ASSET_DIR + sceneFileName;
 
@@ -215,15 +213,16 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
 
     using namespace rendering;
 
+    engine.Refresh();
     passManager.Serialize(m);
-    ECS_SERIALIZE(engine, m, Transform, SubMesh, default_pass::Component);
+    engine.Serialize(m);
 
     assets_system::AssetFile sceneAsset("SCNE", 0);
 
-    sceneAsset.header["MeshesStart"] = static_cast<uint64_t>(passManager.serializeInfo.meshesStart);
-    sceneAsset.header["MeshesSize"] = static_cast<uint64_t>(passManager.serializeInfo.meshesSizeBytes);
+    sceneAsset.header["Meshes Start"] = static_cast<uint64_t>(passManager.serializeInfo.meshesStart);
+    sceneAsset.header["Meshes Size"] = static_cast<uint64_t>(passManager.serializeInfo.meshesSizeBytes);
 
-    sceneAsset.WriteToBlob(m);
+    sceneAsset.WriteToBlob(m, true);
 
     sceneAsset.Save(fullPath.c_str());
 

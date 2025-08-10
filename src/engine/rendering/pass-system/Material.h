@@ -1,5 +1,4 @@
 #pragma once
-#include "ecs/Engine.h"
 #include "rendering/pass-system/PassMeshManager.h"
 #include "rendering/pass-system/PassComponent.h"
 

@@ -55,7 +55,8 @@ namespace assets_system
             } else
                 value += c;
         }
-        result.push_back(value);
+        if (result.size() > 0 || value.size() > 0)
+            result.push_back(value);
         return result;
     }
 
@@ -101,23 +102,55 @@ namespace assets_system
 
     void AssetManager::WriteAssetLookup(const std::unordered_map<uint32_t, std::vector<std::string>>& assetNames)
     {
-        constexpr auto ASSET_LOOKUP = PROJECT_ROOT"/src/assets-system/assets-system/AssetLookup.h";
-
-        std::string result = "#pragma once\n#include \"AssetID.h\"\n\nnamespace assets_system::lookup\n{\n";
+        constexpr auto ASSET_LOOKUP = PROJECT_ROOT"/src/assets-system/assets-system/lookup";
         for (const auto& [id, names] : assetNames)
+        {
+            if (names.size() == 0)
+                continue;
+
+            std::string result = "#pragma once\n#include \"assets-system/AssetID.h\"\n\nnamespace assets_system::lookup\n{\n";
             for (uint32_t idx = 0; idx < names.size(); ++idx)
             {
                 std::string field = PrettyNameOfAsset(names[idx]);
                 result += fmt::format("    constexpr AssetID {} = {{ {}, {} }};\n", field, id, idx);
             }
-        result += "}";
+            result += "}";
 
-        std::ofstream writer(ASSET_LOOKUP);
+            // write each assets generated files to a seperate lookup file, this minimises rebuilding when an asset is moved / created / destroyed
+            std::string filename = fmt::format("{}/Asset{}.h", ASSET_LOOKUP, id);
 
-        if (!writer.is_open())
-            throw std::ios::failure("Could not open file");
+            std::ifstream reader(filename);
+            if (reader.is_open())
+            {
+                std::string existingContent((std::istreambuf_iterator(reader)), std::istreambuf_iterator<char>());
+                reader.close();
 
-        writer.write(result.c_str(), result.size());
+                if (existingContent == result)
+                    continue;
+            }
+
+            // only update lookup when necessary to prevent triggering a rebuild.
+            std::ofstream writer(filename);
+            if (!writer.is_open())
+                throw std::ios::failure("Could not open file");
+
+            writer.write(result.c_str(), result.size());
+        }
+        for (const auto& entry : std::filesystem::directory_iterator(ASSET_LOOKUP))
+        {
+            if (!entry.is_regular_file())
+                continue;
+            std::string filename = entry.path().filename().string();
+
+            if (filename.starts_with("Asset") && filename.ends_with(".h"))
+            {
+                size_t offset = std::size("Asset") - 1;
+                size_t count = filename.find_first_of('.') - offset;
+                int id = std::stoi(filename.substr(offset, count));
+                if (!assetNames.contains(id))
+                    std::filesystem::remove(entry.path());
+            }
+        }
     }
 
     void AssetManager::AddAssetGenerator(const char* extension, const char* assetType, IAssetGenerator* delegate)
@@ -199,7 +232,7 @@ namespace assets_system
             genAssetReader.close();
         }
 
-        bool anyShadersDirty = false;
+        bool anyShadersDirty = refreshAll;
 
         // regenerate dirty generated assets
         for (auto& entry : data)
@@ -229,7 +262,7 @@ namespace assets_system
 
         // a bit messy, but this is a special case. no point making a general system for managers to do post processing
         if (anyShadersDirty)
-            GenerateShaderMetadata(GEN_ASSET_DIR, ".hlsl.asset", PROJECT_ROOT"/src/engine/rendering/shader_descriptors.h");
+            GenerateShaderMetadata(GEN_ASSET_DIR, ".hlsl.asset", PROJECT_ROOT"/src/engine/rendering/pass-system/shader_descriptors.h");
 
         // mark all assets not dirty
         std::ofstream assetWriter(ASSET_INDEX);

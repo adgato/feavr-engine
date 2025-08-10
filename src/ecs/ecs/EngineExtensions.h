@@ -1,26 +1,25 @@
 #pragma once
 #include "Engine.h"
 
-// serialize the component types given for the engine
-#define ECS_SERIALIZE(engine, m, ...) \
-    ecs::Serialize<__VA_ARGS__>(engine, #__VA_ARGS__, m)
-
 namespace ecs
 {
     template <typename... Ts>
-    void Serialize(Engine& engine, const char* serialTypes, serial::Stream& m)
+    void SerializeOnly(Engine& engine, serial::Stream& m)
     {
-        (TypeRegistry::Register<Ts>(), ...);
         const std::vector<TypeID> types { TypeRegistry::GetID<Ts>()... };
-        if (m.reading)
+        const size_t count = TypeRegistry::RegisteredCount();
+        std::string serialTypes {};
+        for (TypeID i = 0; i < count; ++i)
         {
-            engine.ReadEngineTypes(serialTypes, types, m);
-            engine.Refresh();
-        } else
-        {
-            engine.Refresh();
-            engine.WriteEngineTypes(serialTypes, types, m);
+            serialTypes += TypeRegistry::GetInfo(i).name;
+            if (i < count - 1)
+                serialTypes += ", ";
         }
+
+        if (m.reading)
+            engine.ReadEngineTypes(serialTypes.c_str(), types, m);
+        else
+            engine.WriteEngineTypes(serialTypes.c_str(), types, m);
     }
 
     template <ComponentType... Ts>

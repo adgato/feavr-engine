@@ -14,6 +14,12 @@ namespace serial
     using fsize = uint32_t;
 
     template <typename T>
+    concept IsRenderable = requires (T t)
+    {
+        { t.Widget() } -> std::same_as<void>;
+    };
+
+    template <typename T>
     concept IsDestroyable = requires(T t)
     {
         { t.Destroy() } -> std::same_as<void>;

@@ -5,6 +5,7 @@
 #include <thread>
 
 #include "imgui.h"
+#include "assets-system/lookup/Asset29.h"
 #include "rendering/utility/OLD_loader.h"
 
 void Core::Init()
@@ -38,8 +39,10 @@ bool Core::Next()
                 break;
         }
 
-        engine.mainCamera.processSDLEvent(e);
+
         ImGui_ImplSDL2_ProcessEvent(&e);
+        if (!ImGui::GetIO().WantCaptureMouse)
+            engine.mainCamera.processSDLEvent(e);
     }
 
     // imgui new frame
@@ -48,37 +51,13 @@ bool Core::Next()
 
     ImGui::NewFrame();
     // Create a window called "My First Tool", with a menu bar.
-    bool active = true;
-    ImGui::ShowDemoWindow();
-    ImGui::Begin("My First Tool", &active, ImGuiWindowFlags_MenuBar);
-    if (ImGui::BeginMenuBar())
+    if (ImGui::Begin("Text List Window"))
     {
-        if (ImGui::BeginMenu("File"))
-        {
-            if (ImGui::MenuItem("Open..", "Ctrl+O")) { /* Do stuff */ }
-            if (ImGui::MenuItem("Save", "Ctrl+S"))   { /* Do stuff */ }
-            if (ImGui::MenuItem("Close", "Ctrl+W"))  { /* Do stuff */ }
-            ImGui::EndMenu();
-        }
-        ImGui::EndMenuBar();
+        ImGui::Text("Text Lines Display");
+        ImGui::Separator();
+        engine.ecsEngine.Wiget();
     }
-    static float col[4];
 
-    // Edit a color stored as 4 floats
-    ImGui::ColorEdit4("Color", col);
-
-    // Generate samples and plot them
-    float samples[100];
-    for (int n = 0; n < 100; n++)
-        samples[n] = sinf(n * 0.2f + ImGui::GetTime() * 1.5f);
-    ImGui::PlotLines("Samples", samples, 100);
-
-    // Display contents in a scrolling region
-    ImGui::TextColored(ImVec4(1,1,0,1), "Important Stuff");
-    ImGui::BeginChild("Scrolling");
-    for (int n = 0; n < 50; n++)
-        ImGui::Text("%04d: Some text", n);
-    ImGui::EndChild();
     ImGui::End();
     ImGui::Render();
 
@@ -89,7 +68,7 @@ bool Core::Next()
         imguiOverlay.Draw(cmd, frame);
         swapchain.EndFrame();
     } else
-        std::this_thread::sleep_for(std::chrono::milliseconds {100});
+        std::this_thread::sleep_for(std::chrono::milliseconds { 100 });
 
     return loopAgain;
 }
