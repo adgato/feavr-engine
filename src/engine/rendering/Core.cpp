@@ -5,8 +5,8 @@
 #include <thread>
 
 #include "imgui.h"
+#include "SelectMesh.h"
 #include "assets-system/lookup/Asset29.h"
-#include "rendering/utility/OLD_loader.h"
 
 void Core::Init()
 {
@@ -67,6 +67,9 @@ bool Core::Next()
         engine.Draw(swapchain.frameCount, cmd, frame);
         imguiOverlay.Draw(cmd, frame);
         swapchain.EndFrame();
+
+        rendering::SelectMesh(*engine.engineResources, engine.passManager, engine.drawImage, engine.depthImage);
+
     } else
         std::this_thread::sleep_for(std::chrono::milliseconds { 100 });
 

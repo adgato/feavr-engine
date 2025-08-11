@@ -54,6 +54,7 @@ set_property(TARGET vkbootstrap PROPERTY CXX_STANDARD 20)
 target_include_directories(vma INTERFACE vma)
 target_include_directories(glm INTERFACE glm)
 target_include_directories(hlslpp INTERFACE hlsl++)
+target_include_directories(stb_image INTERFACE stb_image)
 
 target_include_directories(imgui PUBLIC imgui)
 

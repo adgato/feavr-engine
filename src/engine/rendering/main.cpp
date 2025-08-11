@@ -1,19 +1,8 @@
-#include <filesystem>
-
-#include "rendering/VulkanEngine.h"
-
 #include "assets-system/generators/StandardAssetGenerators.h"
 
 #include "Core.h"
 #include "assets-system/AssetManager.h"
-#include "ecs/Engine.h"
-#include "ecs/EngineExtensions.h"
 #include "generators/SceneAssetGenerator.h"
-
-//#include <iostream>
-//#include "mathx.h"
-//using namespace mathx;
-
 
 void RegisterAssetGenerators()
 {
@@ -26,7 +15,7 @@ void RegisterAssetGenerators()
 int main()
 {
     RegisterAssetGenerators();
-    assets_system::AssetManager::RefreshAssets();
+    assets_system::AssetManager::RefreshAssets(true);
 
     Core core;
     core.Init();

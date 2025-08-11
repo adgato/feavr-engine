@@ -74,7 +74,7 @@ namespace rendering::passes
         properties.PerformWrites();
     }
 
-    void DefaultPass::Draw(const VkCommandBuffer cmd, const std::vector<Mesh>& meshes)
+    void DefaultPass::Draw(const VkCommandBuffer cmd, const std::span<Mesh>& meshes)
     {
         vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
 
@@ -90,9 +90,9 @@ namespace rendering::passes
 
             vkCmdBindIndexBuffer(cmd, mesh.indexBuffer.buffer, 0, VK_INDEX_TYPE_UINT32);
 
-            for (uint32_t i = 0; i < data.entities->size(); ++i)
+            for (uint32_t i = 0; i < data.transforms->size(); ++i)
             {
-                ecs::Entity entity = data.entities->data()[i];
+                ecs::Entity entity = data.transforms->data()[i];
 
                 const PushConstants pushConstants {
                     engine->ecsEngine.Get<Transform>(entity).transform,

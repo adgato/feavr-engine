@@ -18,10 +18,11 @@
 #include "ecs/EngineExtensions.h"
 #include "ecs/EngineView.h"
 #include "fmt/ranges.h"
-#include "rendering/utility/OLD_loader.h"
 #include "rendering/utility/Initializers.h"
 #include "rendering/resources/Image.h"
 #include "pass-system/shader_descriptors.h"
+#include "resources/EngineResources.h"
+#include "utility/Screenshot.h"
 
 using namespace rendering;
 
@@ -105,8 +106,8 @@ void VulkanEngine::Draw(const uint32_t frameCount, VkCommandBuffer cmd, Image& t
     VkClearValue clearDepth;
     clearDepth.depthStencil.depth = 0.0f;
 
-    drawImage.Transition(cmd, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
-    depthImage.Transition(cmd, VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL);
+    drawImage.Barrier(cmd, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
+    depthImage.Barrier(cmd, VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL);
 
     const VkRenderingAttachmentInfo colorAttachment = vkinit::attachment_info(drawImage, &clearColor);
     const VkRenderingAttachmentInfo depthAttachment = vkinit::attachment_info(depthImage, &clearDepth);

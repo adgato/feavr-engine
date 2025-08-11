@@ -28,19 +28,13 @@ namespace rendering
 
             glm::decompose(transform, scale, rotation, translation, skew, perspective);
 
+            glm::vec3 euler = glm::degrees(glm::eulerAngles(rotation));
+
             ImGui::DragFloat3("Position", glm::value_ptr(translation));
-
-            // Direct quaternion editing (w, x, y, z)
-            if (ImGui::DragFloat4("Rotation (w,x,y,z)", glm::value_ptr(rotation), 0.1f))
-            {
-                rotation = glm::normalize(rotation);
-            }
-
+            ImGui::DragFloat3("Rotation", glm::value_ptr(euler));
             ImGui::DragFloat3("Scale", glm::value_ptr(scale));
 
-            transform = glm::translate(glm::mat4(1.f), translation) *
-                        glm::toMat4(rotation) *
-                        glm::scale(glm::mat4(1.f), scale);
+            transform = glm::translate(glm::mat4(1.f), translation) * glm::toMat4(glm::quat(glm::radians(euler))) * glm::scale(glm::mat4(1.f), scale);
         }
     };
 

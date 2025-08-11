@@ -34,14 +34,16 @@ namespace rendering
             return passManager.GetPass<T>();
         }
 
-        ecs::Entity AddSubMesh(const uint32_t meshIndex, const uint32_t firstIndex = 0, const uint32_t indexCount = ~0u)
+        ecs::Entity AddSubMesh(const uint32_t meshIndex, const std::span<ecs::EntityID> entities, const uint32_t firstIndex = 0, const uint32_t indexCount = ~0u)
         {
             ecs::Entity e = engine.New();
             engine.Add<SubMesh>(e, passManager.ReferenceMesh(meshIndex, firstIndex, indexCount));
-            (engine.Add<passes::PassComponent<Passes>>(e, passes::PassComponent<Passes>
+            (engine.Add<passes::PassComponent<Passes>>(
+                e,
+                passes::PassComponent<Passes>
                 {
                     .passGroup = { passGroups[ecs::index_of_type_v<Passes, Passes...>] },
-                    .entities = { serial::array<ecs::EntityID>::NewReserve(32) }
+                    .transforms = { serial::array<ecs::EntityID>::NewFromData(entities.data(), entities.size()) }
                 }
             ), ...);
             return e;

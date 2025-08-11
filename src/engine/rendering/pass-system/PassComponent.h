@@ -8,18 +8,16 @@ namespace rendering::passes
     struct PassComponent
     {
         SERIALIZABLE(0, uint32_t) passGroup;
-
-        // entites from another ECS, we have to manually offset these when unioning
-        SERIALIZABLE(1, serial::array<ecs::EntityID>) entities;
+        SERIALIZABLE(1, serial::array<ecs::EntityID>) transforms;
 
         void Serialize(serial::Stream& m)
         {
-            m.SerializeComponent(passGroup, entities);
+            m.SerializeComponent(passGroup, transforms);
         }
 
         void Destroy()
         {
-            entities->Destroy();
+            transforms->Destroy();
         }
     };
 }

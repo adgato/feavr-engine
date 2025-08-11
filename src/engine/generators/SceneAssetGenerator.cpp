@@ -94,7 +94,7 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
     ecs::Engine engine;
 
 
-    rendering::Material<default_pass::Pass> defaultMaterial(engine, passManager);
+    rendering::Material<default_pass::Pass, unlit_pass::Pass> defaultMaterial(engine, passManager);
 
     fastgltf::Parser parser {};
 
@@ -148,31 +148,9 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
     std::vector<uint32_t> indices;
     std::vector<rendering::Vertex> vertices;
 
-    for (fastgltf::Mesh& mesh : gltf.meshes)
-    {
-        indices.clear();
-        vertices.clear();
-        for (const auto& primitive : mesh.primitives)
-        {
-            load_primitive_indices(gltf, primitive, indices, vertices.size());
-            load_primitive_vertices(gltf, primitive, vertices);
-        }
 
-        const uint32_t meshIndex = passManager.AddMesh(rendering::Mesh {}, rendering::MeshDirectSource { vertices, indices });
-
-        uint32_t cumCount = 0;
-        for (auto&& p : mesh.primitives)
-        {
-            uint32_t count = static_cast<uint32_t>(gltf.accessors[p.indicesAccessor.value()].count);
-
-            defaultMaterial.AddSubMesh(meshIndex, cumCount, count);
-
-            cumCount += count;
-        }
-    }
-    engine.Refresh();
-
-    ecs::EngineView<rendering::SubMesh, default_pass::Component> view(engine);
+    std::vector<std::vector<ecs::EntityID>> meshTransforms;
+    meshTransforms.reserve(gltf.nodes.size());
 
     // load all nodes and their meshes
     for (fastgltf::Node& node : gltf.nodes)
@@ -199,19 +177,40 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
 
         uint32_t meshIdx = static_cast<uint32_t>(*node.meshIndex);
 
-        for (const auto& [submeshId, passMesh, data] : view)
+        if (meshIdx >= meshTransforms.size())
+            meshTransforms.resize(meshIdx + 1);
+
+        meshTransforms[meshIdx].emplace_back(e);
+    }
+
+    for (fastgltf::Mesh& mesh : gltf.meshes)
+    {
+        indices.clear();
+        vertices.clear();
+        for (const auto& primitive : mesh.primitives)
         {
-            if (passMesh.meshIndex == meshIdx)
-                data.entities->push_back(e);
+            load_primitive_indices(gltf, primitive, indices, vertices.size());
+            load_primitive_vertices(gltf, primitive, vertices);
+        }
+
+        const uint32_t meshIndex = passManager.AddMesh(rendering::Mesh {}, rendering::MeshDirectSource { vertices, indices });
+
+        uint32_t cumCount = 0;
+        for (auto&& p : mesh.primitives)
+        {
+            uint32_t count = static_cast<uint32_t>(gltf.accessors[p.indicesAccessor.value()].count);
+
+            defaultMaterial.AddSubMesh(meshIndex, meshTransforms[meshIndex], cumCount, count);
+
+            cumCount += count;
         }
     }
+
     const std::string sceneFileName = assetPath + ".asset";
     const std::string fullPath = assets_system::GEN_ASSET_DIR + sceneFileName;
 
     serial::Stream m;
     m.InitWrite();
-
-    using namespace rendering;
 
     engine.Refresh();
     passManager.Serialize(m);

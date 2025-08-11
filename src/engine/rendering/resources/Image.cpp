@@ -45,7 +45,8 @@ namespace rendering
         allocinfo.usage = VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE;
         allocinfo.requiredFlags = static_cast<VkMemoryPropertyFlags>(VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
 
-        VK_CHECK(vmaCreateImage(renderer->resource, &img_info, &allocinfo, &newImage.image, &newImage.allocation, nullptr));
+        VmaAllocationInfo info;
+        VK_CHECK(vmaCreateImage(renderer->resource, &img_info, &allocinfo, &newImage.image, &newImage.allocation, &info));
 
         // build a image-view for the depth image to use for rendering
         auto view_info = vkinit::New<VkImageViewCreateInfo>(); {
@@ -74,7 +75,7 @@ namespace rendering
 
         renderer->ImmediateSumbit([&](const VkCommandBuffer cmd)
         {
-            Transition(cmd, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
+            Barrier(cmd, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
 
             VkBufferImageCopy copyRegion = {};
             copyRegion.bufferOffset = 0;
@@ -90,19 +91,41 @@ namespace rendering
             // copy the buffer into the image
             vkCmdCopyBufferToImage(cmd, uploadBuffer.buffer, image, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &copyRegion);
 
-            Transition(cmd, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+            Barrier(cmd, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
         });
 
         uploadBuffer.Destroy();
     }
 
-    void Image::Transition(const VkCommandBuffer cmd, const VkImageLayout newLayout)
+    void Image::Read(const Buffer<std::byte>& intoBuffer)
+    {
+        renderer->ImmediateSumbit([&](const VkCommandBuffer cmd)
+        {
+            Barrier(cmd, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
+
+            VkBufferImageCopy copyRegion = {};
+            copyRegion.bufferOffset = 0;
+            copyRegion.bufferRowLength = 0;
+            copyRegion.bufferImageHeight = 0;
+
+            copyRegion.imageSubresource.aspectMask = aspectFlags;
+            copyRegion.imageSubresource.mipLevel = 0;
+            copyRegion.imageSubresource.baseArrayLayer = 0;
+            copyRegion.imageSubresource.layerCount = 1;
+            copyRegion.imageExtent = imageExtent;
+
+            // copy the buffer into the image
+            vkCmdCopyImageToBuffer(cmd, image, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, intoBuffer.buffer, 1, &copyRegion);
+        });
+    }
+
+    void Image::Barrier(const VkCommandBuffer cmd, const VkImageLayout newLayout, const VkMemoryBarrier2& barrier)
     {
         auto imageBarrier = vkinit::New<VkImageMemoryBarrier2>(); {
-            imageBarrier.srcStageMask = VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT;
-            imageBarrier.srcAccessMask = VK_ACCESS_2_MEMORY_WRITE_BIT;
-            imageBarrier.dstStageMask = VK_PIPELINE_STAGE_2_ALL_COMMANDS_BIT;
-            imageBarrier.dstAccessMask = VK_ACCESS_2_MEMORY_WRITE_BIT | VK_ACCESS_2_MEMORY_READ_BIT;
+            imageBarrier.srcStageMask = barrier.srcStageMask;
+            imageBarrier.srcAccessMask = barrier.srcAccessMask;
+            imageBarrier.dstStageMask = barrier.dstStageMask;
+            imageBarrier.dstAccessMask = barrier.dstAccessMask;
 
             imageBarrier.oldLayout = currentLayout;
             imageBarrier.newLayout = newLayout;
@@ -126,17 +149,17 @@ namespace rendering
 
     void Image::BlitCopyTo(const VkCommandBuffer cmd, Image& dst)
     {
-        Transition(cmd, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
-        dst.Transition(cmd, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
+        Barrier(cmd, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
+        dst.Barrier(cmd, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
 
         auto blitRegion = vkinit::New<VkImageBlit2>(); {
             blitRegion.srcOffsets[1] = { static_cast<int32_t>(imageExtent.width), static_cast<int32_t>(imageExtent.height), static_cast<int32_t>(imageExtent.depth) };
             blitRegion.dstOffsets[1] = { static_cast<int32_t>(dst.imageExtent.width), static_cast<int32_t>(dst.imageExtent.height), static_cast<int32_t>(dst.imageExtent.depth) };
 
-            blitRegion.srcSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+            blitRegion.srcSubresource.aspectMask = aspectFlags;
             blitRegion.srcSubresource.layerCount = 1;
 
-            blitRegion.dstSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+            blitRegion.dstSubresource.aspectMask = dst.aspectFlags;
             blitRegion.dstSubresource.layerCount = 1;
         }
 

@@ -18,10 +18,16 @@ namespace rendering
         serial::fsize indexCount;
     };
 
+    std::span<Mesh> PassMeshManager::GetMeshes()
+    {
+        return meshes;
+    }
+
     void PassMeshManager::Init(VulkanEngine* e)
     {
         resources = e->engineResources;
         defaultPass.Init(e);
+        raycastPass.Init(e);
     }
 
     void PassMeshManager::Draw(const VkCommandBuffer cmd)
@@ -177,8 +183,6 @@ namespace rendering
             ReadMeshes(m);
         else
             WriteMeshes(m);
-
-        defaultPass.Serialize(m);
     }
 
     uint32_t PassMeshManager::AddMesh(Mesh&& mesh, MeshAssetSource&& metaData)
@@ -291,5 +295,6 @@ namespace rendering
         nextFreeMesh = 0;
 
         defaultPass.Destroy();
+        raycastPass.Destroy();
     }
 }

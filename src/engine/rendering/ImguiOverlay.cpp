@@ -69,7 +69,7 @@ void ImguiOverlay::Init(const rendering::ResourceHandles& deviceData)
 void ImguiOverlay::Draw(VkCommandBuffer cmd, rendering::Image& targetImage)
 {
     // set swapchain image layout to Attachment Optimal so we can draw it
-    targetImage.Transition(cmd, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
+    targetImage.Barrier(cmd, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
 
     //draw imgui into the swapchain image
     const VkRenderingAttachmentInfo targetAttachment = vkinit::attachment_info(targetImage, nullptr);

@@ -252,7 +252,7 @@ namespace rendering
     {
         const FrameCommand& currentFrame = frames[frameCount++ % FRAME_OVERLAP];
         // transition to present image
-        swapchainImages[currentSwapchainImageIndex].Transition(currentFrame.cmd, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR);
+        swapchainImages[currentSwapchainImageIndex].Barrier(currentFrame.cmd, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR);
 
         auto cmdinfo = vkinit::New<VkCommandBufferSubmitInfo>(); {
             cmdinfo.commandBuffer = currentFrame.cmd;

@@ -29,27 +29,13 @@ namespace ecs
 
         explicit Archetype(const std::vector<TypeID>& types);
 
-        bool StoresType(const TypeID type) const
-        {
-            return type >= minType && type <= maxType && globalTypes[type - minType] < BadMaxType;
-        }
+        bool StoresType(TypeID type) const;
 
-        std::byte* GetElem(const uint index, const TypeID type) const
-        {
-            assert(index < count && StoresType(type));
-            return data[globalTypes[type - minType]].GetElem(index);
-        }
+        std::byte* GetElem(uint index, TypeID type) const;
 
-        void SetElem(const TypeID type, const std::byte* src) const
-        {
-            assert(StoresType(type));
-            data[globalTypes[type - minType]].SetElem(count - 1, src);
-        }
+        void SetElem(TypeID type, const std::byte* src) const;
 
-        size_t GetCount() const
-        {
-            return count;
-        }
+        size_t GetCount() const;
 
         void IncCount(Entity entity);
 

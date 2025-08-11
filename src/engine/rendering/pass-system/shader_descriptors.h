@@ -55,26 +55,4 @@ namespace shader_layouts
         }
     }
 
-    namespace unlit_shader
-    {
-        constexpr auto colorTex_binding = VkDescriptorSetLayoutBinding{
-            .binding = 1,
-            .descriptorType = VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE,
-            .descriptorCount = 1,
-            .stageFlags = 0x00000010,
-        };
-        constexpr auto colorTexSampler_binding = VkDescriptorSetLayoutBinding{
-            .binding = 2,
-            .descriptorType = VK_DESCRIPTOR_TYPE_SAMPLER,
-            .descriptorCount = 1,
-            .stageFlags = 0x00000010,
-        };
-
-        inline std::vector bindings_1 = {colorTex_binding, colorTexSampler_binding, };
-        inline DescriptorSetLayoutInfo CreateSetLayout_1(const VkDevice device)
-        {
-            return CreateSetLayout(device, &bindings_1);
-        }
-    }
-
 }

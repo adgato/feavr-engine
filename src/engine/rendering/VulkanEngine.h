@@ -48,7 +48,7 @@ public:
 
     GPUSceneData sceneData;
 
-    rendering::Material<default_pass::Pass> defaultMaterial { ecsEngine, passManager };
+    rendering::Material<unlit_pass::Pass> defaultMaterial { ecsEngine, passManager };
 
     // Easy way to get resources the rendering engine is using. Resources are implicitly cast to pass whatever is needed to a method
     rendering::ResourceHandles& Resource() const;

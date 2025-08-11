@@ -29,6 +29,28 @@ namespace ecs
             globalTypes[types[i] - minType] = i;
     }
 
+    bool Archetype::StoresType(const TypeID type) const
+    {
+        return type >= minType && type <= maxType && globalTypes[type - minType] < BadMaxType;
+    }
+
+    std::byte* Archetype::GetElem(const uint index, const TypeID type) const
+    {
+        assert(index < count && StoresType(type));
+        return data[globalTypes[type - minType]].GetElem(index);
+    }
+
+    void Archetype::SetElem(const TypeID type, const std::byte* src) const
+    {
+        assert(StoresType(type));
+        data[globalTypes[type - minType]].SetElem(count - 1, src);
+    }
+
+    size_t Archetype::GetCount() const
+    {
+        return count;
+    }
+
     void Archetype::IncCount(Entity entity)
     {
         entities.push_back(entity);

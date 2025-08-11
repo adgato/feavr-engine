@@ -5,6 +5,7 @@
 
 #include "vk_mem_alloc.h"
 #include "rendering/utility/VulkanCheck.h"
+#include "rendering/utility/VulkanNew.h"
 
 namespace rendering
 {
@@ -30,12 +31,10 @@ namespace rendering
                                const VmaMemoryUsage memoryType = VMA_MEMORY_USAGE_AUTO)
         {
             // allocate buffer
-            VkBufferCreateInfo bufferInfo = {};
-            bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
-            bufferInfo.pNext = nullptr;
-            bufferInfo.size = sizeof(T) * count;
-
-            bufferInfo.usage = usage;
+            auto bufferInfo = vkinit::New<VkBufferCreateInfo>(); {
+                bufferInfo.size = sizeof(T) * count;
+                bufferInfo.usage = usage;
+            }
 
             VmaAllocationCreateInfo vmaAllocInfo = {};
             vmaAllocInfo.usage = memoryType;
@@ -44,11 +43,10 @@ namespace rendering
                 vmaAllocInfo.flags = VMA_ALLOCATION_CREATE_MAPPED_BIT | static_cast<VmaAllocationCreateFlagBits>(hostAccess);
 
             Buffer newBuffer;
-
-            VmaAllocationInfo info;
-
             newBuffer.count = static_cast<uint32_t>(count);
             newBuffer.allocator = allocator;
+
+            VmaAllocationInfo info;
             VK_CHECK(vmaCreateBuffer(newBuffer.allocator, &bufferInfo, &vmaAllocInfo, &newBuffer.buffer, &newBuffer.allocation, &info));
 
             newBuffer.mappedData = static_cast<T*>(info.pMappedData);

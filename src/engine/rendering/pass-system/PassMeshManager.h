@@ -4,6 +4,7 @@
 #include "DefaultPass.h"
 #include "Mesh.h"
 #include "PassDirectory.h"
+#include "ScreenRaycastPass.h"
 #include "SubMesh.h"
 #include "assets-system/AssetFile.h"
 #include "assets-system/AssetID.h"
@@ -14,7 +15,7 @@ class VulkanEngine;
 namespace rendering
 {
     template <typename T>
-    concept ManagedPass = ecs::one_of_v<T, default_pass::Pass>;
+    concept ManagedPass = ecs::one_of_v<T, default_pass::Pass, unlit_pass::Pass>;
 
     struct MeshAssetSource
     {
@@ -53,6 +54,7 @@ namespace rendering
         EngineResources* resources = nullptr;
 
         default_pass::Pass defaultPass {};
+        unlit_pass::Pass raycastPass {};
     public:
         struct
         {
@@ -65,8 +67,12 @@ namespace rendering
         {
             if constexpr (std::is_same_v<default_pass::Pass, T>)
                 return defaultPass;
-            return 0;
+            if constexpr (std::is_same_v<unlit_pass::Pass, T>)
+                return raycastPass;
+            throw std::exception();
         }
+
+        std::span<Mesh> GetMeshes();
 
         void Init(VulkanEngine* e);
 

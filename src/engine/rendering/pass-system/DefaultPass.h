@@ -1,4 +1,6 @@
 #pragma once
+#include <span>
+
 #include "glm/vec4.hpp"
 #include "glm/mat4x4.hpp"
 #include "rendering/utility/Descriptors.h"
@@ -42,11 +44,9 @@ namespace rendering::passes
 
         DescriptorSetLayoutInfo materialLayout;
 
-        static void Serialize(serial::Stream&) {};
-
         void Init(VulkanEngine* engine);
 
-        void Draw(VkCommandBuffer cmd, const std::vector<Mesh>& meshes);
+        void Draw(VkCommandBuffer cmd, const std::span<Mesh>& meshes);
 
         void Destroy();
     };
