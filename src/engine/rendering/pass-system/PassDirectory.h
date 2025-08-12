@@ -4,7 +4,7 @@
 namespace rendering::passes
 {
     class DefaultPass;
-    class ScreenRaycastPass;
+    class IdentifyPass;
 
     template <typename>
     struct PassComponent;
@@ -17,7 +17,7 @@ namespace rendering::passes
     }
     namespace unlit_pass
     {
-        using Pass = ScreenRaycastPass;
+        using Pass = IdentifyPass;
         using Component = PassComponent<Pass>;
     }
 }

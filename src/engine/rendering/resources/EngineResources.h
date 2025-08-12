@@ -19,7 +19,7 @@ namespace rendering
         VkCommandBuffer cmd;
     };
 
-    constexpr int FRAME_OVERLAP = 2;
+    constexpr uint32_t FRAME_OVERLAP = 2;
     constexpr VkExtent2D windowSize { 1700, 900 };
     constexpr VkFormat imageFormat = VK_FORMAT_B8G8R8A8_UNORM;
 

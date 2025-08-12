@@ -251,8 +251,15 @@ namespace rendering
     void EngineResources::EndFrame()
     {
         const FrameCommand& currentFrame = frames[frameCount++ % FRAME_OVERLAP];
+
+        VkMemoryBarrier2 barrier;
+        barrier.srcStageMask = VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT;
+        barrier.srcAccessMask = VK_ACCESS_2_MEMORY_WRITE_BIT;
+        barrier.dstStageMask = VK_PIPELINE_STAGE_2_BOTTOM_OF_PIPE_BIT;
+        barrier.dstAccessMask = VK_ACCESS_2_NONE;
+
         // transition to present image
-        swapchainImages[currentSwapchainImageIndex].Barrier(currentFrame.cmd, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR);
+        swapchainImages[currentSwapchainImageIndex].Barrier(currentFrame.cmd, VK_IMAGE_LAYOUT_PRESENT_SRC_KHR, barrier);
 
         auto cmdinfo = vkinit::New<VkCommandBufferSubmitInfo>(); {
             cmdinfo.commandBuffer = currentFrame.cmd;
@@ -260,7 +267,7 @@ namespace rendering
 
         auto waitInfo = vkinit::New<VkSemaphoreSubmitInfo>(); {
             waitInfo.semaphore = currentFrame.swapchainSemaphore;
-            waitInfo.stageMask = VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT_KHR;
+            waitInfo.stageMask = VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT;
             waitInfo.value = 1;
         }
 

@@ -16,9 +16,10 @@ cbuffer SceneData : register(b0, space0)
 struct PushConstants
 {
     float4x4 render_matrix;
-    float4 identifier;
     uint64_t vertexBufferAddress;
+    uint identifier;
 };
+
 [[vk::push_constant]] PushConstants pushConstants;
 
 struct Vertex
@@ -33,7 +34,7 @@ struct Vertex
 struct VSOutput
 {
     float4 position : SV_Position;
-    float4 identifier : TEXCOORD0;
+    uint identifier : TEXCOORD0;
 };
 
 float4 shuffleFloat4PCG(float4 input) {
@@ -67,7 +68,7 @@ VSOutput vert(const uint vertexID : SV_VertexID)
     return output;
 }
 
-float4 frag(const VSOutput i) : SV_TARGET
+uint frag(const VSOutput i) : SV_TARGET
 {
-    return shuffleFloat4PCG(i.identifier);
+    return i.identifier;
 }

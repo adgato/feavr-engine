@@ -106,8 +106,20 @@ void VulkanEngine::Draw(const uint32_t frameCount, VkCommandBuffer cmd, Image& t
     VkClearValue clearDepth;
     clearDepth.depthStencil.depth = 0.0f;
 
-    drawImage.Barrier(cmd, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL);
-    depthImage.Barrier(cmd, VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL);
+    VkMemoryBarrier2 drawBarrier;
+    drawBarrier.srcStageMask = VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT;
+    drawBarrier.srcAccessMask = VK_ACCESS_2_NONE;
+    drawBarrier.dstStageMask = VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT;
+    drawBarrier.dstAccessMask = VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT;
+
+    VkMemoryBarrier2 depthBarrier;
+    depthBarrier.srcStageMask = VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT;
+    depthBarrier.srcAccessMask = VK_ACCESS_2_NONE;
+    depthBarrier.dstStageMask = VK_PIPELINE_STAGE_2_EARLY_FRAGMENT_TESTS_BIT;
+    depthBarrier.dstAccessMask = VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT;
+
+    drawImage.Barrier(cmd, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL, drawBarrier);
+    depthImage.Barrier(cmd, VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL, depthBarrier);
 
     const VkRenderingAttachmentInfo colorAttachment = vkinit::attachment_info(drawImage, &clearColor);
     const VkRenderingAttachmentInfo depthAttachment = vkinit::attachment_info(depthImage, &clearDepth);
@@ -143,7 +155,7 @@ void VulkanEngine::Draw(const uint32_t frameCount, VkCommandBuffer cmd, Image& t
     passManager.Draw(cmd);
     vkCmdEndRendering(cmd);
 
-    drawImage.BlitCopyTo(cmd, targetImage);
+    drawImage.BlitFromRenderTarget(cmd, targetImage);
 }
 
 void VulkanEngine::SaveScene(const char* filePath)

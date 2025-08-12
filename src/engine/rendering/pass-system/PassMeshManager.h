@@ -4,7 +4,7 @@
 #include "DefaultPass.h"
 #include "Mesh.h"
 #include "PassDirectory.h"
-#include "ScreenRaycastPass.h"
+#include "IdentifyPass.h"
 #include "SubMesh.h"
 #include "assets-system/AssetFile.h"
 #include "assets-system/AssetID.h"

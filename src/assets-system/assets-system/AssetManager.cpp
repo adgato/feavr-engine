@@ -97,7 +97,12 @@ namespace assets_system
         std::string extension = readPath.extension().string();
         auto it = assetGenerators.find(std::hash<std::string> {}(extension.c_str()));
 
-        return it == assetGenerators.end() ? std::vector<std::string>() : it->second->GenerateAssets(assetPath, std::move(buffer));
+        std::vector<std::string> generated = it == assetGenerators.end() ? std::vector<std::string>() : it->second->GenerateAssets(assetPath, std::move(buffer));
+
+        for (std::string output : generated)
+            fmt::println("\t- {} ->\t {}", assetPath, output);
+
+        return generated;
     }
 
     void AssetManager::WriteAssetLookup(const std::unordered_map<uint32_t, std::vector<std::string>>& assetNames)
@@ -185,6 +190,8 @@ namespace assets_system
 
         if (!refreshAll && !anyDirty)
             return false;
+
+        fmt::println("Dirty asset source detected, re-generating assets.");
 
         std::vector<std::string> row;
 

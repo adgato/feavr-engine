@@ -9,5 +9,5 @@ namespace rendering {
 
 namespace rendering::utility
 {
-    void Screenshot(VmaAllocator vmaAllocator, const char* fileToSave, Image& image);
+    void Screenshot(VmaAllocator vmaAllocator, const char* fileToSave, Image& renderTarget);
 }

@@ -4,9 +4,11 @@
 #include <imgui_impl_vulkan.h>
 #include <thread>
 
+#include "hlsl++/vector_int.h"
 #include "imgui.h"
-#include "SelectMesh.h"
+#include "utility/ClickOnMeshTool.h"
 #include "assets-system/lookup/Asset29.h"
+#include "utility/Screenshot.h"
 
 void Core::Init()
 {
@@ -20,6 +22,8 @@ bool Core::Next()
 {
     SDL_Event e;
     bool loopAgain = true;
+
+    bool clickedScene = false;
 
     //Handle events on queue
     while (SDL_PollEvent(&e) != 0)
@@ -39,10 +43,21 @@ bool Core::Next()
                 break;
         }
 
-
         ImGui_ImplSDL2_ProcessEvent(&e);
         if (!ImGui::GetIO().WantCaptureMouse)
+        {
             engine.mainCamera.processSDLEvent(e);
+            clickedScene |= e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT;
+        }
+    }
+
+    if (clickOnMeshTool.SelectMeshCompleted())
+    {
+        hlslpp::int2 mousePos;
+        SDL_GetMouseState(&mousePos.x, &mousePos.y);
+        ecs::Entity entity = clickOnMeshTool.SampleCoordinate(mousePos);
+        clickOnMeshTool.Destroy();
+        fmt::println("Clicked {}", entity);
     }
 
     // imgui new frame
@@ -64,12 +79,17 @@ bool Core::Next()
     if (!skipDrawing)
     {
         auto [cmd, frame] = swapchain.BeginFrame();
+
         engine.Draw(swapchain.frameCount, cmd, frame);
         imguiOverlay.Draw(cmd, frame);
+
+        if (clickedScene && clickOnMeshTool.Destroyed())
+        {
+            clickOnMeshTool.Init(engine.drawImage, engine.depthImage);
+            clickOnMeshTool.SelectMesh(cmd);
+        }
+
         swapchain.EndFrame();
-
-        rendering::SelectMesh(*engine.engineResources, engine.passManager, engine.drawImage, engine.depthImage);
-
     } else
         std::this_thread::sleep_for(std::chrono::milliseconds { 100 });
 
@@ -80,5 +100,6 @@ void Core::Destroy()
 {
     engine.Destroy();
     imguiOverlay.Destroy();
+    clickOnMeshTool.Destroy();
     swapchain.Destroy();
 }

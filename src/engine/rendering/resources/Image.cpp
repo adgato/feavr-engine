@@ -66,16 +66,28 @@ namespace rendering
         return newImage;
     }
 
-    void Image::Write(const void* data)
+    void Image::WriteSampled(const void* data)
     {
         const size_t data_size = static_cast<size_t>(imageExtent.depth) * imageExtent.width * imageExtent.height * 4;
 
         Buffer<std::byte> uploadBuffer = Buffer<std::byte>::Allocate(renderer->resource, data_size, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, HostAccess::SEQUENTIAL_WRITE);
         uploadBuffer.Write(static_cast<const std::byte*>(data));
 
+        VkMemoryBarrier2 barrier1;
+        barrier1.srcStageMask = VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT;
+        barrier1.srcAccessMask = VK_ACCESS_2_NONE;
+        barrier1.dstStageMask = VK_PIPELINE_STAGE_2_TRANSFER_BIT;
+        barrier1.dstAccessMask = VK_ACCESS_2_TRANSFER_WRITE_BIT;
+
+        VkMemoryBarrier2 barrier2;
+        barrier2.srcStageMask = VK_PIPELINE_STAGE_2_TRANSFER_BIT;
+        barrier2.srcAccessMask = VK_ACCESS_2_TRANSFER_WRITE_BIT;
+        barrier2.dstStageMask = VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT;
+        barrier2.dstAccessMask = VK_ACCESS_2_SHADER_READ_BIT;
+
         renderer->ImmediateSumbit([&](const VkCommandBuffer cmd)
         {
-            Barrier(cmd, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
+            Barrier(cmd, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, barrier1);
 
             VkBufferImageCopy copyRegion = {};
             copyRegion.bufferOffset = 0;
@@ -91,17 +103,20 @@ namespace rendering
             // copy the buffer into the image
             vkCmdCopyBufferToImage(cmd, uploadBuffer.buffer, image, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &copyRegion);
 
-            Barrier(cmd, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+            Barrier(cmd, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL, barrier2);
         });
 
         uploadBuffer.Destroy();
     }
 
-    void Image::Read(const Buffer<std::byte>& intoBuffer)
+    void Image::Read(const VkBuffer intoBuffer, VkMemoryBarrier2& srcBarrier)
     {
+        srcBarrier.dstStageMask = VK_PIPELINE_STAGE_2_COPY_BIT;
+        srcBarrier.dstAccessMask = VK_ACCESS_2_TRANSFER_READ_BIT;
+
         renderer->ImmediateSumbit([&](const VkCommandBuffer cmd)
         {
-            Barrier(cmd, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
+            Barrier(cmd, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, srcBarrier);
 
             VkBufferImageCopy copyRegion = {};
             copyRegion.bufferOffset = 0;
@@ -115,7 +130,7 @@ namespace rendering
             copyRegion.imageExtent = imageExtent;
 
             // copy the buffer into the image
-            vkCmdCopyImageToBuffer(cmd, image, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, intoBuffer.buffer, 1, &copyRegion);
+            vkCmdCopyImageToBuffer(cmd, image, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, intoBuffer, 1, &copyRegion);
         });
     }
 
@@ -147,10 +162,19 @@ namespace rendering
         currentLayout = newLayout;
     }
 
-    void Image::BlitCopyTo(const VkCommandBuffer cmd, Image& dst)
+    void Image::BlitCopyTo(const VkCommandBuffer cmd, Image& dst, VkMemoryBarrier2& srcBarrier)
     {
-        Barrier(cmd, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
-        dst.Barrier(cmd, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
+        srcBarrier.dstStageMask = VK_PIPELINE_STAGE_2_BLIT_BIT;
+        srcBarrier.dstAccessMask = VK_ACCESS_2_TRANSFER_WRITE_BIT;
+
+        VkMemoryBarrier2 dstBarrier;
+        dstBarrier.srcStageMask = VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT;
+        dstBarrier.srcAccessMask = VK_ACCESS_2_NONE;
+        dstBarrier.dstStageMask = VK_PIPELINE_STAGE_2_BLIT_BIT;
+        dstBarrier.dstAccessMask = VK_ACCESS_2_TRANSFER_WRITE_BIT;
+
+        Barrier(cmd, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, srcBarrier);
+        dst.Barrier(cmd, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, dstBarrier);
 
         auto blitRegion = vkinit::New<VkImageBlit2>(); {
             blitRegion.srcOffsets[1] = { static_cast<int32_t>(imageExtent.width), static_cast<int32_t>(imageExtent.height), static_cast<int32_t>(imageExtent.depth) };

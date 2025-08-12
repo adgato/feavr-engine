@@ -23,7 +23,7 @@ namespace rendering
         errorCheckerboard = Image::Allocate(swapchainRenderer, VkExtent3D{16, 16, 1}, VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_USAGE_SAMPLED_BIT);
 
         const std::array<uint32_t, 256> checkerboard = CreateErrorCheckerboard();
-        errorCheckerboard.Write(checkerboard.data());
+        errorCheckerboard.WriteSampled(checkerboard.data());
     }
 
     void CommonTextures::Destroy()

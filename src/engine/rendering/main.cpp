@@ -15,7 +15,7 @@ void RegisterAssetGenerators()
 int main()
 {
     RegisterAssetGenerators();
-    assets_system::AssetManager::RefreshAssets(true);
+    assets_system::AssetManager::RefreshAssets(false);
 
     Core core;
     core.Init();
