@@ -35,4 +35,6 @@ namespace ecs
     {
         return std::tuple<Ts&...>(engine.Get<Ts>(e)...);
     }
+
+    void Widget(Engine& engine, Entity focus);
 }

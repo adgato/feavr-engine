@@ -1,5 +1,5 @@
 id,path,dirty
-30,__metadata__,0
+32,__metadata__,0
 0,Shared/T_Stud_N_FlipY.png,0
 2,Shared/T_Bevel_N_FlipY.png,0
 4,Shared/T_InletBorder_AO.png,0
@@ -16,3 +16,5 @@ id,path,dirty
 17,shaders/unlit_shader.hlsl,0
 18,basicmesh.glb,0
 29,structure.glb,0
+30,shaders/mesh_outline.hlsl,0
+31,falcon2.glb,0

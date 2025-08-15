@@ -13,6 +13,7 @@ namespace rendering::passes
     void DefaultPass::Init(VulkanEngine* engine)
     {
         this->engine = engine;
+        view.Init(engine->ecsEngine);
         device = engine->Resource();
 
         VkPushConstantRange matrixRange;
@@ -33,22 +34,22 @@ namespace rendering::passes
 
         VK_CHECK(vkCreatePipelineLayout(device, &mesh_layout_info, nullptr, &layout));
 
-        auto vertexShader = engine_assets::ShaderAssetData::Load(device, assets_system::lookup::SHAD_default_shader_vs);
-        auto fragmentShader = engine_assets::ShaderAssetData::Load(device, assets_system::lookup::SHAD_default_shader_ps);
+        auto vertexShader = engine_assets::ShaderAssetData::Load(device, assets_system::lookup::SHAD_default_shader_vert);
+        auto fragmentShader = engine_assets::ShaderAssetData::Load(device, assets_system::lookup::SHAD_default_shader_frag);
 
         // TODO - most of these can be defaults?
         PipelineBuilder pipelineBuilder;
         pipelineBuilder.set_shaders(vertexShader, fragmentShader);
         pipelineBuilder.set_input_topology(VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
         pipelineBuilder.set_polygon_mode(VK_POLYGON_MODE_FILL);
-        pipelineBuilder.set_cull_mode(VK_CULL_MODE_NONE, VK_FRONT_FACE_CLOCKWISE);
+        pipelineBuilder.set_cull_mode(VK_CULL_MODE_BACK_BIT, VK_FRONT_FACE_COUNTER_CLOCKWISE);
         pipelineBuilder.set_multisampling_none();
         pipelineBuilder.disable_blending();
-        pipelineBuilder.enable_depthtest(true, VK_COMPARE_OP_GREATER_OR_EQUAL);
+        pipelineBuilder.enable_depthtest(true, VK_COMPARE_OP_GREATER_OR_EQUAL, nullptr);
 
         //render format
         pipelineBuilder.set_color_attachment_format(engine->drawImage.imageFormat);
-        pipelineBuilder.set_depth_format(engine->depthImage.imageFormat);
+        pipelineBuilder.set_depth_format(engine->depthImage.imageFormat, true);
 
         pipelineBuilder.pipelineLayout = layout;
 
@@ -81,7 +82,6 @@ namespace rendering::passes
         const VkDescriptorSet sets[] = { engine->gpuSceneDescriptorSet.descriptorSet, properties.descriptorSet };
         vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, layout, 0, std::size(sets), sets, 0, nullptr);
 
-        ecs::EngineView<SubMesh, default_pass::Component> view(engine->ecsEngine);
         for (const auto& [submeshID, passMesh, data] : view)
         {
             const Mesh& mesh = meshes[passMesh.meshIndex];

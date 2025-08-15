@@ -1,0 +1,173 @@
+#include "StencilOutlinePass.h"
+
+#include "assets-system/lookup/Asset30.h"
+#include "rendering/VulkanEngine.h"
+#include "rendering/resources/ResourceHandles.h"
+#include "rendering/utility/Pipelines.h"
+
+namespace rendering::passes
+{
+    void StencilOutlinePass::Init(VulkanEngine* engine)
+    {
+        this->engine = engine;
+        device = engine->Resource();
+        view.Init(engine->ecsEngine);
+
+        VkPushConstantRange matrixRange;
+        matrixRange.offset = 0;
+        matrixRange.size = sizeof(PushConstants);
+        matrixRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
+
+        const VkDescriptorSetLayout layouts[] = { engine->commonSets.GPUSceneData.set };
+
+        auto mesh_layout_info = vkinit::New<VkPipelineLayoutCreateInfo>(); {
+            mesh_layout_info.setLayoutCount = std::size(layouts);
+            mesh_layout_info.pSetLayouts = layouts;
+            mesh_layout_info.pPushConstantRanges = &matrixRange;
+            mesh_layout_info.pushConstantRangeCount = 1;
+        }
+
+        VkStencilOpState maskStencil {};
+        maskStencil.compareOp = VK_COMPARE_OP_ALWAYS;
+        maskStencil.passOp = VK_STENCIL_OP_REPLACE;
+        maskStencil.failOp = VK_STENCIL_OP_REPLACE;
+        maskStencil.compareMask = 1;
+        maskStencil.writeMask = 1;
+        maskStencil.reference = 1;
+
+        VkStencilOpState outlineStencil {};
+        outlineStencil.compareOp = VK_COMPARE_OP_NOT_EQUAL;
+        outlineStencil.passOp = VK_STENCIL_OP_KEEP;
+        outlineStencil.failOp = VK_STENCIL_OP_KEEP;
+        outlineStencil.compareMask = 1;
+        outlineStencil.writeMask = 1;
+        outlineStencil.reference = 1;
+
+        VK_CHECK(vkCreatePipelineLayout(device, &mesh_layout_info, nullptr, &maskLayout));
+
+        auto vertexMaskShader = engine_assets::ShaderAssetData::Load(device, assets_system::lookup::SHAD_mesh_outline_vertMask);
+        auto fragmentMaskShader = engine_assets::ShaderAssetData::Load(device, assets_system::lookup::SHAD_mesh_outline_fragMask);
+
+        PipelineBuilder maskPipelineBuilder;
+        maskPipelineBuilder.set_shaders(vertexMaskShader, fragmentMaskShader);
+        maskPipelineBuilder.set_input_topology(VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
+        maskPipelineBuilder.set_polygon_mode(VK_POLYGON_MODE_FILL);
+        maskPipelineBuilder.set_cull_mode(VK_CULL_MODE_NONE, VK_FRONT_FACE_COUNTER_CLOCKWISE);
+        maskPipelineBuilder.set_multisampling_none();
+        // no `disable_blending` we don't want a colour write mask just writing to stencil with this pass
+
+        // don't write to depth, always pass depth test.
+        maskPipelineBuilder.enable_depthtest(false, VK_COMPARE_OP_ALWAYS, &maskStencil);
+
+        //render format
+        maskPipelineBuilder.set_color_attachment_format(engine->drawImage.imageFormat);
+        maskPipelineBuilder.set_depth_format(engine->depthImage.imageFormat, true);
+
+        maskPipelineBuilder.pipelineLayout = maskLayout;
+
+        // finally build the pipeline
+        maskPipeline = maskPipelineBuilder.build_pipeline(device);
+
+        vertexMaskShader.Destroy();
+        fragmentMaskShader.Destroy();
+
+        VK_CHECK(vkCreatePipelineLayout(device, &mesh_layout_info, nullptr, &outlineLayout));
+
+        auto vertexOutlineShader = engine_assets::ShaderAssetData::Load(device, assets_system::lookup::SHAD_mesh_outline_vertOutline);
+        auto fragmentOutlineShader = engine_assets::ShaderAssetData::Load(device, assets_system::lookup::SHAD_mesh_outline_fragOutline);
+
+        PipelineBuilder outlinePipelineBuilder;
+        outlinePipelineBuilder.set_shaders(vertexOutlineShader, fragmentOutlineShader);
+        outlinePipelineBuilder.set_input_topology(VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
+        outlinePipelineBuilder.set_polygon_mode(VK_POLYGON_MODE_FILL);
+        outlinePipelineBuilder.set_cull_mode(VK_CULL_MODE_NONE, VK_FRONT_FACE_COUNTER_CLOCKWISE);
+        outlinePipelineBuilder.set_multisampling_none();
+        // write colour this pass
+        outlinePipelineBuilder.disable_blending();
+
+        // don't write to depth, always pass depth test.
+        outlinePipelineBuilder.enable_depthtest(false, VK_COMPARE_OP_ALWAYS, &outlineStencil);
+
+        //render format
+        outlinePipelineBuilder.set_color_attachment_format(engine->drawImage.imageFormat);
+        outlinePipelineBuilder.set_depth_format(engine->depthImage.imageFormat, true);
+
+        outlinePipelineBuilder.pipelineLayout = outlineLayout;
+
+        // finally build the pipeline
+        outlinePipeline = outlinePipelineBuilder.build_pipeline(device);
+
+        vertexOutlineShader.Destroy();
+        fragmentOutlineShader.Destroy();
+    }
+
+    void StencilOutlinePass::Draw(VkCommandBuffer cmd, const std::span<Mesh>& meshes)
+    {
+        vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, maskPipeline);
+
+        const VkDescriptorSet sets[] = { engine->gpuSceneDescriptorSet.descriptorSet };
+        vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, maskLayout, 0, std::size(sets), sets, 0, nullptr);
+
+        for (const auto& [submeshID, passMesh, data] : view)
+        {
+            const Mesh& mesh = meshes[passMesh.meshIndex];
+            if (!mesh.IsValid())
+                continue;
+
+            vkCmdBindIndexBuffer(cmd, mesh.indexBuffer.buffer, 0, VK_INDEX_TYPE_UINT32);
+
+            for (uint32_t i = 0; i < data.transforms->size(); ++i)
+            {
+                ecs::Entity entity = data.transforms->data()[i];
+
+                const PushConstants pushConstants {
+                    engine->ecsEngine.Get<Transform>(entity).transform,
+                    mesh.vertexBufferAddress,
+                };
+
+                vkCmdPushConstants(cmd, maskLayout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(PushConstants), &pushConstants);
+                vkCmdDrawIndexed(cmd, passMesh.indexCount, 1, passMesh.firstIndex, 0, 0);
+            }
+        }
+
+        vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, outlinePipeline);
+
+        vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, outlineLayout, 0, std::size(sets), sets, 0, nullptr);
+
+        for (const auto& [submeshID, passMesh, data] : view)
+        {
+            const Mesh& mesh = meshes[passMesh.meshIndex];
+            if (!mesh.IsValid())
+                continue;
+
+            vkCmdBindIndexBuffer(cmd, mesh.indexBuffer.buffer, 0, VK_INDEX_TYPE_UINT32);
+
+            for (uint32_t i = 0; i < data.transforms->size(); ++i)
+            {
+                ecs::Entity entity = data.transforms->data()[i];
+
+                const PushConstants pushConstants {
+                    engine->ecsEngine.Get<Transform>(entity).transform,
+                    mesh.vertexBufferAddress,
+                };
+
+                vkCmdPushConstants(cmd, outlineLayout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(PushConstants), &pushConstants);
+                vkCmdDrawIndexed(cmd, passMesh.indexCount, 1, passMesh.firstIndex, 0, 0);
+            }
+        }
+    }
+
+    void StencilOutlinePass::Destroy()
+    {
+        vkDestroyPipelineLayout(device, maskLayout, nullptr);
+        vkDestroyPipelineLayout(device, outlineLayout, nullptr);
+        vkDestroyPipeline(device, maskPipeline, nullptr);
+        vkDestroyPipeline(device, outlinePipeline, nullptr);
+
+        maskLayout = nullptr;
+        outlineLayout = nullptr;
+        maskPipeline = nullptr;
+        outlinePipeline = nullptr;
+    }
+
+}

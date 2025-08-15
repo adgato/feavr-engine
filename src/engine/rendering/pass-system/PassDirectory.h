@@ -3,6 +3,7 @@
 
 namespace rendering::passes
 {
+    class StencilOutlinePass;
     class DefaultPass;
     class IdentifyPass;
 
@@ -20,7 +21,13 @@ namespace rendering::passes
         using Pass = IdentifyPass;
         using Component = PassComponent<Pass>;
     }
+    namespace stencil_outline_pass
+    {
+        using Pass = StencilOutlinePass;
+        using Component = PassComponent<Pass>;
+    }
 }
 
 namespace default_pass = rendering::passes::default_pass;
 namespace unlit_pass = rendering::passes::unlit_pass;
+namespace stencil_outline_pass = rendering::passes::stencil_outline_pass;

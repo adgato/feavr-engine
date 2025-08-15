@@ -1,9 +1,11 @@
 id,paths
+30,"shaders/mesh_outline_vertMask.hlsl.asset,shaders/mesh_outline_vertOutline.hlsl.asset,shaders/mesh_outline_fragMask.hlsl.asset,shaders/mesh_outline_fragOutline.hlsl.asset"
 18,"basicmesh.glb.asset"
-17,"shaders/unlit_shader_vs.hlsl.asset,shaders/unlit_shader_ps.hlsl.asset"
+17,"shaders/unlit_shader_vert.hlsl.asset,shaders/unlit_shader_frag.hlsl.asset"
 29,"structure.glb.asset"
 0,""
 13,""
+31,"falcon2.glb.asset"
 2,""
 15,""
 4,""
@@ -14,4 +16,4 @@ id,paths
 11,""
 12,""
 14,""
-16,"shaders/default_shader_vs.hlsl.asset,shaders/default_shader_ps.hlsl.asset"
+16,"shaders/default_shader_vert.hlsl.asset,shaders/default_shader_frag.hlsl.asset"

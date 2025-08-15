@@ -28,11 +28,13 @@ namespace rendering
         resources = e->engineResources;
         defaultPass.Init(e);
         raycastPass.Init(e);
+        stencilOutlinePass.Init(e);
     }
 
     void PassMeshManager::Draw(const VkCommandBuffer cmd)
     {
         defaultPass.Draw(cmd, meshes);
+        stencilOutlinePass.Draw(cmd, meshes);
     }
 
     void MeshAssetsToDirectSources(std::vector<std::shared_ptr<MeshDirectSource>>& directSources, const assets_system::AssetID& sourceFileID,
@@ -296,5 +298,6 @@ namespace rendering
 
         defaultPass.Destroy();
         raycastPass.Destroy();
+        stencilOutlinePass.Destroy();
     }
 }

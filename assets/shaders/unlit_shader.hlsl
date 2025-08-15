@@ -37,24 +37,6 @@ struct VSOutput
     uint identifier : TEXCOORD0;
 };
 
-float4 shuffleFloat4PCG(float4 input) {
-    uint4 state = asuint(input);
-    
-    // PCG-style permutation
-    state = state * 1664525u + 1013904223u;
-    state.x += state.y * state.w;
-    state.y += state.z * state.x;
-    state.z += state.x * state.y;
-    state.w += state.y * state.z;
-    state ^= state >> 16u;
-    state.x += state.y * state.w;
-    state.y += state.z * state.x;
-    state.z += state.x * state.y;
-    state.w += state.y * state.z;
-    
-    return state * (1.0 / 4294967296.0);
-}
-
 VSOutput vert(const uint vertexID : SV_VertexID)
 {
     VSOutput output;

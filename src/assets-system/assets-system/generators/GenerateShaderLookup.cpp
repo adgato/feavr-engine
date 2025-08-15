@@ -83,18 +83,6 @@ namespace assets_system
         return result;
     }
 
-    std::string SanitizeName(const std::string& name)
-    {
-        std::string result = name;
-        if (result.ends_with("_vs") ||
-            result.ends_with("_ps") ||
-            result.ends_with("_cs") ||
-            result.ends_with("_gs"))
-            result.resize(result.size() - 3);
-
-        return ReplaceSymbols(result);
-    }
-
     std::string GenerateShaderNamespace(const ShaderData& shader)
     {
         std::string result;
@@ -108,7 +96,7 @@ namespace assets_system
             for (const auto& binding : set)
             {
                 std::string bindingName = binding.name.empty() ? fmt::format("_{}", binding.binding) : binding.name;
-                bindingName = SanitizeName(bindingName);
+                bindingName = ReplaceSymbols(bindingName);
 
                 result += fmt::format("        constexpr auto {}_binding = VkDescriptorSetLayoutBinding{{\n", bindingName);
                 result += fmt::format("            .binding = {},\n", binding.binding);
@@ -127,7 +115,7 @@ namespace assets_system
             for (const auto& binding : shader.descriptorSets.at(i))
             {
                 std::string bindingName = binding.name.empty() ? fmt::format("_{}", binding.binding) : binding.name;
-                bindingName = SanitizeName(bindingName);
+                bindingName = ReplaceSymbols(bindingName);
 
                 result += fmt::format("{}_binding, ", bindingName);
             }
@@ -194,9 +182,12 @@ namespace shader_layouts
         }
 
         std::string name = ReplaceSymbols(path.stem().stem().string());
+        const size_t entryStart = name.find_last_of('_');
+        if (entryStart != std::string::npos)
+            name = name.substr(0, entryStart);
 
         ShaderData shaderData;
-        shaderData.name = SanitizeName(name);
+        shaderData.name = ReplaceSymbols(name);
         shaderData.names[GetVulkanStageFlagName(module.shader_stage)] = name;
         SpvReflectShaderStageFlagBits stage = module.shader_stage;
 

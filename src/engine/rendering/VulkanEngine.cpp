@@ -46,7 +46,7 @@ void VulkanEngine::Init(EngineResources* swapchainRenderer)
     depthImageUsages |= VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT;
 
     drawImage = Image::Allocate(swapchainRenderer, drawImageExtent, VK_FORMAT_R16G16B16A16_SFLOAT, drawImageUsages);
-    depthImage = Image::Allocate(swapchainRenderer, drawImageExtent, VK_FORMAT_D32_SFLOAT, depthImageUsages, VK_IMAGE_ASPECT_DEPTH_BIT);
+    depthImage = Image::Allocate(swapchainRenderer, drawImageExtent, VK_FORMAT_D24_UNORM_S8_UINT, depthImageUsages, VK_IMAGE_ASPECT_DEPTH_BIT | VK_IMAGE_ASPECT_STENCIL_BIT);
 
     commonTextures.Init(swapchainRenderer);
     commonSets.Init(Resource());
@@ -105,6 +105,7 @@ void VulkanEngine::Draw(const uint32_t frameCount, VkCommandBuffer cmd, Image& t
 
     VkClearValue clearDepth;
     clearDepth.depthStencil.depth = 0.0f;
+    clearDepth.depthStencil.stencil = 0;
 
     VkMemoryBarrier2 drawBarrier;
     drawBarrier.srcStageMask = VK_PIPELINE_STAGE_2_TOP_OF_PIPE_BIT;
@@ -119,14 +120,14 @@ void VulkanEngine::Draw(const uint32_t frameCount, VkCommandBuffer cmd, Image& t
     depthBarrier.dstAccessMask = VK_ACCESS_2_DEPTH_STENCIL_ATTACHMENT_WRITE_BIT;
 
     drawImage.Barrier(cmd, VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL, drawBarrier);
-    depthImage.Barrier(cmd, VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL, depthBarrier);
+    depthImage.Barrier(cmd, VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL, depthBarrier);
 
     const VkRenderingAttachmentInfo colorAttachment = vkinit::attachment_info(drawImage, &clearColor);
     const VkRenderingAttachmentInfo depthAttachment = vkinit::attachment_info(depthImage, &clearDepth);
 
     const VkExtent2D drawImageExtent = { drawImage.imageExtent.width, drawImage.imageExtent.height };
 
-    const VkRenderingInfo renderInfo = vkinit::rendering_info(drawImageExtent, &colorAttachment, &depthAttachment);
+    const VkRenderingInfo renderInfo = vkinit::rendering_info(drawImageExtent, &colorAttachment, &depthAttachment, true);
 
     vkCmdBeginRendering(cmd, &renderInfo);
     //set dynamic viewport and scissor

@@ -27,6 +27,7 @@ void PipelineBuilder::clear()
 
     shaderStages.clear();
 }
+
 //< pipe_clear
 
 //> build_pipeline_1
@@ -94,26 +95,26 @@ VkPipeline PipelineBuilder::build_pipeline(VkDevice device)
     //< build_pipeline_4
     return newPipeline;
 }
+
 //> set_shaders
 void PipelineBuilder::set_shaders(const engine_assets::ShaderAssetData& vertexShader, const engine_assets::ShaderAssetData& fragmentShader)
 {
-    auto vertexStage = vkinit::New<VkPipelineShaderStageCreateInfo>();
-    {
+    auto vertexStage = vkinit::New<VkPipelineShaderStageCreateInfo>(); {
         vertexStage.stage = vertexShader.stage;
         vertexStage.module = vertexShader.module;
         vertexStage.pName = vertexShader.entry.c_str();
     }
-    auto fragStage = vkinit::New<VkPipelineShaderStageCreateInfo>();
-    {
+    auto fragStage = vkinit::New<VkPipelineShaderStageCreateInfo>(); {
         fragStage.stage = fragmentShader.stage;
         fragStage.module = fragmentShader.module;
         fragStage.pName = fragmentShader.entry.c_str();
     }
-    
+
     shaderStages.clear();
     shaderStages.push_back(vertexStage);
     shaderStages.push_back(fragStage);
 }
+
 //< set_shaders
 //> set_topo
 void PipelineBuilder::set_input_topology(VkPrimitiveTopology topology)
@@ -123,6 +124,7 @@ void PipelineBuilder::set_input_topology(VkPrimitiveTopology topology)
     // it on false
     _inputAssembly.primitiveRestartEnable = VK_FALSE;
 }
+
 //< set_topo
 
 //> set_poly
@@ -131,6 +133,7 @@ void PipelineBuilder::set_polygon_mode(VkPolygonMode mode)
     _rasterizer.polygonMode = mode;
     _rasterizer.lineWidth = 1.f;
 }
+
 //< set_poly
 
 //> set_cull
@@ -139,6 +142,7 @@ void PipelineBuilder::set_cull_mode(VkCullModeFlags cullMode, VkFrontFace frontF
     _rasterizer.cullMode = cullMode;
     _rasterizer.frontFace = frontFace;
 }
+
 //< set_cull
 
 //> set_multisample
@@ -153,6 +157,7 @@ void PipelineBuilder::set_multisampling_none()
     _multisampling.alphaToCoverageEnable = VK_FALSE;
     _multisampling.alphaToOneEnable = VK_FALSE;
 }
+
 //< set_multisample
 
 //> set_noblend
@@ -163,6 +168,7 @@ void PipelineBuilder::disable_blending()
     // no blending
     _colorBlendAttachment.blendEnable = VK_FALSE;
 }
+
 //< set_noblend
 
 //> alphablend
@@ -189,6 +195,7 @@ void PipelineBuilder::enable_blending_alphablend()
     _colorBlendAttachment.dstAlphaBlendFactor = VK_BLEND_FACTOR_ZERO;
     _colorBlendAttachment.alphaBlendOp = VK_BLEND_OP_ADD;
 }
+
 //< alphablend
 
 //> set_formats
@@ -200,61 +207,41 @@ void PipelineBuilder::set_color_attachment_format(VkFormat format)
     _renderInfo.pColorAttachmentFormats = &_colorAttachmentformat;
 }
 
-void PipelineBuilder::set_depth_format(VkFormat format)
+void PipelineBuilder::set_depth_format(VkFormat format, bool stencilIsDepth)
 {
     _renderInfo.depthAttachmentFormat = format;
+    if (stencilIsDepth)
+        _renderInfo.stencilAttachmentFormat = format;
 }
+
 //< set_formats
 
 //> depth_disable
-void PipelineBuilder::disable_depthtest()
+void PipelineBuilder::disable_depthtest(VkStencilOpState* stencilOp)
 {
     _depthStencil.depthTestEnable = VK_FALSE;
     _depthStencil.depthWriteEnable = VK_FALSE;
     _depthStencil.depthCompareOp = VK_COMPARE_OP_NEVER;
     _depthStencil.depthBoundsTestEnable = VK_FALSE;
-    _depthStencil.stencilTestEnable = VK_FALSE;
-    _depthStencil.front = {};
-    _depthStencil.back = {};
+    _depthStencil.stencilTestEnable = stencilOp != nullptr;
+    _depthStencil.front = stencilOp ? *stencilOp : VkStencilOpState {};
+    _depthStencil.back = stencilOp ? *stencilOp : VkStencilOpState {};
     _depthStencil.minDepthBounds = 0.f;
     _depthStencil.maxDepthBounds = 1.f;
 }
+
 //< depth_disable
 
 //> depth_enable
-void PipelineBuilder::enable_depthtest(bool depthWriteEnable, VkCompareOp op)
+void PipelineBuilder::enable_depthtest(bool depthWriteEnable, VkCompareOp op, VkStencilOpState* stencilOp)
 {
     _depthStencil.depthTestEnable = VK_TRUE;
     _depthStencil.depthWriteEnable = depthWriteEnable;
     _depthStencil.depthCompareOp = op;
     _depthStencil.depthBoundsTestEnable = VK_FALSE;
-    _depthStencil.stencilTestEnable = VK_FALSE;
-    _depthStencil.front = {};
-    _depthStencil.back = {};
+    _depthStencil.stencilTestEnable = stencilOp != nullptr;
+    _depthStencil.front = stencilOp ? *stencilOp : VkStencilOpState {};
+    _depthStencil.back = stencilOp ? *stencilOp : VkStencilOpState {};
     _depthStencil.minDepthBounds = 0.f;
     _depthStencil.maxDepthBounds = 1.f;
 }
-//< depth_enable
-
-//> load_shader
-VkShaderModule vkutil::load_shader_module(const std::vector<std::byte>& buffer, const VkDevice device)
-{
-    // open the file. With cursor at the end
-
-
-    // create a new shader module, using the buffer we loaded
-    VkShaderModuleCreateInfo createInfo = {};
-    createInfo.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
-    createInfo.pNext = nullptr;
-
-    // codeSize has to be in bytes, so multply the ints in the buffer by size of
-    // int to know the real size of the buffer
-    createInfo.codeSize = buffer.size();
-    createInfo.pCode = reinterpret_cast<const uint32_t*>(buffer.data());
-
-    // check that the creation goes well.
-    VkShaderModule module;
-    VK_CHECK(vkCreateShaderModule(device, &createInfo, nullptr, &module));
-    return module;
-}
-//< load_shader

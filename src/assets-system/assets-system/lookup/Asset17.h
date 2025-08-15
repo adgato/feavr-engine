@@ -3,6 +3,6 @@
 
 namespace assets_system::lookup
 {
-    constexpr AssetID SHAD_unlit_shader_vs = { 17, 0 };
-    constexpr AssetID SHAD_unlit_shader_ps = { 17, 1 };
+    constexpr AssetID SHAD_unlit_shader_vert = { 17, 0 };
+    constexpr AssetID SHAD_unlit_shader_frag = { 17, 1 };
 }

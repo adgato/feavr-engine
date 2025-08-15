@@ -27,8 +27,11 @@ namespace ecs
         template <ComponentType...>
         friend class ArchetypeIterator;
 
+        // friendly extension methods
         template <typename... Ts>
         friend void SerializeOnly(Engine& engine, serial::Stream& m);
+
+        friend void Widget(Engine& engine, Entity focus);
 
         std::vector<Archetype> archetypes = std::vector<Archetype>(1);
         std::vector<EntityLocation> entities;
@@ -42,6 +45,7 @@ namespace ecs
         void RawAdd(Entity e, const std::byte* data, const TypeInfo& typeInfo);
 
         void ReadEngineTypes(const char* serialTypes, const std::vector<TypeID>& types, serial::Stream& m);
+
         void WriteEngineTypes(const char* serialTypes, const std::vector<TypeID>& types, serial::Stream& m) const;
 
     public:
@@ -95,8 +99,6 @@ namespace ecs
         void Destroy();
 
         void Serialize(serial::Stream& m);
-
-        void Wiget();
 
         void Insert(const Engine& other);
     };

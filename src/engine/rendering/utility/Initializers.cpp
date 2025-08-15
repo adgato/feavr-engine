@@ -17,7 +17,8 @@ VkRenderingAttachmentInfo vkinit::attachment_info(const rendering::Image& view, 
     return colorAttachment;
 }
 
-VkRenderingInfo vkinit::rendering_info(const VkExtent2D renderExtent, const VkRenderingAttachmentInfo* colorAttachment, const VkRenderingAttachmentInfo* depthAttachment)
+VkRenderingInfo vkinit::rendering_info(const VkExtent2D renderExtent, const VkRenderingAttachmentInfo* colorAttachment, const VkRenderingAttachmentInfo* depthAttachment,
+                                       const bool stencilIsDepth /* = false*/)
 {
     VkRenderingInfo renderInfo {};
     renderInfo.sType = VK_STRUCTURE_TYPE_RENDERING_INFO;
@@ -27,7 +28,7 @@ VkRenderingInfo vkinit::rendering_info(const VkExtent2D renderExtent, const VkRe
     renderInfo.colorAttachmentCount = 1;
     renderInfo.pColorAttachments = colorAttachment;
     renderInfo.pDepthAttachment = depthAttachment;
-    renderInfo.pStencilAttachment = nullptr;
+    renderInfo.pStencilAttachment = stencilIsDepth ? depthAttachment : nullptr;
 
     return renderInfo;
 }

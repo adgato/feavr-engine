@@ -207,12 +207,12 @@ namespace ecs
         }
     }
 
-    static std::vector<size_t> split(std::string&& s, const std::string& delimiter)
+    static std::vector<std::string> split(std::string&& s, const std::string& delimiter)
     {
         size_t pos_start = 0;
         size_t pos_end;
         const size_t delim_len = delimiter.length();
-        std::vector<size_t> res {};
+        std::vector<std::string> res {};
 
         if (s.ends_with('\0'))
             s.erase(s.find_first_of('\0'));
@@ -221,10 +221,10 @@ namespace ecs
         {
             std::string token = s.substr(pos_start, pos_end - pos_start);
             pos_start = pos_end + delim_len;
-            res.push_back(std::hash<std::string> {}(token));
+            res.push_back(token);
         }
 
-        res.push_back(std::hash<std::string> {}(s.substr(pos_start)));
+        res.push_back(s.substr(pos_start));
         return res;
     }
 
@@ -232,6 +232,7 @@ namespace ecs
     {
         assert(m.reading);
         const size_t numTypes = types.size();
+
         const auto targetSplit = split(m.reader.ReadString(), "; ");
         const auto sourceSplit = split(serialTypes, "; ");
 
@@ -374,39 +375,6 @@ namespace ecs
             ReadEngineTypes(serialTypes.c_str(), types, m);
         else
             WriteEngineTypes(serialTypes.c_str(), types, m);
-    }
-
-    void Engine::Wiget()
-    {
-        if (ImGui::BeginChild("Engine View", ImVec2(0, 0), true, ImGuiWindowFlags_HorizontalScrollbar))
-        {
-            for (EntityID e = 0; e < entities.size(); ++e)
-            {
-                if (!IsValid(e))
-                    continue;
-
-                // TreeNode allows for more customization
-                std::string entityLabel = "Entity " + std::to_string(e);
-                if (ImGui::TreeNode(entityLabel.c_str()))
-                {
-                    auto [archetype, index] = entities[e];
-                    auto& elem = archetypes[archetype];
-
-                    for (const TypeID type : elem.types)
-                    {
-                        if (ImGui::TreeNode(TypeRegistry::GetInfo(type).name))
-                        {
-                            TypeRegistry::Widget(type, elem.GetElem(index, type));
-                            ImGui::TreePop();
-                        }
-                    }
-
-                    // Important: Always call TreePop() after TreeNode()
-                    ImGui::TreePop();
-                }
-            }
-        }
-        ImGui::EndChild();
     }
 
     void Engine::Insert(const Engine& other)

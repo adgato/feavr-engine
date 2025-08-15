@@ -6,16 +6,18 @@
 
 #include "hlsl++/vector_int.h"
 #include "imgui.h"
-#include "utility/ClickOnMeshTool.h"
 #include "assets-system/lookup/Asset29.h"
+#include "utility/ClickOnMeshTool.h"
+#include "assets-system/lookup/Asset31.h"
 #include "utility/Screenshot.h"
+#include "ecs/EngineExtensions.h"
 
 void Core::Init()
 {
     swapchain.Init();
     imguiOverlay.Init(swapchain.resource);
     engine.Init(&swapchain);
-    engine.LoadScene(assets_system::lookup::SCNE_structure);
+    engine.LoadScene(assets_system::lookup::SCNE_falcon2);
 }
 
 bool Core::Next()
@@ -23,7 +25,7 @@ bool Core::Next()
     SDL_Event e;
     bool loopAgain = true;
 
-    bool clickedScene = false;
+    bool requestDrawMeshIndices = false;
 
     //Handle events on queue
     while (SDL_PollEvent(&e) != 0)
@@ -47,17 +49,38 @@ bool Core::Next()
         if (!ImGui::GetIO().WantCaptureMouse)
         {
             engine.mainCamera.processSDLEvent(e);
-            clickedScene |= e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT;
+            requestDrawMeshIndices |= e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT && clickOnMeshTool.Destroyed();
         }
     }
 
-    if (clickOnMeshTool.SelectMeshCompleted())
+    ecs::EntityID focus = ecs::BadMaxIndex;
+    if (clickOnMeshTool.DrawCompleted())
     {
         hlslpp::int2 mousePos;
         SDL_GetMouseState(&mousePos.x, &mousePos.y);
         ecs::Entity entity = clickOnMeshTool.SampleCoordinate(mousePos);
         clickOnMeshTool.Destroy();
+
+        std::vector<ecs::EntityID> submeshes {};
+        engine.passManager.GetPass<unlit_pass::Pass>().IdentifySubMeshesOf(entity, submeshes);
+
+        // this wil go somewhere else, but for now its all here
+
+        ecs::EngineView<stencil_outline_pass::Component> view(engine.ecsEngine);
+        for (auto [submesh, _] : view)
+            engine.ecsEngine.Remove<stencil_outline_pass::Component>(submesh);
+
+        for (ecs::Entity submesh : submeshes)
+        {
+            stencil_outline_pass::Component component {};
+            component.transforms->push_back(entity);
+            engine.ecsEngine.Add<stencil_outline_pass::Component>(submesh, component);
+        }
+
+        engine.ecsEngine.Refresh();
+
         fmt::println("Clicked {}", entity);
+        focus = entity;
     }
 
     // imgui new frame
@@ -70,7 +93,7 @@ bool Core::Next()
     {
         ImGui::Text("Text Lines Display");
         ImGui::Separator();
-        engine.ecsEngine.Wiget();
+        ecs::Widget(engine.ecsEngine, focus);
     }
 
     ImGui::End();
@@ -83,10 +106,10 @@ bool Core::Next()
         engine.Draw(swapchain.frameCount, cmd, frame);
         imguiOverlay.Draw(cmd, frame);
 
-        if (clickedScene && clickOnMeshTool.Destroyed())
+        if (requestDrawMeshIndices)
         {
-            clickOnMeshTool.Init(engine.drawImage, engine.depthImage);
-            clickOnMeshTool.SelectMesh(cmd);
+            clickOnMeshTool.Init(engine.drawImage.imageExtent);
+            clickOnMeshTool.DrawMeshIndices(cmd);
         }
 
         swapchain.EndFrame();

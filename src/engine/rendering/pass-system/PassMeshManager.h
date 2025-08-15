@@ -5,6 +5,7 @@
 #include "Mesh.h"
 #include "PassDirectory.h"
 #include "IdentifyPass.h"
+#include "StencilOutlinePass.h"
 #include "SubMesh.h"
 #include "assets-system/AssetFile.h"
 #include "assets-system/AssetID.h"
@@ -15,7 +16,7 @@ class VulkanEngine;
 namespace rendering
 {
     template <typename T>
-    concept ManagedPass = ecs::one_of_v<T, default_pass::Pass, unlit_pass::Pass>;
+    concept ManagedPass = ecs::one_of_v<T, default_pass::Pass, unlit_pass::Pass, stencil_outline_pass::Pass>;
 
     struct MeshAssetSource
     {
@@ -55,6 +56,8 @@ namespace rendering
 
         default_pass::Pass defaultPass {};
         unlit_pass::Pass raycastPass {};
+        stencil_outline_pass::Pass stencilOutlinePass {};
+
     public:
         struct
         {
@@ -69,6 +72,8 @@ namespace rendering
                 return defaultPass;
             if constexpr (std::is_same_v<unlit_pass::Pass, T>)
                 return raycastPass;
+            if constexpr (std::is_same_v<stencil_outline_pass::Pass, T>)
+                return stencilOutlinePass;
             throw std::exception();
         }
 

@@ -29,11 +29,12 @@ namespace ecs
     public:
         explicit ArchetypeIterator(const Engine& engine, const std::vector<uint>& relevantArchetypes, const bool end) : engine(engine), relevantArchetypes(relevantArchetypes)
         {
-            relevantIndex = end ? relevantArchetypes.size() : 0;
-            if (relevantIndex < relevantArchetypes.size())
+            for (relevantIndex = end ? relevantArchetypes.size() : 0; relevantIndex < relevantArchetypes.size(); ++relevantIndex)
             {
                 archIndex = relevantArchetypes[relevantIndex];
                 entityCount = engine.archetypes[archIndex].entities.size();
+                if (entityCount > 0)
+                    break;
             }
         }
 
@@ -99,7 +100,7 @@ namespace ecs
         using Without = EngineView<ViewWith<Included...>, ViewWithout<Excluded...>>;
 
     private:
-        const Engine& engine;
+        const Engine* engine;
         std::vector<uint> relevantArchetypes {};
         size_t search = 0;
 
@@ -118,26 +119,35 @@ namespace ecs
 
         void SearchNewArchetypes()
         {
-            for (; search < engine.archetypes.size(); ++search)
+            for (; search < engine->archetypes.size(); ++search)
             {
-                if (IsRelevant(engine.archetypes[search].types))
+                if (IsRelevant(engine->archetypes[search].types))
                     relevantArchetypes.emplace_back(search);
             }
         }
 
     public:
-        explicit EngineView(const Engine& engine) : engine(engine) {}
+        EngineView() = default;
+
+        explicit EngineView(const Engine& engine) : engine(&engine) {}
+
+        void Init(const Engine& engine)
+        {
+            this->engine = &engine;
+            relevantArchetypes.clear();
+            search = 0;
+        }
 
         ArchetypeIterator<Included...> begin()
         {
             SearchNewArchetypes();
-            return ArchetypeIterator<Included...>(engine, relevantArchetypes, false);
+            return ArchetypeIterator<Included...>(*engine, relevantArchetypes, false);
         }
 
         ArchetypeIterator<Included...> end()
         {
             SearchNewArchetypes();
-            return ArchetypeIterator<Included...>(engine, relevantArchetypes, true);
+            return ArchetypeIterator<Included...>(*engine, relevantArchetypes, true);
         }
     };
 

@@ -129,10 +129,7 @@ std::vector<std::string> ShaderAssetGenerator::GenerateAssets(const std::string&
         std::string spirvPath;
 
         // Generate output filename based on shader type
-        if (profile == "cs")
-            spirvPath = fmt::format("{}_{}_{}.hlsl.asset", baseFileName, entry, profile);
-        else
-            spirvPath = fmt::format("{}_{}.hlsl.asset", baseFileName, profile);
+        spirvPath = fmt::format("{}_{}.hlsl.asset", baseFileName, entry);
 
         AssetFile assetFile("SHAD", 0);
 

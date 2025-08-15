@@ -1,6 +1,9 @@
 #pragma once
 #include <span>
 
+#include "PassComponent.h"
+#include "SubMesh.h"
+#include "ecs/EngineView.h"
 #include "glm/vec4.hpp"
 #include "glm/mat4x4.hpp"
 #include "rendering/utility/Descriptors.h"
@@ -36,6 +39,8 @@ namespace rendering::passes
 
         VulkanEngine* engine = nullptr;
         VkDevice device = nullptr;
+
+        ecs::EngineView<SubMesh, PassComponent<DefaultPass>> view;
 
         VkPipelineLayout layout = nullptr;
         VkPipeline pipeline = nullptr;

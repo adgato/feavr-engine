@@ -25,12 +25,12 @@ namespace rendering
     public:
         ClickOnMeshTool(EngineResources& engineResources, PassMeshManager& passManager);
 
-        void Init(const Image& drawTemplate, const Image& depthTemplate);
+        void Init(VkExtent3D extent);
 
-        void SelectMesh(VkCommandBuffer cmd);
+        void DrawMeshIndices(VkCommandBuffer cmd);
 
         bool Destroyed() const;
-        bool SelectMeshCompleted(uint32_t sufficientFrameDelta = 1) const;
+        bool DrawCompleted(uint32_t sufficientFrameDelta = 1) const;
 
         // call after select mesh command buffer has finished executing.
         uint32_t SampleCoordinate(const hlslpp::int2& coord);

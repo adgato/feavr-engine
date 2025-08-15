@@ -12,15 +12,15 @@ namespace rendering
     ClickOnMeshTool::ClickOnMeshTool(EngineResources& engineResources, PassMeshManager& passManager)
         : resources(engineResources), passManager(passManager) {}
 
-    void ClickOnMeshTool::Init(const Image& drawTemplate, const Image& depthTemplate)
+    void ClickOnMeshTool::Init(const VkExtent3D extent)
     {
-        drawImage = Image::Allocate(&resources, drawTemplate.imageExtent, VK_FORMAT_R32_UINT,
-                                    VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, drawTemplate.aspectFlags);
-        depthImage = Image::Allocate(&resources, depthTemplate.imageExtent, depthTemplate.imageFormat,
-                                     VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT, depthTemplate.aspectFlags);
+        drawImage = Image::Allocate(&resources, extent, VK_FORMAT_R32_UINT,
+                                    VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, VK_IMAGE_ASPECT_COLOR_BIT);
+        depthImage = Image::Allocate(&resources, extent, VK_FORMAT_D32_SFLOAT,
+                                     VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT, VK_IMAGE_ASPECT_DEPTH_BIT);
     }
 
-    void ClickOnMeshTool::SelectMesh(VkCommandBuffer cmd)
+    void ClickOnMeshTool::DrawMeshIndices(VkCommandBuffer cmd)
     {
         selectFrame = resources.frameCount;
         VkClearValue clearColor;
@@ -76,7 +76,7 @@ namespace rendering
         return drawImage.image == VK_NULL_HANDLE;
     }
 
-    bool ClickOnMeshTool::SelectMeshCompleted(const uint32_t sufficientFrameDelta /* = 1*/) const
+    bool ClickOnMeshTool::DrawCompleted(const uint32_t sufficientFrameDelta /* = 1*/) const
     {
         return !Destroyed() && resources.frameCount >= selectFrame + sufficientFrameDelta;
     }

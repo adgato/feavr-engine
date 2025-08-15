@@ -13,6 +13,6 @@ namespace vkinit
 {
     
     VkRenderingAttachmentInfo attachment_info(const rendering::Image& view, const VkClearValue* clear);
-    VkRenderingInfo rendering_info(VkExtent2D renderExtent, const VkRenderingAttachmentInfo* colorAttachment, const VkRenderingAttachmentInfo* depthAttachment);
+    VkRenderingInfo rendering_info(VkExtent2D renderExtent, const VkRenderingAttachmentInfo* colorAttachment, const VkRenderingAttachmentInfo* depthAttachment, bool stencilIsDepth = false);
     VkImageViewCreateInfo imageview_create_info(VkFormat format, VkImage image, VkImageAspectFlags aspectFlags);
 }
