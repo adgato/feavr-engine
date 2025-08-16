@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "rendering/VulkanEngine.h"
+#include "rendering/RenderingEngine.h"
 #include <glm/gtx/quaternion.hpp>
 
 #include <fastgltf/glm_element_traits.hpp>
@@ -90,11 +90,11 @@ void load_primitive_vertices(const fastgltf::Asset& gltf, const fastgltf::Primit
 
 std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& assetPath, std::vector<std::byte>&& contents)
 {
-    rendering::PassMeshManager passManager;
-    ecs::Engine engine;
+    Core core {};
+    ecs::Engine& engine = core.engine;
+    rendering::PassSystem& passManager = core.renderer.passManager;
 
-
-    rendering::Material<default_pass::Pass, unlit_pass::Pass> defaultMaterial(engine, passManager);
+    rendering::Material<default_pass::Pass, identify_pass::Pass> defaultMaterial(engine, passManager);
 
     fastgltf::Parser parser {};
 

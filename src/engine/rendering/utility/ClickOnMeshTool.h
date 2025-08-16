@@ -1,7 +1,7 @@
 #pragma once
 
 #include "hlsl++/vector_int_type.h"
-#include "rendering/resources/EngineResources.h"
+#include "rendering/resources/RenderingResources.h"
 #include "rendering/resources/Image.h"
 
 struct VkCommandBuffer_T;
@@ -12,28 +12,30 @@ typedef VmaAllocator_T* VmaAllocator;
 
 namespace rendering
 {
-    class PassMeshManager;
+    class PassSystem;
 
     class ClickOnMeshTool
     {
-        EngineResources& resources;
-        PassMeshManager& passManager;
+        RenderingResources& resources;
+        PassSystem& passManager;
         uint32_t selectFrame = 0;
         Image drawImage {};
         Image depthImage {};
+        Buffer<uint32_t> resultBuffer;
+        hlslpp::int2 coord {};
+        bool waitingSample = false;
 
     public:
-        ClickOnMeshTool(EngineResources& engineResources, PassMeshManager& passManager);
+        ClickOnMeshTool(RenderingResources& engineResources, PassSystem& passManager);
 
-        void Init(VkExtent3D extent);
+        void Init();
 
-        void DrawMeshIndices(VkCommandBuffer cmd);
+        void DrawMeshIndices(VkCommandBuffer cmd, const glm::mat4& cameraView, const hlslpp::int2& coord);
 
-        bool Destroyed() const;
-        bool DrawCompleted(uint32_t sufficientFrameDelta = 1) const;
+        bool DrawWaitingSample(uint32_t sufficientFrameDelta = 1) const;
 
         // call after select mesh command buffer has finished executing.
-        uint32_t SampleCoordinate(const hlslpp::int2& coord);
+        uint32_t SampleCoordinate();
 
         void Destroy();
     };

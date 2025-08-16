@@ -13,7 +13,7 @@ id,path,dirty
 14,Shared/T_Bumpy_N.png,0
 15,Shared/T_InletBorder_N_FlipY.png,0
 16,shaders/default_shader.hlsl,0
-17,shaders/unlit_shader.hlsl,0
+17,shaders/identify_shader.hlsl,0
 18,basicmesh.glb,0
 29,structure.glb,0
 30,shaders/mesh_outline.hlsl,0

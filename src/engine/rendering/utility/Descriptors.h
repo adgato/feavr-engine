@@ -60,7 +60,7 @@ class DescriptorWriter
 public:
     VkDescriptorSet descriptorSet;
 
-    void AllocateSet(const rendering::ResourceHandles& resource, DescriptorSetLayoutInfo layout);
+    void AllocateSet(VkDevice device, DescriptorAllocator& allocator, DescriptorSetLayoutInfo layout);
 
     void StageCombinedImage(const VkDescriptorSetLayoutBinding& binding, VkImageView image, VkSampler sampler, VkImageLayout layout);
 

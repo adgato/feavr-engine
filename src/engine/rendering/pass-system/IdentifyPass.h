@@ -4,8 +4,9 @@
 #include "PassComponent.h"
 #include "SubMesh.h"
 #include "ecs/EngineView.h"
-#include "glm/vec4.hpp"
 #include "glm/mat4x4.hpp"
+#include "rendering/CommonSetLayouts.h"
+#include "rendering/resources/RenderingResources.h"
 #include "rendering/utility/Descriptors.h"
 #include "rendering/utility/DescriptorSetLayoutInfo.h"
 
@@ -22,6 +23,7 @@ namespace rendering::passes
 {
     class IdentifyPass
     {
+        Buffer<GlobalSceneData> pixelSceneBuffer[FRAME_OVERLAP];
     public:
         struct PushConstants
         {
@@ -30,18 +32,27 @@ namespace rendering::passes
             uint32_t identifier;
         };
 
-        VulkanEngine* engine = nullptr;
+        RenderingEngine& renderer;
+        ecs::Engine& engine;
         VkDevice device = nullptr;
+
         ecs::EngineView<SubMesh, PassComponent<IdentifyPass>> view;
+
+
+        DescriptorWriter pixelSceneDescriptor {};
 
         VkPipelineLayout layout = nullptr;
         VkPipeline pipeline = nullptr;
 
-        void Init(VulkanEngine* engine);
+        IdentifyPass(RenderingEngine& renderer, ecs::Engine& engine)
+            : renderer(renderer),
+              engine(engine), view(engine) {}
+
+        void Init();
 
         void IdentifySubMeshesOf(ecs::Entity transform, std::vector<ecs::EntityID>& outSubMeshes);
 
-        void Draw(VkCommandBuffer cmd, const std::span<Mesh>& meshes);
+        void Draw(VkCommandBuffer cmd, const std::span<Mesh>& meshes, size_t frame, const GlobalSceneData& pixelSceneData);
 
         void Destroy();
     };

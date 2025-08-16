@@ -29,7 +29,7 @@ namespace shader_layouts
             .binding = 0,
             .descriptorType = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
             .descriptorCount = 1,
-            .stageFlags = 0x00000011,
+            .stageFlags = 0x00000001,
         };
 
         inline std::vector bindings_0 = {SceneData_binding, };

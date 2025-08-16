@@ -23,7 +23,6 @@ namespace rendering
 
         operator VmaAllocator const() const { return vmaAllocator; }
         operator VkDevice const() const { return device; }
-        operator DescriptorAllocator* const() const { return globalAllocator.get(); }
 
         void Destroy() const;
     };

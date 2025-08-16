@@ -100,7 +100,7 @@ namespace ecs
         using Without = EngineView<ViewWith<Included...>, ViewWithout<Excluded...>>;
 
     private:
-        const Engine* engine;
+        const Engine& engine;
         std::vector<uint> relevantArchetypes {};
         size_t search = 0;
 
@@ -119,9 +119,9 @@ namespace ecs
 
         void SearchNewArchetypes()
         {
-            for (; search < engine->archetypes.size(); ++search)
+            for (; search < engine.archetypes.size(); ++search)
             {
-                if (IsRelevant(engine->archetypes[search].types))
+                if (IsRelevant(engine.archetypes[search].types))
                     relevantArchetypes.emplace_back(search);
             }
         }
@@ -129,25 +129,18 @@ namespace ecs
     public:
         EngineView() = default;
 
-        explicit EngineView(const Engine& engine) : engine(&engine) {}
-
-        void Init(const Engine& engine)
-        {
-            this->engine = &engine;
-            relevantArchetypes.clear();
-            search = 0;
-        }
+        explicit EngineView(const Engine& engine) : engine(engine) {}
 
         ArchetypeIterator<Included...> begin()
         {
             SearchNewArchetypes();
-            return ArchetypeIterator<Included...>(*engine, relevantArchetypes, false);
+            return ArchetypeIterator<Included...>(engine, relevantArchetypes, false);
         }
 
         ArchetypeIterator<Included...> end()
         {
             SearchNewArchetypes();
-            return ArchetypeIterator<Included...>(*engine, relevantArchetypes, true);
+            return ArchetypeIterator<Included...>(engine, relevantArchetypes, true);
         }
     };
 

@@ -3,7 +3,7 @@
 #include "DescriptorSetLayoutInfo.h"
 #include "VulkanCheck.h"
 #include "VulkanNew.h"
-#include "rendering/resources/EngineResources.h"
+#include "rendering/resources/RenderingResources.h"
 
 std::array<VkDescriptorPoolSize, 11> DescriptorAllocator::initialPoolSizes = {
     {
@@ -105,10 +105,10 @@ VkDescriptorSet DescriptorAllocator::Alloc(const DescriptorSetLayoutInfo layout)
 
 
 
-void DescriptorWriter::AllocateSet(const rendering::ResourceHandles& resource, const DescriptorSetLayoutInfo layout)
+void DescriptorWriter::AllocateSet(const VkDevice device, DescriptorAllocator& allocator, DescriptorSetLayoutInfo layout)
 {
-    device = resource.device;
-    descriptorSet = resource.globalAllocator->Alloc(layout);
+    this->device = device;
+    descriptorSet = allocator.Alloc(layout);
     DiscardWrites();
 }
 

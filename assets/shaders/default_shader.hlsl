@@ -1,17 +1,8 @@
 #include "hlsl_syntax.hlsli"
+#include "global.hlsli"
 
 #pragma vertex vert
 #pragma pixel frag
-
-cbuffer SceneData : register(b0, space0)
-{
-    float4x4 view;
-    float4x4 proj;
-    float4x4 viewproj;
-    float4 ambientColor;
-    float4 sunlightDirection; // w for sun power
-    float4 sunlightColor;
-}
 
 cbuffer GLTFMaterialData : register(b0, space1)
 {
@@ -32,15 +23,6 @@ struct PushConstants
     uint64_t vertexBufferAddress;
 };
 [[vk::push_constant]] PushConstants pushConstants;
-
-struct Vertex
-{
-    float3 position;
-    float uv_x;
-    float3 normal;
-    float uv_y;
-    float4 color;
-};
 
 struct VSOutput
 {
@@ -68,10 +50,10 @@ VSOutput vert(const uint vertexID : SV_VertexID)
 
 float4 frag(const VSOutput i) : SV_TARGET
 {
-    float lightValue = max(dot(i.normal, sunlightDirection.xyz), 0.1f);
+    float lightValue = max(dot(i.normal, normalize(float3(0, 1, 0))), 0.1f);
 
     float3 color = 1;//i.color * colorTex.Sample(colorTexSampler, i.uv).xyz;
-    float3 ambient = color * ambientColor.xyz;
+    float3 ambient = color * 0.1;
 
-    return float4(color * lightValue *  sunlightColor.w + ambient, 1.0f);
+    return float4(color * lightValue + ambient, 1.0f);
 }

@@ -9,7 +9,8 @@
 #include "rendering/utility/Descriptors.h"
 #include "rendering/utility/DescriptorSetLayoutInfo.h"
 
-namespace serial {
+namespace serial
+{
     class Stream;
 }
 
@@ -37,7 +38,8 @@ namespace rendering::passes
             VkDeviceAddress vertexBuffer;
         };
 
-        VulkanEngine* engine = nullptr;
+        RenderingEngine& renderer;
+        ecs::Engine& engine;
         VkDevice device = nullptr;
 
         ecs::EngineView<SubMesh, PassComponent<DefaultPass>> view;
@@ -45,11 +47,15 @@ namespace rendering::passes
         VkPipelineLayout layout = nullptr;
         VkPipeline pipeline = nullptr;
         DescriptorWriter properties {};
-        Buffer<MaterialConstants> matConstProperty;
+        Buffer<MaterialConstants> matConstProperty {};
 
-        DescriptorSetLayoutInfo materialLayout;
+        DescriptorSetLayoutInfo materialLayout {};
 
-        void Init(VulkanEngine* engine);
+        DefaultPass(RenderingEngine& renderer, ecs::Engine& engine)
+            : renderer(renderer),
+              engine(engine), view(engine) {}
+
+        void Init();
 
         void Draw(VkCommandBuffer cmd, const std::span<Mesh>& meshes);
 

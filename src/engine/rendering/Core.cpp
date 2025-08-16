@@ -6,19 +6,56 @@
 
 #include "hlsl++/vector_int.h"
 #include "imgui.h"
+#include "assets-system/AssetManager.h"
 #include "assets-system/lookup/Asset29.h"
 #include "utility/ClickOnMeshTool.h"
 #include "assets-system/lookup/Asset31.h"
-#include "utility/Screenshot.h"
 #include "ecs/EngineExtensions.h"
 
 void Core::Init()
 {
-    swapchain.Init();
-    imguiOverlay.Init(swapchain.resource);
-    engine.Init(&swapchain);
-    engine.LoadScene(assets_system::lookup::SCNE_falcon2);
+    resources.Init();
+    imguiOverlay.Init(resources.resource);
+    renderer.Init(resources);
+    LoadScene(assets_system::lookup::SCNE_structure);
+    clickOnMeshTool.Init();
 }
+
+void Core::SaveScene(const char* filePath)
+{
+    serial::Stream m;
+    m.InitWrite();
+    renderer.passManager.Serialize(m);
+
+    engine.Refresh();
+    engine.Serialize(m);
+
+    assets_system::AssetFile saveAsset("SCNE", 0);
+
+    saveAsset.header["Meshes Start"] = static_cast<uint64_t>(renderer.passManager.serializeInfo.meshesStart);
+    saveAsset.header["Meshes Size"] = static_cast<uint64_t>(renderer.passManager.serializeInfo.meshesSizeBytes);
+
+    saveAsset.WriteToBlob(m);
+    saveAsset.Save(filePath);
+}
+
+void Core::LoadScene(const assets_system::AssetID other)
+{
+    const assets_system::AssetFile loadAsset = assets_system::AssetManager::LoadAsset(other);
+    assert(loadAsset.HasFormat("SCNE", 0));
+
+    serial::Stream m = loadAsset.ReadFromBlob();
+
+    renderer.passManager.Destroy();
+    engine.Destroy();
+    renderer.passManager.Init();
+    renderer.passManager.Serialize(m);
+    engine.Serialize(m);
+    engine.Refresh();
+    renderer.passManager.ReplaceInvalidAssetSources(other);
+    renderer.passManager.FixupReferences(engine);
+}
+
 
 bool Core::Next()
 {
@@ -48,36 +85,33 @@ bool Core::Next()
         ImGui_ImplSDL2_ProcessEvent(&e);
         if (!ImGui::GetIO().WantCaptureMouse)
         {
-            engine.mainCamera.processSDLEvent(e);
-            requestDrawMeshIndices |= e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT && clickOnMeshTool.Destroyed();
+            renderer.mainCamera.processSDLEvent(e);
+            requestDrawMeshIndices |= e.type == SDL_MOUSEBUTTONDOWN && e.button.button == SDL_BUTTON_LEFT;
         }
     }
 
     ecs::EntityID focus = ecs::BadMaxIndex;
-    if (clickOnMeshTool.DrawCompleted())
+    if (clickOnMeshTool.DrawWaitingSample(3)) //why 3?
     {
-        hlslpp::int2 mousePos;
-        SDL_GetMouseState(&mousePos.x, &mousePos.y);
-        ecs::Entity entity = clickOnMeshTool.SampleCoordinate(mousePos);
-        clickOnMeshTool.Destroy();
+        ecs::Entity entity = clickOnMeshTool.SampleCoordinate();
 
         std::vector<ecs::EntityID> submeshes {};
-        engine.passManager.GetPass<unlit_pass::Pass>().IdentifySubMeshesOf(entity, submeshes);
+        renderer.passManager.GetPass<identify_pass::Pass>().IdentifySubMeshesOf(entity, submeshes);
 
         // this wil go somewhere else, but for now its all here
 
-        ecs::EngineView<stencil_outline_pass::Component> view(engine.ecsEngine);
+        ecs::EngineView<stencil_outline_pass::Component> view(engine);
         for (auto [submesh, _] : view)
-            engine.ecsEngine.Remove<stencil_outline_pass::Component>(submesh);
+            engine.Remove<stencil_outline_pass::Component>(submesh);
 
         for (ecs::Entity submesh : submeshes)
         {
             stencil_outline_pass::Component component {};
             component.transforms->push_back(entity);
-            engine.ecsEngine.Add<stencil_outline_pass::Component>(submesh, component);
+            engine.Add<stencil_outline_pass::Component>(submesh, component);
         }
 
-        engine.ecsEngine.Refresh();
+        engine.Refresh();
 
         fmt::println("Clicked {}", entity);
         focus = entity;
@@ -93,7 +127,7 @@ bool Core::Next()
     {
         ImGui::Text("Text Lines Display");
         ImGui::Separator();
-        ecs::Widget(engine.ecsEngine, focus);
+        ecs::Widget(engine, focus);
     }
 
     ImGui::End();
@@ -101,18 +135,19 @@ bool Core::Next()
 
     if (!skipDrawing)
     {
-        auto [cmd, frame] = swapchain.BeginFrame();
+        auto [cmd, frame] = resources.BeginFrame();
 
-        engine.Draw(swapchain.frameCount, cmd, frame);
+        renderer.Draw(resources.frameCount, cmd, frame);
         imguiOverlay.Draw(cmd, frame);
 
         if (requestDrawMeshIndices)
         {
-            clickOnMeshTool.Init(engine.drawImage.imageExtent);
-            clickOnMeshTool.DrawMeshIndices(cmd);
+            hlslpp::int2 mousePos;
+            SDL_GetMouseState(&mousePos.x, &mousePos.y);
+            clickOnMeshTool.DrawMeshIndices(cmd, renderer.sceneData.view, mousePos);
         }
 
-        swapchain.EndFrame();
+        resources.EndFrame();
     } else
         std::this_thread::sleep_for(std::chrono::milliseconds { 100 });
 
@@ -121,8 +156,9 @@ bool Core::Next()
 
 void Core::Destroy()
 {
+    renderer.Destroy();
     engine.Destroy();
     imguiOverlay.Destroy();
     clickOnMeshTool.Destroy();
-    swapchain.Destroy();
+    resources.Destroy();
 }

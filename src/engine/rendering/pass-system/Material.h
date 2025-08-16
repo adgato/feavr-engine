@@ -1,5 +1,5 @@
 #pragma once
-#include "rendering/pass-system/PassMeshManager.h"
+#include "rendering/pass-system/PassSystem.h"
 #include "rendering/pass-system/PassComponent.h"
 
 namespace rendering
@@ -8,11 +8,11 @@ namespace rendering
     class Material
     {
         ecs::Engine& engine;
-        PassMeshManager& passManager;
+        PassSystem& passManager;
         std::array<uint32_t, sizeof...(Passes)> passGroups {};
 
     public:
-        Material(ecs::Engine& engine, PassMeshManager& passManager)
+        Material(ecs::Engine& engine, PassSystem& passManager)
             : engine(engine),
               passManager(passManager) {}
 

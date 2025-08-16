@@ -3,11 +3,11 @@
 struct VmaAllocation_T;
 typedef VmaAllocation_T* VmaAllocation;
 
-class VulkanEngine;
+class RenderingEngine;
 
 namespace rendering
 {
-    class EngineResources;
+    class RenderingResources;
 
     template <typename T>
     class Buffer;
@@ -15,7 +15,7 @@ namespace rendering
     class Image
     {
     public:
-        EngineResources* renderer;
+        RenderingResources* renderer;
         VkImage image = VK_NULL_HANDLE;
         VmaAllocation allocation = VK_NULL_HANDLE;
 
@@ -25,18 +25,18 @@ namespace rendering
         VkImageAspectFlags aspectFlags;
         VkImageLayout currentLayout;
 
-        static Image Allocate(EngineResources* renderer, VkExtent3D size, VkFormat format, VkImageUsageFlags usage, VkImageAspectFlags aspectFlags = VK_IMAGE_ASPECT_COLOR_BIT, bool mipmapped = false);
+        static Image Allocate(RenderingResources* renderer, VkExtent3D size, VkFormat format, VkImageUsageFlags usage, VkImageAspectFlags aspectFlags = VK_IMAGE_ASPECT_COLOR_BIT, bool mipmapped = false);
 
         void WriteSampled(const void* data);
 
-        void Read(VkBuffer intoBuffer, VkMemoryBarrier2& srcBarrier);
+        void Read(VkCommandBuffer cmd, VkBuffer intoBuffer, VkMemoryBarrier2& srcBarrier);
 
-        void ReadFromRenderTarget(const VkBuffer intoBuffer)
+        void ReadFromRenderTarget(const VkCommandBuffer cmd, const VkBuffer intoBuffer)
         {
             VkMemoryBarrier2 barrier;
             barrier.srcStageMask = VK_PIPELINE_STAGE_2_COLOR_ATTACHMENT_OUTPUT_BIT;
             barrier.srcAccessMask = VK_ACCESS_2_COLOR_ATTACHMENT_WRITE_BIT;
-            Read(intoBuffer, barrier);
+            Read(cmd, intoBuffer, barrier);
         }
 
         void Barrier(VkCommandBuffer cmd, VkImageLayout newLayout, const VkMemoryBarrier2& barrier);/* = {

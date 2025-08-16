@@ -3,14 +3,14 @@
 
 #include "vk_mem_alloc.h"
 
-#include "rendering/VulkanEngine.h"
+#include "rendering/RenderingEngine.h"
 #include "rendering/utility/Initializers.h"
 #include "rendering/utility/VulkanNew.h"
-#include "rendering/resources/EngineResources.h"
+#include "rendering/resources/RenderingResources.h"
 
 namespace rendering
 {
-    Image Image::Allocate(EngineResources* renderer, const VkExtent3D size, const VkFormat format,
+    Image Image::Allocate(RenderingResources* renderer, const VkExtent3D size, const VkFormat format,
                           const VkImageUsageFlags usage, const VkImageAspectFlags aspectFlags /*= VK_IMAGE_ASPECT_COLOR_BIT*/, const bool mipmapped /*= false*/)
     {
         Image newImage;
@@ -109,29 +109,26 @@ namespace rendering
         uploadBuffer.Destroy();
     }
 
-    void Image::Read(const VkBuffer intoBuffer, VkMemoryBarrier2& srcBarrier)
+    void Image::Read(const VkCommandBuffer cmd, const VkBuffer intoBuffer, VkMemoryBarrier2& srcBarrier)
     {
         srcBarrier.dstStageMask = VK_PIPELINE_STAGE_2_COPY_BIT;
         srcBarrier.dstAccessMask = VK_ACCESS_2_TRANSFER_READ_BIT;
 
-        renderer->ImmediateSumbit([&](const VkCommandBuffer cmd)
-        {
-            Barrier(cmd, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, srcBarrier);
+        Barrier(cmd, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, srcBarrier);
 
-            VkBufferImageCopy copyRegion = {};
-            copyRegion.bufferOffset = 0;
-            copyRegion.bufferRowLength = 0;
-            copyRegion.bufferImageHeight = 0;
+        VkBufferImageCopy copyRegion = {};
+        copyRegion.bufferOffset = 0;
+        copyRegion.bufferRowLength = 0;
+        copyRegion.bufferImageHeight = 0;
 
-            copyRegion.imageSubresource.aspectMask = aspectFlags;
-            copyRegion.imageSubresource.mipLevel = 0;
-            copyRegion.imageSubresource.baseArrayLayer = 0;
-            copyRegion.imageSubresource.layerCount = 1;
-            copyRegion.imageExtent = imageExtent;
+        copyRegion.imageSubresource.aspectMask = aspectFlags;
+        copyRegion.imageSubresource.mipLevel = 0;
+        copyRegion.imageSubresource.baseArrayLayer = 0;
+        copyRegion.imageSubresource.layerCount = 1;
+        copyRegion.imageExtent = imageExtent;
 
-            // copy the buffer into the image
-            vkCmdCopyImageToBuffer(cmd, image, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, intoBuffer, 1, &copyRegion);
-        });
+        // copy the buffer into the image
+        vkCmdCopyImageToBuffer(cmd, image, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, intoBuffer, 1, &copyRegion);
     }
 
     void Image::Barrier(const VkCommandBuffer cmd, const VkImageLayout newLayout, const VkMemoryBarrier2& barrier)

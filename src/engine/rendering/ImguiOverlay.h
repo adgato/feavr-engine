@@ -1,5 +1,5 @@
 #pragma once
-#include "resources/EngineResources.h"
+#include "resources/RenderingResources.h"
 
 class ImguiOverlay
 {

@@ -3,7 +3,7 @@
 #include <array>
 #include <glm/packing.hpp>
 
-#include "VulkanEngine.h"
+#include "RenderingEngine.h"
 
 namespace rendering
 {
@@ -18,7 +18,7 @@ namespace rendering
         return pixels;
     }
 
-    void CommonTextures::Init(EngineResources* swapchainRenderer)
+    void CommonTextures::Init(RenderingResources* swapchainRenderer)
     {
         errorCheckerboard = Image::Allocate(swapchainRenderer, VkExtent3D{16, 16, 1}, VK_FORMAT_R8G8B8A8_UNORM, VK_IMAGE_USAGE_SAMPLED_BIT);
 

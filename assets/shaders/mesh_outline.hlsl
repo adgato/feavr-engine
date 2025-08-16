@@ -1,19 +1,10 @@
 #include "hlsl_syntax.hlsli"
+#include "global.hlsli"
 
 #pragma vertex vertMask
 #pragma pixel fragMask
 #pragma vertex vertOutline
 #pragma pixel fragOutline
-
-cbuffer SceneData : register(b0, space0)
-{
-    float4x4 view;
-    float4x4 proj;
-    float4x4 viewproj;
-    float4 ambientColor;
-    float4 sunlightDirection; // w for sun power
-    float4 sunlightColor;
-}
 
 cbuffer OutlineData : register(b0, space1)
 {
@@ -29,14 +20,6 @@ struct PushConstants
 
 [[vk::push_constant]] PushConstants pushConstants;
 
-struct Vertex
-{
-    float3 position;
-    float uv_x;
-    float3 normal;
-    float uv_y;
-    float4 color;
-};
 
 struct VSOutput
 {

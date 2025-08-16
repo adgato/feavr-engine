@@ -24,7 +24,8 @@ namespace rendering::passes
             VkDeviceAddress vertexBuffer;
         };
 
-        VulkanEngine* engine = nullptr;
+        RenderingEngine& renderer;
+        ecs::Engine& engine;
         VkDevice device = nullptr;
 
         VkPipelineLayout maskLayout = nullptr;
@@ -34,7 +35,11 @@ namespace rendering::passes
         DescriptorWriter properties {};
         ecs::EngineView<SubMesh, PassComponent<StencilOutlinePass>> view;
 
-        void Init(VulkanEngine* engine);
+        StencilOutlinePass(RenderingEngine& renderer, ecs::Engine& engine)
+            : renderer(renderer),
+              engine(engine), view(engine) {}
+
+        void Init();
 
         void Draw(VkCommandBuffer cmd, const std::span<Mesh>& meshes);
 

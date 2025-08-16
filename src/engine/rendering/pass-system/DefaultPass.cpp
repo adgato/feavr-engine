@@ -1,20 +1,18 @@
 #include "DefaultPass.h"
 
-#include "rendering/VulkanEngine.h"
+#include "rendering/RenderingEngine.h"
 #include "rendering/utility/Pipelines.h"
 #include "shader_descriptors.h"
 #include "assets-system/lookup/Asset16.h"
 #include "ecs/EngineView.h"
 #include "rendering/engine-assets/ShaderAssetData.h"
-#include "rendering/resources/EngineResources.h"
+#include "rendering/resources/RenderingResources.h"
 
 namespace rendering::passes
 {
-    void DefaultPass::Init(VulkanEngine* engine)
+    void DefaultPass::Init()
     {
-        this->engine = engine;
-        view.Init(engine->ecsEngine);
-        device = engine->Resource();
+        device = renderer.resource.device;
 
         VkPushConstantRange matrixRange;
         matrixRange.offset = 0;
@@ -23,7 +21,7 @@ namespace rendering::passes
 
         materialLayout = default_pass::CreateSetLayout_1(device);
 
-        const VkDescriptorSetLayout layouts[] = { engine->commonSets.GPUSceneData.set, materialLayout.set };
+        const VkDescriptorSetLayout layouts[] = { renderer.commonSets.sceneDataLayout.set, materialLayout.set };
 
         auto mesh_layout_info = vkinit::New<VkPipelineLayoutCreateInfo>(); {
             mesh_layout_info.setLayoutCount = std::size(layouts);
@@ -48,8 +46,8 @@ namespace rendering::passes
         pipelineBuilder.enable_depthtest(true, VK_COMPARE_OP_GREATER_OR_EQUAL, nullptr);
 
         //render format
-        pipelineBuilder.set_color_attachment_format(engine->drawImage.imageFormat);
-        pipelineBuilder.set_depth_format(engine->depthImage.imageFormat, true);
+        pipelineBuilder.set_color_attachment_format(renderer.drawImage.imageFormat);
+        pipelineBuilder.set_depth_format(renderer.depthImage.imageFormat, true);
 
         pipelineBuilder.pipelineLayout = layout;
 
@@ -59,7 +57,7 @@ namespace rendering::passes
         vertexShader.Destroy();
         fragmentShader.Destroy();
 
-        matConstProperty = Buffer<MaterialConstants>::Allocate(engine->Resource(), 1, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, HostAccess::SEQUENTIAL_WRITE);
+        matConstProperty = Buffer<MaterialConstants>::Allocate(renderer.resource, 1, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, HostAccess::SEQUENTIAL_WRITE);
 
         MaterialConstants data;
         data.colorFactors = glm::vec4 { 1, 1, 1, 1 };
@@ -67,7 +65,7 @@ namespace rendering::passes
 
         matConstProperty.Write(&data);
 
-        properties.AllocateSet(engine->Resource(), materialLayout);
+        properties.AllocateSet(renderer.resource, *renderer.resource.globalAllocator, materialLayout);
         // default values
         properties.StageBuffer(default_pass::GLTFMaterialData_binding, matConstProperty);
         // properties.StageImage(default_pass::colorTex_binding, engine->commonTextures.errorCheckerboard);
@@ -79,7 +77,7 @@ namespace rendering::passes
     {
         vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
 
-        const VkDescriptorSet sets[] = { engine->gpuSceneDescriptorSet.descriptorSet, properties.descriptorSet };
+        const VkDescriptorSet sets[] = { renderer.gpuSceneDescriptorSet.descriptorSet, properties.descriptorSet };
         vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, layout, 0, std::size(sets), sets, 0, nullptr);
 
         for (const auto& [submeshID, passMesh, data] : view)
@@ -95,7 +93,7 @@ namespace rendering::passes
                 ecs::Entity entity = data.transforms->data()[i];
 
                 const PushConstants pushConstants {
-                    engine->ecsEngine.Get<Transform>(entity).transform,
+                    engine.Get<Transform>(entity).transform,
                     mesh.vertexBufferAddress
                 };
 

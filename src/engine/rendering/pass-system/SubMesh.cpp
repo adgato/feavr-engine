@@ -1,5 +1,5 @@
 #include "SubMesh.h"
-#include "PassMeshManager.h"
+#include "PassSystem.h"
 
 namespace rendering
 {

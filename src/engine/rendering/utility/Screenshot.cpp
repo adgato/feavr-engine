@@ -2,7 +2,7 @@
 
 #include "stb_image_write.h"
 #include "glm/gtc/packing.hpp"
-#include "rendering/resources/EngineResources.h"
+#include "rendering/resources/RenderingResources.h"
 #include "rendering/resources/Image.h"
 
 namespace rendering::utility
@@ -30,7 +30,7 @@ namespace rendering::utility
         );
     }
 
-    void Screenshot(const VmaAllocator vmaAllocator, const char* fileToSave, Image& renderTarget)
+    void Screenshot(const RenderingResources& resources, const VmaAllocator vmaAllocator, const char* fileToSave, Image& renderTarget)
     {
         int componentsSize;
         switch (renderTarget.imageFormat)
@@ -56,7 +56,12 @@ namespace rendering::utility
 
         Buffer<std::byte> buffer = Buffer<std::byte>::Allocate(vmaAllocator, pixelCount * componentsSize,
                                                                VK_BUFFER_USAGE_TRANSFER_DST_BIT, HostAccess::RANDOM, VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE);
-        renderTarget.ReadFromRenderTarget(buffer.buffer);
+
+
+        resources.ImmediateSumbit([&renderTarget, &buffer](const VkCommandBuffer cmd)
+        {
+            renderTarget.ReadFromRenderTarget(cmd, buffer.buffer);
+        });
 
         std::vector<uint32_t> convertedData;
 

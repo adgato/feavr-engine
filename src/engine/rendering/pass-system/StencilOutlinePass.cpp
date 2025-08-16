@@ -1,24 +1,22 @@
 #include "StencilOutlinePass.h"
 
 #include "assets-system/lookup/Asset30.h"
-#include "rendering/VulkanEngine.h"
+#include "rendering/RenderingEngine.h"
 #include "rendering/resources/ResourceHandles.h"
 #include "rendering/utility/Pipelines.h"
 
 namespace rendering::passes
 {
-    void StencilOutlinePass::Init(VulkanEngine* engine)
+    void StencilOutlinePass::Init()
     {
-        this->engine = engine;
-        device = engine->Resource();
-        view.Init(engine->ecsEngine);
+        device = renderer.resource.device;
 
         VkPushConstantRange matrixRange;
         matrixRange.offset = 0;
         matrixRange.size = sizeof(PushConstants);
         matrixRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
 
-        const VkDescriptorSetLayout layouts[] = { engine->commonSets.GPUSceneData.set };
+        const VkDescriptorSetLayout layouts[] = { renderer.commonSets.sceneDataLayout.set };
 
         auto mesh_layout_info = vkinit::New<VkPipelineLayoutCreateInfo>(); {
             mesh_layout_info.setLayoutCount = std::size(layouts);
@@ -60,8 +58,8 @@ namespace rendering::passes
         maskPipelineBuilder.enable_depthtest(false, VK_COMPARE_OP_ALWAYS, &maskStencil);
 
         //render format
-        maskPipelineBuilder.set_color_attachment_format(engine->drawImage.imageFormat);
-        maskPipelineBuilder.set_depth_format(engine->depthImage.imageFormat, true);
+        maskPipelineBuilder.set_color_attachment_format(renderer.drawImage.imageFormat);
+        maskPipelineBuilder.set_depth_format(renderer.depthImage.imageFormat, true);
 
         maskPipelineBuilder.pipelineLayout = maskLayout;
 
@@ -89,8 +87,8 @@ namespace rendering::passes
         outlinePipelineBuilder.enable_depthtest(false, VK_COMPARE_OP_ALWAYS, &outlineStencil);
 
         //render format
-        outlinePipelineBuilder.set_color_attachment_format(engine->drawImage.imageFormat);
-        outlinePipelineBuilder.set_depth_format(engine->depthImage.imageFormat, true);
+        outlinePipelineBuilder.set_color_attachment_format(renderer.drawImage.imageFormat);
+        outlinePipelineBuilder.set_depth_format(renderer.depthImage.imageFormat, true);
 
         outlinePipelineBuilder.pipelineLayout = outlineLayout;
 
@@ -105,7 +103,7 @@ namespace rendering::passes
     {
         vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, maskPipeline);
 
-        const VkDescriptorSet sets[] = { engine->gpuSceneDescriptorSet.descriptorSet };
+        const VkDescriptorSet sets[] = { renderer.gpuSceneDescriptorSet.descriptorSet };
         vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, maskLayout, 0, std::size(sets), sets, 0, nullptr);
 
         for (const auto& [submeshID, passMesh, data] : view)
@@ -121,7 +119,7 @@ namespace rendering::passes
                 ecs::Entity entity = data.transforms->data()[i];
 
                 const PushConstants pushConstants {
-                    engine->ecsEngine.Get<Transform>(entity).transform,
+                    engine.Get<Transform>(entity).transform,
                     mesh.vertexBufferAddress,
                 };
 
@@ -147,7 +145,7 @@ namespace rendering::passes
                 ecs::Entity entity = data.transforms->data()[i];
 
                 const PushConstants pushConstants {
-                    engine->ecsEngine.Get<Transform>(entity).transform,
+                    engine.Get<Transform>(entity).transform,
                     mesh.vertexBufferAddress,
                 };
 

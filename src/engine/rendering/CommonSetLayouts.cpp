@@ -7,12 +7,12 @@ namespace rendering
     void CommonSetLayouts::Init(const VkDevice _device)
     {
         device = _device;
-        GPUSceneData = shader_layouts::CreateSetLayout(_device, &sceneData_bindings);
+        sceneDataLayout = shader_layouts::CreateSetLayout(_device, &sceneData_bindings);
     }
 
     void CommonSetLayouts::Destroy()
     {
-        vkDestroyDescriptorSetLayout(device, GPUSceneData.set, nullptr);
-        GPUSceneData.set = nullptr;
+        vkDestroyDescriptorSetLayout(device, sceneDataLayout.set, nullptr);
+        sceneDataLayout.set = nullptr;
     }
 }
