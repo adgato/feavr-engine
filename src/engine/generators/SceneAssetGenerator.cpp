@@ -10,18 +10,20 @@
 #include <fastgltf/tools.hpp>
 
 #include "assets-system/AssetManager.h"
-#include "ecs/EngineExtensions.h"
+#include "components/Tags.h"
+#include "components/Transform.h"
+#include "widgets/EngineWidget.h"
 #include "ecs/EngineView.h"
 #include "fmt/ranges.h"
 #include "rendering/Core.h"
 
-void load_primitive_indices(const fastgltf::Asset& gltf, const fastgltf::Primitive& primitive, std::vector<uint32_t>& indices, const size_t vertexOffset)
+void load_primitive_indices(const fastgltf::Asset& gltf, const fastgltf::Primitive& primitive, serial::array<uint32_t>& indices, const size_t vertexOffset)
 {
     if (!primitive.indicesAccessor.has_value())
         return;
 
     const fastgltf::Accessor& indexAccessor = gltf.accessors[primitive.indicesAccessor.value()];
-    indices.reserve(indices.size() + indexAccessor.count);
+    indices.Reserve(indices.size() + indexAccessor.count);
 
     for (size_t i = 0; i < indexAccessor.count; ++i)
     {
@@ -30,21 +32,21 @@ void load_primitive_indices(const fastgltf::Asset& gltf, const fastgltf::Primiti
     }
 }
 
-void load_primitive_vertices(const fastgltf::Asset& gltf, const fastgltf::Primitive& primitive, std::vector<rendering::Vertex>& vertices)
+void load_primitive_vertices(const fastgltf::Asset& gltf, const fastgltf::Primitive& primitive, serial::array<rendering::Vertex>& vertices)
 {
     const auto positionIt = primitive.findAttribute("POSITION");
     if (positionIt == primitive.attributes.end()) return;
 
     const fastgltf::Accessor& posAccessor = gltf.accessors[positionIt->second];
     const size_t vertexOffset = vertices.size();
-    vertices.resize(vertices.size() + posAccessor.count);
+    vertices.Resize(vertices.size() + posAccessor.count);
 
     // Load positions
     for (size_t i = 0; i < posAccessor.count; ++i)
     {
         const glm::vec3 position = fastgltf::getAccessorElement<glm::vec3>(gltf, posAccessor, i);
 
-        rendering::Vertex& vertex = vertices[vertexOffset + i];
+        rendering::Vertex& vertex = vertices.data()[vertexOffset + i];
         vertex.position = position;
         vertex.normal = { 0.0f, 0.0f, 1.0f };
         vertex.color = { 1.0f, 1.0f, 1.0f, 1.0f };
@@ -59,7 +61,7 @@ void load_primitive_vertices(const fastgltf::Asset& gltf, const fastgltf::Primit
         const fastgltf::Accessor& normalAccessor = gltf.accessors[normalIt->second];
         for (size_t i = 0; i < normalAccessor.count; ++i)
         {
-            vertices[vertexOffset + i].normal = fastgltf::getAccessorElement<glm::vec3>(gltf, normalAccessor, i);
+            vertices.data()[vertexOffset + i].normal = fastgltf::getAccessorElement<glm::vec3>(gltf, normalAccessor, i);
         }
     }
 
@@ -71,8 +73,8 @@ void load_primitive_vertices(const fastgltf::Asset& gltf, const fastgltf::Primit
         for (size_t i = 0; i < uvAccessor.count; ++i)
         {
             const glm::vec2 uv = fastgltf::getAccessorElement<glm::vec2>(gltf, uvAccessor, i);
-            vertices[vertexOffset + i].uv_x = uv.x;
-            vertices[vertexOffset + i].uv_y = uv.y;
+            vertices.data()[vertexOffset + i].uv_x = uv.x;
+            vertices.data()[vertexOffset + i].uv_y = uv.y;
         }
     }
 
@@ -83,7 +85,7 @@ void load_primitive_vertices(const fastgltf::Asset& gltf, const fastgltf::Primit
         const fastgltf::Accessor& colorAccessor = gltf.accessors[colorIt->second];
         for (size_t i = 0; i < colorAccessor.count; ++i)
         {
-            vertices[vertexOffset + i].color = fastgltf::getAccessorElement<glm::vec4>(gltf, colorAccessor, i);
+            vertices.data()[vertexOffset + i].color = fastgltf::getAccessorElement<glm::vec4>(gltf, colorAccessor, i);
         }
     }
 }
@@ -94,7 +96,7 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
     ecs::Engine& engine = core.engine;
     rendering::PassSystem& passManager = core.renderer.passManager;
 
-    rendering::Material<default_pass::Pass, identify_pass::Pass> defaultMaterial(engine, passManager);
+    rendering::Material<DefaultPass, IdentifyPass> defaultMaterial(engine, passManager);
 
     fastgltf::Parser parser {};
 
@@ -145,11 +147,11 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
     }
 
     // save reallocation
-    std::vector<uint32_t> indices;
-    std::vector<rendering::Vertex> vertices;
+    serial::array<uint32_t> indices;
+    serial::array<rendering::Vertex> vertices;
 
 
-    std::vector<std::vector<ecs::EntityID>> meshTransforms;
+    std::vector<std::vector<ecs::EntityRef>> meshTransforms;
     meshTransforms.reserve(gltf.nodes.size());
 
     // load all nodes and their meshes
@@ -158,7 +160,7 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
         if (!node.meshIndex.has_value())
             continue;
 
-        rendering::Transform newNode;
+        Transform newNode;
         std::visit(fastgltf::visitor
                    {
                        [&](const fastgltf::Node::TransformMatrix& matrix) { std::memcpy(&newNode.transform, matrix.data(), sizeof(matrix)); },
@@ -173,7 +175,11 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
         );
 
         ecs::Entity e = engine.New();
-        engine.Add<rendering::Transform>(e, newNode);
+        engine.Add<Transform>(e, newNode);
+
+        Tags tags {};
+        tags.AddTag(assetPath.c_str());
+        engine.Add<Tags>(e, tags);
 
         uint32_t meshIdx = static_cast<uint32_t>(*node.meshIndex);
 
@@ -183,24 +189,35 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
         meshTransforms[meshIdx].emplace_back(e);
     }
 
+    std::vector<ecs::EntityID> meshes {};
+    meshes.reserve(gltf.meshes.size());
     for (fastgltf::Mesh& mesh : gltf.meshes)
     {
-        indices.clear();
-        vertices.clear();
+        indices.Resize(0);
+        vertices.Resize(0);
         for (const auto& primitive : mesh.primitives)
         {
             load_primitive_indices(gltf, primitive, indices, vertices.size());
             load_primitive_vertices(gltf, primitive, vertices);
         }
 
-        const uint32_t meshIndex = passManager.AddMesh(rendering::Mesh {}, rendering::MeshDirectSource { vertices, indices });
+        ecs::Entity meshIndex = engine.New();
+        Mesh renderMesh {};
+        renderMesh.SetMeshData(indices, vertices);
+        engine.Add<Mesh>(meshIndex, renderMesh);
+        meshes.emplace_back(meshIndex);
+    }
 
+    engine.Refresh();
+
+    for (size_t i = 0; i < meshes.size(); ++i)
+    {
         uint32_t cumCount = 0;
-        for (auto&& p : mesh.primitives)
+        for (auto&& p : gltf.meshes[i].primitives)
         {
             uint32_t count = static_cast<uint32_t>(gltf.accessors[p.indicesAccessor.value()].count);
 
-            defaultMaterial.AddSubMesh(meshIndex, meshTransforms[meshIndex], cumCount, count);
+            defaultMaterial.AddSubMesh(meshes[i], meshTransforms[i], cumCount, count);
 
             cumCount += count;
         }
@@ -218,12 +235,11 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
 
     assets_system::AssetFile sceneAsset("SCNE", 0);
 
-    sceneAsset.header["Meshes Start"] = static_cast<uint64_t>(passManager.serializeInfo.meshesStart);
-    sceneAsset.header["Meshes Size"] = static_cast<uint64_t>(passManager.serializeInfo.meshesSizeBytes);
-
     sceneAsset.WriteToBlob(m, true);
 
     sceneAsset.Save(fullPath.c_str());
+
+    engine.Destroy();
 
     return { sceneFileName };
 }

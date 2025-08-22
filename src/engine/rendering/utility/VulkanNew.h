@@ -62,4 +62,5 @@ template <> inline VkImageMemoryBarrier2 New<VkImageMemoryBarrier2>() { return {
 template <> inline VkDependencyInfo New<VkDependencyInfo>() { return { .sType = VK_STRUCTURE_TYPE_DEPENDENCY_INFO }; }
 template <> inline VkImageBlit2 New<VkImageBlit2>() { return { .sType = VK_STRUCTURE_TYPE_IMAGE_BLIT_2 }; }
 template <> inline VkBlitImageInfo2 New<VkBlitImageInfo2>() { return { .sType = VK_STRUCTURE_TYPE_BLIT_IMAGE_INFO_2 }; }
+template <> inline VkSemaphoreWaitInfo New<VkSemaphoreWaitInfo>() { return { .sType = VK_STRUCTURE_TYPE_SEMAPHORE_WAIT_INFO }; }
 }

@@ -15,7 +15,7 @@
 #include <glm/gtx/transform.hpp>
 
 #include "assets-system/AssetManager.h"
-#include "ecs/EngineExtensions.h"
+#include "widgets/EngineWidget.h"
 #include "ecs/EngineView.h"
 #include "fmt/ranges.h"
 #include "rendering/utility/Initializers.h"
@@ -27,14 +27,15 @@
 using namespace rendering;
 
 RenderingEngine::RenderingEngine(ecs::Engine& engine, RenderingResources& resources)
-    : resource(resources.resource), passManager(resources, *this, engine), defaultMaterial(engine, passManager) {}
+    : resources(resources), resource(resources.resource), passManager(resources, *this, engine), defaultMaterial(engine, passManager) {}
 
 void RenderingEngine::Init(RenderingResources& resources)
 {
     // We initialize SDL and create a window with it.
 
     //depth image size will match the window
-    constexpr VkExtent3D drawImageExtent = { windowSize.width, windowSize.height, 1 };
+    constexpr VkExtent2D windowSize { 1920, 1080 };
+    const VkExtent3D drawImageExtent = { windowSize.width, windowSize.height, 1 };
 
     VkImageUsageFlags drawImageUsages {};
     drawImageUsages |= VK_IMAGE_USAGE_TRANSFER_SRC_BIT;
@@ -74,8 +75,22 @@ void RenderingEngine::Init(RenderingResources& resources)
 
 void RenderingEngine::Draw(const uint32_t frameCount, VkCommandBuffer cmd, Image& targetImage)
 {
-    //begin a render pass  connected to our draw image
+    // optional, quite costly when resizing
+    if (drawImage.imageExtent.width != targetImage.imageExtent.width)
+    {
+        drawImage.Destroy();
+        depthImage.Destroy();
+        VkImageUsageFlags drawImageUsages {};
+        drawImageUsages |= VK_IMAGE_USAGE_TRANSFER_SRC_BIT;
+        drawImageUsages |= VK_IMAGE_USAGE_STORAGE_BIT;
+        drawImageUsages |= VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT;
 
+        VkImageUsageFlags depthImageUsages {};
+        depthImageUsages |= VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT;
+
+        drawImage = Image::Allocate(&resources, targetImage.imageExtent, VK_FORMAT_R16G16B16A16_SFLOAT, drawImageUsages);
+        depthImage = Image::Allocate(&resources, targetImage.imageExtent, VK_FORMAT_D24_UNORM_S8_UINT, depthImageUsages, VK_IMAGE_ASPECT_DEPTH_BIT | VK_IMAGE_ASPECT_STENCIL_BIT);
+    }
 
     VkClearValue clearColor;
     clearColor.color = { { 0.0f, 0.0f, 0.0f, 1.0f } };
@@ -129,7 +144,8 @@ void RenderingEngine::Draw(const uint32_t frameCount, VkCommandBuffer cmd, Image
     mainCamera.update();
     const glm::mat4 view = mainCamera.getViewMatrix();
     // camera projection
-    glm::mat4 projection = glm::perspective(glm::radians(70.f), static_cast<float>(windowSize.width) / static_cast<float>(windowSize.height), 10000.f, 0.1f);
+    glm::mat4 projection = glm::perspective(glm::radians(80.f), static_cast<float>(targetImage.imageExtent.width) / static_cast<float>(targetImage.imageExtent.height),
+                                            10000.f, 0.1f);
     // invert the Y direction on projection matrix so that we are more similar
     // to opengl and gltf axis
     projection[1][1] *= -1;
@@ -153,7 +169,6 @@ void RenderingEngine::Draw(const uint32_t frameCount, VkCommandBuffer cmd, Image
 void RenderingEngine::Destroy()
 {
     //make sure the gpu has stopped doing its things
-    vkDeviceWaitIdle(resource);
 
     for (auto& [frameDescriptors, sceneDataBuffer] : frameData)
     {

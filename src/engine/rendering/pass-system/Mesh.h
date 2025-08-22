@@ -1,66 +1,13 @@
 #pragma once
+#include "SubMesh.h"
 #include "glm/vec3.hpp"
 #include "glm/vec4.hpp"
-#include <glm/gtx/matrix_decompose.hpp>
-#include "glm/gtc/type_ptr.hpp"
-#include "glm/gtx/quaternion.hpp"
 #include "rendering/resources/Buffer.h"
-#include "serialisation/Stream.h"
+#include "serialisation/array.h"
 
 namespace rendering
 {
-    struct Transform
-    {
-        glm::mat4 transform;
-
-        void Serialize(serial::Stream& m)
-        {
-            m.SerializeArray<float>(glm::value_ptr(transform), 16);
-        }
-
-        void Widget()
-        {
-            glm::vec3 scale;
-            glm::quat rotation;
-            glm::vec3 translation;
-            glm::vec3 skew;
-            glm::vec4 perspective;
-
-            glm::decompose(transform, scale, rotation, translation, skew, perspective);
-            rotation = glm::normalize(rotation);
-
-            // Get current euler angles for display
-            glm::vec3 displayEuler = glm::degrees(glm::eulerAngles(rotation));
-            for (int i = 0; i < 3; i++)
-            {
-                while (displayEuler[i] > 180.0f) displayEuler[i] -= 360.0f;
-                while (displayEuler[i] < -180.0f) displayEuler[i] += 360.0f;
-            }
-
-            bool changed = false;
-
-            if (ImGui::DragFloat3("Position", glm::value_ptr(translation), 0.05f))
-                changed = true;
-
-            glm::vec3 editEuler = displayEuler;
-            if (ImGui::DragFloat3("Rotation", glm::value_ptr(editEuler), 1.0f, 0, 0, "%.1f°"))
-            {
-                rotation *= glm::quat(glm::radians(editEuler - displayEuler));
-                rotation = glm::normalize(rotation);
-                changed = true;
-            }
-
-            if (ImGui::DragFloat3("Scale", glm::value_ptr(scale), 0.005f, 0.001f, 100.0f))
-                changed = true;
-
-            if (changed)
-            {
-                transform = glm::translate(glm::mat4(1.0f), translation) *
-                            glm::toMat4(rotation) *
-                            glm::scale(glm::mat4(1.0f), glm::max(glm::vec3(0.001f, 0.001f, 0.001f), scale));
-            }
-        }
-    };
+    class RenderingResources;
 
     struct Vertex
     {
@@ -70,23 +17,55 @@ namespace rendering
         float uv_y;
         glm::vec4 color;
     };
-
-    struct Mesh
-    {
-        Buffer<Vertex> vertexBuffer;
-        Buffer<uint32_t> indexBuffer;
-
-        VkDeviceAddress vertexBufferAddress;
-
-        bool IsValid() const
-        {
-            return vertexBuffer.buffer && indexBuffer.buffer && vertexBufferAddress;
-        }
-
-        void Destroy()
-        {
-            vertexBuffer.Destroy();
-            indexBuffer.Destroy();
-        }
-    };
 }
+
+struct Mesh
+{
+    rendering::Buffer<rendering::Vertex> vertexBuffer;
+    rendering::Buffer<uint32_t> indexBuffer;
+    VkDeviceAddress vertexBufferAddress;
+
+private:
+    uint32_t refCount = 0;
+    serial::array<std::byte> compressedMeshData {};
+    size_t uncompressedSize = 0;
+
+    void Compress(std::span<std::byte> data);
+
+    void Uncompress(serial::array<std::byte>& data);
+
+public:
+    void SetMeshData(serial::array<uint32_t> indices, serial::array<rendering::Vertex> vertices);
+
+    void UploadMesh(const rendering::RenderingResources& resources);
+
+    void Serialize(serial::Stream& m);
+
+    bool IsNotReferenced() const
+    {
+        return refCount == 0;
+    }
+
+    void Reference()
+    {
+        ++refCount;
+    }
+
+    bool Dereference()
+    {
+        assert(refCount > 0);
+        return --refCount == 0;
+    }
+
+    bool IsValid() const
+    {
+        return vertexBuffer.buffer && indexBuffer.buffer && vertexBufferAddress;
+    }
+
+    void Destroy()
+    {
+        vertexBuffer.Destroy();
+        indexBuffer.Destroy();
+        compressedMeshData.Destroy();
+    }
+};

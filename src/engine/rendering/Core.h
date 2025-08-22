@@ -2,6 +2,8 @@
 #include "ImguiOverlay.h"
 #include "utility/ClickOnMeshTool.h"
 #include "RenderingEngine.h"
+#include "assets-system/AssetID.h"
+#include "widgets/EngineWidget.h"
 
 class Core
 {
@@ -11,9 +13,11 @@ public:
     RenderingEngine renderer { engine, resources };
     ImguiOverlay imguiOverlay {};
     rendering::ClickOnMeshTool clickOnMeshTool { resources, renderer.passManager };
+    ecs::EngineWidget engineWidget { engine };
 
     bool skipDrawing = false;
-    
+    glm::vec2 coord;
+
     void Init();
 
     void SaveScene(const char* filePath);
@@ -21,5 +25,6 @@ public:
     void LoadScene(assets_system::AssetID other);
 
     bool Next();
+
     void Destroy();
 };

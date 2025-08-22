@@ -1,16 +1,21 @@
 #pragma once
-#include "ComponentConcepts.h"
+#include "ecs/ComponentConcepts.h"
+#include "ecs/TypeRegistry.h"
 #include "serialisation/Stream.h"
 
 namespace ecs
 {
     struct EntityRef
     {
-        EntityID id;
+        EntityID id = BadMaxEntity;
+
+        EntityRef() = default;
+        EntityRef(Entity id) : id(id) {}
+        operator Entity() const { return id; }
 
         void Serialize(serial::Stream& m)
         {
-            // userData is expected to be an offset for the id. this is needed to automatically update the EntityRef when engines are unioned.
+            // userData is expected to have an offset for the id. this is needed to automatically update the EntityRef when engines are unioned.
             if (m.reading)
                 id = m.reader.Read<EntityID>() + std::any_cast<EntityID>(m.userData);
             else

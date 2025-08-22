@@ -1,6 +1,6 @@
 #pragma once
 
-#include "hlsl++/vector_int_type.h"
+#include "glm/fwd.hpp"
 #include "rendering/resources/RenderingResources.h"
 #include "rendering/resources/Image.h"
 
@@ -22,7 +22,6 @@ namespace rendering
         Image drawImage {};
         Image depthImage {};
         Buffer<uint32_t> resultBuffer;
-        hlslpp::int2 coord {};
         bool waitingSample = false;
 
     public:
@@ -30,7 +29,7 @@ namespace rendering
 
         void Init();
 
-        void DrawMeshIndices(VkCommandBuffer cmd, const glm::mat4& cameraView, const hlslpp::int2& coord);
+        void DrawMeshIndices(VkCommandBuffer cmd, const VkExtent3D& imageExtent, const glm::mat4& cameraView, glm::vec3 fovNearFar, glm::vec2 coord);
 
         bool DrawWaitingSample(uint32_t sufficientFrameDelta = 1) const;
 

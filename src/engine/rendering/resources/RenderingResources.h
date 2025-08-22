@@ -20,11 +20,12 @@ namespace rendering
     };
 
     constexpr uint32_t FRAME_OVERLAP = 2;
-    constexpr VkExtent2D windowSize { 1700, 900 };
     constexpr VkFormat imageFormat = VK_FORMAT_B8G8R8A8_UNORM;
 
     class RenderingResources
     {
+        bool resizeRequested = false;
+
     public:
         FrameCommand frames[FRAME_OVERLAP];
 
@@ -40,6 +41,14 @@ namespace rendering
         uint32_t currentSwapchainImageIndex;
 
         ResourceHandles resource;
+
+    private:
+
+        void ResizeSwapchain();
+        void CreateSwapchain(const VkExtent2D& windowSize);
+        void DestroySwapchain();
+
+    public:
 
         void Init();
 

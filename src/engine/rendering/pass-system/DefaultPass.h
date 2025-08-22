@@ -1,5 +1,4 @@
 #pragma once
-#include <span>
 
 #include "PassComponent.h"
 #include "SubMesh.h"
@@ -14,51 +13,43 @@ namespace serial
     class Stream;
 }
 
-namespace rendering
+class DefaultPass
 {
-    struct Mesh;
-}
-
-namespace rendering::passes
-{
-    class DefaultPass
+public:
+    struct MaterialConstants
     {
-    public:
-        struct MaterialConstants
-        {
-            glm::vec4 colorFactors;
-            glm::vec4 metal_rough_factors;
-            //padding, we need it anyway for uniform buffers
-            glm::vec4 extra[14];
-        };
-
-        struct PushConstants
-        {
-            glm::mat4 matrix;
-            VkDeviceAddress vertexBuffer;
-        };
-
-        RenderingEngine& renderer;
-        ecs::Engine& engine;
-        VkDevice device = nullptr;
-
-        ecs::EngineView<SubMesh, PassComponent<DefaultPass>> view;
-
-        VkPipelineLayout layout = nullptr;
-        VkPipeline pipeline = nullptr;
-        DescriptorWriter properties {};
-        Buffer<MaterialConstants> matConstProperty {};
-
-        DescriptorSetLayoutInfo materialLayout {};
-
-        DefaultPass(RenderingEngine& renderer, ecs::Engine& engine)
-            : renderer(renderer),
-              engine(engine), view(engine) {}
-
-        void Init();
-
-        void Draw(VkCommandBuffer cmd, const std::span<Mesh>& meshes);
-
-        void Destroy();
+        glm::vec4 colorFactors;
+        glm::vec4 metal_rough_factors;
+        //padding, we need it anyway for uniform buffers
+        glm::vec4 extra[14];
     };
-}
+
+    struct PushConstants
+    {
+        glm::mat4 matrix;
+        VkDeviceAddress vertexBuffer;
+    };
+
+    RenderingEngine& renderer;
+    ecs::Engine& engine;
+    VkDevice device = nullptr;
+
+    ecs::EngineView<SubMesh, PassComponent<DefaultPass>> view;
+
+    VkPipelineLayout layout = nullptr;
+    VkPipeline pipeline = nullptr;
+    DescriptorWriter properties {};
+    rendering::Buffer<MaterialConstants> matConstProperty {};
+
+    DescriptorSetLayoutInfo materialLayout {};
+
+    DefaultPass(RenderingEngine& renderer, ecs::Engine& engine)
+        : renderer(renderer),
+          engine(engine), view(engine) {}
+
+    void Init();
+
+    void Draw(VkCommandBuffer cmd);
+
+    void Destroy();
+};

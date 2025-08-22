@@ -1,5 +1,4 @@
 #pragma once
-#include <span>
 
 #include "PassComponent.h"
 #include "SubMesh.h"
@@ -10,50 +9,44 @@
 #include "rendering/utility/Descriptors.h"
 #include "rendering/utility/DescriptorSetLayoutInfo.h"
 
-namespace serial {
+namespace serial
+{
     class Stream;
 }
 
-namespace rendering
+class IdentifyPass
 {
-    struct Mesh;
-}
+    rendering::Buffer<rendering::GlobalSceneData> pixelSceneBuffer[rendering::FRAME_OVERLAP];
 
-namespace rendering::passes
-{
-    class IdentifyPass
+public:
+    struct PushConstants
     {
-        Buffer<GlobalSceneData> pixelSceneBuffer[FRAME_OVERLAP];
-    public:
-        struct PushConstants
-        {
-            glm::mat4 matrix;
-            VkDeviceAddress vertexBuffer;
-            uint32_t identifier;
-        };
-
-        RenderingEngine& renderer;
-        ecs::Engine& engine;
-        VkDevice device = nullptr;
-
-        ecs::EngineView<SubMesh, PassComponent<IdentifyPass>> view;
-
-
-        DescriptorWriter pixelSceneDescriptor {};
-
-        VkPipelineLayout layout = nullptr;
-        VkPipeline pipeline = nullptr;
-
-        IdentifyPass(RenderingEngine& renderer, ecs::Engine& engine)
-            : renderer(renderer),
-              engine(engine), view(engine) {}
-
-        void Init();
-
-        void IdentifySubMeshesOf(ecs::Entity transform, std::vector<ecs::EntityID>& outSubMeshes);
-
-        void Draw(VkCommandBuffer cmd, const std::span<Mesh>& meshes, size_t frame, const GlobalSceneData& pixelSceneData);
-
-        void Destroy();
+        glm::mat4 matrix;
+        VkDeviceAddress vertexBuffer;
+        uint32_t identifier;
     };
-}
+
+    RenderingEngine& renderer;
+    ecs::Engine& engine;
+    VkDevice device = nullptr;
+
+    ecs::EngineView<SubMesh, PassComponent<IdentifyPass>> view;
+
+
+    DescriptorWriter pixelSceneDescriptor {};
+
+    VkPipelineLayout layout = nullptr;
+    VkPipeline pipeline = nullptr;
+
+    IdentifyPass(RenderingEngine& renderer, ecs::Engine& engine)
+        : renderer(renderer),
+          engine(engine), view(engine) {}
+
+    void Init();
+
+    void IdentifySubMeshesOf(ecs::Entity transform, std::vector<ecs::EntityID>& outSubMeshes);
+
+    void Draw(VkCommandBuffer cmd, size_t frame, const rendering::GlobalSceneData& pixelSceneData);
+
+    void Destroy();
+};

@@ -76,15 +76,21 @@ namespace serial
 
         void Resize(const fsize count)
         {
-            this->capacity = 0;
-            IncreaseCapacity(count);
+            if (count > this->count)
+            {
+                capacity = 0;
+                IncreaseCapacity(count);
+            }
             this->count = count;
         }
 
         void Reserve(const fsize capacity)
         {
-            this->capacity = 0;
-            IncreaseCapacity(capacity);
+            if (capacity > this->capacity)
+            {
+                this->capacity = 0;
+                IncreaseCapacity(capacity);
+            }
         }
 
         void push_back(const T& elem)
@@ -128,11 +134,11 @@ namespace serial
             else
                 m.writer.Write<fsize>(count);
 
-            if constexpr (std::is_arithmetic_v<T>)
-                m.SerializeArray<T>(ptr, count);
-            else
+            if constexpr (IsSerialType<T>)
                 for (fsize i = 0; i < count; ++i)
                     ptr[i].Serialize(m);
+            else
+                m.SerializeArray<T>(ptr, count);
         }
     };
 }

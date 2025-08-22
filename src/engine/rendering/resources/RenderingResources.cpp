@@ -8,8 +8,63 @@
 
 namespace rendering
 {
+    void RenderingResources::ResizeSwapchain()
+    {
+        vkDeviceWaitIdle(resource.device);
+
+        DestroySwapchain();
+        int w, h;
+        SDL_GetWindowSize(resource.window, &w, &h);
+        CreateSwapchain(VkExtent2D { static_cast<uint32_t>(w), static_cast<uint32_t>(h) });
+
+        const auto semaphoreCreateInfo = vkinit::New<VkSemaphoreCreateInfo>();
+        for (auto& frame : frames)
+        {
+            vkDestroySemaphore(resource.device, frame.renderSemaphore, nullptr);
+            vkDestroySemaphore(resource.device, frame.swapchainSemaphore, nullptr);
+            VK_CHECK(vkCreateSemaphore(resource.device, &semaphoreCreateInfo, nullptr, &frame.swapchainSemaphore));
+            VK_CHECK(vkCreateSemaphore(resource.device, &semaphoreCreateInfo, nullptr, &frame.renderSemaphore));
+        }
+    }
+
+    void RenderingResources::CreateSwapchain(const VkExtent2D& windowSize)
+    {
+        vkb::SwapchainBuilder swapchainBuilder { resource.physicalDevice, resource.device, resource.surface };
+
+        vkb::Swapchain vkbSwapchain = swapchainBuilder
+                //.use_default_format_selection()
+                .set_desired_format(VkSurfaceFormatKHR { .format = imageFormat, .colorSpace = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR })
+                //use vsync present mode
+                .set_desired_present_mode(VK_PRESENT_MODE_FIFO_KHR)
+                .set_desired_extent(windowSize.width, windowSize.height)
+                .add_image_usage_flags(VK_IMAGE_USAGE_TRANSFER_DST_BIT)
+                .build()
+                .value();
+
+        swapchain = vkbSwapchain.swapchain;
+        swapchainImages.clear();
+
+        const std::vector<VkImage>& images = vkbSwapchain.get_images().value();
+        const std::vector<VkImageView>& imageViews = vkbSwapchain.get_image_views().value();
+
+        for (uint32_t i = 0; i < vkbSwapchain.image_count; ++i)
+        {
+            Image& image = swapchainImages.emplace_back();
+            image.imageExtent = VkExtent3D { vkbSwapchain.extent.width, vkbSwapchain.extent.height, 1 };
+            image.image = images[i];
+            image.imageView = imageViews[i];
+            image.renderer = this;
+            image.allocation = VK_NULL_HANDLE;
+            image.imageFormat = imageFormat;
+            image.aspectFlags = VK_IMAGE_ASPECT_COLOR_BIT;
+            image.currentLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+        }
+    }
+
+
     void RenderingResources::Init()
     {
+        constexpr VkExtent2D windowSize { 1920, 1080 };
         constexpr bool useValidationLayers = true;
 
         SDL_Init(SDL_INIT_VIDEO);
@@ -20,7 +75,7 @@ namespace rendering
             SDL_WINDOWPOS_UNDEFINED,
             windowSize.width,
             windowSize.height,
-            SDL_WINDOW_VULKAN | SDL_WINDOW_RESIZABLE
+            SDL_WINDOW_VULKAN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED
         );
 
         vkb::InstanceBuilder builder;
@@ -77,38 +132,7 @@ namespace rendering
         resource.graphicsQueue = vkbDevice.get_queue(vkb::QueueType::graphics).value();
         resource.graphicsQueueFamily = vkbDevice.get_queue_index(vkb::QueueType::graphics).value();
 
-        //initialize the memory allocator
-
-        vkb::SwapchainBuilder swapchainBuilder { resource.physicalDevice, resource.device, resource.surface };
-
-        vkb::Swapchain vkbSwapchain = swapchainBuilder
-                //.use_default_format_selection()
-                .set_desired_format(VkSurfaceFormatKHR { .format = imageFormat, .colorSpace = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR })
-                //use vsync present mode
-                .set_desired_present_mode(VK_PRESENT_MODE_FIFO_KHR)
-                .set_desired_extent(windowSize.width, windowSize.height)
-                .add_image_usage_flags(VK_IMAGE_USAGE_TRANSFER_DST_BIT)
-                .build()
-                .value();
-
-        swapchain = vkbSwapchain.swapchain;
-        swapchainImages.clear();
-
-        const std::vector<VkImage>& images = vkbSwapchain.get_images().value();
-        const std::vector<VkImageView>& imageViews = vkbSwapchain.get_image_views().value();
-
-        for (uint32_t i = 0; i < vkbSwapchain.image_count; ++i)
-        {
-            Image& image = swapchainImages.emplace_back();
-            image.imageExtent = VkExtent3D { vkbSwapchain.extent.width, vkbSwapchain.extent.height, 1 };
-            image.image = images[i];
-            image.imageView = imageViews[i];
-            image.renderer = this;
-            image.allocation = VK_NULL_HANDLE;
-            image.imageFormat = imageFormat;
-            image.aspectFlags = VK_IMAGE_ASPECT_COLOR_BIT;
-            image.currentLayout = VK_IMAGE_LAYOUT_UNDEFINED;
-        }
+        CreateSwapchain(windowSize);
 
         //create a command pool for commands submitted to the graphics queue.
         //we also want the pool to allow for resetting of individual command buffers
@@ -187,7 +211,7 @@ namespace rendering
         const size_t vertexBufferSize = vertices.size() * sizeof(Vertex);
         const size_t indexBufferSize = indices.size() * sizeof(uint32_t);
 
-        Mesh newSurface;
+        Mesh newSurface {};
 
         //create vertex buffer
         newSurface.vertexBuffer = Buffer<Vertex>::Allocate(resource, vertices.size(),
@@ -239,8 +263,21 @@ namespace rendering
         }
 
         // block until this frame has finished exeuting its last command
-        VK_CHECK(vkWaitForFences(resource.device, 1, &currentFrame.renderFence, true, 1000000000));
-        VK_CHECK(vkAcquireNextImageKHR(resource.device, swapchain, 1000000000, currentFrame.swapchainSemaphore, nullptr, &currentSwapchainImageIndex));
+        if (resizeRequested)
+        {
+            ResizeSwapchain();
+            resizeRequested = false;
+        }
+        else
+            VK_CHECK(vkWaitForFences(resource.device, 1, &currentFrame.renderFence, true, 1000000000));
+
+        const VkResult result = vkAcquireNextImageKHR(resource.device, swapchain, 1000000000, currentFrame.swapchainSemaphore, nullptr, &currentSwapchainImageIndex);
+        if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
+        {
+            resizeRequested = true;
+            return { nullptr, swapchainImages[currentSwapchainImageIndex] };
+        }
+        VK_CHECK(result);
         VK_CHECK(vkResetFences(resource.device, 1, &currentFrame.renderFence));
         VK_CHECK(vkResetCommandBuffer(currentFrame.cmd, 0));
         VK_CHECK(vkBeginCommandBuffer(currentFrame.cmd, &cmdBeginInfo));
@@ -307,15 +344,23 @@ namespace rendering
         //      as its necessary that drawing commands have finished before the image is displayed to the user
         VK_CHECK(vkEndCommandBuffer(currentFrame.cmd));
         VK_CHECK(vkQueueSubmit2(resource.graphicsQueue, 1, &submit, currentFrame.renderFence));
-        VK_CHECK(vkQueuePresentKHR(resource.graphicsQueue, &presentInfo));
+        const VkResult result = vkQueuePresentKHR(resource.graphicsQueue, &presentInfo);
+        if (result == VK_ERROR_OUT_OF_DATE_KHR || result == VK_SUBOPTIMAL_KHR)
+            resizeRequested = true;
+        else
+            VK_CHECK(result);
+    }
+
+    void RenderingResources::DestroySwapchain()
+    {
+        vkDestroySwapchainKHR(resource.device, swapchain, nullptr);
+        for (auto& image : swapchainImages)
+            image.Destroy();
     }
 
     void RenderingResources::Destroy()
     {
-        vkDestroySwapchainKHR(resource.device, swapchain, nullptr);
-
-        for (auto& image : swapchainImages)
-            image.Destroy();
+        DestroySwapchain();
 
         vkDestroyCommandPool(resource.device, immCommandPool, nullptr);
         vkDestroyFence(resource.device, immFence, nullptr);

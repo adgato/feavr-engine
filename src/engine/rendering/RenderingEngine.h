@@ -18,6 +18,7 @@ struct FrameData
 class RenderingEngine
 {
 public:
+    rendering::RenderingResources& resources;
     rendering::ResourceHandles& resource;
     FrameData frameData[2] {};
 
@@ -37,7 +38,7 @@ public:
     rendering::GlobalSceneData sceneData {};
     rendering::PassSystem passManager;
 
-    rendering::Material<identify_pass::Pass> defaultMaterial;
+    rendering::Material<IdentifyPass> defaultMaterial;
 
     // Easy way to get resources the rendering engine is using. Resources are implicitly cast to pass whatever is needed to a method
 

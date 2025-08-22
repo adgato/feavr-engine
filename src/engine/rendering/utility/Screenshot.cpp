@@ -1,7 +1,9 @@
 #include "Screenshot.h"
 
 #include "stb_image_write.h"
+#include "fmt/base.h"
 #include "glm/gtc/packing.hpp"
+#include "glm/packing.hpp"
 #include "rendering/resources/RenderingResources.h"
 #include "rendering/resources/Image.h"
 

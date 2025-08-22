@@ -13,6 +13,7 @@ namespace ecs
     class EngineView;
     template <ComponentType...>
     class ArchetypeIterator;
+    class EngineWidget;
 
     struct EntityLocation
     {
@@ -26,6 +27,7 @@ namespace ecs
         friend class EngineView;
         template <ComponentType...>
         friend class ArchetypeIterator;
+        friend class EngineWidget;
 
         // friendly extension methods
         template <typename... Ts>
@@ -37,12 +39,14 @@ namespace ecs
         std::vector<EntityLocation> entities;
 
         std::vector<EntityID> deleted;
+        bool anyUpdates = false;
         std::vector<std::vector<UpdateInstr>> entityUpdateQueue {};
         std::unordered_map<size_t, std::vector<uint>> archetypeMap { { std::_Hash_impl::hash(nullptr, 0), { 0 } } };
 
         uint FindArchetype(const std::vector<TypeID>& types);
 
         void RawAdd(Entity e, const std::byte* data, const TypeInfo& typeInfo);
+        void RawRemove(Entity e, TypeID type);
 
         void ReadEngineTypes(const char* serialTypes, const std::vector<TypeID>& types, serial::Stream& m);
 
@@ -58,6 +62,7 @@ namespace ecs
         {
             assert(IsValid(e));
             entityUpdateQueue[e].emplace_back(UpdateInstr::Add(data, TypeRegistry::GetID<T>()));
+            anyUpdates = true;
         }
 
         template <ComponentType T>
@@ -65,6 +70,7 @@ namespace ecs
         {
             assert(IsValid(e));
             entityUpdateQueue[e].emplace_back(UpdateInstr::Remove(TypeRegistry::GetID<T>()));
+            anyUpdates = true;
         }
 
         void RemoveAll(Entity e);

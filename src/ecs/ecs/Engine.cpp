@@ -50,7 +50,7 @@ namespace ecs
     {
         const size_t hash = std::_Hash_impl::hash(types.data(), types.size() * sizeof(TypeID));
 
-        uint newArchetypeIdx = BadMaxIndex;
+        uint newArchetypeIdx = BadMaxEntity;
         if (archetypeMap.contains(hash))
         {
             for (const uint archetype : archetypeMap[hash])
@@ -61,7 +61,7 @@ namespace ecs
                 }
         }
 
-        if (newArchetypeIdx == BadMaxIndex)
+        if (newArchetypeIdx == BadMaxEntity)
         {
             newArchetypeIdx = archetypes.size();
             archetypeMap[hash].emplace_back(newArchetypeIdx);
@@ -75,6 +75,14 @@ namespace ecs
     {
         assert(IsValid(e));
         entityUpdateQueue[e].emplace_back(UpdateInstr::RawAdd(data, typeInfo.type, typeInfo.size));
+        anyUpdates = true;
+    }
+
+    void Engine::RawRemove(Entity e, const TypeID type)
+    {
+        assert(IsValid(e));
+        entityUpdateQueue[e].emplace_back(UpdateInstr::Remove(type));
+        anyUpdates = true;
     }
 
     Entity Engine::New(const bool canUseDeleted /* = true*/)
@@ -98,7 +106,7 @@ namespace ecs
 
     bool Engine::IsValid(Entity e) const
     {
-        return e < entities.size() && entities[e].index < BadMaxIndex;
+        return e < entities.size() && entities[e].index < BadMaxEntity;
     }
 
     void Engine::RemoveAll(Entity e)
@@ -108,12 +116,14 @@ namespace ecs
         auto& updateQueue = entityUpdateQueue[e];
         for (const TypeID type : archetypes[archetype].types)
             updateQueue.emplace_back(UpdateInstr::Remove(type));
+        anyUpdates = true;
     }
 
     void Engine::Delete(Entity e)
     {
         assert(IsValid(e));
         entityUpdateQueue[e].emplace_back(UpdateInstr::Remove(BadMaxType));
+        anyUpdates = true;
     }
 
     void Engine::Destroy()
@@ -129,6 +139,10 @@ namespace ecs
 
     void Engine::Refresh()
     {
+        if (!anyUpdates)
+            return;
+        anyUpdates = false;
+
         std::vector<TypeID> newTypes {};
         std::vector<std::byte*> newData {};
         std::vector<UpdateInstr> updateTypes {};
@@ -188,7 +202,7 @@ namespace ecs
 
             if (deleteEntity)
             {
-                entities[e] = { 0, BadMaxIndex };
+                entities[e] = { 0, BadMaxEntity };
                 deleted.push_back(e);
                 for (size_t k = 0; k < newTypes.size(); ++k)
                     TypeRegistry::Destroy(newTypes[k], newData[k]);

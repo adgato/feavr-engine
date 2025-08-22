@@ -9,7 +9,7 @@ namespace ecs
 {
     using TypeID = uint16_t;
     constexpr TypeID BadMaxType = UINT16_MAX;
-    constexpr uint BadMaxIndex = UINT32_MAX;
+    constexpr uint BadMaxEntity = UINT32_MAX;
 
     class TypeRegistry
     {

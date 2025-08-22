@@ -57,5 +57,5 @@ VSOutput vertOutline(const uint vertexID : SV_VertexID)
 
 float4 fragOutline(const VSOutput i) : SV_TARGET
 {
-    return float4(1, 0.4f, 0, 1);
+    return float4(0, 0.4f, 1, 1);
 }

@@ -108,11 +108,14 @@ namespace ecs
         {
             if (superTypes.size() < sizeof...(Included))
                 return false;
-            size_t j = 0;
-            for (size_t i = 0; i < superTypes.size(); ++i)
+            if constexpr (sizeof...(Included) > 0)
             {
-                if (SortedTypes<Included...>::Get(j) == superTypes[i] && ++j == sizeof...(Included))
-                    return true;
+                size_t j = 0;
+                for (size_t i = 0; i < superTypes.size(); ++i)
+                {
+                    if (SortedTypes<Included...>::Get(j) == superTypes[i] && ++j == sizeof...(Included))
+                        return true;
+                }
             }
             return false;
         }
@@ -127,8 +130,6 @@ namespace ecs
         }
 
     public:
-        EngineView() = default;
-
         explicit EngineView(const Engine& engine) : engine(engine) {}
 
         ArchetypeIterator<Included...> begin()
@@ -155,24 +156,27 @@ namespace ecs
         {
             if (superTypes.size() < sizeof...(Included))
                 return false;
-            size_t j = 0;
-            for (size_t i = 0; i < superTypes.size(); ++i)
+            if constexpr (sizeof...(Included) > 0)
             {
-                if (SortedTypes<Included...>::Get(j) == superTypes[i] && ++j == sizeof...(Included))
-                    goto checkexclude;
-            }
-            return false;
-        checkexclude:
-            if constexpr (sizeof...(Excluded) > 0)
-            {
-                size_t k = 0;
+                size_t j = 0;
                 for (size_t i = 0; i < superTypes.size(); ++i)
                 {
-                    TypeID type = superTypes[i];
-                    while (SortedTypes<Excluded...>::Get(k) < type)
-                        if (++k >= sizeof...(Excluded))
+                    if (SortedTypes<Included...>::Get(j) == superTypes[i] && ++j == sizeof...(Included))
+                        break;
+                }
+                if (j < sizeof...(Included))
+                    return false;
+            }
+            if constexpr (sizeof...(Excluded) > 0)
+            {
+                size_t j = 0;
+                for (size_t i = 0; i < superTypes.size(); ++i)
+                {
+                    const TypeID type = superTypes[i];
+                    while (SortedTypes<Excluded...>::Get(j) < type)
+                        if (++j >= sizeof...(Excluded))
                             return true;
-                    if (SortedTypes<Excluded...>::Get(k) == type)
+                    if (SortedTypes<Excluded...>::Get(j) == type)
                         return false;
                 }
             }

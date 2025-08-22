@@ -8,9 +8,10 @@
 #include "imgui.h"
 #include "assets-system/AssetManager.h"
 #include "assets-system/lookup/Asset29.h"
-#include "utility/ClickOnMeshTool.h"
 #include "assets-system/lookup/Asset31.h"
-#include "ecs/EngineExtensions.h"
+#include "glm/detail/func_trigonometric.inl"
+#include "utility/ClickOnMeshTool.h"
+#include "widgets/EngineWidget.h"
 
 void Core::Init()
 {
@@ -18,6 +19,7 @@ void Core::Init()
     imguiOverlay.Init(resources.resource);
     renderer.Init(resources);
     LoadScene(assets_system::lookup::SCNE_structure);
+    LoadScene(assets_system::lookup::SCNE_falcon2);
     clickOnMeshTool.Init();
 }
 
@@ -31,10 +33,6 @@ void Core::SaveScene(const char* filePath)
     engine.Serialize(m);
 
     assets_system::AssetFile saveAsset("SCNE", 0);
-
-    saveAsset.header["Meshes Start"] = static_cast<uint64_t>(renderer.passManager.serializeInfo.meshesStart);
-    saveAsset.header["Meshes Size"] = static_cast<uint64_t>(renderer.passManager.serializeInfo.meshesSizeBytes);
-
     saveAsset.WriteToBlob(m);
     saveAsset.Save(filePath);
 }
@@ -46,16 +44,20 @@ void Core::LoadScene(const assets_system::AssetID other)
 
     serial::Stream m = loadAsset.ReadFromBlob();
 
-    renderer.passManager.Destroy();
-    engine.Destroy();
-    renderer.passManager.Init();
     renderer.passManager.Serialize(m);
     engine.Serialize(m);
     engine.Refresh();
-    renderer.passManager.ReplaceInvalidAssetSources(other);
-    renderer.passManager.FixupReferences(engine);
-}
 
+    ecs::EngineView<SubMesh> submeshView(engine);
+    for (auto [id, submesh] : submeshView)
+    {
+        submesh.engine = &engine;
+        Mesh& mesh = engine.Get<Mesh>(submesh.mesh->id);
+        if (mesh.IsNotReferenced())
+            mesh.UploadMesh(resources);
+        mesh.Reference();
+    }
+}
 
 bool Core::Next()
 {
@@ -90,31 +92,27 @@ bool Core::Next()
         }
     }
 
-    ecs::EntityID focus = ecs::BadMaxIndex;
     if (clickOnMeshTool.DrawWaitingSample(3)) //why 3?
     {
         ecs::Entity entity = clickOnMeshTool.SampleCoordinate();
 
         std::vector<ecs::EntityID> submeshes {};
-        renderer.passManager.GetPass<identify_pass::Pass>().IdentifySubMeshesOf(entity, submeshes);
+        renderer.passManager.GetPass<IdentifyPass>().IdentifySubMeshesOf(entity, submeshes);
 
         // this wil go somewhere else, but for now its all here
 
-        ecs::EngineView<stencil_outline_pass::Component> view(engine);
+        ecs::EngineView<PassComponent<StencilOutlinePass>> view(engine);
         for (auto [submesh, _] : view)
-            engine.Remove<stencil_outline_pass::Component>(submesh);
+            engine.Remove<PassComponent<StencilOutlinePass>>(submesh);
 
         for (ecs::Entity submesh : submeshes)
         {
-            stencil_outline_pass::Component component {};
+            PassComponent<StencilOutlinePass> component {};
             component.transforms->push_back(entity);
-            engine.Add<stencil_outline_pass::Component>(submesh, component);
+            engine.Add<PassComponent<StencilOutlinePass>>(submesh, component);
         }
 
-        engine.Refresh();
-
-        fmt::println("Clicked {}", entity);
-        focus = entity;
+        engineWidget.SetHotEntity(entity, coord);
     }
 
     // imgui new frame
@@ -122,32 +120,31 @@ bool Core::Next()
     ImGui_ImplSDL2_NewFrame();
 
     ImGui::NewFrame();
-    // Create a window called "My First Tool", with a menu bar.
-    if (ImGui::Begin("Text List Window"))
-    {
-        ImGui::Text("Text Lines Display");
-        ImGui::Separator();
-        ecs::Widget(engine, focus);
-    }
 
-    ImGui::End();
+    engineWidget.Windows();
+
     ImGui::Render();
+    engine.Refresh();
 
     if (!skipDrawing)
     {
         auto [cmd, frame] = resources.BeginFrame();
 
-        renderer.Draw(resources.frameCount, cmd, frame);
-        imguiOverlay.Draw(cmd, frame);
-
-        if (requestDrawMeshIndices)
+        if (cmd)
         {
-            hlslpp::int2 mousePos;
-            SDL_GetMouseState(&mousePos.x, &mousePos.y);
-            clickOnMeshTool.DrawMeshIndices(cmd, renderer.sceneData.view, mousePos);
-        }
+            renderer.Draw(resources.frameCount, cmd, frame);
+            imguiOverlay.Draw(cmd, frame);
 
-        resources.EndFrame();
+            if (requestDrawMeshIndices)
+            {
+                int w, h;
+                SDL_GetMouseState(&w, &h);
+                coord = glm::vec2 { w, h };
+                clickOnMeshTool.DrawMeshIndices(cmd, frame.imageExtent, renderer.sceneData.view, { glm::radians(80.0f), 1000.0f, 0.1f }, coord);
+            }
+
+            resources.EndFrame();
+        }
     } else
         std::this_thread::sleep_for(std::chrono::milliseconds { 100 });
 
@@ -156,8 +153,9 @@ bool Core::Next()
 
 void Core::Destroy()
 {
-    renderer.Destroy();
+    vkDeviceWaitIdle(resources.resource);
     engine.Destroy();
+    renderer.Destroy();
     imguiOverlay.Destroy();
     clickOnMeshTool.Destroy();
     resources.Destroy();

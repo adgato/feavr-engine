@@ -1,12 +1,10 @@
 #include "ClickOnMeshTool.h"
 
-#include "hlsl++/vector_int.h"
 #include "rendering/pass-system/PassSystem.h"
 #include "Initializers.h"
-#include "hlsl++/vector_uint.h"
+#include "glm/trigonometric.hpp"
+#include "glm/ext/matrix_clip_space.hpp"
 #include "rendering/Camera.h"
-#include "rendering/Camera.h"
-#include "rendering/pass-system/PassDirectory.h"
 #include "rendering/pass-system/IdentifyPass.h"
 
 namespace rendering
@@ -25,14 +23,12 @@ namespace rendering
         resultBuffer = Buffer<uint32_t>::Allocate(resources.resource, 1, VK_BUFFER_USAGE_TRANSFER_DST_BIT, HostAccess::RANDOM, VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE);
     }
 
-    void ClickOnMeshTool::DrawMeshIndices(VkCommandBuffer_T* cmd, const glm::mat4& cameraView, const hlslpp::int2& coord)
+    void ClickOnMeshTool::DrawMeshIndices(VkCommandBuffer cmd, const VkExtent3D& imageExtent, const glm::mat4& cameraView, const glm::vec3 fovNearFar, const glm::vec2 coord)
     {
-        this->coord = coord;
-
         waitingSample = true;
         selectFrame = resources.frameCount;
         VkClearValue clearColor;
-        clearColor.color.uint32[0] = ecs::BadMaxIndex; // bad entity when clicking on background
+        clearColor.color.uint32[0] = ecs::BadMaxEntity; // bad entity when clicking on background
 
         VkClearValue clearDepth;
         clearDepth.depthStencil.depth = 0.0f;
@@ -76,20 +72,20 @@ namespace rendering
         vkCmdSetScissor(cmd, 0, 1, &scissor);
 
         // Original frustum dimensions at near plane
-        float fovy = glm::radians(70.0f);
-        float near = 10000.f;
-        float far = 0.1f;
-        float aspect = static_cast<float>(windowSize.width) / static_cast<float>(windowSize.height);
+        float fovy = fovNearFar.x;
+        float near = fovNearFar.y;
+        float far = fovNearFar.z;
+        float aspect = static_cast<float>(imageExtent.width) / static_cast<float>(imageExtent.height);
         float near_height = 2.0f * near * glm::tan(fovy / 2.0f);
         float near_width = near_height * aspect;
 
         // Size of one pixel at the near plane
-        float pixel_width = near_width / windowSize.width;
-        float pixel_height = near_height / windowSize.height;
+        float pixel_width = near_width / imageExtent.width;
+        float pixel_height = near_height / imageExtent.height;
 
         // Now calculate the frustum bounds
-        float center_x = (2.0f * coord.x / windowSize.width - 1.0f) * (near_width / 2.0f);
-        float center_y = (2.0f * coord.y / windowSize.height - 1.0f) * (near_height / 2.0f);
+        float center_x = (2.0f * coord.x / imageExtent.width - 1.0f) * (near_width / 2.0f);
+        float center_y = (2.0f * coord.y / imageExtent.height - 1.0f) * (near_height / 2.0f);
 
         float left = center_x - pixel_width / 2.0f;
         float right = center_x + pixel_width / 2.0f;
@@ -103,7 +99,7 @@ namespace rendering
         sceneData.proj = projection;
         sceneData.view = cameraView;
         sceneData.viewproj = sceneData.proj * sceneData.view;
-        passManager.GetPass<identify_pass::Pass>().Draw(cmd, passManager.GetMeshes(), selectFrame, sceneData);
+        passManager.GetPass<IdentifyPass>().Draw(cmd, selectFrame, sceneData);
 
         vkCmdEndRendering(cmd);
 
