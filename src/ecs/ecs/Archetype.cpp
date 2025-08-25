@@ -40,6 +40,11 @@ namespace ecs
         return data[globalTypes[type - minType]].GetElem(index);
     }
 
+    std::byte* Archetype::TryGetElem(const uint index, const TypeID type) const
+    {
+        return index < count && StoresType(type) ? data[globalTypes[type - minType]].GetElem(index) : nullptr;
+    }
+
     void Archetype::SetElem(const TypeID type, const std::byte* src) const
     {
         assert(StoresType(type));

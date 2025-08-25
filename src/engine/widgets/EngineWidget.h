@@ -7,6 +7,11 @@
 #include "ecs/Engine.h"
 #include "ecs/EngineView.h"
 #include "glm/vec2.hpp"
+#include "rendering/pass-system/PassComponent.h"
+#include "rendering/pass-system/PassSystem.h"
+#include "rendering/pass-system/StencilOutlinePass.h"
+
+class IdentifyPass;
 
 namespace ecs
 {
@@ -32,12 +37,22 @@ namespace ecs
         Tags includeComponents;
         Tags excludeTags;
         Tags excludeComponents;
+        IdentifyPass& identifyPass;
         Engine& engine;
         EngineView<Tags> tagView;
+        EngineView<PassComponent<StencilOutlinePass>> outlineView;
         glm::vec2 hotViewPos {};
         bool hotChanged = false;
         bool showHot = false;
-        float split_ratio = 0.7f;
+
+        struct UpdateSplitData
+        {
+            float ratio = 0.3f;
+            float target = 0.3f;
+            float prev = 0.3f;
+            bool toggleOn = true;
+            bool dragging = false;
+        } split {};
 
         struct UpdatePopupData
         {
@@ -60,11 +75,13 @@ namespace ecs
 
         void SearchTree();
 
+        void SetWindowSplit();
+
 
         void EngineTable();
 
     public:
-        explicit EngineWidget(Engine& engine);
+        explicit EngineWidget(Engine& engine, rendering::PassSystem& passSys);
 
         void SetHotEntity(Entity hotEntity, glm::vec2 coord);
 

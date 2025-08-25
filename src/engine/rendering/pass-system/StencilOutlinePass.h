@@ -1,7 +1,8 @@
 #pragma once
 
+#include "MeshTransformSorter.h"
 #include "PassComponent.h"
-#include "SubMesh.h"
+#include "components/Transform.h"
 #include "ecs/EngineView.h"
 #include "glm/mat4x4.hpp"
 #include "rendering/utility/Descriptors.h"
@@ -24,8 +25,9 @@ public:
     VkPipeline maskPipeline = nullptr;
     VkPipelineLayout outlineLayout = nullptr;
     VkPipeline outlinePipeline = nullptr;
-    DescriptorWriter properties {};
-    ecs::EngineView<SubMesh, PassComponent<StencilOutlinePass>> view;
+
+    ecs::EngineView<Transform, PassComponent<StencilOutlinePass>> view;
+    rendering::MeshTransformSorter sorter;
 
     StencilOutlinePass(RenderingEngine& renderer, ecs::Engine& engine)
         : renderer(renderer),

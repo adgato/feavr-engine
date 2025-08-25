@@ -33,6 +33,8 @@ namespace ecs
 
         std::byte* GetElem(uint index, TypeID type) const;
 
+        std::byte* TryGetElem(uint index, TypeID type) const;
+
         void SetElem(TypeID type, const std::byte* src) const;
 
         size_t GetCount() const;

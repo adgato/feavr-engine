@@ -18,10 +18,11 @@ target_include_directories(engine PUBLIC "${LIBRARY_SOURCE_DIR}")
 
 target_compile_definitions(engine PUBLIC
         GLM_FORCE_DEPTH_ZERO_TO_ONE
+        GLM_ENABLE_EXPERIMENTAL
         PROJECT_ROOT="${PROJECT_SOURCE_DIR}"
 )
 
-target_link_libraries(engine PUBLIC ecs asset_system hlslpp vma glm Vulkan::Vulkan fmt::fmt stb_image vkbootstrap imgui fastgltf::fastgltf stdc++exp)
+target_link_libraries(engine PUBLIC ecs asset_system vma glm::glm Vulkan::Vulkan fmt::fmt stb_image vkbootstrap imgui fastgltf::fastgltf stdc++exp)
 target_link_libraries(engine ${SDL2_LIBRARIES})
 target_include_directories(engine PRIVATE ${SDL2_INCLUDE_DIRS})
 

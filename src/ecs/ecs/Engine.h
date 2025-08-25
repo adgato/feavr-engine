@@ -46,6 +46,7 @@ namespace ecs
         uint FindArchetype(const std::vector<TypeID>& types);
 
         void RawAdd(Entity e, const std::byte* data, const TypeInfo& typeInfo);
+
         void RawRemove(Entity e, TypeID type);
 
         void ReadEngineTypes(const char* serialTypes, const std::vector<TypeID>& types, serial::Stream& m);
@@ -55,7 +56,10 @@ namespace ecs
     public:
         Entity New(bool canUseDeleted = true);
 
-        bool IsValid(Entity e) const;
+        bool IsValid(Entity e) const
+        {
+            return e < entities.size() && entities[e].index < BadMaxEntity;
+        }
 
         template <ComponentType T>
         void Add(Entity e, const T& data)
@@ -80,24 +84,47 @@ namespace ecs
         template <ComponentType T>
         T& Get(Entity e)
         {
-            assert(e < entities.size());
+            assert(IsValid(e));
             auto [archetype, index] = entities[e];
             return *reinterpret_cast<T*>(archetypes[archetype].GetElem(index, TypeRegistry::GetID<T>()));
+        }
+
+        template <ComponentType... Ts>
+        std::tuple<Ts*...> GetMany(Entity e)
+        {
+            assert(IsValid(e));
+            auto [archetype, index] = entities[e];
+            const auto& elems = archetypes[archetype];
+            return std::tuple<Ts*...>(
+                reinterpret_cast<Ts*>(elems.GetElem(index, TypeRegistry::GetID<Ts>()))...
+            );
         }
 
         template <ComponentType T>
         T* TryGet(Entity e)
         {
-            assert(e < entities.size());
+            if (!IsValid(e))
+                return nullptr;
+            auto [archetype, index] = entities[e];
+            return reinterpret_cast<T*>(archetypes[archetype].TryGetElem(index, TypeRegistry::GetID<T>()));
+        }
+
+        template <ComponentType... Ts>
+        std::tuple<Ts*...> TryGetMany(Entity e)
+        {
+            if (!IsValid(e))
+                return std::tuple<Ts*...>();
             auto [archetype, index] = entities[e];
             const auto& elems = archetypes[archetype];
-            return elems.StoresType(TypeRegistry::GetID<T>()) ? reinterpret_cast<T*>(elems.GetElem(index, TypeRegistry::GetID<T>())) : nullptr;
+            return std::tuple<Ts*...>(
+                reinterpret_cast<Ts*>(elems.TryGetElem(index, TypeRegistry::GetID<Ts>()))...
+            );
         }
 
         template <ComponentType T>
         bool Has(Entity e) const
         {
-            return e < entities.size() && archetypes[entities[e].archetype].StoresType(TypeRegistry::GetID<T>());
+            return IsValid(e) && archetypes[entities[e].archetype].StoresType(TypeRegistry::GetID<T>());
         }
 
         void Refresh();

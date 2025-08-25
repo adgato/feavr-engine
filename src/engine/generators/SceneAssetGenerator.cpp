@@ -16,6 +16,7 @@
 #include "ecs/EngineView.h"
 #include "fmt/ranges.h"
 #include "rendering/Core.h"
+#include "rendering/pass-system/Mesh.h"
 
 void load_primitive_indices(const fastgltf::Asset& gltf, const fastgltf::Primitive& primitive, serial::array<uint32_t>& indices, const size_t vertexOffset)
 {
@@ -96,8 +97,6 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
     ecs::Engine& engine = core.engine;
     rendering::PassSystem& passManager = core.renderer.passManager;
 
-    rendering::Material<DefaultPass, IdentifyPass> defaultMaterial(engine, passManager);
-
     fastgltf::Parser parser {};
 
     constexpr auto gltfOptions =
@@ -151,7 +150,7 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
     serial::array<rendering::Vertex> vertices;
 
 
-    std::vector<std::vector<ecs::EntityRef>> meshTransforms;
+    std::vector<std::vector<ecs::EntityID>> meshTransforms;
     meshTransforms.reserve(gltf.nodes.size());
 
     // load all nodes and their meshes
@@ -163,13 +162,13 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
         Transform newNode;
         std::visit(fastgltf::visitor
                    {
-                       [&](const fastgltf::Node::TransformMatrix& matrix) { std::memcpy(&newNode.transform, matrix.data(), sizeof(matrix)); },
+                       [&](const fastgltf::Node::TransformMatrix& matrix) { std::memcpy(&newNode.ModifyMatrix(), matrix.data(), sizeof(matrix)); },
                        [&](const fastgltf::Node::TRS& transform)
                        {
                            const glm::vec3 tl(transform.translation[0], transform.translation[1], transform.translation[2]);
                            const glm::quat rot(transform.rotation[3], transform.rotation[0], transform.rotation[1], transform.rotation[2]);
                            const glm::vec3 sc(transform.scale[0], transform.scale[1], transform.scale[2]);
-                           newNode.transform = translate(glm::mat4(1.f), tl) * toMat4(rot) * scale(glm::mat4(1.f), sc);
+                           newNode.ModifyMatrix() = translate(glm::mat4(1.f), tl) * toMat4(rot) * scale(glm::mat4(1.f), sc);
                        }
                    }, node.transform
         );
@@ -179,6 +178,7 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
 
         Tags tags {};
         tags.AddTag(assetPath.c_str());
+        tags.AddTag(node.name.c_str());
         engine.Add<Tags>(e, tags);
 
         uint32_t meshIdx = static_cast<uint32_t>(*node.meshIndex);
@@ -208,17 +208,34 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
         meshes.emplace_back(meshIndex);
     }
 
+    for (size_t i = 0; i < meshes.size(); ++i)
+    {
+        for (ecs::Entity e : meshTransforms[i])
+        {
+            PassComponent<DefaultPass> defaultPass {};
+            defaultPass.UpdateMesh(meshes[i]);
+
+            PassComponent<IdentifyPass> identifyPass {};
+            identifyPass.UpdateMesh(meshes[i]);
+
+            engine.Add<PassComponent<DefaultPass>>(e, defaultPass);
+            engine.Add<PassComponent<IdentifyPass>>(e, identifyPass);
+        }
+    }
     engine.Refresh();
 
     for (size_t i = 0; i < meshes.size(); ++i)
     {
         uint32_t cumCount = 0;
-        for (auto&& p : gltf.meshes[i].primitives)
+        for (const auto& primitive : gltf.meshes[i].primitives)
         {
-            uint32_t count = static_cast<uint32_t>(gltf.accessors[p.indicesAccessor.value()].count);
+            uint32_t count = static_cast<uint32_t>(gltf.accessors[primitive.indicesAccessor.value()].count);
 
-            defaultMaterial.AddSubMesh(meshes[i], meshTransforms[i], cumCount, count);
-
+            for (ecs::Entity e : meshTransforms[i])
+            {
+                engine.Get<PassComponent<DefaultPass>>(e).submeshes->push_back({ cumCount, count });
+                engine.Get<PassComponent<IdentifyPass>>(e).submeshes->push_back({ cumCount, count });
+            }
             cumCount += count;
         }
     }
@@ -229,7 +246,6 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
     serial::Stream m;
     m.InitWrite();
 
-    engine.Refresh();
     passManager.Serialize(m);
     engine.Serialize(m);
 

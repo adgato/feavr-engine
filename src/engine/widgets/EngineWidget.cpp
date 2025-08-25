@@ -5,7 +5,11 @@
 #include <string>
 
 #include "AutoCompleteWidget.h"
+#include "rendering/pass-system/IdentifyPass.h"
+#include "rendering/pass-system/Mesh.h"
+#include "rendering/pass-system/PassSystem.h"
 #include "rendering/pass-system/StencilOutlinePass.h"
+#include "rendering/resources/RenderingResources.h"
 
 namespace ecs
 {
@@ -108,7 +112,9 @@ namespace ecs
         return includeTags.tags->size() == 0;
     }
 
-    EngineWidget::EngineWidget(Engine& engine): engine(engine), tagView(engine)
+    EngineWidget::EngineWidget(Engine& engine, rendering::PassSystem& passSys)
+        : identifyPass(passSys.GetPass<IdentifyPass>()),
+          engine(engine), tagView(engine), outlineView(engine)
     {
         typeNames.reserve(TypeRegistry::RegisteredCount());
         for (TypeID i = 0; i < TypeRegistry::RegisteredCount(); ++i)
@@ -251,6 +257,117 @@ namespace ecs
 
         if (ImGui::Button("Refresh Tags"))
             RefeshTags();
+
+        ImGui::SameLine();
+        if (ImGui::Button("Highlight All"))
+        {
+            for (auto [submesh, _] : outlineView)
+                engine.Remove<PassComponent<StencilOutlinePass>>(submesh);
+
+            std::vector<EntityID> submeshes {};
+            for (Entity entity : showEntities)
+                if (auto* identifyPass = engine.TryGet<PassComponent<IdentifyPass>>(entity))
+                {
+                    PassComponent<StencilOutlinePass> outlinePass {};
+                    outlinePass.UpdateMesh(identifyPass->mesh->id);
+                    outlinePass.submeshes->push_back({ 0, engine.Get<Mesh>(outlinePass.mesh->id).indexBuffer.count });
+                    engine.Add<PassComponent<StencilOutlinePass>>(entity, outlinePass);
+                }
+        }
+    }
+
+    void EngineWidget::SetWindowSplit()
+    {
+        bool focusWindow = false;
+        if (ImGui::IsKeyPressed(ImGuiKey_V, false))
+        {
+            split.toggleOn ^= true;
+            if (split.toggleOn)
+            {
+                if (split.prev < 0.05f)
+                    split.prev = 0.05f;
+                split.target = split.prev;
+                focusWindow = true;
+            } else
+            {
+                split.prev = split.target;
+                split.target = 0;
+            }
+        }
+
+        const ImGuiViewport* viewport = ImGui::GetMainViewport();
+        const float total_width = viewport->WorkSize.x;
+        const float total_height = viewport->WorkSize.y;
+
+        constexpr float animateSpeed = 20;
+        const float lerp = glm::exp(-animateSpeed * rendering::deltaTime);
+        split.ratio = lerp * split.ratio + (1 - lerp) * split.target;
+        float panel_width = total_width * split.ratio;
+        if (panel_width < 1)
+            panel_width = 1;
+        const float game_width = total_width - panel_width;
+        const ImVec2 window_pos = ImVec2(game_width, 0);
+
+        // Create splitter area at the left edge of the window
+        const ImVec2 splitter_pos = ImVec2(glm::min(window_pos.x, total_width - 8), window_pos.y);
+        const ImVec2 splitter_size = ImVec2(8, total_height);
+
+        // Check if mouse is over splitter area
+        const ImVec2 mouse_pos = ImGui::GetMousePos();
+        const bool is_over_splitter = (mouse_pos.x >= splitter_pos.x &&
+                                       mouse_pos.x <= splitter_pos.x + splitter_size.x &&
+                                       mouse_pos.y >= splitter_pos.y &&
+                                       mouse_pos.y <= splitter_pos.y + splitter_size.y);
+
+
+        ImDrawList* draw_list = ImGui::GetForegroundDrawList();
+        if (is_over_splitter)
+        {
+            ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeEW);
+
+            // Draw hover line
+            const ImU32 line_color = ImGui::GetColorU32(ImGuiCol_Separator);
+            draw_list->AddLine(
+                ImVec2(game_width, window_pos.y),
+                ImVec2(game_width, window_pos.y + total_height),
+                line_color,
+                2.0f
+            );
+
+            if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
+            {
+                split.dragging = true;
+            }
+        }
+
+        if (split.dragging)
+        {
+            ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeEW);
+
+            // Draw active line
+            const ImU32 line_color = ImGui::GetColorU32(ImGuiCol_Separator);
+            draw_list->AddLine(
+                ImVec2(game_width, window_pos.y),
+                ImVec2(game_width, window_pos.y + total_height),
+                line_color,
+                2.0f
+            );
+
+            if (ImGui::IsMouseDragging(ImGuiMouseButton_Left))
+            {
+                split.target = (total_width - mouse_pos.x) / total_width;
+                split.ratio = split.target;
+                split.toggleOn = true;
+            }
+
+            if (ImGui::IsMouseReleased(ImGuiMouseButton_Left))
+                split.dragging = false;
+        }
+
+        if (focusWindow)
+            ImGui::SetNextWindowFocus();
+        ImGui::SetNextWindowPos(window_pos, ImGuiCond_Always);
+        ImGui::SetNextWindowSize(ImVec2(panel_width + 1, total_height), ImGuiCond_Always);
     }
 
     void EngineWidget::EngineTable()
@@ -375,16 +492,7 @@ namespace ecs
 
     void EngineWidget::Windows()
     {
-        const ImGuiViewport* viewport = ImGui::GetMainViewport();
-        const float total_width = viewport->WorkSize.x;
-        const float total_height = viewport->WorkSize.y;
-        const float game_width = total_width * split_ratio;
-        const float panel_width = total_width - game_width;
-
-
-        ImGui::SetNextWindowPos(ImVec2(game_width, 0), ImGuiCond_Always);
-        ImGui::SetNextWindowSize(ImVec2(panel_width, total_height), ImGuiCond_Always);
-
+        SetWindowSplit();
         if (ImGui::Begin("Engine View", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize))
         {
             if (ImGui::TreeNode("Search ECS"))
@@ -419,51 +527,6 @@ namespace ecs
         }
         ImGui::End();
 
-        // Draw invisible splitter button at the boundary
-        ImGui::SetNextWindowPos(ImVec2(game_width - 16, 0), ImGuiCond_Always);
-        ImGui::SetNextWindowSize(ImVec2(4, total_height), ImGuiCond_Always);
-
-        constexpr ImGuiWindowFlags splitter_flags =
-                ImGuiWindowFlags_NoTitleBar |
-                ImGuiWindowFlags_NoResize |
-                ImGuiWindowFlags_NoMove |
-                ImGuiWindowFlags_NoScrollbar |
-                ImGuiWindowFlags_NoCollapse |
-                ImGuiWindowFlags_NoBackground;
-
-        if (ImGui::Begin("Splitter", nullptr, splitter_flags))
-        {
-            ImGui::InvisibleButton("##splitter", ImVec2(-1, total_height));
-            const bool is_hovered = ImGui::IsItemHovered();
-            const bool is_active = ImGui::IsItemActive();
-
-            if (is_hovered || is_active)
-            {
-                ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeEW);
-
-                // Draw the hover line
-                ImDrawList* draw_list = ImGui::GetForegroundDrawList();
-                const ImU32 line_color = ImGui::GetColorU32(ImGuiCol_Separator);
-
-                draw_list->AddLine(
-                    ImVec2(game_width, 0),
-                    ImVec2(game_width, total_height),
-                    line_color,
-                    2.0f
-                );
-            }
-
-            if (ImGui::IsItemActive() && ImGui::IsMouseDragging(ImGuiMouseButton_Left))
-            {
-                split_ratio = ImGui::GetMousePos().x / total_width;
-                if (split_ratio > 0.95f)
-                    split_ratio = 0.95f;
-                if (split_ratio < 0.05f)
-                    split_ratio = 0.05f;
-            }
-        }
-        ImGui::End();
-
         if (hotChanged)
         {
             ImGui::SetNextWindowPos(ImVec2 { hotViewPos.x, hotViewPos.y });
@@ -477,8 +540,7 @@ namespace ecs
                 showHot = false;
             if (!showHot || ImGui::IsItemHovered() && ImGui::IsKeyReleased(ImGuiKey_MouseMiddle))
             {
-                EngineView<PassComponent<StencilOutlinePass>> view(engine);
-                for (auto [submesh, _] : view)
+                for (auto [submesh, _] : outlineView)
                     engine.Remove<PassComponent<StencilOutlinePass>>(submesh);
             }
 

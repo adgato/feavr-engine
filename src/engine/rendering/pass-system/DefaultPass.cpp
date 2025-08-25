@@ -1,5 +1,6 @@
 #include "DefaultPass.h"
 
+#include "Mesh.h"
 #include "rendering/RenderingEngine.h"
 #include "rendering/utility/Pipelines.h"
 #include "shader_descriptors.h"
@@ -77,30 +78,51 @@ void DefaultPass::Init()
 
 void DefaultPass::Draw(const VkCommandBuffer cmd)
 {
+    for (auto [id, tf, pass] : view)
+    {
+        if (pass.mesh->id == pass.prevMesh)
+            continue;
+        if (pass.mesh->id < ecs::BadMaxEntity)
+            sorter.addQueue.emplace_back(pass.mesh->id, id);
+        if (pass.prevMesh < ecs::BadMaxEntity)
+            sorter.removeQueue.emplace_back(pass.prevMesh, id);
+        pass.prevMesh = pass.mesh->id;
+    }
+    sorter.Refresh();
+
     vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
 
-    const VkDescriptorSet sets[] = { renderer.gpuSceneDescriptorSet.descriptorSet, properties.descriptorSet };
+    const VkDescriptorSet sets[] = { renderer.sceneProperties.descriptorSet, properties.descriptorSet };
     vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, layout, 0, std::size(sets), sets, 0, nullptr);
 
-    for (const auto& [id, submesh, data] : view)
+    ecs::EntityID prevMesh = ecs::BadMaxEntity;
+    VkDeviceAddress vertexBufferAddress = 0;
+    for (const auto& [mesh, id] : sorter.sorted)
     {
-        const Mesh& mesh = engine.Get<Mesh>(submesh.mesh->id);
-        assert(mesh.IsValid());
-
-        vkCmdBindIndexBuffer(cmd, mesh.indexBuffer.buffer, 0, VK_INDEX_TYPE_UINT32);
-
-        for (uint32_t i = 0; i < data.transforms->size(); ++i)
+        if (mesh != prevMesh)
         {
-            ecs::Entity entity = data.transforms->data()[i];
+            prevMesh = mesh;
+            const Mesh& nextMesh = engine.Get<Mesh>(mesh);
+            assert(nextMesh.IsValid());
+            vertexBufferAddress = nextMesh.vertexBufferAddress;
+            vkCmdBindIndexBuffer(cmd, nextMesh.indexBuffer.buffer, 0, VK_INDEX_TYPE_UINT32);
+        }
 
+        const auto& [transform, pass] = engine.TryGetMany<Transform, PassComponent<DefaultPass>>(id);
+        if (transform && pass)
+        {
             const PushConstants pushConstants {
-                engine.Get<Transform>(entity).transform,
-                mesh.vertexBufferAddress
+                transform->Matrix(),
+                vertexBufferAddress
             };
 
             vkCmdPushConstants(cmd, layout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(PushConstants), &pushConstants);
-            vkCmdDrawIndexed(cmd, submesh.indexCount, 1, submesh.firstIndex, 0, 0);
-        }
+
+            const auto& submeshes = *pass->submeshes;
+            for (size_t i = 0; i < submeshes.size(); ++i)
+                vkCmdDrawIndexed(cmd, submeshes.data()[i].indexCount, 1, submeshes.data()[i].firstIndex, 0, 0);
+        } else
+            sorter.removeQueue.emplace_back(mesh, id);
     }
 }
 

@@ -1,8 +1,6 @@
 #pragma once
 #include <functional>
-#include <span>
 
-#include "rendering/pass-system/Mesh.h"
 #include "rendering/resources/ResourceHandles.h"
 
 namespace rendering
@@ -21,6 +19,7 @@ namespace rendering
 
     constexpr uint32_t FRAME_OVERLAP = 2;
     constexpr VkFormat imageFormat = VK_FORMAT_B8G8R8A8_UNORM;
+    constexpr float deltaTime = 1.f / 60.f;
 
     class RenderingResources
     {
@@ -53,8 +52,6 @@ namespace rendering
         void Init();
 
         void ImmediateSumbit(std::function<void(VkCommandBuffer cmd)>&& function) const;
-
-        Mesh UploadMesh(std::span<uint32_t> indices, std::span<Vertex> vertices) const;
 
         std::tuple<VkCommandBuffer, Image&> BeginFrame();
 

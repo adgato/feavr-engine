@@ -4,12 +4,12 @@
 #include <imgui_impl_vulkan.h>
 #include <thread>
 
-#include "hlsl++/vector_int.h"
 #include "imgui.h"
 #include "assets-system/AssetManager.h"
 #include "assets-system/lookup/Asset29.h"
 #include "assets-system/lookup/Asset31.h"
 #include "glm/detail/func_trigonometric.inl"
+#include "pass-system/Mesh.h"
 #include "utility/ClickOnMeshTool.h"
 #include "widgets/EngineWidget.h"
 
@@ -48,14 +48,11 @@ void Core::LoadScene(const assets_system::AssetID other)
     engine.Serialize(m);
     engine.Refresh();
 
-    ecs::EngineView<SubMesh> submeshView(engine);
-    for (auto [id, submesh] : submeshView)
+    ecs::EngineView<Mesh> submeshView(engine);
+    for (auto [id, mesh] : submeshView)
     {
-        submesh.engine = &engine;
-        Mesh& mesh = engine.Get<Mesh>(submesh.mesh->id);
-        if (mesh.IsNotReferenced())
+        if (!mesh.IsValid())
             mesh.UploadMesh(resources);
-        mesh.Reference();
     }
 }
 
@@ -96,8 +93,6 @@ bool Core::Next()
     {
         ecs::Entity entity = clickOnMeshTool.SampleCoordinate();
 
-        std::vector<ecs::EntityID> submeshes {};
-        renderer.passManager.GetPass<IdentifyPass>().IdentifySubMeshesOf(entity, submeshes);
 
         // this wil go somewhere else, but for now its all here
 
@@ -105,11 +100,12 @@ bool Core::Next()
         for (auto [submesh, _] : view)
             engine.Remove<PassComponent<StencilOutlinePass>>(submesh);
 
-        for (ecs::Entity submesh : submeshes)
+        if (auto* identifyPass = engine.TryGet<PassComponent<IdentifyPass>>(entity))
         {
-            PassComponent<StencilOutlinePass> component {};
-            component.transforms->push_back(entity);
-            engine.Add<PassComponent<StencilOutlinePass>>(submesh, component);
+            PassComponent<StencilOutlinePass> outlinePass {};
+            outlinePass.UpdateMesh(identifyPass->mesh->id);
+            outlinePass.submeshes->push_back({ 0, engine.Get<Mesh>(outlinePass.mesh->id).indexBuffer.count });
+            engine.Add<PassComponent<StencilOutlinePass>>(entity, outlinePass);
         }
 
         engineWidget.SetHotEntity(entity, coord);

@@ -1,7 +1,8 @@
 #pragma once
 
+#include "MeshTransformSorter.h"
 #include "PassComponent.h"
-#include "SubMesh.h"
+#include "components/Transform.h"
 #include "ecs/EngineView.h"
 #include "glm/vec4.hpp"
 #include "glm/mat4x4.hpp"
@@ -34,7 +35,8 @@ public:
     ecs::Engine& engine;
     VkDevice device = nullptr;
 
-    ecs::EngineView<SubMesh, PassComponent<DefaultPass>> view;
+    ecs::EngineView<Transform, PassComponent<DefaultPass>> view;
+    rendering::MeshTransformSorter sorter;
 
     VkPipelineLayout layout = nullptr;
     VkPipeline pipeline = nullptr;

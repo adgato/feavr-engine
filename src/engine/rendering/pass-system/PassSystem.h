@@ -4,7 +4,6 @@
 #include "DefaultPass.h"
 #include "IdentifyPass.h"
 #include "StencilOutlinePass.h"
-#include "SubMesh.h"
 #include "ecs/Engine.h"
 
 class RenderingEngine;

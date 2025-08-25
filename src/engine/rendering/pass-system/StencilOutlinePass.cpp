@@ -1,5 +1,6 @@
 #include "StencilOutlinePass.h"
 
+#include "Mesh.h"
 #include "assets-system/lookup/Asset30.h"
 #include "components/Transform.h"
 #include "rendering/RenderingEngine.h"
@@ -100,56 +101,88 @@ void StencilOutlinePass::Init()
     fragmentOutlineShader.Destroy();
 }
 
-void StencilOutlinePass::Draw(VkCommandBuffer cmd)
+void StencilOutlinePass::Draw(const VkCommandBuffer cmd)
 {
+    for (auto [id, tf, pass] : view)
+    {
+        if (pass.mesh->id == pass.prevMesh)
+            continue;
+        if (pass.mesh->id < ecs::BadMaxEntity)
+            sorter.addQueue.emplace_back(pass.mesh->id, id);
+        if (pass.prevMesh < ecs::BadMaxEntity)
+            sorter.removeQueue.emplace_back(pass.prevMesh, id);
+        pass.prevMesh = pass.mesh->id;
+    }
+    sorter.Refresh();
+
     vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, maskPipeline);
 
-    const VkDescriptorSet sets[] = { renderer.gpuSceneDescriptorSet.descriptorSet };
+    const VkDescriptorSet sets[] = { renderer.sceneProperties.descriptorSet };
     vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, maskLayout, 0, std::size(sets), sets, 0, nullptr);
 
-    for (const auto& [submeshID, passMesh, data] : view)
+    ecs::EntityID prevMesh = ecs::BadMaxEntity;
+    VkDeviceAddress vertexBufferAddress = 0;
+    for (const auto& [mesh, id] : sorter.sorted)
     {
-        const Mesh& mesh = engine.Get<Mesh>(*passMesh.mesh);
-        assert(mesh.IsValid());
-
-        vkCmdBindIndexBuffer(cmd, mesh.indexBuffer.buffer, 0, VK_INDEX_TYPE_UINT32);
-
-        for (uint32_t i = 0; i < data.transforms->size(); ++i)
+        if (mesh != prevMesh)
         {
-            ecs::Entity entity = data.transforms->data()[i];
+            prevMesh = mesh;
+            const Mesh& nextMesh = engine.Get<Mesh>(mesh);
+            assert(nextMesh.IsValid());
+            vertexBufferAddress = nextMesh.vertexBufferAddress;
+            vkCmdBindIndexBuffer(cmd, nextMesh.indexBuffer.buffer, 0, VK_INDEX_TYPE_UINT32);
+        }
 
+        const auto& [transform, pass] = engine.TryGetMany<Transform, PassComponent<StencilOutlinePass>>(id);
+        if (transform && pass)
+        {
             const PushConstants pushConstants {
-                engine.Get<Transform>(entity).transform,
-                mesh.vertexBufferAddress,
+                transform->Matrix(),
+                vertexBufferAddress
             };
 
             vkCmdPushConstants(cmd, maskLayout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(PushConstants), &pushConstants);
-            vkCmdDrawIndexed(cmd, passMesh.indexCount, 1, passMesh.firstIndex, 0, 0);
-        }
+
+            const auto& submeshes = *pass->submeshes;
+            for (size_t i = 0; i < submeshes.size(); ++i)
+            {
+                auto [firstIndex, indexCount] = submeshes.data()[i];
+                vkCmdDrawIndexed(cmd, indexCount, 1, firstIndex, 0, 0);
+            }
+        } else
+            sorter.removeQueue.emplace_back(mesh, id);
     }
+
 
     vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, outlinePipeline);
 
     vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, outlineLayout, 0, std::size(sets), sets, 0, nullptr);
 
-    for (const auto& [submeshID, passMesh, data] : view)
+    prevMesh = ecs::BadMaxEntity;
+    for (const auto& [mesh, id] : sorter.sorted)
     {
-        const Mesh& mesh = engine.Get<Mesh>(*passMesh.mesh);
-        assert(mesh.IsValid());
-
-        vkCmdBindIndexBuffer(cmd, mesh.indexBuffer.buffer, 0, VK_INDEX_TYPE_UINT32);
-
-        for (uint32_t i = 0; i < data.transforms->size(); ++i)
+        if (mesh != prevMesh)
         {
-            ecs::Entity entity = data.transforms->data()[i];
+            prevMesh = mesh;
+            const Mesh& nextMesh = engine.Get<Mesh>(mesh);
+            assert(nextMesh.IsValid());
+            vertexBufferAddress = nextMesh.vertexBufferAddress;
+            vkCmdBindIndexBuffer(cmd, nextMesh.indexBuffer.buffer, 0, VK_INDEX_TYPE_UINT32);
+        }
 
+        const auto& [transform, pass] = engine.TryGetMany<Transform, PassComponent<StencilOutlinePass>>(id);
+        if (transform && pass)
+        {
             const PushConstants pushConstants {
-                engine.Get<Transform>(entity).transform,
-                mesh.vertexBufferAddress,
+                transform->Matrix(),
+                vertexBufferAddress
             };
 
-            vkCmdPushConstants(cmd, outlineLayout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(PushConstants), &pushConstants);
-            vkCmdDrawIndexed(cmd, passMesh.indexCount, 1, passMesh.firstIndex, 0, 0);
+            vkCmdPushConstants(cmd, maskLayout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(PushConstants), &pushConstants);
+
+            const auto& submeshes = *pass->submeshes;
+            for (size_t i = 0; i < submeshes.size(); ++i)
+                vkCmdDrawIndexed(cmd, submeshes.data()[i].indexCount, 1, submeshes.data()[i].firstIndex, 0, 0);
         }
     }
 }

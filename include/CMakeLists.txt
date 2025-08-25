@@ -23,13 +23,14 @@ endif ()
 add_library(vkbootstrap STATIC)
 add_library(imgui STATIC)
 add_library(spirv_reflect STATIC)
-add_library(glm INTERFACE)
+#add_library(glm INTERFACE)
 add_library(vma INTERFACE)
-add_library(hlslpp INTERFACE)
+#add_library(hlslpp INTERFACE)
 add_library(stb_image INTERFACE)
 
 add_subdirectory(fastgltf)
 add_subdirectory(fmt EXCLUDE_FROM_ALL)
+add_subdirectory(glm)
 
 # Remove this line - we're using system SDL2 now
 # add_subdirectory(SDL EXCLUDE_FROM_ALL)
@@ -52,8 +53,8 @@ set_property(TARGET vkbootstrap PROPERTY CXX_STANDARD 20)
 
 #both vma and glm and header only libs so we only need the include path
 target_include_directories(vma INTERFACE vma)
-target_include_directories(glm INTERFACE glm)
-target_include_directories(hlslpp INTERFACE hlsl++)
+#target_include_directories(glm INTERFACE glm)
+#target_include_directories(hlslpp INTERFACE hlsl++)
 target_include_directories(stb_image INTERFACE stb_image)
 
 target_include_directories(imgui PUBLIC imgui)

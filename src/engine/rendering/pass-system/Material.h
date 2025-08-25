@@ -34,26 +34,20 @@ namespace rendering
             return passManager.GetPass<T>();
         }
 
-        ecs::Entity AddSubMesh(const ecs::EntityID meshID, const std::span<ecs::EntityRef> entities, const uint32_t firstIndex = 0, const uint32_t indexCount = ~0u)
-        {
-            ecs::Entity e = engine.New();
-            SubMesh submesh {};
-            submesh.ReferenceMesh(engine, meshID, firstIndex, indexCount);
-            engine.Add<SubMesh>(e, submesh);
-            (engine.Add<PassComponent<Passes>>(
-                e,
-                PassComponent<Passes>
-                {
-                    .passGroup = { passGroups[ecs::index_of_type_v<Passes, Passes...>] },
-                    .transforms = { serial::array<ecs::EntityRef>::NewFromData(entities.data(), entities.size()) }
-                }
-            ), ...);
-            return e;
-        }
-
-        void RemoveMesh(ecs::Entity subMeshID)
-        {
-            (engine.Remove<Passes>(subMeshID), ...);
-        }
+        // ecs::Entity AddEntity(ecs::Entity e, const ecs::EntityID meshID, const uint32_t firstIndex = 0, const uint32_t indexCount = ~0u)
+        // {
+        //     SubMesh submesh {};
+        //     submesh.ReferenceMesh(engine, meshID, firstIndex, indexCount);
+        //     engine.Add<SubMesh>(e, submesh);
+        //     (engine.Add<PassComponent<Passes>>(
+        //         e,
+        //         PassComponent<Passes>
+        //         {
+        //             .passGroup = { passGroups[ecs::index_of_type_v<Passes, Passes...>] },
+        //             .currentMesh = ecs::BadMaxEntity
+        //         }
+        //     ), ...);
+        //     return e;
+        // }
     };
 }

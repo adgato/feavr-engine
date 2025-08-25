@@ -104,10 +104,7 @@ namespace ecs
         return e;
     }
 
-    bool Engine::IsValid(Entity e) const
-    {
-        return e < entities.size() && entities[e].index < BadMaxEntity;
-    }
+
 
     void Engine::RemoveAll(Entity e)
     {

@@ -81,7 +81,7 @@ namespace rendering
         vkb::InstanceBuilder builder;
 
         //make the vulkan instance, with basic debug features
-        auto inst_ret = builder.set_app_name("Example Vulkan Application")
+        auto inst_ret = builder.set_app_name("Feavr Engine")
                 .request_validation_layers(useValidationLayers)
                 .use_default_debug_messenger()
                 .require_api_version(1, 3, 0)
@@ -204,54 +204,6 @@ namespace rendering
         VK_CHECK(vkQueueSubmit2(resource.graphicsQueue, 1, &submit, immFence));
         VK_CHECK(vkWaitForFences(resource.device, 1, &immFence, true, 9999999999));
         // at this point, the submission has finished executing
-    }
-
-    Mesh RenderingResources::UploadMesh(const std::span<uint32_t> indices, const std::span<Vertex> vertices) const
-    {
-        const size_t vertexBufferSize = vertices.size() * sizeof(Vertex);
-        const size_t indexBufferSize = indices.size() * sizeof(uint32_t);
-
-        Mesh newSurface {};
-
-        //create vertex buffer
-        newSurface.vertexBuffer = Buffer<Vertex>::Allocate(resource, vertices.size(),
-                                                           VK_BUFFER_USAGE_STORAGE_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT |
-                                                           VK_BUFFER_USAGE_SHADER_DEVICE_ADDRESS_BIT, HostAccess::NONE, VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE);
-
-        //find the adress of the vertex buffer
-        const VkBufferDeviceAddressInfo deviceAdressInfo { .sType = VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_INFO, .buffer = newSurface.vertexBuffer.buffer };
-        newSurface.vertexBufferAddress = vkGetBufferDeviceAddress(resource, &deviceAdressInfo);
-
-        //create index buffer
-        newSurface.indexBuffer = Buffer<uint32_t>::Allocate(resource, indices.size(),
-                                                            VK_BUFFER_USAGE_INDEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT,
-                                                            HostAccess::NONE, VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE);
-
-        Buffer<std::byte> staging = Buffer<std::byte>::Allocate(resource, vertexBufferSize + indexBufferSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT, HostAccess::SEQUENTIAL_WRITE);
-
-        std::memcpy(staging.Access(), vertices.data(), vertexBufferSize);
-        std::memcpy(staging.Access() + vertexBufferSize, indices.data(), indexBufferSize);
-
-        ImmediateSumbit([&](const VkCommandBuffer cmd)
-        {
-            VkBufferCopy vertexCopy;
-            vertexCopy.dstOffset = 0;
-            vertexCopy.srcOffset = 0;
-            vertexCopy.size = vertexBufferSize;
-
-            vkCmdCopyBuffer(cmd, staging.buffer, newSurface.vertexBuffer.buffer, 1, &vertexCopy);
-
-            VkBufferCopy indexCopy;
-            indexCopy.dstOffset = 0;
-            indexCopy.srcOffset = vertexBufferSize;
-            indexCopy.size = indexBufferSize;
-
-            vkCmdCopyBuffer(cmd, staging.buffer, newSurface.indexBuffer.buffer, 1, &indexCopy);
-        });
-
-        staging.Destroy();
-
-        return newSurface;
     }
 
     std::tuple<VkCommandBuffer, Image&> RenderingResources::BeginFrame()

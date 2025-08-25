@@ -76,7 +76,7 @@ void RenderingEngine::Init(RenderingResources& resources)
 void RenderingEngine::Draw(const uint32_t frameCount, VkCommandBuffer cmd, Image& targetImage)
 {
     // optional, quite costly when resizing
-    if (drawImage.imageExtent.width != targetImage.imageExtent.width)
+    if (drawImage.imageExtent.width != targetImage.imageExtent.width || drawImage.imageExtent.height != targetImage.imageExtent.height)
     {
         drawImage.Destroy();
         depthImage.Destroy();
@@ -156,9 +156,9 @@ void RenderingEngine::Draw(const uint32_t frameCount, VkCommandBuffer cmd, Image
     sceneDataBuffer.Write(&sceneData);
 
     //create a descriptor set that binds that buffer and update it
-    gpuSceneDescriptorSet.AllocateSet(resource, *resource.globalAllocator, commonSets.sceneDataLayout);
-    gpuSceneDescriptorSet.StageBuffer(shader_layouts::global::SceneData_binding, sceneDataBuffer);
-    gpuSceneDescriptorSet.PerformWrites();
+    sceneProperties.AllocateSet(resource, *resource.globalAllocator, commonSets.sceneDataLayout);
+    sceneProperties.StageBuffer(shader_layouts::global::SceneData_binding, sceneDataBuffer);
+    sceneProperties.PerformWrites();
 
     passManager.Draw(cmd);
     vkCmdEndRendering(cmd);

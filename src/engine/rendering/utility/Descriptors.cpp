@@ -105,7 +105,7 @@ VkDescriptorSet DescriptorAllocator::Alloc(const DescriptorSetLayoutInfo layout)
 
 
 
-void DescriptorWriter::AllocateSet(const VkDevice device, DescriptorAllocator& allocator, DescriptorSetLayoutInfo layout)
+void DescriptorWriter::AllocateSet(const VkDevice device, DescriptorAllocator& allocator, const DescriptorSetLayoutInfo layout)
 {
     this->device = device;
     descriptorSet = allocator.Alloc(layout);

@@ -13,7 +13,7 @@ public:
     RenderingEngine renderer { engine, resources };
     ImguiOverlay imguiOverlay {};
     rendering::ClickOnMeshTool clickOnMeshTool { resources, renderer.passManager };
-    ecs::EngineWidget engineWidget { engine };
+    ecs::EngineWidget engineWidget { engine, renderer.passManager };
 
     bool skipDrawing = false;
     glm::vec2 coord;

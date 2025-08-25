@@ -5,909 +5,969 @@
  -->
 <!-- Title: source tree Pages: 1 -->
 <svg width="576pt" height="719pt"
- viewBox="0.00 0.00 576.00 719.46" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(0.27 0.27) rotate(0) translate(4 2652.75)">
+ viewBox="0.00 0.00 576.00 719.44" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.28 0.28) rotate(0) translate(4 2566.5)">
 <title>source tree</title>
-<polygon fill="#1e1e1e" stroke="transparent" points="-4,4 -4,-2652.75 2123,-2652.75 2123,4 -4,4"/>
-<!-- Tags.h -->
+<polygon fill="#1e1e1e" stroke="transparent" points="-4,4 -4,-2566.5 2054,-2566.5 2054,4 -4,4"/>
+<!-- Core.h -->
 <g id="node1" class="node">
-<title>Tags.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1147,-1227 1093,-1227 1093,-1191 1147,-1191 1147,-1227"/>
-<text text-anchor="middle" x="1120" y="-1206.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Tags.h</text>
+<title>Core.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1696,-2302 1642,-2302 1642,-2266 1696,-2266 1696,-2302"/>
+<text text-anchor="middle" x="1669" y="-2281.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Core.h</text>
 </g>
-<!-- array.h -->
+<!-- AssetID.h -->
 <g id="node2" class="node">
-<title>array.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="933,-997 879,-997 879,-961 933,-961 933,-997"/>
-<text text-anchor="middle" x="906" y="-976.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">array.h</text>
+<title>AssetID.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="451.5,-2079 386.5,-2079 386.5,-2043 451.5,-2043 451.5,-2079"/>
+<text text-anchor="middle" x="419" y="-2058.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">AssetID.h</text>
 </g>
-<!-- Tags.h&#45;&gt;array.h -->
+<!-- Core.h&#45;&gt;AssetID.h -->
 <g id="edge1" class="edge">
-<title>Tags.h&#45;&gt;array.h</title>
-<path fill="none" stroke="#718096" d="M1096.85,-1183.34C1053.13,-1136.76 959.46,-1036.95 921.98,-997.02"/>
-<polygon fill="#718096" stroke="#718096" points="1094.52,-1185.97 1103.92,-1190.86 1099.62,-1181.18 1094.52,-1185.97"/>
+<title>Core.h&#45;&gt;AssetID.h</title>
+<path fill="none" stroke="#718096" d="M1631.66,-2276.4C1446.22,-2243.61 626.36,-2098.66 451.77,-2067.79"/>
+<polygon fill="#718096" stroke="#718096" points="1631.27,-2279.88 1641.73,-2278.18 1632.49,-2272.99 1631.27,-2279.88"/>
 </g>
-<!-- Stream.h -->
+<!-- ImguiOverlay.h -->
 <g id="node3" class="node">
-<title>Stream.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="935.5,-306 872.5,-306 872.5,-270 935.5,-270 935.5,-306"/>
-<text text-anchor="middle" x="904" y="-285.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Stream.h</text>
+<title>ImguiOverlay.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1846.5,-1633 1751.5,-1633 1751.5,-1597 1846.5,-1597 1846.5,-1633"/>
+<text text-anchor="middle" x="1799" y="-1612.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">ImguiOverlay.h</text>
 </g>
-<!-- array.h&#45;&gt;Stream.h -->
+<!-- Core.h&#45;&gt;ImguiOverlay.h -->
 <g id="edge2" class="edge">
-<title>array.h&#45;&gt;Stream.h</title>
-<path fill="none" stroke="#718096" d="M905.92,-950.65C905.59,-836.29 904.32,-398.16 904.05,-306.05"/>
-<polygon fill="#718096" stroke="#718096" points="902.42,-950.98 905.95,-960.97 909.42,-950.96 902.42,-950.98"/>
+<title>Core.h&#45;&gt;ImguiOverlay.h</title>
+<path fill="none" stroke="#718096" d="M1679.66,-2256.41C1694.69,-2217.9 1721.93,-2144.11 1737,-2079 1776.68,-1907.55 1793.64,-1694.08 1797.88,-1633.03"/>
+<polygon fill="#718096" stroke="#718096" points="1676.35,-2255.27 1675.95,-2265.85 1682.87,-2257.83 1676.35,-2255.27"/>
 </g>
-<!-- ReadByteStream.h -->
-<g id="node23" class="node">
-<title>ReadByteStream.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="862.5,-76 749.5,-76 749.5,-40 862.5,-40 862.5,-76"/>
-<text text-anchor="middle" x="806" y="-55.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">ReadByteStream.h</text>
+<!-- EngineWidget.h -->
+<g id="node4" class="node">
+<title>EngineWidget.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1091.5,-1856 992.5,-1856 992.5,-1820 1091.5,-1820 1091.5,-1856"/>
+<text text-anchor="middle" x="1042" y="-1835.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">EngineWidget.h</text>
 </g>
-<!-- Stream.h&#45;&gt;ReadByteStream.h -->
-<g id="edge21" class="edge">
-<title>Stream.h&#45;&gt;ReadByteStream.h</title>
-<path fill="none" stroke="#718096" d="M892.64,-260.58C872.32,-213.29 830.27,-115.46 813.32,-76.02"/>
-<polygon fill="#718096" stroke="#718096" points="889.47,-262.06 896.63,-269.86 895.9,-259.29 889.47,-262.06"/>
+<!-- Core.h&#45;&gt;EngineWidget.h -->
+<g id="edge3" class="edge">
+<title>Core.h&#45;&gt;EngineWidget.h</title>
+<path fill="none" stroke="#718096" d="M1636.34,-2259.87C1525.19,-2181.16 1163.17,-1924.81 1066.12,-1856.08"/>
+<polygon fill="#718096" stroke="#718096" points="1634.62,-2262.94 1644.81,-2265.87 1638.67,-2257.23 1634.62,-2262.94"/>
 </g>
-<!-- WriteByteStream.h -->
-<g id="node24" class="node">
-<title>WriteByteStream.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="993.5,-76 880.5,-76 880.5,-40 993.5,-40 993.5,-76"/>
-<text text-anchor="middle" x="937" y="-55.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">WriteByteStream.h</text>
+<!-- RenderingEngine.h -->
+<g id="node5" class="node">
+<title>RenderingEngine.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1727.5,-2079 1610.5,-2079 1610.5,-2043 1727.5,-2043 1727.5,-2079"/>
+<text text-anchor="middle" x="1669" y="-2058.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">RenderingEngine.h</text>
 </g>
-<!-- Stream.h&#45;&gt;WriteByteStream.h -->
-<g id="edge22" class="edge">
-<title>Stream.h&#45;&gt;WriteByteStream.h</title>
-<path fill="none" stroke="#718096" d="M907.95,-259.68C914.85,-212.07 928.86,-115.21 934.54,-76.02"/>
-<polygon fill="#718096" stroke="#718096" points="904.45,-259.46 906.48,-269.86 911.38,-260.47 904.45,-259.46"/>
+<!-- Core.h&#45;&gt;RenderingEngine.h -->
+<g id="edge4" class="edge">
+<title>Core.h&#45;&gt;RenderingEngine.h</title>
+<path fill="none" stroke="#718096" d="M1669,-2255.48C1669,-2209.28 1669,-2117.43 1669,-2079.26"/>
+<polygon fill="#718096" stroke="#718096" points="1665.5,-2255.66 1669,-2265.66 1672.5,-2255.66 1665.5,-2255.66"/>
 </g>
-<!-- SerialConcepts.h -->
-<g id="node25" class="node">
-<title>SerialConcepts.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1179.5,-76 1076.5,-76 1076.5,-40 1179.5,-40 1179.5,-76"/>
-<text text-anchor="middle" x="1128" y="-55.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">SerialConcepts.h</text>
+<!-- ClickOnMeshTool.h -->
+<g id="node6" class="node">
+<title>ClickOnMeshTool.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1943,-1411 1827,-1411 1827,-1375 1943,-1375 1943,-1411"/>
+<text text-anchor="middle" x="1885" y="-1390.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">ClickOnMeshTool.h</text>
 </g>
-<!-- Stream.h&#45;&gt;SerialConcepts.h -->
-<g id="edge23" class="edge">
-<title>Stream.h&#45;&gt;SerialConcepts.h</title>
-<path fill="none" stroke="#718096" d="M927.95,-262.62C973.59,-216.17 1071.96,-116.04 1111.27,-76.02"/>
-<polygon fill="#718096" stroke="#718096" points="925.35,-260.28 920.84,-269.86 930.34,-265.18 925.35,-260.28"/>
+<!-- Core.h&#45;&gt;ClickOnMeshTool.h -->
+<g id="edge5" class="edge">
+<title>Core.h&#45;&gt;ClickOnMeshTool.h</title>
+<path fill="none" stroke="#718096" d="M1681.76,-2256.49C1699.85,-2218.09 1733.06,-2144.41 1754,-2079 1815.99,-1885.34 1821.04,-1833.31 1856,-1633 1870.41,-1550.44 1880.04,-1450.6 1883.53,-1411.19"/>
+<polygon fill="#718096" stroke="#718096" points="1678.42,-2255.37 1677.29,-2265.91 1684.74,-2258.37 1678.42,-2255.37"/>
+</g>
+<!-- RenderingResources.h -->
+<g id="node12" class="node">
+<title>RenderingResources.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1938.5,-1188 1805.5,-1188 1805.5,-1152 1938.5,-1152 1938.5,-1188"/>
+<text text-anchor="middle" x="1872" y="-1167.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">RenderingResources.h</text>
+</g>
+<!-- ImguiOverlay.h&#45;&gt;RenderingResources.h -->
+<g id="edge26" class="edge">
+<title>ImguiOverlay.h&#45;&gt;RenderingResources.h</title>
+<path fill="none" stroke="#718096" d="M1799.58,-1586.73C1800.88,-1542.14 1805.03,-1451 1818,-1375 1830.02,-1304.58 1855.06,-1223.08 1866.31,-1188.23"/>
+<polygon fill="#718096" stroke="#718096" points="1796.08,-1586.68 1799.31,-1596.77 1803.08,-1586.87 1796.08,-1586.68"/>
+</g>
+<!-- PassComponent.h -->
+<g id="node10" class="node">
+<title>PassComponent.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1270,-1188 1162,-1188 1162,-1152 1270,-1152 1270,-1188"/>
+<text text-anchor="middle" x="1216" y="-1167.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">PassComponent.h</text>
+</g>
+<!-- EngineWidget.h&#45;&gt;PassComponent.h -->
+<g id="edge28" class="edge">
+<title>EngineWidget.h&#45;&gt;PassComponent.h</title>
+<path fill="none" stroke="#ffd700" stroke-width="2" d="M1045.61,-1809.73C1057.17,-1723.53 1094.06,-1457.82 1120,-1375 1142.76,-1302.35 1186.35,-1222.34 1205.98,-1188.08"/>
+<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="1042.12,-1809.4 1044.27,-1819.77 1049.06,-1810.32 1042.12,-1809.4"/>
+</g>
+<!-- EngineView.h -->
+<g id="node15" class="node">
+<title>EngineView.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1012,-1188 926,-1188 926,-1152 1012,-1152 1012,-1188"/>
+<text text-anchor="middle" x="969" y="-1167.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">EngineView.h</text>
+</g>
+<!-- EngineWidget.h&#45;&gt;EngineView.h -->
+<g id="edge31" class="edge">
+<title>EngineWidget.h&#45;&gt;EngineView.h</title>
+<path fill="none" stroke="#ffd700" stroke-width="2" d="M1019.96,-1811.68C989.79,-1775.16 937.09,-1704.24 917,-1633 903.47,-1585.02 928.15,-1588.77 951,-1411 961.68,-1327.91 966.67,-1227.75 968.33,-1188.23"/>
+<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="1017.64,-1814.36 1026.75,-1819.78 1023.01,-1809.87 1017.64,-1814.36"/>
+</g>
+<!-- StencilOutlinePass.h -->
+<g id="node17" class="node">
+<title>StencilOutlinePass.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1250.5,-1411 1129.5,-1411 1129.5,-1375 1250.5,-1375 1250.5,-1411"/>
+<text text-anchor="middle" x="1190" y="-1390.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">StencilOutlinePass.h</text>
+</g>
+<!-- EngineWidget.h&#45;&gt;StencilOutlinePass.h -->
+<g id="edge27" class="edge">
+<title>EngineWidget.h&#45;&gt;StencilOutlinePass.h</title>
+<path fill="none" stroke="#ffd700" stroke-width="2" d="M1050.93,-1810.27C1078.46,-1727.86 1161.55,-1479.17 1184.23,-1411.28"/>
+<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="1047.56,-1809.31 1047.71,-1819.91 1054.2,-1811.53 1047.56,-1809.31"/>
 </g>
 <!-- PassSystem.h -->
-<g id="node4" class="node">
+<g id="node24" class="node">
 <title>PassSystem.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="810,-1918 724,-1918 724,-1882 810,-1882 810,-1918"/>
-<text text-anchor="middle" x="767" y="-1897.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">PassSystem.h</text>
+<polygon fill="#2d3748" stroke="#4a5568" points="1242,-1633 1156,-1633 1156,-1597 1242,-1597 1242,-1633"/>
+<text text-anchor="middle" x="1199" y="-1612.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">PassSystem.h</text>
+</g>
+<!-- EngineWidget.h&#45;&gt;PassSystem.h -->
+<g id="edge29" class="edge">
+<title>EngineWidget.h&#45;&gt;PassSystem.h</title>
+<path fill="none" stroke="#718096" d="M1060.12,-1811.49C1092.44,-1766 1159.22,-1672 1186.74,-1633.26"/>
+<polygon fill="#718096" stroke="#718096" points="1057.26,-1809.48 1054.32,-1819.66 1062.96,-1813.53 1057.26,-1809.48"/>
 </g>
 <!-- Engine.h -->
-<g id="node5" class="node">
+<g id="node25" class="node">
 <title>Engine.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1206.5,-997 1143.5,-997 1143.5,-961 1206.5,-961 1206.5,-997"/>
-<text text-anchor="middle" x="1175" y="-976.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Engine.h</text>
+<polygon fill="#2d3748" stroke="#4a5568" points="890.5,-965 827.5,-965 827.5,-929 890.5,-929 890.5,-965"/>
+<text text-anchor="middle" x="859" y="-944.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Engine.h</text>
 </g>
-<!-- PassSystem.h&#45;&gt;Engine.h -->
-<g id="edge3" class="edge">
-<title>PassSystem.h&#45;&gt;Engine.h</title>
-<path fill="none" stroke="#ffd700" stroke-width="2" d="M789.26,-1873.77C861.67,-1789.67 1089.67,-1508.25 1156,-1227 1175.94,-1142.44 1176.24,-1037.54 1175.48,-997.05"/>
-<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="786.46,-1871.66 782.56,-1881.51 791.75,-1876.24 786.46,-1871.66"/>
+<!-- EngineWidget.h&#45;&gt;Engine.h -->
+<g id="edge30" class="edge">
+<title>EngineWidget.h&#45;&gt;Engine.h</title>
+<path fill="none" stroke="#ffd700" stroke-width="2" d="M1021.33,-1811.73C992.13,-1774.76 939.13,-1702.73 910,-1633 806.67,-1385.7 845.46,-1044.65 856.48,-965.07"/>
+<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="1018.89,-1814.29 1027.87,-1819.93 1024.36,-1809.93 1018.89,-1814.29"/>
 </g>
-<!-- SubMesh.h -->
-<g id="node6" class="node">
-<title>SubMesh.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="796.5,-997 721.5,-997 721.5,-961 796.5,-961 796.5,-997"/>
-<text text-anchor="middle" x="759" y="-976.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">SubMesh.h</text>
+<!-- Tags.h -->
+<g id="node26" class="node">
+<title>Tags.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="755,-1633 701,-1633 701,-1597 755,-1597 755,-1633"/>
+<text text-anchor="middle" x="728" y="-1612.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Tags.h</text>
 </g>
-<!-- PassSystem.h&#45;&gt;SubMesh.h -->
-<g id="edge4" class="edge">
-<title>PassSystem.h&#45;&gt;SubMesh.h</title>
-<path fill="none" stroke="#ffd700" stroke-width="2" d="M766.25,-1871.71C764.39,-1802.52 759.6,-1614.64 758,-1458 756.16,-1277.93 758.16,-1059.68 758.81,-997.36"/>
-<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="762.75,-1871.87 766.52,-1881.77 769.75,-1871.68 762.75,-1871.87"/>
+<!-- EngineWidget.h&#45;&gt;Tags.h -->
+<g id="edge32" class="edge">
+<title>EngineWidget.h&#45;&gt;Tags.h</title>
+<path fill="none" stroke="#718096" d="M1009.21,-1813.92C946.02,-1769.45 808.65,-1672.76 752.58,-1633.3"/>
+<polygon fill="#718096" stroke="#718096" points="1007.43,-1816.95 1017.62,-1819.84 1011.46,-1811.22 1007.43,-1816.95"/>
+</g>
+<!-- AutoCompleteWidget.h -->
+<g id="node27" class="node">
+<title>AutoCompleteWidget.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1061.5,-1633 926.5,-1633 926.5,-1597 1061.5,-1597 1061.5,-1633"/>
+<text text-anchor="middle" x="994" y="-1612.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">AutoCompleteWidget.h</text>
+</g>
+<!-- EngineWidget.h&#45;&gt;AutoCompleteWidget.h -->
+<g id="edge33" class="edge">
+<title>EngineWidget.h&#45;&gt;AutoCompleteWidget.h</title>
+<path fill="none" stroke="#718096" d="M1036.09,-1809.77C1026.07,-1763.66 1006.06,-1671.51 997.75,-1633.26"/>
+<polygon fill="#718096" stroke="#718096" points="1032.69,-1810.63 1038.23,-1819.66 1039.53,-1809.14 1032.69,-1810.63"/>
+</g>
+<!-- CommonSetLayouts.h -->
+<g id="node8" class="node">
+<title>CommonSetLayouts.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1787.5,-1188 1658.5,-1188 1658.5,-1152 1787.5,-1152 1787.5,-1188"/>
+<text text-anchor="middle" x="1723" y="-1167.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">CommonSetLayouts.h</text>
+</g>
+<!-- RenderingEngine.h&#45;&gt;CommonSetLayouts.h -->
+<g id="edge56" class="edge">
+<title>RenderingEngine.h&#45;&gt;CommonSetLayouts.h</title>
+<path fill="none" stroke="#ffd700" stroke-width="2" d="M1667.06,-2032.76C1664.39,-1993.66 1659.71,-1919.36 1658,-1856 1650.8,-1588.81 1705.84,-1265.4 1719.82,-1188.15"/>
+<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="1663.58,-2033.08 1667.76,-2042.82 1670.56,-2032.6 1663.58,-2033.08"/>
+</g>
+<!-- Camera.h -->
+<g id="node37" class="node">
+<title>Camera.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1733,-1856 1667,-1856 1667,-1820 1733,-1820 1733,-1856"/>
+<text text-anchor="middle" x="1700" y="-1835.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Camera.h</text>
+</g>
+<!-- RenderingEngine.h&#45;&gt;Camera.h -->
+<g id="edge57" class="edge">
+<title>RenderingEngine.h&#45;&gt;Camera.h</title>
+<path fill="none" stroke="#718096" d="M1672.86,-2032.48C1679.34,-1986.28 1692.22,-1894.43 1697.58,-1856.26"/>
+<polygon fill="#718096" stroke="#718096" points="1669.36,-2032.27 1671.43,-2042.66 1676.29,-2033.24 1669.36,-2032.27"/>
+</g>
+<!-- CommonTextures.h -->
+<g id="node38" class="node">
+<title>CommonTextures.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="2050,-1633 1934,-1633 1934,-1597 2050,-1597 2050,-1633"/>
+<text text-anchor="middle" x="1992" y="-1612.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">CommonTextures.h</text>
+</g>
+<!-- RenderingEngine.h&#45;&gt;CommonTextures.h -->
+<g id="edge58" class="edge">
+<title>RenderingEngine.h&#45;&gt;CommonTextures.h</title>
+<path fill="none" stroke="#718096" d="M1687.4,-2034.71C1746.36,-1953.67 1929.6,-1701.78 1979.4,-1633.32"/>
+<polygon fill="#718096" stroke="#718096" points="1684.52,-2032.72 1681.46,-2042.87 1690.18,-2036.84 1684.52,-2032.72"/>
+</g>
+<!-- Material.h -->
+<g id="node39" class="node">
+<title>Material.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1313.5,-1856 1244.5,-1856 1244.5,-1820 1313.5,-1820 1313.5,-1856"/>
+<text text-anchor="middle" x="1279" y="-1835.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Material.h</text>
+</g>
+<!-- RenderingEngine.h&#45;&gt;Material.h -->
+<g id="edge59" class="edge">
+<title>RenderingEngine.h&#45;&gt;Material.h</title>
+<path fill="none" stroke="#718096" d="M1629.7,-2037.73C1551.77,-1993.57 1379.15,-1895.75 1309.26,-1856.15"/>
+<polygon fill="#718096" stroke="#718096" points="1628.3,-2040.96 1638.72,-2042.84 1631.75,-2034.87 1628.3,-2040.96"/>
+</g>
+<!-- ClickOnMeshTool.h&#45;&gt;RenderingResources.h -->
+<g id="edge60" class="edge">
+<title>ClickOnMeshTool.h&#45;&gt;RenderingResources.h</title>
+<path fill="none" stroke="#718096" d="M1883.38,-1364.48C1880.66,-1318.28 1875.26,-1226.43 1873.02,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="1879.9,-1364.88 1883.98,-1374.66 1886.89,-1364.47 1879.9,-1364.88"/>
+</g>
+<!-- Image.h -->
+<g id="node40" class="node">
+<title>Image.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1996.5,-519 1937.5,-519 1937.5,-483 1996.5,-483 1996.5,-519"/>
+<text text-anchor="middle" x="1967" y="-498.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Image.h</text>
+</g>
+<!-- ClickOnMeshTool.h&#45;&gt;Image.h -->
+<g id="edge61" class="edge">
+<title>ClickOnMeshTool.h&#45;&gt;Image.h</title>
+<path fill="none" stroke="#ffd700" stroke-width="2" d="M1895.74,-1365.51C1910.7,-1327.12 1937.19,-1253.47 1948,-1188 1991.47,-924.68 1973.41,-596.95 1968.22,-519.13"/>
+<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="1892.44,-1364.33 1892.02,-1374.92 1898.95,-1366.9 1892.44,-1364.33"/>
 </g>
 <!-- IdentifyPass.h -->
 <g id="node7" class="node">
 <title>IdentifyPass.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="562.5,-1688 473.5,-1688 473.5,-1652 562.5,-1652 562.5,-1688"/>
-<text text-anchor="middle" x="518" y="-1667.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">IdentifyPass.h</text>
-</g>
-<!-- PassSystem.h&#45;&gt;IdentifyPass.h -->
-<g id="edge5" class="edge">
-<title>PassSystem.h&#45;&gt;IdentifyPass.h</title>
-<path fill="none" stroke="#718096" d="M740.69,-1874.91C690.1,-1828.58 580.38,-1728.12 536.59,-1688.02"/>
-<polygon fill="#718096" stroke="#718096" points="738.55,-1877.69 748.28,-1881.86 743.27,-1872.53 738.55,-1877.69"/>
-</g>
-<!-- DefaultPass.h -->
-<g id="node8" class="node">
-<title>DefaultPass.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="853,-1458 767,-1458 767,-1422 853,-1422 853,-1458"/>
-<text text-anchor="middle" x="810" y="-1437.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">DefaultPass.h</text>
-</g>
-<!-- PassSystem.h&#45;&gt;DefaultPass.h -->
-<g id="edge6" class="edge">
-<title>PassSystem.h&#45;&gt;DefaultPass.h</title>
-<path fill="none" stroke="#718096" d="M769.56,-1871.74C777.54,-1786.74 801.82,-1528.13 808.36,-1458.45"/>
-<polygon fill="#718096" stroke="#718096" points="766.06,-1871.6 768.61,-1881.88 773.03,-1872.25 766.06,-1871.6"/>
-</g>
-<!-- StencilOutlinePass.h -->
-<g id="node9" class="node">
-<title>StencilOutlinePass.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1030.5,-1458 909.5,-1458 909.5,-1422 1030.5,-1422 1030.5,-1458"/>
-<text text-anchor="middle" x="970" y="-1437.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">StencilOutlinePass.h</text>
-</g>
-<!-- PassSystem.h&#45;&gt;StencilOutlinePass.h -->
-<g id="edge7" class="edge">
-<title>PassSystem.h&#45;&gt;StencilOutlinePass.h</title>
-<path fill="none" stroke="#718096" d="M778.74,-1872.51C816.05,-1788.33 931.29,-1528.34 962.27,-1458.45"/>
-<polygon fill="#718096" stroke="#718096" points="775.44,-1871.32 774.59,-1881.88 781.84,-1874.16 775.44,-1871.32"/>
-</g>
-<!-- Archetype.h -->
-<g id="node10" class="node">
-<title>Archetype.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1227.5,-767 1148.5,-767 1148.5,-731 1227.5,-731 1227.5,-767"/>
-<text text-anchor="middle" x="1188" y="-746.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Archetype.h</text>
-</g>
-<!-- Engine.h&#45;&gt;Archetype.h -->
-<g id="edge8" class="edge">
-<title>Engine.h&#45;&gt;Archetype.h</title>
-<path fill="none" stroke="#718096" d="M1176.56,-950.68C1179.27,-903.07 1184.79,-806.21 1187.03,-767.02"/>
-<polygon fill="#718096" stroke="#718096" points="1173.05,-950.68 1175.98,-960.86 1180.04,-951.08 1173.05,-950.68"/>
-</g>
-<!-- UpdateQueue.h -->
-<g id="node11" class="node">
-<title>UpdateQueue.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1130,-767 1032,-767 1032,-731 1130,-731 1130,-767"/>
-<text text-anchor="middle" x="1081" y="-746.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">UpdateQueue.h</text>
-</g>
-<!-- Engine.h&#45;&gt;UpdateQueue.h -->
-<g id="edge9" class="edge">
-<title>Engine.h&#45;&gt;UpdateQueue.h</title>
-<path fill="none" stroke="#718096" d="M1164.11,-951.58C1144.61,-904.29 1104.28,-806.46 1088.02,-767.02"/>
-<polygon fill="#718096" stroke="#718096" points="1160.89,-952.95 1167.93,-960.86 1167.36,-950.28 1160.89,-952.95"/>
-</g>
-<!-- SubMesh.h&#45;&gt;Stream.h -->
-<g id="edge30" class="edge">
-<title>SubMesh.h&#45;&gt;Stream.h</title>
-<path fill="none" stroke="#ffd700" stroke-width="2" d="M751.39,-950.89C731.86,-876.41 685.27,-663.3 741,-500 769.71,-415.89 847.04,-339.26 883.91,-306.2"/>
-<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="748.09,-952.1 754.06,-960.86 754.85,-950.29 748.09,-952.1"/>
-</g>
-<!-- EntityRef.h -->
-<g id="node31" class="node">
-<title>EntityRef.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1006,-767 932,-767 932,-731 1006,-731 1006,-767"/>
-<text text-anchor="middle" x="969" y="-746.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">EntityRef.h</text>
-</g>
-<!-- SubMesh.h&#45;&gt;EntityRef.h -->
-<g id="edge31" class="edge">
-<title>SubMesh.h&#45;&gt;EntityRef.h</title>
-<path fill="none" stroke="#718096" d="M781.72,-953.34C824.62,-906.76 916.54,-806.95 953.32,-767.02"/>
-<polygon fill="#718096" stroke="#718096" points="778.98,-951.14 774.78,-960.86 784.13,-955.88 778.98,-951.14"/>
-</g>
-<!-- IdentifyPass.h&#45;&gt;SubMesh.h -->
-<g id="edge37" class="edge">
-<title>IdentifyPass.h&#45;&gt;SubMesh.h</title>
-<path fill="none" stroke="#ffd700" stroke-width="2" d="M530.72,-1642.58C562.92,-1574.86 648.82,-1389 701,-1227 728.28,-1142.31 748.62,-1037.48 755.99,-997.03"/>
-<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="527.51,-1641.17 526.37,-1651.7 533.83,-1644.18 527.51,-1641.17"/>
-</g>
-<!-- CommonSetLayouts.h -->
-<g id="node15" class="node">
-<title>CommonSetLayouts.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="300.5,-1458 171.5,-1458 171.5,-1422 300.5,-1422 300.5,-1458"/>
-<text text-anchor="middle" x="236" y="-1437.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">CommonSetLayouts.h</text>
+<polygon fill="#2d3748" stroke="#4a5568" points="1500.5,-1411 1411.5,-1411 1411.5,-1375 1500.5,-1375 1500.5,-1411"/>
+<text text-anchor="middle" x="1456" y="-1390.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">IdentifyPass.h</text>
 </g>
 <!-- IdentifyPass.h&#45;&gt;CommonSetLayouts.h -->
-<g id="edge38" class="edge">
+<g id="edge6" class="edge">
 <title>IdentifyPass.h&#45;&gt;CommonSetLayouts.h</title>
-<path fill="none" stroke="#718096" d="M488.91,-1645.48C431.93,-1599.41 306.85,-1498.28 257.06,-1458.02"/>
-<polygon fill="#718096" stroke="#718096" points="486.83,-1648.3 496.8,-1651.86 491.23,-1642.85 486.83,-1648.3"/>
+<path fill="none" stroke="#718096" d="M1484.79,-1368.17C1538.94,-1323.35 1654.77,-1227.48 1702.15,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="1482.42,-1365.59 1476.95,-1374.66 1486.89,-1370.98 1482.42,-1365.59"/>
 </g>
-<!-- RenderingResources.h -->
-<g id="node22" class="node">
-<title>RenderingResources.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="451.5,-1458 318.5,-1458 318.5,-1422 451.5,-1422 451.5,-1458"/>
-<text text-anchor="middle" x="385" y="-1437.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">RenderingResources.h</text>
+<!-- SubMesh.h -->
+<g id="node9" class="node">
+<title>SubMesh.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1105.5,-1188 1030.5,-1188 1030.5,-1152 1105.5,-1152 1105.5,-1188"/>
+<text text-anchor="middle" x="1068" y="-1167.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">SubMesh.h</text>
+</g>
+<!-- IdentifyPass.h&#45;&gt;SubMesh.h -->
+<g id="edge7" class="edge">
+<title>IdentifyPass.h&#45;&gt;SubMesh.h</title>
+<path fill="none" stroke="#718096" d="M1416.9,-1369.73C1339.37,-1325.57 1167.64,-1227.75 1098.1,-1188.15"/>
+<polygon fill="#718096" stroke="#718096" points="1415.46,-1372.93 1425.88,-1374.84 1418.92,-1366.85 1415.46,-1372.93"/>
+</g>
+<!-- IdentifyPass.h&#45;&gt;PassComponent.h -->
+<g id="edge8" class="edge">
+<title>IdentifyPass.h&#45;&gt;PassComponent.h</title>
+<path fill="none" stroke="#718096" d="M1429.52,-1367.62C1380.6,-1322.57 1277.16,-1227.32 1234.74,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="1427.44,-1370.46 1437.17,-1374.66 1432.18,-1365.31 1427.44,-1370.46"/>
+</g>
+<!-- Transform.h -->
+<g id="node11" class="node">
+<title>Transform.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1368,-1188 1288,-1188 1288,-1152 1368,-1152 1368,-1188"/>
+<text text-anchor="middle" x="1328" y="-1167.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Transform.h</text>
+</g>
+<!-- IdentifyPass.h&#45;&gt;Transform.h -->
+<g id="edge9" class="edge">
+<title>IdentifyPass.h&#45;&gt;Transform.h</title>
+<path fill="none" stroke="#718096" d="M1440.9,-1365.92C1414.43,-1320.22 1360.34,-1226.83 1338,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="1437.92,-1367.76 1445.96,-1374.66 1443.97,-1364.25 1437.92,-1367.76"/>
 </g>
 <!-- IdentifyPass.h&#45;&gt;RenderingResources.h -->
-<g id="edge42" class="edge">
+<g id="edge10" class="edge">
 <title>IdentifyPass.h&#45;&gt;RenderingResources.h</title>
-<path fill="none" stroke="#718096" d="M502.93,-1643.17C475.48,-1596.11 418.03,-1497.62 394.93,-1458.02"/>
-<polygon fill="#718096" stroke="#718096" points="499.94,-1644.99 508,-1651.86 505.99,-1641.46 499.94,-1644.99"/>
+<path fill="none" stroke="#718096" d="M1497.16,-1370.13C1579.92,-1326.17 1764.95,-1227.87 1839.72,-1188.15"/>
+<polygon fill="#718096" stroke="#718096" points="1495.49,-1367.06 1488.3,-1374.84 1498.77,-1373.24 1495.49,-1367.06"/>
+</g>
+<!-- Descriptors.h -->
+<g id="node13" class="node">
+<title>Descriptors.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1639.5,-742 1554.5,-742 1554.5,-706 1639.5,-706 1639.5,-742"/>
+<text text-anchor="middle" x="1597" y="-721.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Descriptors.h</text>
+</g>
+<!-- IdentifyPass.h&#45;&gt;Descriptors.h -->
+<g id="edge11" class="edge">
+<title>IdentifyPass.h&#45;&gt;Descriptors.h</title>
+<path fill="none" stroke="#ffd700" stroke-width="2" d="M1474.77,-1366.67C1501.05,-1329.63 1547.84,-1257.51 1568,-1188 1616.69,-1020.15 1603.67,-804.18 1598.58,-742.28"/>
+<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="1471.86,-1364.72 1468.87,-1374.89 1477.55,-1368.81 1471.86,-1364.72"/>
+</g>
+<!-- MeshTransformSorter.h -->
+<g id="node14" class="node">
+<title>MeshTransformSorter.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1525.5,-1188 1386.5,-1188 1386.5,-1152 1525.5,-1152 1525.5,-1188"/>
+<text text-anchor="middle" x="1456" y="-1167.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">MeshTransformSorter.h</text>
+</g>
+<!-- IdentifyPass.h&#45;&gt;MeshTransformSorter.h -->
+<g id="edge12" class="edge">
+<title>IdentifyPass.h&#45;&gt;MeshTransformSorter.h</title>
+<path fill="none" stroke="#718096" d="M1456,-1364.48C1456,-1318.28 1456,-1226.43 1456,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="1452.5,-1364.66 1456,-1374.66 1459.5,-1364.66 1452.5,-1364.66"/>
+</g>
+<!-- IdentifyPass.h&#45;&gt;EngineView.h -->
+<g id="edge13" class="edge">
+<title>IdentifyPass.h&#45;&gt;EngineView.h</title>
+<path fill="none" stroke="#718096" d="M1408.98,-1370.66C1312.68,-1326.96 1094.68,-1228.03 1006.78,-1188.15"/>
+<polygon fill="#718096" stroke="#718096" points="1407.64,-1373.9 1418.19,-1374.84 1410.53,-1367.52 1407.64,-1373.9"/>
+</g>
+<!-- shader_descriptors.h -->
+<g id="node16" class="node">
+<title>shader_descriptors.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1916,-965 1792,-965 1792,-929 1916,-929 1916,-965"/>
+<text text-anchor="middle" x="1854" y="-944.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">shader_descriptors.h</text>
+</g>
+<!-- CommonSetLayouts.h&#45;&gt;shader_descriptors.h -->
+<g id="edge14" class="edge">
+<title>CommonSetLayouts.h&#45;&gt;shader_descriptors.h</title>
+<path fill="none" stroke="#718096" d="M1738.46,-1142.92C1765.55,-1097.22 1820.9,-1003.83 1843.77,-965.26"/>
+<polygon fill="#718096" stroke="#718096" points="1735.37,-1141.27 1733.28,-1151.66 1741.39,-1144.84 1735.37,-1141.27"/>
+</g>
+<!-- EntityRef.h -->
+<g id="node18" class="node">
+<title>EntityRef.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1071,-742 997,-742 997,-706 1071,-706 1071,-742"/>
+<text text-anchor="middle" x="1034" y="-721.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">EntityRef.h</text>
+</g>
+<!-- SubMesh.h&#45;&gt;EntityRef.h -->
+<g id="edge21" class="edge">
+<title>SubMesh.h&#45;&gt;EntityRef.h</title>
+<path fill="none" stroke="#718096" d="M1065.91,-1141.7C1059.55,-1058.6 1040.53,-810.22 1035.33,-742.32"/>
+<polygon fill="#718096" stroke="#718096" points="1062.43,-1142.16 1066.69,-1151.87 1069.41,-1141.63 1062.43,-1142.16"/>
+</g>
+<!-- Stream.h -->
+<g id="node19" class="node">
+<title>Stream.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="785.5,-297 722.5,-297 722.5,-261 785.5,-261 785.5,-297"/>
+<text text-anchor="middle" x="754" y="-276.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Stream.h</text>
+</g>
+<!-- SubMesh.h&#45;&gt;Stream.h -->
+<g id="edge22" class="edge">
+<title>SubMesh.h&#45;&gt;Stream.h</title>
+<path fill="none" stroke="#ffd700" stroke-width="2" d="M1063.4,-1141.83C1044.21,-1029.99 968.87,-605.39 911,-483 874.44,-405.67 804.41,-330.15 771.68,-297.22"/>
+<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="1059.99,-1142.67 1065.12,-1151.94 1066.89,-1141.49 1059.99,-1142.67"/>
+</g>
+<!-- PassComponent.h&#45;&gt;EntityRef.h -->
+<g id="edge34" class="edge">
+<title>PassComponent.h&#45;&gt;EntityRef.h</title>
+<path fill="none" stroke="#718096" d="M1205.12,-1142.46C1171.37,-1060.12 1069.02,-810.43 1041.1,-742.32"/>
+<polygon fill="#718096" stroke="#718096" points="1201.95,-1143.94 1208.98,-1151.87 1208.42,-1141.29 1201.95,-1143.94"/>
+</g>
+<!-- ResourceHandles.h -->
+<g id="node41" class="node">
+<title>ResourceHandles.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1736,-965 1620,-965 1620,-929 1736,-929 1736,-965"/>
+<text text-anchor="middle" x="1678" y="-944.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">ResourceHandles.h</text>
+</g>
+<!-- RenderingResources.h&#45;&gt;ResourceHandles.h -->
+<g id="edge62" class="edge">
+<title>RenderingResources.h&#45;&gt;ResourceHandles.h</title>
+<path fill="none" stroke="#718096" d="M1850.11,-1144.06C1810.36,-1098.78 1727.3,-1004.16 1693.15,-965.26"/>
+<polygon fill="#718096" stroke="#718096" points="1847.55,-1146.45 1856.78,-1151.66 1852.81,-1141.83 1847.55,-1146.45"/>
+</g>
+<!-- Buffer.h -->
+<g id="node21" class="node">
+<title>Buffer.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1716.5,-519 1659.5,-519 1659.5,-483 1716.5,-483 1716.5,-519"/>
+<text text-anchor="middle" x="1688" y="-498.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Buffer.h</text>
+</g>
+<!-- Descriptors.h&#45;&gt;Buffer.h -->
+<g id="edge64" class="edge">
+<title>Descriptors.h&#45;&gt;Buffer.h</title>
+<path fill="none" stroke="#718096" d="M1607.97,-696.35C1626.88,-650.44 1665.08,-557.67 1680.89,-519.26"/>
+<polygon fill="#718096" stroke="#718096" points="1604.71,-695.08 1604.14,-705.66 1611.18,-697.74 1604.71,-695.08"/>
+</g>
+<!-- Descriptors.h&#45;&gt;Image.h -->
+<g id="edge65" class="edge">
+<title>Descriptors.h&#45;&gt;Image.h</title>
+<path fill="none" stroke="#718096" d="M1634.74,-700.46C1708.89,-656.17 1872.12,-558.67 1938.29,-519.15"/>
+<polygon fill="#718096" stroke="#718096" points="1632.52,-697.71 1625.73,-705.84 1636.11,-703.72 1632.52,-697.71"/>
+</g>
+<!-- ComponentConcepts.h -->
+<g id="node30" class="node">
+<title>ComponentConcepts.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="997.5,-297 864.5,-297 864.5,-261 997.5,-261 997.5,-297"/>
+<text text-anchor="middle" x="931" y="-276.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">ComponentConcepts.h</text>
+</g>
+<!-- MeshTransformSorter.h&#45;&gt;ComponentConcepts.h -->
+<g id="edge83" class="edge">
+<title>MeshTransformSorter.h&#45;&gt;ComponentConcepts.h</title>
+<path fill="none" stroke="#718096" d="M1440.56,-1142.86C1361.79,-1009.47 1005.8,-406.66 941.1,-297.11"/>
+<polygon fill="#718096" stroke="#718096" points="1437.65,-1144.81 1445.75,-1151.64 1443.68,-1141.25 1437.65,-1144.81"/>
+</g>
+<!-- EngineView.h&#45;&gt;Engine.h -->
+<g id="edge88" class="edge">
+<title>EngineView.h&#45;&gt;Engine.h</title>
+<path fill="none" stroke="#718096" d="M955.88,-1142.64C933.08,-1096.83 886.75,-1003.75 867.59,-965.26"/>
+<polygon fill="#718096" stroke="#718096" points="952.78,-1144.27 960.37,-1151.66 959.05,-1141.15 952.78,-1144.27"/>
+</g>
+<!-- VulkanCheck.h -->
+<g id="node22" class="node">
+<title>VulkanCheck.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1757.5,-297 1664.5,-297 1664.5,-261 1757.5,-261 1757.5,-297"/>
+<text text-anchor="middle" x="1711" y="-276.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">VulkanCheck.h</text>
+</g>
+<!-- shader_descriptors.h&#45;&gt;VulkanCheck.h -->
+<g id="edge76" class="edge">
+<title>shader_descriptors.h&#45;&gt;VulkanCheck.h</title>
+<path fill="none" stroke="#718096" d="M1852.65,-918.93C1850.1,-874.26 1843.46,-782.43 1829,-706 1798.4,-544.26 1736.23,-354.48 1716.88,-297.2"/>
+<polygon fill="#718096" stroke="#718096" points="1849.16,-919.19 1853.2,-928.98 1856.15,-918.81 1849.16,-919.19"/>
+</g>
+<!-- VulkanNew.h -->
+<g id="node23" class="node">
+<title>VulkanNew.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1905,-297 1821,-297 1821,-261 1905,-261 1905,-297"/>
+<text text-anchor="middle" x="1863" y="-276.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">VulkanNew.h</text>
+</g>
+<!-- shader_descriptors.h&#45;&gt;VulkanNew.h -->
+<g id="edge78" class="edge">
+<title>shader_descriptors.h&#45;&gt;VulkanNew.h</title>
+<path fill="none" stroke="#718096" d="M1855.39,-918.75C1857.31,-879.64 1860.69,-805.32 1862,-742 1865.59,-568.39 1863.82,-357.99 1863.19,-297.2"/>
+<polygon fill="#718096" stroke="#718096" points="1851.89,-918.65 1854.89,-928.81 1858.88,-919 1851.89,-918.65"/>
 </g>
 <!-- DescriptorSetLayoutInfo.h -->
 <g id="node33" class="node">
 <title>DescriptorSetLayoutInfo.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="434,-997 282,-997 282,-961 434,-961 434,-997"/>
-<text text-anchor="middle" x="358" y="-976.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">DescriptorSetLayoutInfo.h</text>
-</g>
-<!-- IdentifyPass.h&#45;&gt;DescriptorSetLayoutInfo.h -->
-<g id="edge39" class="edge">
-<title>IdentifyPass.h&#45;&gt;DescriptorSetLayoutInfo.h</title>
-<path fill="none" stroke="#ffd700" stroke-width="2" d="M514.46,-1641.81C507.81,-1595.39 491.2,-1498.46 460,-1422 421.73,-1328.21 369.22,-1324.57 342,-1227 318.67,-1143.39 342.12,-1037.94 353.05,-997.17"/>
-<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="511.03,-1642.54 515.87,-1651.97 517.96,-1641.58 511.03,-1642.54"/>
-</g>
-<!-- EngineView.h -->
-<g id="node36" class="node">
-<title>EngineView.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1075,-1227 989,-1227 989,-1191 1075,-1191 1075,-1227"/>
-<text text-anchor="middle" x="1032" y="-1206.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">EngineView.h</text>
-</g>
-<!-- IdentifyPass.h&#45;&gt;EngineView.h -->
-<g id="edge40" class="edge">
-<title>IdentifyPass.h&#45;&gt;EngineView.h</title>
-<path fill="none" stroke="#718096" d="M572.95,-1665.79C683.67,-1656.01 932.15,-1616.56 1039,-1458 1088.23,-1384.95 1054.34,-1270.36 1038.71,-1227.2"/>
-<polygon fill="#718096" stroke="#718096" points="572.35,-1662.33 562.67,-1666.65 572.93,-1669.3 572.35,-1662.33"/>
-</g>
-<!-- Descriptors.h -->
-<g id="node37" class="node">
-<title>Descriptors.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="537.5,-997 452.5,-997 452.5,-961 537.5,-961 537.5,-997"/>
-<text text-anchor="middle" x="495" y="-976.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Descriptors.h</text>
-</g>
-<!-- IdentifyPass.h&#45;&gt;Descriptors.h -->
-<g id="edge41" class="edge">
-<title>IdentifyPass.h&#45;&gt;Descriptors.h</title>
-<path fill="none" stroke="#ffd700" stroke-width="2" d="M517.09,-1641.65C513.27,-1527.29 498.64,-1089.16 495.57,-997.05"/>
-<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="513.6,-1642.09 517.43,-1651.97 520.6,-1641.86 513.6,-1642.09"/>
-</g>
-<!-- PassComponent.h -->
-<g id="node38" class="node">
-<title>PassComponent.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="971,-1227 863,-1227 863,-1191 971,-1191 971,-1227"/>
-<text text-anchor="middle" x="917" y="-1206.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">PassComponent.h</text>
-</g>
-<!-- IdentifyPass.h&#45;&gt;PassComponent.h -->
-<g id="edge43" class="edge">
-<title>IdentifyPass.h&#45;&gt;PassComponent.h</title>
-<path fill="none" stroke="#718096" d="M572.15,-1651.2C649.13,-1622.98 788.96,-1560.44 862,-1458 914.36,-1384.57 918.16,-1270.2 917.58,-1227.16"/>
-<polygon fill="#718096" stroke="#718096" points="570.85,-1647.95 562.62,-1654.63 573.22,-1654.53 570.85,-1647.95"/>
-</g>
-<!-- DefaultPass.h&#45;&gt;SubMesh.h -->
-<g id="edge50" class="edge">
-<title>DefaultPass.h&#45;&gt;SubMesh.h</title>
-<path fill="none" stroke="#718096" d="M806.96,-1411.68C797.5,-1326.5 768.7,-1067.32 760.94,-997.49"/>
-<polygon fill="#718096" stroke="#718096" points="803.51,-1412.29 808.09,-1421.84 810.47,-1411.52 803.51,-1412.29"/>
-</g>
-<!-- DefaultPass.h&#45;&gt;DescriptorSetLayoutInfo.h -->
-<g id="edge51" class="edge">
-<title>DefaultPass.h&#45;&gt;DescriptorSetLayoutInfo.h</title>
-<path fill="none" stroke="#718096" d="M781.55,-1415.55C735.99,-1377.56 644.5,-1299.48 573,-1227 492.15,-1145.05 404.68,-1038.2 371.65,-997.12"/>
-<polygon fill="#718096" stroke="#718096" points="779.32,-1418.25 789.25,-1421.95 783.8,-1412.86 779.32,-1418.25"/>
-</g>
-<!-- DefaultPass.h&#45;&gt;EngineView.h -->
-<g id="edge52" class="edge">
-<title>DefaultPass.h&#45;&gt;EngineView.h</title>
-<path fill="none" stroke="#718096" d="M833.73,-1414.52C878.97,-1367.86 976.46,-1267.29 1015.42,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="831.13,-1412.17 826.69,-1421.79 836.16,-1417.04 831.13,-1412.17"/>
-</g>
-<!-- DefaultPass.h&#45;&gt;Descriptors.h -->
-<g id="edge53" class="edge">
-<title>DefaultPass.h&#45;&gt;Descriptors.h</title>
-<path fill="none" stroke="#718096" d="M779.18,-1415.53C733.55,-1379.4 647.74,-1306.01 595,-1227 542.73,-1148.7 510.37,-1038.8 499.3,-997.02"/>
-<polygon fill="#718096" stroke="#718096" points="777.19,-1418.41 787.22,-1421.83 781.51,-1412.9 777.19,-1418.41"/>
-</g>
-<!-- DefaultPass.h&#45;&gt;PassComponent.h -->
-<g id="edge54" class="edge">
-<title>DefaultPass.h&#45;&gt;PassComponent.h</title>
-<path fill="none" stroke="#718096" d="M822.4,-1412.46C844.59,-1364.97 890.5,-1266.71 909.01,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="819.1,-1411.25 818.04,-1421.79 825.45,-1414.21 819.1,-1411.25"/>
-</g>
-<!-- StencilOutlinePass.h&#45;&gt;SubMesh.h -->
-<g id="edge56" class="edge">
-<title>StencilOutlinePass.h&#45;&gt;SubMesh.h</title>
-<path fill="none" stroke="#718096" d="M954.36,-1413.11C930.92,-1373.74 886.01,-1296.07 854,-1227 814.98,-1142.79 778.39,-1037.69 764.69,-997.09"/>
-<polygon fill="#718096" stroke="#718096" points="951.43,-1415.03 959.57,-1421.82 957.44,-1411.44 951.43,-1415.03"/>
-</g>
-<!-- StencilOutlinePass.h&#45;&gt;EngineView.h -->
-<g id="edge57" class="edge">
-<title>StencilOutlinePass.h&#45;&gt;EngineView.h</title>
-<path fill="none" stroke="#718096" d="M977.35,-1411.86C990.27,-1364.15 1016.69,-1266.54 1027.37,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="973.9,-1411.22 974.66,-1421.79 980.65,-1413.05 973.9,-1411.22"/>
-</g>
-<!-- StencilOutlinePass.h&#45;&gt;Descriptors.h -->
-<g id="edge58" class="edge">
-<title>StencilOutlinePass.h&#45;&gt;Descriptors.h</title>
-<path fill="none" stroke="#718096" d="M919.29,-1417.83C847.05,-1385.59 713.78,-1318.18 628,-1227 559.75,-1154.46 515.67,-1040.2 500.7,-997.16"/>
-<polygon fill="#718096" stroke="#718096" points="918.08,-1421.12 928.64,-1421.96 920.91,-1414.72 918.08,-1421.12"/>
-</g>
-<!-- StencilOutlinePass.h&#45;&gt;PassComponent.h -->
-<g id="edge59" class="edge">
-<title>StencilOutlinePass.h&#45;&gt;PassComponent.h</title>
-<path fill="none" stroke="#718096" d="M963.72,-1411.86C952.68,-1364.15 930.09,-1266.54 920.96,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="960.35,-1412.83 966.02,-1421.79 967.17,-1411.26 960.35,-1412.83"/>
-</g>
-<!-- RawArray.h -->
-<g id="node26" class="node">
-<title>RawArray.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1233.5,-536 1158.5,-536 1158.5,-500 1233.5,-500 1233.5,-536"/>
-<text text-anchor="middle" x="1196" y="-515.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">RawArray.h</text>
-</g>
-<!-- Archetype.h&#45;&gt;RawArray.h -->
-<g id="edge24" class="edge">
-<title>Archetype.h&#45;&gt;RawArray.h</title>
-<path fill="none" stroke="#718096" d="M1188.96,-720.56C1190.63,-672.74 1194.03,-575.46 1195.4,-536.1"/>
-<polygon fill="#718096" stroke="#718096" points="1185.45,-720.67 1188.6,-730.79 1192.45,-720.92 1185.45,-720.67"/>
-</g>
-<!-- TypeRegistry.h -->
-<g id="node27" class="node">
-<title>TypeRegistry.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1063.5,-536 970.5,-536 970.5,-500 1063.5,-500 1063.5,-536"/>
-<text text-anchor="middle" x="1017" y="-515.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">TypeRegistry.h</text>
-</g>
-<!-- Archetype.h&#45;&gt;TypeRegistry.h -->
-<g id="edge25" class="edge">
-<title>Archetype.h&#45;&gt;TypeRegistry.h</title>
-<path fill="none" stroke="#718096" d="M1169.07,-722.64C1133.95,-675.62 1059.59,-576.04 1029.77,-536.1"/>
-<polygon fill="#718096" stroke="#718096" points="1166.36,-724.87 1175.15,-730.79 1171.97,-720.68 1166.36,-724.87"/>
-</g>
-<!-- UpdateQueue.h&#45;&gt;TypeRegistry.h -->
-<g id="edge78" class="edge">
-<title>UpdateQueue.h&#45;&gt;TypeRegistry.h</title>
-<path fill="none" stroke="#718096" d="M1073.42,-720.86C1060.08,-673.15 1032.8,-575.54 1021.78,-536.1"/>
-<polygon fill="#718096" stroke="#718096" points="1070.13,-722.1 1076.19,-730.79 1076.87,-720.21 1070.13,-722.1"/>
-</g>
-<!-- ComponentConcepts.h -->
-<g id="node28" class="node">
-<title>ComponentConcepts.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1227.5,-306 1094.5,-306 1094.5,-270 1227.5,-270 1227.5,-306"/>
-<text text-anchor="middle" x="1161" y="-285.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">ComponentConcepts.h</text>
-</g>
-<!-- UpdateQueue.h&#45;&gt;ComponentConcepts.h -->
-<g id="edge77" class="edge">
-<title>UpdateQueue.h&#45;&gt;ComponentConcepts.h</title>
-<path fill="none" stroke="#718096" d="M1085.72,-720.94C1100.52,-636.03 1145.77,-376.39 1157.95,-306.49"/>
-<polygon fill="#718096" stroke="#718096" points="1082.26,-720.39 1083.99,-730.84 1089.16,-721.59 1082.26,-720.39"/>
-</g>
-<!-- RenderingEngine.h -->
-<g id="node12" class="node">
-<title>RenderingEngine.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="357.5,-2379 240.5,-2379 240.5,-2343 357.5,-2343 357.5,-2379"/>
-<text text-anchor="middle" x="299" y="-2358.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">RenderingEngine.h</text>
-</g>
-<!-- CommonTextures.h -->
-<g id="node13" class="node">
-<title>CommonTextures.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="206,-1918 90,-1918 90,-1882 206,-1882 206,-1918"/>
-<text text-anchor="middle" x="148" y="-1897.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">CommonTextures.h</text>
-</g>
-<!-- RenderingEngine.h&#45;&gt;CommonTextures.h -->
-<g id="edge10" class="edge">
-<title>RenderingEngine.h&#45;&gt;CommonTextures.h</title>
-<path fill="none" stroke="#718096" d="M288.7,-2333.38C273.42,-2293.53 244.17,-2215.91 222,-2149 193.52,-2063.06 164.03,-1958.76 152.76,-1918.25"/>
-<polygon fill="#718096" stroke="#718096" points="285.5,-2334.81 292.36,-2342.89 292.04,-2332.3 285.5,-2334.81"/>
-</g>
-<!-- Camera.h -->
-<g id="node14" class="node">
-<title>Camera.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="418,-2149 352,-2149 352,-2113 418,-2113 418,-2149"/>
-<text text-anchor="middle" x="385" y="-2128.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Camera.h</text>
-</g>
-<!-- RenderingEngine.h&#45;&gt;Camera.h -->
-<g id="edge11" class="edge">
-<title>RenderingEngine.h&#45;&gt;Camera.h</title>
-<path fill="none" stroke="#718096" d="M309.08,-2333.28C326.96,-2285.88 363.74,-2188.38 378.58,-2149.02"/>
-<polygon fill="#718096" stroke="#718096" points="305.72,-2332.27 305.46,-2342.86 312.27,-2334.74 305.72,-2332.27"/>
-</g>
-<!-- RenderingEngine.h&#45;&gt;CommonSetLayouts.h -->
-<g id="edge12" class="edge">
-<title>RenderingEngine.h&#45;&gt;CommonSetLayouts.h</title>
-<path fill="none" stroke="#ffd700" stroke-width="2" d="M291.8,-2333.19C281.47,-2293.36 262.83,-2216.04 255,-2149 222.99,-1874.81 232.51,-1537.04 235.34,-1458.07"/>
-<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="288.43,-2334.16 294.36,-2342.94 295.2,-2332.38 288.43,-2334.16"/>
-</g>
-<!-- Material.h -->
-<g id="node16" class="node">
-<title>Material.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="333.5,-2149 264.5,-2149 264.5,-2113 333.5,-2113 333.5,-2149"/>
-<text text-anchor="middle" x="299" y="-2128.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Material.h</text>
-</g>
-<!-- RenderingEngine.h&#45;&gt;Material.h -->
-<g id="edge13" class="edge">
-<title>RenderingEngine.h&#45;&gt;Material.h</title>
-<path fill="none" stroke="#718096" d="M299,-2332.68C299,-2285.07 299,-2188.21 299,-2149.02"/>
-<polygon fill="#718096" stroke="#718096" points="295.5,-2332.86 299,-2342.86 302.5,-2332.86 295.5,-2332.86"/>
-</g>
-<!-- Image.h -->
-<g id="node17" class="node">
-<title>Image.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="172.5,-767 113.5,-767 113.5,-731 172.5,-731 172.5,-767"/>
-<text text-anchor="middle" x="143" y="-746.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Image.h</text>
-</g>
-<!-- CommonTextures.h&#45;&gt;Image.h -->
-<g id="edge14" class="edge">
-<title>CommonTextures.h&#45;&gt;Image.h</title>
-<path fill="none" stroke="#718096" d="M147.88,-1871.43C147.18,-1710.62 143.64,-896.26 143.07,-767.23"/>
-<polygon fill="#718096" stroke="#718096" points="144.38,-1871.88 147.93,-1881.87 151.38,-1871.85 144.38,-1871.88"/>
-</g>
-<!-- shader_descriptors.h -->
-<g id="node32" class="node">
-<title>shader_descriptors.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="295,-1227 171,-1227 171,-1191 295,-1191 295,-1227"/>
-<text text-anchor="middle" x="233" y="-1206.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">shader_descriptors.h</text>
-</g>
-<!-- CommonSetLayouts.h&#45;&gt;shader_descriptors.h -->
-<g id="edge33" class="edge">
-<title>CommonSetLayouts.h&#45;&gt;shader_descriptors.h</title>
-<path fill="none" stroke="#718096" d="M235.64,-1411.56C235.01,-1363.74 233.74,-1266.46 233.22,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="232.14,-1411.83 235.77,-1421.79 239.14,-1411.74 232.14,-1411.83"/>
-</g>
-<!-- Material.h&#45;&gt;PassSystem.h -->
-<g id="edge80" class="edge">
-<title>Material.h&#45;&gt;PassSystem.h</title>
-<path fill="none" stroke="#718096" d="M342.87,-2108.53C435.2,-2063.35 647.98,-1959.24 731.98,-1918.14"/>
-<polygon fill="#718096" stroke="#718096" points="341.24,-2105.44 333.79,-2112.97 344.31,-2111.72 341.24,-2105.44"/>
-</g>
-<!-- Material.h&#45;&gt;PassComponent.h -->
-<g id="edge81" class="edge">
-<title>Material.h&#45;&gt;PassComponent.h</title>
-<path fill="none" stroke="#ffd700" stroke-width="2" d="M343.19,-2112.48C467.13,-2063.26 809.71,-1926.76 819,-1918 983.9,-1762.55 988.87,-1679.01 1039,-1458 1060.18,-1364.64 974.26,-1266.18 935.3,-1227.27"/>
-<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="341.61,-2109.34 333.61,-2116.28 344.19,-2115.84 341.61,-2109.34"/>
-</g>
-<!-- Core.h -->
-<g id="node18" class="node">
-<title>Core.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="400,-2609 346,-2609 346,-2573 400,-2573 400,-2609"/>
-<text text-anchor="middle" x="373" y="-2588.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Core.h</text>
-</g>
-<!-- Core.h&#45;&gt;RenderingEngine.h -->
-<g id="edge15" class="edge">
-<title>Core.h&#45;&gt;RenderingEngine.h</title>
-<path fill="none" stroke="#718096" d="M364.33,-2563.28C348.94,-2515.88 317.3,-2418.38 304.53,-2379.02"/>
-<polygon fill="#718096" stroke="#718096" points="361.02,-2564.43 367.44,-2572.86 367.68,-2562.27 361.02,-2564.43"/>
-</g>
-<!-- ClickOnMeshTool.h -->
-<g id="node19" class="node">
-<title>ClickOnMeshTool.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="116,-1688 0,-1688 0,-1652 116,-1652 116,-1688"/>
-<text text-anchor="middle" x="58" y="-1667.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">ClickOnMeshTool.h</text>
-</g>
-<!-- Core.h&#45;&gt;ClickOnMeshTool.h -->
-<g id="edge16" class="edge">
-<title>Core.h&#45;&gt;ClickOnMeshTool.h</title>
-<path fill="none" stroke="#718096" d="M352.74,-2564.96C322.68,-2526.81 266.07,-2450.96 231,-2379 136.61,-2185.31 124.59,-2129.01 81,-1918 63.44,-1833.01 59.28,-1728.79 58.3,-1688.26"/>
-<polygon fill="#718096" stroke="#718096" points="350.12,-2567.3 359.08,-2572.95 355.6,-2562.94 350.12,-2567.3"/>
-</g>
-<!-- ImguiOverlay.h -->
-<g id="node20" class="node">
-<title>ImguiOverlay.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="478.5,-1918 383.5,-1918 383.5,-1882 478.5,-1882 478.5,-1918"/>
-<text text-anchor="middle" x="431" y="-1897.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">ImguiOverlay.h</text>
-</g>
-<!-- Core.h&#45;&gt;ImguiOverlay.h -->
-<g id="edge17" class="edge">
-<title>Core.h&#45;&gt;ImguiOverlay.h</title>
-<path fill="none" stroke="#718096" d="M377.35,-2562.8C388.15,-2493.83 416.12,-2306.41 427,-2149 432.98,-2062.44 432.02,-1958.5 431.35,-1918.16"/>
-<polygon fill="#718096" stroke="#718096" points="373.87,-2562.41 375.77,-2572.83 380.78,-2563.5 373.87,-2562.41"/>
-</g>
-<!-- EngineWidget.h -->
-<g id="node21" class="node">
-<title>EngineWidget.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1262.5,-1458 1163.5,-1458 1163.5,-1422 1262.5,-1422 1262.5,-1458"/>
-<text text-anchor="middle" x="1213" y="-1437.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">EngineWidget.h</text>
-</g>
-<!-- Core.h&#45;&gt;EngineWidget.h -->
-<g id="edge18" class="edge">
-<title>Core.h&#45;&gt;EngineWidget.h</title>
-<path fill="none" stroke="#718096" d="M410.27,-2586.86C568.19,-2571.36 1174,-2488.64 1174,-2132 1174,-2132 1174,-2132 1174,-1899 1174,-1726.23 1201.89,-1518.12 1210.5,-1458.01"/>
-<polygon fill="#718096" stroke="#718096" points="409.73,-2583.4 400.11,-2587.83 410.4,-2590.37 409.73,-2583.4"/>
-</g>
-<!-- ClickOnMeshTool.h&#45;&gt;Image.h -->
-<g id="edge20" class="edge">
-<title>ClickOnMeshTool.h&#45;&gt;Image.h</title>
-<path fill="none" stroke="#ffd700" stroke-width="2" d="M60.53,-1641.68C73.36,-1502.91 131.13,-878.38 141.43,-767.02"/>
-<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="57.02,-1641.59 59.58,-1651.87 63.99,-1642.23 57.02,-1641.59"/>
-</g>
-<!-- ClickOnMeshTool.h&#45;&gt;RenderingResources.h -->
-<g id="edge19" class="edge">
-<title>ClickOnMeshTool.h&#45;&gt;RenderingResources.h</title>
-<path fill="none" stroke="#718096" d="M90.93,-1646.04C156.61,-1600.24 302.61,-1498.45 360.58,-1458.02"/>
-<polygon fill="#718096" stroke="#718096" points="88.78,-1643.27 82.58,-1651.86 92.78,-1649.01 88.78,-1643.27"/>
-</g>
-<!-- ImguiOverlay.h&#45;&gt;RenderingResources.h -->
-<g id="edge65" class="edge">
-<title>ImguiOverlay.h&#45;&gt;RenderingResources.h</title>
-<path fill="none" stroke="#718096" d="M428.26,-1871.74C419.73,-1786.74 393.75,-1528.13 386.75,-1458.45"/>
-<polygon fill="#718096" stroke="#718096" points="424.8,-1872.28 429.28,-1881.88 431.76,-1871.58 424.8,-1872.28"/>
-</g>
-<!-- EngineWidget.h&#45;&gt;Tags.h -->
-<g id="edge67" class="edge">
-<title>EngineWidget.h&#45;&gt;Tags.h</title>
-<path fill="none" stroke="#718096" d="M1202.22,-1412.46C1182.94,-1364.97 1143.03,-1266.71 1126.94,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="1199,-1413.84 1206.01,-1421.79 1205.49,-1411.21 1199,-1413.84"/>
-</g>
-<!-- EngineWidget.h&#45;&gt;Engine.h -->
-<g id="edge68" class="edge">
-<title>EngineWidget.h&#45;&gt;Engine.h</title>
-<path fill="none" stroke="#ffd700" stroke-width="2" d="M1210.74,-1411.68C1203.69,-1326.5 1182.23,-1067.32 1176.45,-997.49"/>
-<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="1207.27,-1412.17 1211.58,-1421.84 1214.24,-1411.59 1207.27,-1412.17"/>
-</g>
-<!-- EngineWidget.h&#45;&gt;EngineView.h -->
-<g id="edge69" class="edge">
-<title>EngineWidget.h&#45;&gt;EngineView.h</title>
-<path fill="none" stroke="#718096" d="M1193.19,-1413.94C1156.12,-1367.03 1077.15,-1267.12 1045.52,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="1190.45,-1416.11 1199.4,-1421.79 1195.94,-1411.77 1190.45,-1416.11"/>
-</g>
-<!-- AutoCompleteWidget.h -->
-<g id="node46" class="node">
-<title>AutoCompleteWidget.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1376.5,-1227 1241.5,-1227 1241.5,-1191 1376.5,-1191 1376.5,-1227"/>
-<text text-anchor="middle" x="1309" y="-1206.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">AutoCompleteWidget.h</text>
-</g>
-<!-- EngineWidget.h&#45;&gt;AutoCompleteWidget.h -->
-<g id="edge70" class="edge">
-<title>EngineWidget.h&#45;&gt;AutoCompleteWidget.h</title>
-<path fill="none" stroke="#718096" d="M1224.12,-1412.46C1244.03,-1364.97 1285.23,-1266.71 1301.83,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="1220.85,-1411.21 1220.22,-1421.79 1227.31,-1413.92 1220.85,-1411.21"/>
-</g>
-<!-- Mesh.h -->
-<g id="node29" class="node">
-<title>Mesh.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="692.5,-1227 637.5,-1227 637.5,-1191 692.5,-1191 692.5,-1227"/>
-<text text-anchor="middle" x="665" y="-1206.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Mesh.h</text>
-</g>
-<!-- RenderingResources.h&#45;&gt;Mesh.h -->
-<g id="edge71" class="edge">
-<title>RenderingResources.h&#45;&gt;Mesh.h</title>
-<path fill="none" stroke="#718096" d="M413.88,-1415.38C470.46,-1369.11 594.65,-1267.53 644.09,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="411.57,-1412.75 406.05,-1421.79 416,-1418.17 411.57,-1412.75"/>
-</g>
-<!-- ResourceHandles.h -->
-<g id="node47" class="node">
-<title>ResourceHandles.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="467,-1227 351,-1227 351,-1191 467,-1191 467,-1227"/>
-<text text-anchor="middle" x="409" y="-1206.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">ResourceHandles.h</text>
-</g>
-<!-- RenderingResources.h&#45;&gt;ResourceHandles.h -->
-<g id="edge72" class="edge">
-<title>RenderingResources.h&#45;&gt;ResourceHandles.h</title>
-<path fill="none" stroke="#718096" d="M387.88,-1411.56C392.89,-1363.74 403.08,-1266.46 407.21,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="384.37,-1411.48 386.8,-1421.79 391.33,-1412.21 384.37,-1411.48"/>
-</g>
-<!-- RawArray.h&#45;&gt;ComponentConcepts.h -->
-<g id="edge26" class="edge">
-<title>RawArray.h&#45;&gt;ComponentConcepts.h</title>
-<path fill="none" stroke="#718096" d="M1191.81,-489.68C1184.5,-442.07 1169.63,-345.21 1163.61,-306.02"/>
-<polygon fill="#718096" stroke="#718096" points="1188.39,-490.51 1193.37,-499.86 1195.31,-489.45 1188.39,-490.51"/>
-</g>
-<!-- TypeRegistry.h&#45;&gt;Stream.h -->
-<g id="edge48" class="edge">
-<title>TypeRegistry.h&#45;&gt;Stream.h</title>
-<path fill="none" stroke="#718096" d="M1004.05,-490.88C980.67,-443.7 932.02,-345.54 912.44,-306.02"/>
-<polygon fill="#718096" stroke="#718096" points="1000.93,-492.46 1008.51,-499.86 1007.2,-489.35 1000.93,-492.46"/>
-</g>
-<!-- TypenameRegistry.h -->
-<g id="node41" class="node">
-<title>TypenameRegistry.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1076,-306 954,-306 954,-270 1076,-270 1076,-306"/>
-<text text-anchor="middle" x="1015" y="-285.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">TypenameRegistry.h</text>
-</g>
-<!-- TypeRegistry.h&#45;&gt;TypenameRegistry.h -->
-<g id="edge49" class="edge">
-<title>TypeRegistry.h&#45;&gt;TypenameRegistry.h</title>
-<path fill="none" stroke="#718096" d="M1016.76,-489.68C1016.34,-442.07 1015.49,-345.21 1015.15,-306.02"/>
-<polygon fill="#718096" stroke="#718096" points="1013.26,-489.89 1016.85,-499.86 1020.26,-489.83 1013.26,-489.89"/>
-</g>
-<!-- ComponentConcepts.h&#45;&gt;SerialConcepts.h -->
-<g id="edge32" class="edge">
-<title>ComponentConcepts.h&#45;&gt;SerialConcepts.h</title>
-<path fill="none" stroke="#718096" d="M1157.05,-259.68C1150.15,-212.07 1136.14,-115.21 1130.46,-76.02"/>
-<polygon fill="#718096" stroke="#718096" points="1153.62,-260.47 1158.52,-269.86 1160.55,-259.46 1153.62,-260.47"/>
-</g>
-<!-- Mesh.h&#45;&gt;array.h -->
-<g id="edge27" class="edge">
-<title>Mesh.h&#45;&gt;array.h</title>
-<path fill="none" stroke="#718096" d="M690.46,-1183.91C739.43,-1137.58 845.62,-1037.12 888,-997.02"/>
-<polygon fill="#718096" stroke="#718096" points="687.97,-1181.45 683.11,-1190.86 692.78,-1186.53 687.97,-1181.45"/>
-</g>
-<!-- Mesh.h&#45;&gt;SubMesh.h -->
-<g id="edge28" class="edge">
-<title>Mesh.h&#45;&gt;SubMesh.h</title>
-<path fill="none" stroke="#718096" d="M675.89,-1181.58C695.39,-1134.29 735.72,-1036.46 751.98,-997.02"/>
-<polygon fill="#718096" stroke="#718096" points="672.64,-1180.28 672.07,-1190.86 679.11,-1182.95 672.64,-1180.28"/>
-</g>
-<!-- Buffer.h -->
-<g id="node30" class="node">
-<title>Buffer.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="501.5,-767 444.5,-767 444.5,-731 501.5,-731 501.5,-767"/>
-<text text-anchor="middle" x="473" y="-746.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Buffer.h</text>
-</g>
-<!-- Mesh.h&#45;&gt;Buffer.h -->
-<g id="edge29" class="edge">
-<title>Mesh.h&#45;&gt;Buffer.h</title>
-<path fill="none" stroke="#718096" d="M653.9,-1181.51C618.6,-1097.33 509.61,-837.34 480.31,-767.45"/>
-<polygon fill="#718096" stroke="#718096" points="650.73,-1183.01 657.82,-1190.88 657.19,-1180.31 650.73,-1183.01"/>
-</g>
-<!-- VulkanCheck.h -->
-<g id="node34" class="node">
-<title>VulkanCheck.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="476.5,-536 383.5,-536 383.5,-500 476.5,-500 476.5,-536"/>
-<text text-anchor="middle" x="430" y="-515.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">VulkanCheck.h</text>
-</g>
-<!-- Buffer.h&#45;&gt;VulkanCheck.h -->
-<g id="edge75" class="edge">
-<title>Buffer.h&#45;&gt;VulkanCheck.h</title>
-<path fill="none" stroke="#718096" d="M467.9,-720.86C458.94,-673.15 440.62,-575.54 433.21,-536.1"/>
-<polygon fill="#718096" stroke="#718096" points="464.48,-721.61 469.77,-730.79 471.36,-720.31 464.48,-721.61"/>
-</g>
-<!-- VulkanNew.h -->
-<g id="node35" class="node">
-<title>VulkanNew.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="280,-536 196,-536 196,-500 280,-500 280,-536"/>
-<text text-anchor="middle" x="238" y="-515.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">VulkanNew.h</text>
-</g>
-<!-- Buffer.h&#45;&gt;VulkanNew.h -->
-<g id="edge76" class="edge">
-<title>Buffer.h&#45;&gt;VulkanNew.h</title>
-<path fill="none" stroke="#718096" d="M448.17,-723.8C400.42,-677.27 296.87,-576.37 255.55,-536.1"/>
-<polygon fill="#718096" stroke="#718096" points="445.73,-726.32 455.34,-730.79 450.62,-721.3 445.73,-726.32"/>
-</g>
-<!-- EntityRef.h&#45;&gt;Stream.h -->
-<g id="edge45" class="edge">
-<title>EntityRef.h&#45;&gt;Stream.h</title>
-<path fill="none" stroke="#ffd700" stroke-width="2" d="M965.17,-720.94C953.14,-636.03 916.38,-376.39 906.48,-306.49"/>
-<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="961.7,-721.43 966.57,-730.84 968.63,-720.45 961.7,-721.43"/>
-</g>
-<!-- EntityRef.h&#45;&gt;TypeRegistry.h -->
-<g id="edge47" class="edge">
-<title>EntityRef.h&#45;&gt;TypeRegistry.h</title>
-<path fill="none" stroke="#718096" d="M974.69,-720.86C984.69,-673.15 1005.15,-575.54 1013.42,-536.1"/>
-<polygon fill="#718096" stroke="#718096" points="971.23,-720.28 972.61,-730.79 978.08,-721.72 971.23,-720.28"/>
-</g>
-<!-- EntityRef.h&#45;&gt;ComponentConcepts.h -->
-<g id="edge46" class="edge">
-<title>EntityRef.h&#45;&gt;ComponentConcepts.h</title>
-<path fill="none" stroke="#718096" d="M982.88,-721.74C1003.58,-682.09 1043.2,-604.3 1072,-536 1107.77,-451.16 1142.51,-346.42 1155.57,-306.01"/>
-<polygon fill="#718096" stroke="#718096" points="979.59,-720.49 978.04,-730.97 985.79,-723.74 979.59,-720.49"/>
+<polygon fill="#2d3748" stroke="#4a5568" points="1820,-742 1668,-742 1668,-706 1820,-706 1820,-742"/>
+<text text-anchor="middle" x="1744" y="-721.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">DescriptorSetLayoutInfo.h</text>
 </g>
 <!-- shader_descriptors.h&#45;&gt;DescriptorSetLayoutInfo.h -->
-<g id="edge34" class="edge">
+<g id="edge77" class="edge">
 <title>shader_descriptors.h&#45;&gt;DescriptorSetLayoutInfo.h</title>
-<path fill="none" stroke="#718096" d="M247.32,-1181.88C273.19,-1134.7 327,-1036.54 348.67,-997.02"/>
-<polygon fill="#718096" stroke="#718096" points="244.13,-1180.41 242.4,-1190.86 250.27,-1183.78 244.13,-1180.41"/>
+<path fill="none" stroke="#718096" d="M1840.88,-919.64C1818.08,-873.83 1771.75,-780.75 1752.59,-742.26"/>
+<polygon fill="#718096" stroke="#718096" points="1837.78,-921.27 1845.37,-928.66 1844.05,-918.15 1837.78,-921.27"/>
 </g>
-<!-- shader_descriptors.h&#45;&gt;VulkanCheck.h -->
-<g id="edge35" class="edge">
-<title>shader_descriptors.h&#45;&gt;VulkanCheck.h</title>
-<path fill="none" stroke="#718096" d="M235.79,-1180.66C240.84,-1134.75 252.88,-1039.5 273,-961 316.47,-791.4 397.66,-594.92 422.55,-536.33"/>
-<polygon fill="#718096" stroke="#718096" points="232.3,-1180.39 234.71,-1190.71 239.26,-1181.14 232.3,-1180.39"/>
+<!-- StencilOutlinePass.h&#45;&gt;SubMesh.h -->
+<g id="edge15" class="edge">
+<title>StencilOutlinePass.h&#45;&gt;SubMesh.h</title>
+<path fill="none" stroke="#718096" d="M1175.45,-1365.64C1150.16,-1319.83 1098.78,-1226.75 1077.53,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="1172.53,-1367.6 1180.43,-1374.66 1178.66,-1364.21 1172.53,-1367.6"/>
 </g>
-<!-- shader_descriptors.h&#45;&gt;VulkanNew.h -->
-<g id="edge36" class="edge">
-<title>shader_descriptors.h&#45;&gt;VulkanNew.h</title>
-<path fill="none" stroke="#718096" d="M233.2,-1180.65C234.03,-1066.29 237.21,-628.16 237.88,-536.05"/>
-<polygon fill="#718096" stroke="#718096" points="229.7,-1180.94 233.12,-1190.97 236.7,-1180.99 229.7,-1180.94"/>
+<!-- StencilOutlinePass.h&#45;&gt;PassComponent.h -->
+<g id="edge16" class="edge">
+<title>StencilOutlinePass.h&#45;&gt;PassComponent.h</title>
+<path fill="none" stroke="#718096" d="M1193.24,-1364.48C1198.67,-1318.28 1209.48,-1226.43 1213.97,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="1189.73,-1364.32 1192.04,-1374.66 1196.68,-1365.14 1189.73,-1364.32"/>
 </g>
-<!-- EngineView.h&#45;&gt;Engine.h -->
-<g id="edge55" class="edge">
-<title>EngineView.h&#45;&gt;Engine.h</title>
-<path fill="none" stroke="#718096" d="M1048.2,-1182.17C1077.71,-1135.11 1139.49,-1036.62 1164.32,-997.02"/>
-<polygon fill="#718096" stroke="#718096" points="1045.1,-1180.53 1042.75,-1190.86 1051.03,-1184.25 1045.1,-1180.53"/>
+<!-- StencilOutlinePass.h&#45;&gt;Transform.h -->
+<g id="edge17" class="edge">
+<title>StencilOutlinePass.h&#45;&gt;Transform.h</title>
+<path fill="none" stroke="#718096" d="M1206.28,-1365.92C1234.82,-1320.22 1293.13,-1226.83 1317.22,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="1203.16,-1364.32 1200.83,-1374.66 1209.09,-1368.03 1203.16,-1364.32"/>
 </g>
-<!-- Descriptors.h&#45;&gt;Image.h -->
-<g id="edge61" class="edge">
-<title>Descriptors.h&#45;&gt;Image.h</title>
-<path fill="none" stroke="#718096" d="M459.99,-955.32C389.49,-909.66 231.82,-807.53 169.28,-767.02"/>
-<polygon fill="#718096" stroke="#718096" points="458.25,-958.36 468.54,-960.86 462.05,-952.49 458.25,-958.36"/>
+<!-- StencilOutlinePass.h&#45;&gt;Descriptors.h -->
+<g id="edge18" class="edge">
+<title>StencilOutlinePass.h&#45;&gt;Descriptors.h</title>
+<path fill="none" stroke="#718096" d="M1177.05,-1365.77C1156.53,-1320.37 1121.92,-1225 1153,-1152 1240.55,-946.34 1481.08,-791.88 1566.45,-742.1"/>
+<polygon fill="#718096" stroke="#718096" points="1173.91,-1367.34 1181.3,-1374.93 1180.26,-1364.38 1173.91,-1367.34"/>
 </g>
-<!-- Descriptors.h&#45;&gt;Buffer.h -->
-<g id="edge60" class="edge">
-<title>Descriptors.h&#45;&gt;Buffer.h</title>
-<path fill="none" stroke="#718096" d="M492.36,-950.68C487.77,-903.07 478.42,-806.21 474.64,-767.02"/>
-<polygon fill="#718096" stroke="#718096" points="488.9,-951.25 493.35,-960.86 495.87,-950.57 488.9,-951.25"/>
+<!-- StencilOutlinePass.h&#45;&gt;MeshTransformSorter.h -->
+<g id="edge19" class="edge">
+<title>StencilOutlinePass.h&#45;&gt;MeshTransformSorter.h</title>
+<path fill="none" stroke="#718096" d="M1218.68,-1368.17C1272.62,-1323.35 1388.02,-1227.48 1435.22,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="1216.33,-1365.58 1210.87,-1374.66 1220.8,-1370.96 1216.33,-1365.58"/>
 </g>
-<!-- PassComponent.h&#45;&gt;array.h -->
-<g id="edge82" class="edge">
-<title>PassComponent.h&#45;&gt;array.h</title>
-<path fill="none" stroke="#718096" d="M915.68,-1180.68C913.38,-1133.07 908.71,-1036.21 906.82,-997.02"/>
-<polygon fill="#718096" stroke="#718096" points="912.2,-1181.04 916.17,-1190.86 919.19,-1180.71 912.2,-1181.04"/>
+<!-- StencilOutlinePass.h&#45;&gt;EngineView.h -->
+<g id="edge20" class="edge">
+<title>StencilOutlinePass.h&#45;&gt;EngineView.h</title>
+<path fill="none" stroke="#718096" d="M1165.34,-1367.34C1120.17,-1322.17 1025.24,-1227.24 986.26,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="1163.11,-1370.06 1172.66,-1374.66 1168.06,-1365.11 1163.11,-1370.06"/>
 </g>
-<!-- PassComponent.h&#45;&gt;EntityRef.h -->
-<g id="edge83" class="edge">
-<title>PassComponent.h&#45;&gt;EntityRef.h</title>
-<path fill="none" stroke="#718096" d="M920.32,-1180.69C925.18,-1140.48 934.49,-1062.97 942,-997 951.84,-910.64 962.92,-807.2 967.19,-767.07"/>
-<polygon fill="#718096" stroke="#718096" points="916.82,-1180.43 919.09,-1190.78 923.77,-1181.27 916.82,-1180.43"/>
+<!-- EntityRef.h&#45;&gt;Stream.h -->
+<g id="edge53" class="edge">
+<title>EntityRef.h&#45;&gt;Stream.h</title>
+<path fill="none" stroke="#ffd700" stroke-width="2" d="M1033.63,-695.45C1031.87,-648.65 1023.19,-552 983,-483 932.73,-396.69 832.79,-327.67 783.25,-297.09"/>
+<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="1030.14,-695.81 1033.94,-705.7 1037.14,-695.6 1030.14,-695.81"/>
 </g>
-<!-- Asset29.h -->
-<g id="node39" class="node">
-<title>Asset29.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1649,-1458 1583,-1458 1583,-1422 1649,-1422 1649,-1458"/>
-<text text-anchor="middle" x="1616" y="-1437.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Asset29.h</text>
+<!-- TypeRegistry.h -->
+<g id="node29" class="node">
+<title>TypeRegistry.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="666.5,-519 573.5,-519 573.5,-483 666.5,-483 666.5,-519"/>
+<text text-anchor="middle" x="620" y="-498.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">TypeRegistry.h</text>
 </g>
-<!-- AssetID.h -->
-<g id="node40" class="node">
-<title>AssetID.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1811.5,-1227 1746.5,-1227 1746.5,-1191 1811.5,-1191 1811.5,-1227"/>
-<text text-anchor="middle" x="1779" y="-1206.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">AssetID.h</text>
+<!-- EntityRef.h&#45;&gt;TypeRegistry.h -->
+<g id="edge51" class="edge">
+<title>EntityRef.h&#45;&gt;TypeRegistry.h</title>
+<path fill="none" stroke="#718096" d="M993.04,-701.13C910.67,-657.17 726.54,-558.87 652.12,-519.15"/>
+<polygon fill="#718096" stroke="#718096" points="991.39,-704.22 1001.86,-705.84 994.69,-698.05 991.39,-704.22"/>
 </g>
-<!-- Asset29.h&#45;&gt;AssetID.h -->
-<g id="edge44" class="edge">
-<title>Asset29.h&#45;&gt;AssetID.h</title>
-<path fill="none" stroke="#718096" d="M1634.26,-1413.35C1667.81,-1366.21 1738.46,-1266.95 1766.83,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="1631.2,-1411.61 1628.25,-1421.79 1636.9,-1415.67 1631.2,-1411.61"/>
+<!-- EntityRef.h&#45;&gt;ComponentConcepts.h -->
+<g id="edge52" class="edge">
+<title>EntityRef.h&#45;&gt;ComponentConcepts.h</title>
+<path fill="none" stroke="#718096" d="M1035.69,-695.68C1037.78,-650.66 1039.1,-558.34 1021,-483 1003.53,-410.28 960.85,-331.2 941.21,-297.16"/>
+<polygon fill="#718096" stroke="#718096" points="1032.19,-695.65 1035.17,-705.82 1039.18,-696.01 1032.19,-695.65"/>
 </g>
-<!-- ecs_tests.h -->
-<g id="node42" class="node">
-<title>ecs_tests.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1358,-1458 1286,-1458 1286,-1422 1358,-1422 1358,-1458"/>
-<text text-anchor="middle" x="1322" y="-1437.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">ecs_tests.h</text>
+<!-- SerialConcepts.h -->
+<g id="node34" class="node">
+<title>SerialConcepts.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="968.5,-74 865.5,-74 865.5,-38 968.5,-38 968.5,-74"/>
+<text text-anchor="middle" x="917" y="-53.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">SerialConcepts.h</text>
 </g>
-<!-- ecs_tests.h&#45;&gt;EngineView.h -->
-<g id="edge62" class="edge">
-<title>ecs_tests.h&#45;&gt;EngineView.h</title>
-<path fill="none" stroke="#718096" d="M1292.08,-1415.38C1233.49,-1369.11 1104.86,-1267.53 1053.65,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="1290.19,-1418.34 1300.2,-1421.79 1294.52,-1412.84 1290.19,-1418.34"/>
+<!-- Stream.h&#45;&gt;SerialConcepts.h -->
+<g id="edge68" class="edge">
+<title>Stream.h&#45;&gt;SerialConcepts.h</title>
+<path fill="none" stroke="#718096" d="M772.81,-252.49C806.37,-207 875.7,-113 904.27,-74.26"/>
+<polygon fill="#718096" stroke="#718096" points="769.91,-250.53 766.79,-260.66 775.54,-254.69 769.91,-250.53"/>
 </g>
-<!-- AssetFile.h -->
+<!-- WriteByteStream.h -->
 <g id="node43" class="node">
-<title>AssetFile.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1467.5,-1227 1394.5,-1227 1394.5,-1191 1467.5,-1191 1467.5,-1227"/>
-<text text-anchor="middle" x="1431" y="-1206.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">AssetFile.h</text>
+<title>WriteByteStream.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="687.5,-74 574.5,-74 574.5,-38 687.5,-38 687.5,-74"/>
+<text text-anchor="middle" x="631" y="-53.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">WriteByteStream.h</text>
 </g>
-<!-- ecs_tests.h&#45;&gt;AssetFile.h -->
-<g id="edge63" class="edge">
-<title>ecs_tests.h&#45;&gt;AssetFile.h</title>
-<path fill="none" stroke="#718096" d="M1334.63,-1412.46C1357.24,-1364.97 1404.01,-1266.71 1422.86,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="1331.33,-1411.25 1330.19,-1421.79 1337.65,-1414.26 1331.33,-1411.25"/>
+<!-- Stream.h&#45;&gt;WriteByteStream.h -->
+<g id="edge69" class="edge">
+<title>Stream.h&#45;&gt;WriteByteStream.h</title>
+<path fill="none" stroke="#718096" d="M739.33,-251.64C713.83,-205.83 662.03,-112.75 640.61,-74.26"/>
+<polygon fill="#718096" stroke="#718096" points="736.43,-253.62 744.35,-260.66 742.54,-250.22 736.43,-253.62"/>
 </g>
-<!-- simple_json.h -->
+<!-- ReadByteStream.h -->
 <g id="node44" class="node">
-<title>simple_json.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1474,-997 1388,-997 1388,-961 1474,-961 1474,-997"/>
-<text text-anchor="middle" x="1431" y="-976.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">simple_json.h</text>
+<title>ReadByteStream.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="818.5,-74 705.5,-74 705.5,-38 818.5,-38 818.5,-74"/>
+<text text-anchor="middle" x="762" y="-53.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">ReadByteStream.h</text>
 </g>
-<!-- AssetFile.h&#45;&gt;simple_json.h -->
-<g id="edge64" class="edge">
-<title>AssetFile.h&#45;&gt;simple_json.h</title>
-<path fill="none" stroke="#718096" d="M1431,-1180.68C1431,-1133.07 1431,-1036.21 1431,-997.02"/>
-<polygon fill="#718096" stroke="#718096" points="1427.5,-1180.86 1431,-1190.86 1434.5,-1180.86 1427.5,-1180.86"/>
-</g>
-<!-- ShaderAssetData.h -->
-<g id="node45" class="node">
-<title>ShaderAssetData.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1782.5,-1458 1667.5,-1458 1667.5,-1422 1782.5,-1422 1782.5,-1458"/>
-<text text-anchor="middle" x="1725" y="-1437.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">ShaderAssetData.h</text>
-</g>
-<!-- ShaderAssetData.h&#45;&gt;AssetID.h -->
-<g id="edge66" class="edge">
-<title>ShaderAssetData.h&#45;&gt;AssetID.h</title>
-<path fill="none" stroke="#718096" d="M1731.4,-1411.86C1742.65,-1364.15 1765.67,-1266.54 1774.97,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="1727.95,-1411.25 1729.06,-1421.79 1734.76,-1412.86 1727.95,-1411.25"/>
-</g>
-<!-- ResourceHandles.h&#45;&gt;Descriptors.h -->
-<g id="edge84" class="edge">
-<title>ResourceHandles.h&#45;&gt;Descriptors.h</title>
-<path fill="none" stroke="#718096" d="M419.08,-1181.28C436.96,-1133.88 473.74,-1036.38 488.58,-997.02"/>
-<polygon fill="#718096" stroke="#718096" points="415.72,-1180.27 415.46,-1190.86 422.27,-1182.74 415.72,-1180.27"/>
-</g>
-<!-- AssetManager.h -->
-<g id="node48" class="node">
-<title>AssetManager.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1481,-1458 1381,-1458 1381,-1422 1481,-1422 1481,-1458"/>
-<text text-anchor="middle" x="1431" y="-1437.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">AssetManager.h</text>
-</g>
-<!-- AssetManager.h&#45;&gt;AssetID.h -->
-<g id="edge73" class="edge">
-<title>AssetManager.h&#45;&gt;AssetID.h</title>
-<path fill="none" stroke="#718096" d="M1465.3,-1416.43C1534.83,-1370.68 1691,-1267.91 1752.96,-1227.14"/>
-<polygon fill="#718096" stroke="#718096" points="1463.3,-1413.55 1456.87,-1421.97 1467.15,-1419.4 1463.3,-1413.55"/>
-</g>
-<!-- AssetManager.h&#45;&gt;AssetFile.h -->
-<g id="edge74" class="edge">
-<title>AssetManager.h&#45;&gt;AssetFile.h</title>
-<path fill="none" stroke="#718096" d="M1431,-1411.56C1431,-1363.74 1431,-1266.46 1431,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="1427.5,-1411.79 1431,-1421.79 1434.5,-1411.79 1427.5,-1411.79"/>
-</g>
-<!-- Asset18.h -->
-<g id="node49" class="node">
-<title>Asset18.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1867,-1458 1801,-1458 1801,-1422 1867,-1422 1867,-1458"/>
-<text text-anchor="middle" x="1834" y="-1437.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Asset18.h</text>
-</g>
-<!-- Asset18.h&#45;&gt;AssetID.h -->
-<g id="edge79" class="edge">
-<title>Asset18.h&#45;&gt;AssetID.h</title>
-<path fill="none" stroke="#718096" d="M1827.48,-1411.86C1816.02,-1364.15 1792.58,-1266.54 1783.11,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="1824.13,-1412.88 1829.87,-1421.79 1830.93,-1411.25 1824.13,-1412.88"/>
-</g>
-<!-- Asset17.h -->
-<g id="node50" class="node">
-<title>Asset17.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1951,-1458 1885,-1458 1885,-1422 1951,-1422 1951,-1458"/>
-<text text-anchor="middle" x="1918" y="-1437.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Asset17.h</text>
-</g>
-<!-- Asset17.h&#45;&gt;AssetID.h -->
-<g id="edge85" class="edge">
-<title>Asset17.h&#45;&gt;AssetID.h</title>
-<path fill="none" stroke="#718096" d="M1902.25,-1413.06C1873.56,-1365.79 1813.52,-1266.87 1789.38,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="1899.37,-1415.06 1907.55,-1421.79 1905.36,-1411.42 1899.37,-1415.06"/>
-</g>
-<!-- Pipelines.h -->
-<g id="node51" class="node">
-<title>Pipelines.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1761.5,-1688 1688.5,-1688 1688.5,-1652 1761.5,-1652 1761.5,-1688"/>
-<text text-anchor="middle" x="1725" y="-1667.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Pipelines.h</text>
-</g>
-<!-- Pipelines.h&#45;&gt;ShaderAssetData.h -->
-<g id="edge86" class="edge">
-<title>Pipelines.h&#45;&gt;ShaderAssetData.h</title>
-<path fill="none" stroke="#718096" d="M1725,-1641.68C1725,-1594.07 1725,-1497.21 1725,-1458.02"/>
-<polygon fill="#718096" stroke="#718096" points="1721.5,-1641.86 1725,-1651.86 1728.5,-1641.86 1721.5,-1641.86"/>
-</g>
-<!-- Asset31.h -->
-<g id="node52" class="node">
-<title>Asset31.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="2035,-1458 1969,-1458 1969,-1422 2035,-1422 2035,-1458"/>
-<text text-anchor="middle" x="2002" y="-1437.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Asset31.h</text>
-</g>
-<!-- Asset31.h&#45;&gt;AssetID.h -->
-<g id="edge87" class="edge">
-<title>Asset31.h&#45;&gt;AssetID.h</title>
-<path fill="none" stroke="#718096" d="M1978.16,-1414.52C1932.72,-1367.86 1834.79,-1267.29 1795.65,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="1975.75,-1417.07 1985.24,-1421.79 1980.77,-1412.18 1975.75,-1417.07"/>
-</g>
-<!-- SceneAssetGenerator.h -->
-<g id="node53" class="node">
-<title>SceneAssetGenerator.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1242,-2609 1106,-2609 1106,-2573 1242,-2573 1242,-2609"/>
-<text text-anchor="middle" x="1174" y="-2588.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">SceneAssetGenerator.h</text>
-</g>
-<!-- IAssetGenerator.h -->
-<g id="node54" class="node">
-<title>IAssetGenerator.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1311.5,-2379 1202.5,-2379 1202.5,-2343 1311.5,-2343 1311.5,-2379"/>
-<text text-anchor="middle" x="1257" y="-2358.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">IAssetGenerator.h</text>
-</g>
-<!-- SceneAssetGenerator.h&#45;&gt;IAssetGenerator.h -->
-<g id="edge88" class="edge">
-<title>SceneAssetGenerator.h&#45;&gt;IAssetGenerator.h</title>
-<path fill="none" stroke="#718096" d="M1183.73,-2563.28C1200.98,-2515.88 1236.48,-2418.38 1250.8,-2379.02"/>
-<polygon fill="#718096" stroke="#718096" points="1180.37,-2562.27 1180.24,-2572.86 1186.95,-2564.66 1180.37,-2562.27"/>
-</g>
-<!-- SerialArrayHelpers.h -->
-<g id="node55" class="node">
-<title>SerialArrayHelpers.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="875.5,-536 750.5,-536 750.5,-500 875.5,-500 875.5,-536"/>
-<text text-anchor="middle" x="813" y="-515.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">SerialArrayHelpers.h</text>
-</g>
-<!-- SerialArrayHelpers.h&#45;&gt;Stream.h -->
-<g id="edge89" class="edge">
-<title>SerialArrayHelpers.h&#45;&gt;Stream.h</title>
-<path fill="none" stroke="#718096" d="M823.66,-490.28C842.58,-442.88 881.5,-345.38 897.2,-306.02"/>
-<polygon fill="#718096" stroke="#718096" points="820.3,-489.28 819.84,-499.86 826.8,-491.87 820.3,-489.28"/>
+<!-- Stream.h&#45;&gt;ReadByteStream.h -->
+<g id="edge70" class="edge">
+<title>Stream.h&#45;&gt;ReadByteStream.h</title>
+<path fill="none" stroke="#718096" d="M755,-250.48C756.67,-204.28 759.99,-112.43 761.38,-74.26"/>
+<polygon fill="#718096" stroke="#718096" points="751.49,-250.54 754.63,-260.66 758.49,-250.79 751.49,-250.54"/>
 </g>
 <!-- Asset30.h -->
-<g id="node56" class="node">
+<g id="node20" class="node">
 <title>Asset30.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="2119,-1458 2053,-1458 2053,-1422 2119,-1422 2119,-1458"/>
-<text text-anchor="middle" x="2086" y="-1437.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Asset30.h</text>
+<polygon fill="#2d3748" stroke="#4a5568" points="620,-2302 554,-2302 554,-2266 620,-2266 620,-2302"/>
+<text text-anchor="middle" x="587" y="-2281.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Asset30.h</text>
 </g>
 <!-- Asset30.h&#45;&gt;AssetID.h -->
-<g id="edge90" class="edge">
+<g id="edge23" class="edge">
 <title>Asset30.h&#45;&gt;AssetID.h</title>
-<path fill="none" stroke="#718096" d="M2054.98,-1415.86C1993.28,-1369.84 1856.41,-1267.74 1801.97,-1227.14"/>
-<polygon fill="#718096" stroke="#718096" points="2053.07,-1418.8 2063.18,-1421.97 2057.25,-1413.19 2053.07,-1418.8"/>
+<path fill="none" stroke="#718096" d="M567.61,-2257.49C533.03,-2212 461.57,-2118 432.12,-2079.26"/>
+<polygon fill="#718096" stroke="#718096" points="564.98,-2259.82 573.82,-2265.66 570.55,-2255.58 564.98,-2259.82"/>
+</g>
+<!-- Buffer.h&#45;&gt;VulkanCheck.h -->
+<g id="edge24" class="edge">
+<title>Buffer.h&#45;&gt;VulkanCheck.h</title>
+<path fill="none" stroke="#718096" d="M1690.86,-472.6C1695.67,-426.61 1705.23,-335.18 1709.2,-297.18"/>
+<polygon fill="#718096" stroke="#718096" points="1687.36,-472.43 1689.8,-482.74 1694.33,-473.16 1687.36,-472.43"/>
+</g>
+<!-- Buffer.h&#45;&gt;VulkanNew.h -->
+<g id="edge25" class="edge">
+<title>Buffer.h&#45;&gt;VulkanNew.h</title>
+<path fill="none" stroke="#718096" d="M1707.97,-474.89C1743.91,-429.71 1818.6,-335.82 1849.33,-297.18"/>
+<polygon fill="#718096" stroke="#718096" points="1705.22,-472.73 1701.73,-482.74 1710.7,-477.09 1705.22,-472.73"/>
+</g>
+<!-- PassSystem.h&#45;&gt;IdentifyPass.h -->
+<g id="edge39" class="edge">
+<title>PassSystem.h&#45;&gt;IdentifyPass.h</title>
+<path fill="none" stroke="#718096" d="M1227.03,-1590.01C1279.29,-1545.27 1390.41,-1450.14 1435.93,-1411.18"/>
+<polygon fill="#718096" stroke="#718096" points="1224.49,-1587.58 1219.17,-1596.74 1229.04,-1592.89 1224.49,-1587.58"/>
+</g>
+<!-- PassSystem.h&#45;&gt;SubMesh.h -->
+<g id="edge41" class="edge">
+<title>PassSystem.h&#45;&gt;SubMesh.h</title>
+<path fill="none" stroke="#ffd700" stroke-width="2" d="M1187.15,-1587.55C1170.36,-1549.25 1139.5,-1475.82 1120,-1411 1095.31,-1328.94 1077.34,-1227.79 1070.75,-1188.11"/>
+<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="1184.06,-1589.21 1191.3,-1596.94 1190.46,-1586.38 1184.06,-1589.21"/>
+</g>
+<!-- PassSystem.h&#45;&gt;StencilOutlinePass.h -->
+<g id="edge40" class="edge">
+<title>PassSystem.h&#45;&gt;StencilOutlinePass.h</title>
+<path fill="none" stroke="#718096" d="M1197.88,-1586.6C1196,-1540.61 1192.26,-1449.18 1190.7,-1411.18"/>
+<polygon fill="#718096" stroke="#718096" points="1194.39,-1586.89 1198.29,-1596.74 1201.38,-1586.6 1194.39,-1586.89"/>
+</g>
+<!-- PassSystem.h&#45;&gt;Engine.h -->
+<g id="edge43" class="edge">
+<title>PassSystem.h&#45;&gt;Engine.h</title>
+<path fill="none" stroke="#ffd700" stroke-width="2" d="M1146.23,-1597.98C1071.48,-1572.17 937.28,-1513.58 878,-1411 833.12,-1333.33 852.01,-1039.65 857.63,-965.23"/>
+<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="1145.33,-1601.38 1155.93,-1601.26 1147.57,-1594.74 1145.33,-1601.38"/>
+</g>
+<!-- DefaultPass.h -->
+<g id="node32" class="node">
+<title>DefaultPass.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1393,-1411 1307,-1411 1307,-1375 1393,-1375 1393,-1411"/>
+<text text-anchor="middle" x="1350" y="-1390.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">DefaultPass.h</text>
+</g>
+<!-- PassSystem.h&#45;&gt;DefaultPass.h -->
+<g id="edge42" class="edge">
+<title>PassSystem.h&#45;&gt;DefaultPass.h</title>
+<path fill="none" stroke="#718096" d="M1216.62,-1588.33C1247.78,-1542.93 1311.8,-1449.66 1338.21,-1411.18"/>
+<polygon fill="#718096" stroke="#718096" points="1213.62,-1586.51 1210.85,-1596.74 1219.39,-1590.47 1213.62,-1586.51"/>
+</g>
+<!-- UpdateQueue.h -->
+<g id="node28" class="node">
+<title>UpdateQueue.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="924,-742 826,-742 826,-706 924,-706 924,-742"/>
+<text text-anchor="middle" x="875" y="-721.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">UpdateQueue.h</text>
+</g>
+<!-- Engine.h&#45;&gt;UpdateQueue.h -->
+<g id="edge66" class="edge">
+<title>Engine.h&#45;&gt;UpdateQueue.h</title>
+<path fill="none" stroke="#718096" d="M860.99,-918.48C864.34,-872.28 870.99,-780.43 873.75,-742.26"/>
+<polygon fill="#718096" stroke="#718096" points="857.49,-918.43 860.26,-928.66 864.47,-918.94 857.49,-918.43"/>
+</g>
+<!-- Archetype.h -->
+<g id="node42" class="node">
+<title>Archetype.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="808.5,-742 729.5,-742 729.5,-706 808.5,-706 808.5,-742"/>
+<text text-anchor="middle" x="769" y="-721.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Archetype.h</text>
+</g>
+<!-- Engine.h&#45;&gt;Archetype.h -->
+<g id="edge67" class="edge">
+<title>Engine.h&#45;&gt;Archetype.h</title>
+<path fill="none" stroke="#718096" d="M848.15,-919.35C829.45,-873.44 791.67,-780.67 776.03,-742.26"/>
+<polygon fill="#718096" stroke="#718096" points="844.92,-920.72 851.94,-928.66 851.41,-918.08 844.92,-920.72"/>
+</g>
+<!-- array.h -->
+<g id="node45" class="node">
+<title>array.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="755,-1188 701,-1188 701,-1152 755,-1152 755,-1188"/>
+<text text-anchor="middle" x="728" y="-1167.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">array.h</text>
+</g>
+<!-- Tags.h&#45;&gt;array.h -->
+<g id="edge91" class="edge">
+<title>Tags.h&#45;&gt;array.h</title>
+<path fill="none" stroke="#718096" d="M728,-1586.77C728,-1503.85 728,-1256.03 728,-1188.28"/>
+<polygon fill="#718096" stroke="#718096" points="724.5,-1586.91 728,-1596.91 731.5,-1586.91 724.5,-1586.91"/>
+</g>
+<!-- UpdateQueue.h&#45;&gt;TypeRegistry.h -->
+<g id="edge35" class="edge">
+<title>UpdateQueue.h&#45;&gt;TypeRegistry.h</title>
+<path fill="none" stroke="#718096" d="M847.19,-698.9C795.34,-653.96 685.08,-558.4 639.92,-519.26"/>
+<polygon fill="#718096" stroke="#718096" points="845.14,-701.75 854.99,-705.66 849.73,-696.46 845.14,-701.75"/>
+</g>
+<!-- UpdateQueue.h&#45;&gt;ComponentConcepts.h -->
+<g id="edge36" class="edge">
+<title>UpdateQueue.h&#45;&gt;ComponentConcepts.h</title>
+<path fill="none" stroke="#718096" d="M880.6,-695.87C888.46,-656.89 902.73,-582.73 911,-519 921.75,-436.21 927.93,-336.5 930.1,-297.16"/>
+<polygon fill="#718096" stroke="#718096" points="877.13,-695.39 878.57,-705.89 883.99,-696.78 877.13,-695.39"/>
+</g>
+<!-- TypeRegistry.h&#45;&gt;Stream.h -->
+<g id="edge37" class="edge">
+<title>TypeRegistry.h&#45;&gt;Stream.h</title>
+<path fill="none" stroke="#718096" d="M635.81,-474.04C663.52,-428.54 720.15,-335.58 743.53,-297.18"/>
+<polygon fill="#718096" stroke="#718096" points="632.73,-472.38 630.51,-482.74 638.71,-476.02 632.73,-472.38"/>
+</g>
+<!-- TypenameRegistry.h -->
+<g id="node31" class="node">
+<title>TypenameRegistry.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="681,-297 559,-297 559,-261 681,-261 681,-297"/>
+<text text-anchor="middle" x="620" y="-276.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">TypenameRegistry.h</text>
+</g>
+<!-- TypeRegistry.h&#45;&gt;TypenameRegistry.h -->
+<g id="edge38" class="edge">
+<title>TypeRegistry.h&#45;&gt;TypenameRegistry.h</title>
+<path fill="none" stroke="#718096" d="M620,-472.6C620,-426.61 620,-335.18 620,-297.18"/>
+<polygon fill="#718096" stroke="#718096" points="616.5,-472.74 620,-482.74 623.5,-472.74 616.5,-472.74"/>
+</g>
+<!-- ComponentConcepts.h&#45;&gt;SerialConcepts.h -->
+<g id="edge54" class="edge">
+<title>ComponentConcepts.h&#45;&gt;SerialConcepts.h</title>
+<path fill="none" stroke="#718096" d="M929.26,-250.48C926.33,-204.28 920.51,-112.43 918.09,-74.26"/>
+<polygon fill="#718096" stroke="#718096" points="925.78,-250.9 929.9,-260.66 932.76,-250.46 925.78,-250.9"/>
+</g>
+<!-- DefaultPass.h&#45;&gt;SubMesh.h -->
+<g id="edge44" class="edge">
+<title>DefaultPass.h&#45;&gt;SubMesh.h</title>
+<path fill="none" stroke="#718096" d="M1319.95,-1368.45C1262.91,-1323.75 1140.17,-1227.56 1090.03,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="1317.84,-1371.24 1327.87,-1374.66 1322.16,-1365.74 1317.84,-1371.24"/>
+</g>
+<!-- DefaultPass.h&#45;&gt;PassComponent.h -->
+<g id="edge45" class="edge">
+<title>DefaultPass.h&#45;&gt;PassComponent.h</title>
+<path fill="none" stroke="#718096" d="M1334.19,-1365.92C1306.48,-1320.22 1249.85,-1226.83 1226.47,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="1331.31,-1367.92 1339.49,-1374.66 1337.29,-1364.29 1331.31,-1367.92"/>
+</g>
+<!-- DefaultPass.h&#45;&gt;Transform.h -->
+<g id="edge46" class="edge">
+<title>DefaultPass.h&#45;&gt;Transform.h</title>
+<path fill="none" stroke="#718096" d="M1347.26,-1364.48C1342.66,-1318.28 1333.52,-1226.43 1329.72,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="1343.8,-1365.05 1348.27,-1374.66 1350.77,-1364.36 1343.8,-1365.05"/>
+</g>
+<!-- DefaultPass.h&#45;&gt;Descriptors.h -->
+<g id="edge47" class="edge">
+<title>DefaultPass.h&#45;&gt;Descriptors.h</title>
+<path fill="none" stroke="#718096" d="M1380.46,-1368.52C1422.76,-1334.01 1498.14,-1265.26 1534,-1188 1608.29,-1027.96 1601.82,-805.65 1598.19,-742.41"/>
+<polygon fill="#718096" stroke="#718096" points="1378.06,-1365.96 1372.46,-1374.96 1382.44,-1371.41 1378.06,-1365.96"/>
+</g>
+<!-- DefaultPass.h&#45;&gt;MeshTransformSorter.h -->
+<g id="edge49" class="edge">
+<title>DefaultPass.h&#45;&gt;MeshTransformSorter.h</title>
+<path fill="none" stroke="#718096" d="M1362.64,-1365.64C1384.62,-1319.83 1429.26,-1226.75 1447.72,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="1359.49,-1364.13 1358.32,-1374.66 1365.8,-1367.16 1359.49,-1364.13"/>
+</g>
+<!-- DefaultPass.h&#45;&gt;EngineView.h -->
+<g id="edge50" class="edge">
+<title>DefaultPass.h&#45;&gt;EngineView.h</title>
+<path fill="none" stroke="#718096" d="M1311.61,-1369.73C1235.47,-1325.57 1066.84,-1227.75 998.56,-1188.15"/>
+<polygon fill="#718096" stroke="#718096" points="1310.01,-1372.85 1320.42,-1374.84 1313.53,-1366.8 1310.01,-1372.85"/>
+</g>
+<!-- DefaultPass.h&#45;&gt;DescriptorSetLayoutInfo.h -->
+<g id="edge48" class="edge">
+<title>DefaultPass.h&#45;&gt;DescriptorSetLayoutInfo.h</title>
+<path fill="none" stroke="#718096" d="M1384.89,-1369.26C1467.65,-1312.88 1674.22,-1157.21 1745,-965 1774.01,-886.21 1756.73,-782.76 1748.06,-742.29"/>
+<polygon fill="#718096" stroke="#718096" points="1382.91,-1366.37 1376.58,-1374.87 1386.83,-1372.18 1382.91,-1366.37"/>
+</g>
+<!-- SceneAssetGenerator.h -->
+<g id="node35" class="node">
+<title>SceneAssetGenerator.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1754,-2525 1618,-2525 1618,-2489 1754,-2489 1754,-2525"/>
+<text text-anchor="middle" x="1686" y="-2504.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">SceneAssetGenerator.h</text>
+</g>
+<!-- IAssetGenerator.h -->
+<g id="node36" class="node">
+<title>IAssetGenerator.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="1823.5,-2302 1714.5,-2302 1714.5,-2266 1823.5,-2266 1823.5,-2302"/>
+<text text-anchor="middle" x="1769" y="-2281.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">IAssetGenerator.h</text>
+</g>
+<!-- SceneAssetGenerator.h&#45;&gt;IAssetGenerator.h -->
+<g id="edge55" class="edge">
+<title>SceneAssetGenerator.h&#45;&gt;IAssetGenerator.h</title>
+<path fill="none" stroke="#718096" d="M1696.12,-2479.06C1713.4,-2433.05 1748.12,-2340.59 1762.52,-2302.26"/>
+<polygon fill="#718096" stroke="#718096" points="1692.75,-2478.07 1692.51,-2488.66 1699.31,-2480.53 1692.75,-2478.07"/>
+</g>
+<!-- CommonTextures.h&#45;&gt;Image.h -->
+<g id="edge85" class="edge">
+<title>CommonTextures.h&#45;&gt;Image.h</title>
+<path fill="none" stroke="#718096" d="M1993.36,-1586.59C1996.7,-1517.1 2005,-1328.39 2005,-1171 2005,-1171 2005,-1171 2005,-946 2005,-779.28 1978.07,-578.62 1969.55,-519.3"/>
+<polygon fill="#718096" stroke="#718096" points="1989.86,-1586.54 1992.87,-1596.7 1996.85,-1586.88 1989.86,-1586.54"/>
+</g>
+<!-- Material.h&#45;&gt;PassComponent.h -->
+<g id="edge86" class="edge">
+<title>Material.h&#45;&gt;PassComponent.h</title>
+<path fill="none" stroke="#ffd700" stroke-width="2" d="M1279.38,-1809.27C1280.04,-1737.29 1279.65,-1538.69 1259,-1375 1250.14,-1304.8 1229.74,-1222.85 1220.59,-1188.03"/>
+<polygon fill="#ffd700" stroke="#ffd700" stroke-width="2" points="1275.88,-1809.68 1279.27,-1819.71 1282.88,-1809.75 1275.88,-1809.68"/>
+</g>
+<!-- Material.h&#45;&gt;PassSystem.h -->
+<g id="edge87" class="edge">
+<title>Material.h&#45;&gt;PassSystem.h</title>
+<path fill="none" stroke="#718096" d="M1269.25,-1810.06C1252.59,-1764.05 1219.12,-1671.59 1205.25,-1633.26"/>
+<polygon fill="#718096" stroke="#718096" points="1266.03,-1811.45 1272.72,-1819.66 1272.61,-1809.06 1266.03,-1811.45"/>
+</g>
+<!-- ResourceHandles.h&#45;&gt;Descriptors.h -->
+<g id="edge63" class="edge">
+<title>ResourceHandles.h&#45;&gt;Descriptors.h</title>
+<path fill="none" stroke="#718096" d="M1668.13,-919.06C1651.26,-873.05 1617.38,-780.59 1603.33,-742.26"/>
+<polygon fill="#718096" stroke="#718096" points="1664.92,-920.47 1671.64,-928.66 1671.49,-918.06 1664.92,-920.47"/>
+</g>
+<!-- Archetype.h&#45;&gt;TypeRegistry.h -->
+<g id="edge79" class="edge">
+<title>Archetype.h&#45;&gt;TypeRegistry.h</title>
+<path fill="none" stroke="#718096" d="M751.61,-697.21C720.87,-651.61 657.7,-557.92 631.64,-519.26"/>
+<polygon fill="#718096" stroke="#718096" points="748.82,-699.32 757.31,-705.66 754.62,-695.41 748.82,-699.32"/>
+</g>
+<!-- RawArray.h -->
+<g id="node48" class="node">
+<title>RawArray.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="902.5,-519 827.5,-519 827.5,-483 902.5,-483 902.5,-519"/>
+<text text-anchor="middle" x="865" y="-498.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">RawArray.h</text>
+</g>
+<!-- Archetype.h&#45;&gt;RawArray.h -->
+<g id="edge80" class="edge">
+<title>Archetype.h&#45;&gt;RawArray.h</title>
+<path fill="none" stroke="#718096" d="M780.58,-696.35C800.52,-650.44 840.82,-557.67 857.5,-519.26"/>
+<polygon fill="#718096" stroke="#718096" points="777.31,-695.09 776.53,-705.66 783.73,-697.88 777.31,-695.09"/>
+</g>
+<!-- array.h&#45;&gt;Stream.h -->
+<g id="edge71" class="edge">
+<title>array.h&#45;&gt;Stream.h</title>
+<path fill="none" stroke="#718096" d="M710.96,-1143.32C652.13,-1051.28 466.37,-730.17 564,-483 597.43,-398.37 684.64,-328.31 728.31,-297.25"/>
+<polygon fill="#718096" stroke="#718096" points="708.04,-1145.25 716.4,-1151.75 713.92,-1141.45 708.04,-1145.25"/>
+</g>
+<!-- Asset31.h -->
+<g id="node46" class="node">
+<title>Asset31.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="66,-2302 0,-2302 0,-2266 66,-2266 66,-2302"/>
+<text text-anchor="middle" x="33" y="-2281.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Asset31.h</text>
+</g>
+<!-- Asset31.h&#45;&gt;AssetID.h -->
+<g id="edge72" class="edge">
+<title>Asset31.h&#45;&gt;AssetID.h</title>
+<path fill="none" stroke="#718096" d="M71.9,-2260.73C149.03,-2216.57 319.88,-2118.75 389.05,-2079.15"/>
+<polygon fill="#718096" stroke="#718096" points="69.91,-2257.84 62.97,-2265.84 73.38,-2263.91 69.91,-2257.84"/>
+</g>
+<!-- Mesh.h -->
+<g id="node47" class="node">
+<title>Mesh.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="942.5,-1411 887.5,-1411 887.5,-1375 942.5,-1375 942.5,-1411"/>
+<text text-anchor="middle" x="915" y="-1390.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Mesh.h</text>
+</g>
+<!-- Mesh.h&#45;&gt;SubMesh.h -->
+<g id="edge73" class="edge">
+<title>Mesh.h&#45;&gt;SubMesh.h</title>
+<path fill="none" stroke="#718096" d="M932.85,-1366.21C964.42,-1320.61 1029.29,-1226.92 1056.05,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="929.82,-1364.44 927.01,-1374.66 935.58,-1368.43 929.82,-1364.44"/>
+</g>
+<!-- Mesh.h&#45;&gt;Buffer.h -->
+<g id="edge74" class="edge">
+<title>Mesh.h&#45;&gt;Buffer.h</title>
+<path fill="none" stroke="#718096" d="M908.27,-1365.1C898.2,-1318.96 883.7,-1222.85 917,-1152 1082.13,-800.64 1539.68,-570.27 1659.16,-514.92"/>
+<polygon fill="#718096" stroke="#718096" points="904.88,-1365.97 910.52,-1374.94 911.71,-1364.41 904.88,-1365.97"/>
+</g>
+<!-- Mesh.h&#45;&gt;array.h -->
+<g id="edge75" class="edge">
+<title>Mesh.h&#45;&gt;array.h</title>
+<path fill="none" stroke="#718096" d="M893.66,-1366.78C855.25,-1321.39 775.45,-1227.08 742.61,-1188.26"/>
+<polygon fill="#718096" stroke="#718096" points="891.2,-1369.29 900.33,-1374.66 896.54,-1364.76 891.2,-1369.29"/>
+</g>
+<!-- RawArray.h&#45;&gt;ComponentConcepts.h -->
+<g id="edge97" class="edge">
+<title>RawArray.h&#45;&gt;ComponentConcepts.h</title>
+<path fill="none" stroke="#718096" d="M873.13,-472.89C886.9,-426.99 914.42,-335.26 925.85,-297.18"/>
+<polygon fill="#718096" stroke="#718096" points="869.7,-472.15 870.18,-482.74 876.4,-474.16 869.7,-472.15"/>
+</g>
+<!-- Pipelines.h -->
+<g id="node49" class="node">
+<title>Pipelines.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="178.5,-2525 105.5,-2525 105.5,-2489 178.5,-2489 178.5,-2525"/>
+<text text-anchor="middle" x="142" y="-2504.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Pipelines.h</text>
+</g>
+<!-- ShaderAssetData.h -->
+<g id="node50" class="node">
+<title>ShaderAssetData.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="199.5,-2302 84.5,-2302 84.5,-2266 199.5,-2266 199.5,-2302"/>
+<text text-anchor="middle" x="142" y="-2281.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">ShaderAssetData.h</text>
+</g>
+<!-- Pipelines.h&#45;&gt;ShaderAssetData.h -->
+<g id="edge81" class="edge">
+<title>Pipelines.h&#45;&gt;ShaderAssetData.h</title>
+<path fill="none" stroke="#718096" d="M142,-2478.48C142,-2432.28 142,-2340.43 142,-2302.26"/>
+<polygon fill="#718096" stroke="#718096" points="138.5,-2478.66 142,-2488.66 145.5,-2478.66 138.5,-2478.66"/>
+</g>
+<!-- ShaderAssetData.h&#45;&gt;AssetID.h -->
+<g id="edge82" class="edge">
+<title>ShaderAssetData.h&#45;&gt;AssetID.h</title>
+<path fill="none" stroke="#718096" d="M171.86,-2259.17C228.04,-2214.35 348.21,-2118.48 397.37,-2079.26"/>
+<polygon fill="#718096" stroke="#718096" points="169.37,-2256.69 163.74,-2265.66 173.74,-2262.16 169.37,-2256.69"/>
+</g>
+<!-- Asset16.h -->
+<g id="node51" class="node">
+<title>Asset16.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="284,-2302 218,-2302 218,-2266 284,-2266 284,-2302"/>
+<text text-anchor="middle" x="251" y="-2281.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Asset16.h</text>
+</g>
+<!-- Asset16.h&#45;&gt;AssetID.h -->
+<g id="edge84" class="edge">
+<title>Asset16.h&#45;&gt;AssetID.h</title>
+<path fill="none" stroke="#718096" d="M270.39,-2257.49C304.97,-2212 376.43,-2118 405.88,-2079.26"/>
+<polygon fill="#718096" stroke="#718096" points="267.45,-2255.58 264.18,-2265.66 273.02,-2259.82 267.45,-2255.58"/>
+</g>
+<!-- Asset18.h -->
+<g id="node52" class="node">
+<title>Asset18.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="368,-2302 302,-2302 302,-2266 368,-2266 368,-2302"/>
+<text text-anchor="middle" x="335" y="-2281.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Asset18.h</text>
+</g>
+<!-- Asset18.h&#45;&gt;AssetID.h -->
+<g id="edge89" class="edge">
+<title>Asset18.h&#45;&gt;AssetID.h</title>
+<path fill="none" stroke="#718096" d="M345.24,-2256.06C362.73,-2210.05 397.87,-2117.59 412.44,-2079.26"/>
+<polygon fill="#718096" stroke="#718096" points="341.87,-2255.07 341.59,-2265.66 348.42,-2257.55 341.87,-2255.07"/>
+</g>
+<!-- SerialArrayHelpers.h -->
+<g id="node53" class="node">
+<title>SerialArrayHelpers.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="809.5,-519 684.5,-519 684.5,-483 809.5,-483 809.5,-519"/>
+<text text-anchor="middle" x="747" y="-498.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">SerialArrayHelpers.h</text>
+</g>
+<!-- SerialArrayHelpers.h&#45;&gt;Stream.h -->
+<g id="edge90" class="edge">
+<title>SerialArrayHelpers.h&#45;&gt;Stream.h</title>
+<path fill="none" stroke="#718096" d="M747.87,-472.6C749.34,-426.61 752.24,-335.18 753.45,-297.18"/>
+<polygon fill="#718096" stroke="#718096" points="744.37,-472.63 747.55,-482.74 751.37,-472.85 744.37,-472.63"/>
+</g>
+<!-- AssetFile.h -->
+<g id="node54" class="node">
+<title>AssetFile.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="732.5,-2079 659.5,-2079 659.5,-2043 732.5,-2043 732.5,-2079"/>
+<text text-anchor="middle" x="696" y="-2058.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">AssetFile.h</text>
+</g>
+<!-- simple_json.h -->
+<g id="node55" class="node">
+<title>simple_json.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="739,-1856 653,-1856 653,-1820 739,-1820 739,-1856"/>
+<text text-anchor="middle" x="696" y="-1835.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">simple_json.h</text>
+</g>
+<!-- AssetFile.h&#45;&gt;simple_json.h -->
+<g id="edge92" class="edge">
+<title>AssetFile.h&#45;&gt;simple_json.h</title>
+<path fill="none" stroke="#718096" d="M696,-2032.48C696,-1986.28 696,-1894.43 696,-1856.26"/>
+<polygon fill="#718096" stroke="#718096" points="692.5,-2032.66 696,-2042.66 699.5,-2032.66 692.5,-2032.66"/>
+</g>
+<!-- Asset29.h -->
+<g id="node56" class="node">
+<title>Asset29.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="452,-2302 386,-2302 386,-2266 452,-2266 452,-2302"/>
+<text text-anchor="middle" x="419" y="-2281.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Asset29.h</text>
+</g>
+<!-- Asset29.h&#45;&gt;AssetID.h -->
+<g id="edge93" class="edge">
+<title>Asset29.h&#45;&gt;AssetID.h</title>
+<path fill="none" stroke="#718096" d="M419,-2255.48C419,-2209.28 419,-2117.43 419,-2079.26"/>
+<polygon fill="#718096" stroke="#718096" points="415.5,-2255.66 419,-2265.66 422.5,-2255.66 415.5,-2255.66"/>
 </g>
 <!-- StandardAssetGenerators.h -->
 <g id="node57" class="node">
 <title>StandardAssetGenerators.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1418,-2609 1260,-2609 1260,-2573 1418,-2573 1418,-2609"/>
-<text text-anchor="middle" x="1339" y="-2588.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">StandardAssetGenerators.h</text>
+<polygon fill="#2d3748" stroke="#4a5568" points="1930,-2525 1772,-2525 1772,-2489 1930,-2489 1930,-2525"/>
+<text text-anchor="middle" x="1851" y="-2504.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">StandardAssetGenerators.h</text>
 </g>
 <!-- StandardAssetGenerators.h&#45;&gt;IAssetGenerator.h -->
-<g id="edge91" class="edge">
+<g id="edge94" class="edge">
 <title>StandardAssetGenerators.h&#45;&gt;IAssetGenerator.h</title>
-<path fill="none" stroke="#718096" d="M1329.39,-2563.28C1312.34,-2515.88 1277.28,-2418.38 1263.12,-2379.02"/>
-<polygon fill="#718096" stroke="#718096" points="1326.16,-2564.64 1332.84,-2572.86 1332.75,-2562.27 1326.16,-2564.64"/>
+<path fill="none" stroke="#718096" d="M1841,-2479.06C1823.93,-2433.05 1789.63,-2340.59 1775.4,-2302.26"/>
+<polygon fill="#718096" stroke="#718096" points="1837.81,-2480.5 1844.57,-2488.66 1844.37,-2478.07 1837.81,-2480.5"/>
 </g>
-<!-- Asset16.h -->
+<!-- ecs_tests.h -->
 <g id="node58" class="node">
-<title>Asset16.h</title>
-<polygon fill="#2d3748" stroke="#4a5568" points="1565,-1458 1499,-1458 1499,-1422 1565,-1422 1565,-1458"/>
-<text text-anchor="middle" x="1532" y="-1437.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Asset16.h</text>
+<title>ecs_tests.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="828,-2302 756,-2302 756,-2266 828,-2266 828,-2302"/>
+<text text-anchor="middle" x="792" y="-2281.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">ecs_tests.h</text>
 </g>
-<!-- Asset16.h&#45;&gt;AssetID.h -->
-<g id="edge92" class="edge">
-<title>Asset16.h&#45;&gt;AssetID.h</title>
-<path fill="none" stroke="#718096" d="M1558.1,-1414.8C1608.28,-1368.27 1717.12,-1267.37 1760.56,-1227.1"/>
-<polygon fill="#718096" stroke="#718096" points="1555.52,-1412.42 1550.57,-1421.79 1560.28,-1417.56 1555.52,-1412.42"/>
+<!-- ecs_tests.h&#45;&gt;EngineView.h -->
+<g id="edge95" class="edge">
+<title>ecs_tests.h&#45;&gt;EngineView.h</title>
+<path fill="none" stroke="#718096" d="M791.06,-2255.52C788.75,-2185.87 783,-1996.71 783,-1839 783,-1839 783,-1839 783,-1614 783,-1435.08 913.58,-1244.98 955.92,-1188.04"/>
+<polygon fill="#718096" stroke="#718096" points="787.56,-2255.78 791.4,-2265.65 794.56,-2255.54 787.56,-2255.78"/>
+</g>
+<!-- ecs_tests.h&#45;&gt;AssetFile.h -->
+<g id="edge96" class="edge">
+<title>ecs_tests.h&#45;&gt;AssetFile.h</title>
+<path fill="none" stroke="#718096" d="M780.42,-2256.35C760.48,-2210.44 720.18,-2117.67 703.5,-2079.26"/>
+<polygon fill="#718096" stroke="#718096" points="777.27,-2257.88 784.47,-2265.66 783.69,-2255.09 777.27,-2257.88"/>
+</g>
+<!-- AssetManager.h -->
+<g id="node59" class="node">
+<title>AssetManager.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="738,-2302 638,-2302 638,-2266 738,-2266 738,-2302"/>
+<text text-anchor="middle" x="688" y="-2281.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">AssetManager.h</text>
+</g>
+<!-- AssetManager.h&#45;&gt;AssetID.h -->
+<g id="edge98" class="edge">
+<title>AssetManager.h&#45;&gt;AssetID.h</title>
+<path fill="none" stroke="#718096" d="M659,-2259.17C604.44,-2214.35 487.75,-2118.48 440.01,-2079.26"/>
+<polygon fill="#718096" stroke="#718096" points="656.94,-2262.01 666.89,-2265.66 661.39,-2256.61 656.94,-2262.01"/>
+</g>
+<!-- AssetManager.h&#45;&gt;AssetFile.h -->
+<g id="edge99" class="edge">
+<title>AssetManager.h&#45;&gt;AssetFile.h</title>
+<path fill="none" stroke="#718096" d="M689,-2255.48C690.67,-2209.28 693.99,-2117.43 695.38,-2079.26"/>
+<polygon fill="#718096" stroke="#718096" points="685.49,-2255.54 688.63,-2265.66 692.49,-2255.79 685.49,-2255.54"/>
+</g>
+<!-- Asset17.h -->
+<g id="node60" class="node">
+<title>Asset17.h</title>
+<polygon fill="#2d3748" stroke="#4a5568" points="536,-2302 470,-2302 470,-2266 536,-2266 536,-2302"/>
+<text text-anchor="middle" x="503" y="-2281.5" font-family="Times,serif" font-size="10.00" fill="#e2e8f0">Asset17.h</text>
+</g>
+<!-- Asset17.h&#45;&gt;AssetID.h -->
+<g id="edge100" class="edge">
+<title>Asset17.h&#45;&gt;AssetID.h</title>
+<path fill="none" stroke="#718096" d="M492.76,-2256.06C475.27,-2210.05 440.13,-2117.59 425.56,-2079.26"/>
+<polygon fill="#718096" stroke="#718096" points="489.58,-2257.55 496.41,-2265.66 496.13,-2255.07 489.58,-2257.55"/>
 </g>
 </g>
 </svg>

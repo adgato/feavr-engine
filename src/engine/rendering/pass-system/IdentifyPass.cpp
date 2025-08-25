@@ -1,5 +1,6 @@
 #include "IdentifyPass.h"
 
+#include "Mesh.h"
 #include "rendering/RenderingEngine.h"
 #include "rendering/utility/Pipelines.h"
 #include "shader_descriptors.h"
@@ -57,59 +58,65 @@ void IdentifyPass::Init()
     fragmentShader.Destroy();
 }
 
-void IdentifyPass::IdentifySubMeshesOf(ecs::Entity transform, std::vector<ecs::EntityID>& outSubMeshes)
-{
-    // clear here to avoid duplicate entries, might not want to clear in future.
-    outSubMeshes.clear();
-    for (const auto& [submeshID, passMesh, data] : view)
-        for (uint32_t i = 0; i < data.transforms->size(); ++i)
-        {
-            ecs::Entity entity = data.transforms->data()[i];
-            if (transform == entity)
-            {
-                outSubMeshes.emplace_back(submeshID);
-                break;
-            }
-        }
-}
-
 void IdentifyPass::Draw(const VkCommandBuffer cmd, size_t frame, const GlobalSceneData& pixelSceneData)
 {
+    for (auto [id, tf, pass] : view)
+    {
+        if (pass.mesh->id == pass.prevMesh)
+            continue;
+        if (pass.mesh->id < ecs::BadMaxEntity)
+            sorter.addQueue.emplace_back(pass.mesh->id, id);
+        if (pass.prevMesh < ecs::BadMaxEntity)
+            sorter.removeQueue.emplace_back(pass.prevMesh, id);
+        pass.prevMesh = pass.mesh->id;
+    }
+    sorter.Refresh();
+
     frame %= FRAME_OVERLAP;
     pixelSceneBuffer[frame].Destroy();
     pixelSceneBuffer[frame] = Buffer<GlobalSceneData>::Allocate(renderer.resource, 1, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, HostAccess::SEQUENTIAL_WRITE);
     pixelSceneBuffer[frame].Write(&pixelSceneData);
 
-    pixelSceneDescriptor.AllocateSet(renderer.resource, renderer.frameData[frame].frameAllocator, renderer.commonSets.sceneDataLayout);
-    pixelSceneDescriptor.StageBuffer(shader_layouts::global::SceneData_binding, pixelSceneBuffer[frame]);
-    pixelSceneDescriptor.PerformWrites();
+    pixelSceneProperties.AllocateSet(renderer.resource, renderer.frameData[frame].frameAllocator, renderer.commonSets.sceneDataLayout);
+    pixelSceneProperties.StageBuffer(shader_layouts::global::SceneData_binding, pixelSceneBuffer[frame]);
+    pixelSceneProperties.PerformWrites();
 
     vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline);
 
-    const VkDescriptorSet sets[] = { pixelSceneDescriptor.descriptorSet };
+    const VkDescriptorSet sets[] = { pixelSceneProperties.descriptorSet };
     vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, layout, 0, std::size(sets), sets, 0, nullptr);
 
-    for (const auto& [submeshID, passMesh, data] : view)
+    ecs::EntityID prevMesh = ecs::BadMaxEntity;
+    VkDeviceAddress vertexBufferAddress = 0;
+    for (const auto& [mesh, id] : sorter.sorted)
     {
-        const Mesh& mesh = engine.Get<Mesh>(*passMesh.mesh);
-        assert(mesh.IsValid());
-
-        vkCmdBindIndexBuffer(cmd, mesh.indexBuffer.buffer, 0, VK_INDEX_TYPE_UINT32);
-
-        for (uint32_t i = 0; i < data.transforms->size(); ++i)
+        if (mesh != prevMesh)
         {
-            ecs::Entity entity = data.transforms->data()[i];
+            prevMesh = mesh;
+            const Mesh& nextMesh = engine.Get<Mesh>(mesh);
+            assert(nextMesh.IsValid());
+            vertexBufferAddress = nextMesh.vertexBufferAddress;
+            vkCmdBindIndexBuffer(cmd, nextMesh.indexBuffer.buffer, 0, VK_INDEX_TYPE_UINT32);
+        }
 
+        const auto& [transform, pass] = engine.TryGetMany<Transform, PassComponent<IdentifyPass>>(id);
+        if (transform && pass)
+        {
             const PushConstants pushConstants {
-                engine.Get<Transform>(entity).transform,
-                mesh.vertexBufferAddress,
-                entity,
+                transform->Matrix(),
+                vertexBufferAddress,
+                id
             };
 
             vkCmdPushConstants(cmd, layout, VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(PushConstants), &pushConstants);
-            vkCmdDrawIndexed(cmd, passMesh.indexCount, 1, passMesh.firstIndex, 0, 0);
-        }
+
+            const auto& submeshes = *pass->submeshes;
+            for (size_t i = 0; i < submeshes.size(); ++i)
+                vkCmdDrawIndexed(cmd, submeshes.data()[i].indexCount, 1, submeshes.data()[i].firstIndex, 0, 0);
+        } else
+            sorter.removeQueue.emplace_back(mesh, id);
     }
+
 }
 
 void IdentifyPass::Destroy()

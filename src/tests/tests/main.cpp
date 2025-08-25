@@ -1,4 +1,3 @@
-
 // #include "ecs_tests.h"
 
 
@@ -8,9 +7,9 @@
 
 int main()
 {
-    ecs::TypeInfo info = ecs::TypeRegistry::GetInfo(0);
-    fmt::println("ID: {}, SIZE: {}, ALIGN: {} NAME: {}", info.type, info.size, info.align, info.name);
-    fmt::println("ID: {}", ecs::TypeRegistry::GetID<char>());
+    // ecs::TypeInfo info = ecs::TypeRegistry::GetInfo(0);
+    // fmt::println("ID: {}, SIZE: {}, ALIGN: {} NAME: {}", info.type, info.size, info.align, info.name);
+    // fmt::println("ID: {}", ecs::TypeRegistry::GetID<char>());
 
     // using namespace ecs::tests;
     //

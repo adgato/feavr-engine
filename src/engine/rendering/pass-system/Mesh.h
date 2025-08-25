@@ -1,5 +1,4 @@
 #pragma once
-#include "SubMesh.h"
 #include "glm/vec3.hpp"
 #include "glm/vec4.hpp"
 #include "rendering/resources/Buffer.h"
@@ -26,7 +25,6 @@ struct Mesh
     VkDeviceAddress vertexBufferAddress;
 
 private:
-    uint32_t refCount = 0;
     serial::array<std::byte> compressedMeshData {};
     size_t uncompressedSize = 0;
 
@@ -40,22 +38,6 @@ public:
     void UploadMesh(const rendering::RenderingResources& resources);
 
     void Serialize(serial::Stream& m);
-
-    bool IsNotReferenced() const
-    {
-        return refCount == 0;
-    }
-
-    void Reference()
-    {
-        ++refCount;
-    }
-
-    bool Dereference()
-    {
-        assert(refCount > 0);
-        return --refCount == 0;
-    }
 
     bool IsValid() const
     {

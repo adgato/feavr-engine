@@ -1,13 +1,13 @@
 #pragma once
 
+#include "MeshTransformSorter.h"
 #include "PassComponent.h"
-#include "SubMesh.h"
 #include "ecs/EngineView.h"
 #include "glm/mat4x4.hpp"
 #include "rendering/CommonSetLayouts.h"
 #include "rendering/resources/RenderingResources.h"
 #include "rendering/utility/Descriptors.h"
-#include "rendering/utility/DescriptorSetLayoutInfo.h"
+#include "components/Transform.h"
 
 namespace serial
 {
@@ -30,10 +30,10 @@ public:
     ecs::Engine& engine;
     VkDevice device = nullptr;
 
-    ecs::EngineView<SubMesh, PassComponent<IdentifyPass>> view;
+    ecs::EngineView<Transform, PassComponent<IdentifyPass>> view;
+    rendering::MeshTransformSorter sorter;
 
-
-    DescriptorWriter pixelSceneDescriptor {};
+    DescriptorWriter pixelSceneProperties {};
 
     VkPipelineLayout layout = nullptr;
     VkPipeline pipeline = nullptr;
@@ -43,8 +43,6 @@ public:
           engine(engine), view(engine) {}
 
     void Init();
-
-    void IdentifySubMeshesOf(ecs::Entity transform, std::vector<ecs::EntityID>& outSubMeshes);
 
     void Draw(VkCommandBuffer cmd, size_t frame, const rendering::GlobalSceneData& pixelSceneData);
 

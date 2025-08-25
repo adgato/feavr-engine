@@ -27,7 +27,7 @@ public:
     rendering::CommonSetLayouts commonSets {};
     rendering::CommonTextures commonTextures {};
 
-    DescriptorWriter gpuSceneDescriptorSet {};
+    DescriptorWriter sceneProperties {};
 
     VkSampler defaultSamplerLinear = nullptr;
     VkSampler defaultSamplerNearest = nullptr;
