@@ -2,6 +2,7 @@
 
 #include <lz4.h>
 
+#include "glm/common.hpp"
 #include "rendering/resources/RenderingResources.h"
 
 using namespace rendering;
@@ -38,7 +39,20 @@ void Mesh::Uncompress(serial::array<std::byte>& data)
     assert(writtenSize > 0);
 }
 
-void Mesh::SetMeshData(serial::array<uint32_t> indices, serial::array<Vertex> vertices)
+void Mesh::CalculateBounds(const serial::array<Vertex> vertices)
+{
+    boundsMin = { FLT_MAX, FLT_MAX, FLT_MAX };
+    boundsMax = { -FLT_MAX, -FLT_MAX, -FLT_MAX };
+
+    for (size_t i = 0; i < vertices.size(); ++i)
+    {
+        const glm::vec3& pos = vertices.data()[i].position;
+        boundsMin = glm::min(boundsMin, pos);
+        boundsMax = glm::max(boundsMax, pos);
+    }
+}
+
+void Mesh::SetMeshData(const serial::array<uint32_t> indices, const serial::array<Vertex> vertices)
 {
     serial::Stream meshDataParser {};
     meshDataParser.InitWrite();
@@ -61,6 +75,8 @@ void Mesh::UploadMesh(const RenderingResources& resources)
     SerialVertex vertices {};
     SerialIndex indices {};
     meshDataParser.SerializeComponent(vertices, indices);
+
+    CalculateBounds(vertices);
 
     const size_t vertexBufferSize = vertices->size() * sizeof(Vertex);
     const size_t indexBufferSize = indices->size() * sizeof(uint32_t);

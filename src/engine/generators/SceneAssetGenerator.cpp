@@ -15,6 +15,7 @@
 #include "widgets/EngineWidget.h"
 #include "ecs/EngineView.h"
 #include "fmt/ranges.h"
+#include "glm/gtx/matrix_decompose.hpp"
 #include "rendering/Core.h"
 #include "rendering/pass-system/Mesh.h"
 
@@ -151,7 +152,7 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
 
 
     std::vector<std::vector<ecs::EntityID>> meshTransforms;
-    meshTransforms.reserve(gltf.nodes.size());
+    meshTransforms.resize(gltf.meshes.size());
 
     // load all nodes and their meshes
     for (fastgltf::Node& node : gltf.nodes)
@@ -162,19 +163,27 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
         Transform newNode;
         std::visit(fastgltf::visitor
                    {
-                       [&](const fastgltf::Node::TransformMatrix& matrix) { std::memcpy(&newNode.ModifyMatrix(), matrix.data(), sizeof(matrix)); },
+                       [&](const fastgltf::Node::TransformMatrix& matrix)
+                       {
+                           glm::vec3 skew;
+                           glm::vec4 perspective;
+                           glm::mat4 transform;
+
+                           std::memcpy(&transform, matrix.data(), sizeof(matrix));
+                           glm::decompose(transform, newNode.SetScale(), newNode.SetRotation(), newNode.SetPosition(), skew, perspective);
+                       },
                        [&](const fastgltf::Node::TRS& transform)
                        {
-                           const glm::vec3 tl(transform.translation[0], transform.translation[1], transform.translation[2]);
-                           const glm::quat rot(transform.rotation[3], transform.rotation[0], transform.rotation[1], transform.rotation[2]);
-                           const glm::vec3 sc(transform.scale[0], transform.scale[1], transform.scale[2]);
-                           newNode.ModifyMatrix() = translate(glm::mat4(1.f), tl) * toMat4(rot) * scale(glm::mat4(1.f), sc);
+                           newNode.SetPosition() = glm::vec3(transform.translation[0], transform.translation[1], transform.translation[2]);
+                           newNode.SetRotation() = glm::quat(transform.rotation[3], transform.rotation[0], transform.rotation[1], transform.rotation[2]);
+                           newNode.SetScale() = glm::vec3(transform.scale[0], transform.scale[1], transform.scale[2]);
                        }
                    }, node.transform
         );
 
         ecs::Entity e = engine.New();
         engine.Add<Transform>(e, newNode);
+        engine.Add<Model>(e, {});
 
         Tags tags {};
         tags.AddTag(assetPath.c_str());
@@ -183,19 +192,18 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
 
         uint32_t meshIdx = static_cast<uint32_t>(*node.meshIndex);
 
-        if (meshIdx >= meshTransforms.size())
-            meshTransforms.resize(meshIdx + 1);
-
         meshTransforms[meshIdx].emplace_back(e);
     }
 
-    std::vector<ecs::EntityID> meshes {};
-    meshes.reserve(gltf.meshes.size());
-    for (fastgltf::Mesh& mesh : gltf.meshes)
+    engine.Refresh();
+
+    rendering::Material<DefaultPass, IdentifyPass> material { engine, passManager };
+
+    for (size_t i = 0; i < gltf.meshes.size(); ++i)
     {
         indices.Resize(0);
         vertices.Resize(0);
-        for (const auto& primitive : mesh.primitives)
+        for (const auto& primitive : gltf.meshes[i].primitives)
         {
             load_primitive_indices(gltf, primitive, indices, vertices.size());
             load_primitive_vertices(gltf, primitive, vertices);
@@ -205,26 +213,16 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
         Mesh renderMesh {};
         renderMesh.SetMeshData(indices, vertices);
         engine.Add<Mesh>(meshIndex, renderMesh);
-        meshes.emplace_back(meshIndex);
-    }
-
-    for (size_t i = 0; i < meshes.size(); ++i)
-    {
         for (ecs::Entity e : meshTransforms[i])
         {
-            PassComponent<DefaultPass> defaultPass {};
-            defaultPass.UpdateMesh(meshes[i]);
-
-            PassComponent<IdentifyPass> identifyPass {};
-            identifyPass.UpdateMesh(meshes[i]);
-
-            engine.Add<PassComponent<DefaultPass>>(e, defaultPass);
-            engine.Add<PassComponent<IdentifyPass>>(e, identifyPass);
+            *engine.Get<Model>(e).meshRef = meshIndex;
+            material.Apply(e, false);
         }
     }
+
     engine.Refresh();
 
-    for (size_t i = 0; i < meshes.size(); ++i)
+    for (size_t i = 0; i < gltf.meshes.size(); ++i)
     {
         uint32_t cumCount = 0;
         for (const auto& primitive : gltf.meshes[i].primitives)
@@ -232,10 +230,7 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
             uint32_t count = static_cast<uint32_t>(gltf.accessors[primitive.indicesAccessor.value()].count);
 
             for (ecs::Entity e : meshTransforms[i])
-            {
-                engine.Get<PassComponent<DefaultPass>>(e).submeshes->push_back({ cumCount, count });
-                engine.Get<PassComponent<IdentifyPass>>(e).submeshes->push_back({ cumCount, count });
-            }
+                material.AddSubmesh(e, { cumCount, count });
             cumCount += count;
         }
     }

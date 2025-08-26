@@ -113,8 +113,7 @@ namespace ecs
     }
 
     EngineWidget::EngineWidget(Engine& engine, rendering::PassSystem& passSys)
-        : identifyPass(passSys.GetPass<IdentifyPass>()),
-          engine(engine), tagView(engine), outlineView(engine)
+        : engine(engine), tagView(engine), outlineView(engine), outlineMat(engine, passSys)
     {
         typeNames.reserve(TypeRegistry::RegisteredCount());
         for (TypeID i = 0; i < TypeRegistry::RegisteredCount(); ++i)
@@ -266,13 +265,7 @@ namespace ecs
 
             std::vector<EntityID> submeshes {};
             for (Entity entity : showEntities)
-                if (auto* identifyPass = engine.TryGet<PassComponent<IdentifyPass>>(entity))
-                {
-                    PassComponent<StencilOutlinePass> outlinePass {};
-                    outlinePass.UpdateMesh(identifyPass->mesh->id);
-                    outlinePass.submeshes->push_back({ 0, engine.Get<Mesh>(outlinePass.mesh->id).indexBuffer.count });
-                    engine.Add<PassComponent<StencilOutlinePass>>(entity, outlinePass);
-                }
+                outlineMat.Apply(entity, true);
         }
     }
 

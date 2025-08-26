@@ -23,7 +23,7 @@ namespace rendering
         resultBuffer = Buffer<uint32_t>::Allocate(resources.resource, 1, VK_BUFFER_USAGE_TRANSFER_DST_BIT, HostAccess::RANDOM, VMA_MEMORY_USAGE_AUTO_PREFER_DEVICE);
     }
 
-    void ClickOnMeshTool::DrawMeshIndices(VkCommandBuffer cmd, const VkExtent3D& imageExtent, const glm::mat4& cameraView, const glm::vec3 fovNearFar, const glm::vec2 coord)
+    void ClickOnMeshTool::DrawMeshIndices(VkCommandBuffer cmd, const VkExtent3D& imageExtent, const Camera& camera, const glm::vec2 coord)
     {
         waitingSample = true;
         selectFrame = resources.frameCount;
@@ -72,10 +72,10 @@ namespace rendering
         vkCmdSetScissor(cmd, 0, 1, &scissor);
 
         // Original frustum dimensions at near plane
-        float fovy = fovNearFar.x;
-        float near = fovNearFar.y;
-        float far = fovNearFar.z;
-        float aspect = static_cast<float>(imageExtent.width) / static_cast<float>(imageExtent.height);
+        float fovy = camera.fovy;
+        float near = camera.near;
+        float far = camera.far;
+        float aspect = camera.aspect;
         float near_height = 2.0f * near * glm::tan(fovy / 2.0f);
         float near_width = near_height * aspect;
 
@@ -97,7 +97,7 @@ namespace rendering
 
         GlobalSceneData sceneData;
         sceneData.proj = projection;
-        sceneData.view = cameraView;
+        sceneData.view = camera.view;
         sceneData.viewproj = sceneData.proj * sceneData.view;
         passManager.GetPass<IdentifyPass>().Draw(cmd, selectFrame, sceneData);
 

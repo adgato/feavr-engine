@@ -82,7 +82,7 @@ namespace ecs
         void Delete(Entity e);
 
         template <ComponentType T>
-        T& Get(Entity e)
+        T& Get(Entity e) const
         {
             assert(IsValid(e));
             auto [archetype, index] = entities[e];
@@ -90,7 +90,7 @@ namespace ecs
         }
 
         template <ComponentType... Ts>
-        std::tuple<Ts*...> GetMany(Entity e)
+        std::tuple<Ts*...> GetMany(Entity e) const
         {
             assert(IsValid(e));
             auto [archetype, index] = entities[e];
@@ -101,7 +101,7 @@ namespace ecs
         }
 
         template <ComponentType T>
-        T* TryGet(Entity e)
+        T* TryGet(Entity e) const
         {
             if (!IsValid(e))
                 return nullptr;
@@ -110,7 +110,7 @@ namespace ecs
         }
 
         template <ComponentType... Ts>
-        std::tuple<Ts*...> TryGetMany(Entity e)
+        std::tuple<Ts*...> TryGetMany(Entity e) const
         {
             if (!IsValid(e))
                 return std::tuple<Ts*...>();

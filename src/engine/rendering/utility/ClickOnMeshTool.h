@@ -4,6 +4,7 @@
 #include "rendering/resources/RenderingResources.h"
 #include "rendering/resources/Image.h"
 
+class Camera;
 struct VkCommandBuffer_T;
 typedef VkCommandBuffer_T* VkCommandBuffer;
 
@@ -29,7 +30,7 @@ namespace rendering
 
         void Init();
 
-        void DrawMeshIndices(VkCommandBuffer cmd, const VkExtent3D& imageExtent, const glm::mat4& cameraView, glm::vec3 fovNearFar, glm::vec2 coord);
+        void DrawMeshIndices(VkCommandBuffer cmd, const VkExtent3D& imageExtent, const Camera& camera, glm::vec2 coord);
 
         bool DrawWaitingSample(uint32_t sufficientFrameDelta = 1) const;
 

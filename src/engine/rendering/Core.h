@@ -3,6 +3,7 @@
 #include "utility/ClickOnMeshTool.h"
 #include "RenderingEngine.h"
 #include "assets-system/AssetID.h"
+#include "systems/ModelSystem.h"
 #include "widgets/EngineWidget.h"
 
 class Core
@@ -14,6 +15,7 @@ public:
     ImguiOverlay imguiOverlay {};
     rendering::ClickOnMeshTool clickOnMeshTool { resources, renderer.passManager };
     ecs::EngineWidget engineWidget { engine, renderer.passManager };
+    systems::ModelSystem transformSys { engine };
 
     bool skipDrawing = false;
     glm::vec2 coord;

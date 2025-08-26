@@ -2,7 +2,7 @@
 
 #include "MeshTransformSorter.h"
 #include "PassComponent.h"
-#include "components/Transform.h"
+#include "components/Model.h"
 #include "ecs/EngineView.h"
 #include "glm/mat4x4.hpp"
 #include "rendering/utility/Descriptors.h"
@@ -26,7 +26,7 @@ public:
     VkPipelineLayout outlineLayout = nullptr;
     VkPipeline outlinePipeline = nullptr;
 
-    ecs::EngineView<Transform, PassComponent<StencilOutlinePass>> view;
+    ecs::EngineView<Model, PassComponent<StencilOutlinePass>> view;
     rendering::MeshTransformSorter sorter;
 
     StencilOutlinePass(RenderingEngine& renderer, ecs::Engine& engine)

@@ -141,16 +141,11 @@ void RenderingEngine::Draw(const uint32_t frameCount, VkCommandBuffer cmd, Image
     auto& [frameDescriptors, sceneDataBuffer] = frameData[frameCount % FRAME_OVERLAP];
     sceneDataBuffer.Destroy();
     frameDescriptors.ResetPools();
-    mainCamera.update();
-    const glm::mat4 view = mainCamera.getViewMatrix();
-    // camera projection
-    glm::mat4 projection = glm::perspective(glm::radians(80.f), static_cast<float>(targetImage.imageExtent.width) / static_cast<float>(targetImage.imageExtent.height),
-                                            10000.f, 0.1f);
-    // invert the Y direction on projection matrix so that we are more similar
-    // to opengl and gltf axis
-    projection[1][1] *= -1;
-    sceneData.view = view;
-    sceneData.proj = projection;
+    mainCamera.SetAspect(static_cast<float>(targetImage.imageExtent.width) / static_cast<float>(targetImage.imageExtent.height));
+    mainCamera.Update();
+
+    sceneData.view = mainCamera.view;
+    sceneData.proj = mainCamera.proj;
     sceneData.viewproj = sceneData.proj * sceneData.view;
     sceneDataBuffer = Buffer<GlobalSceneData>::Allocate(resource, 1, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, HostAccess::SEQUENTIAL_WRITE);
     sceneDataBuffer.Write(&sceneData);

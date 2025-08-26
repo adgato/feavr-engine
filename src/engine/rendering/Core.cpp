@@ -8,7 +8,6 @@
 #include "assets-system/AssetManager.h"
 #include "assets-system/lookup/Asset29.h"
 #include "assets-system/lookup/Asset31.h"
-#include "glm/detail/func_trigonometric.inl"
 #include "pass-system/Mesh.h"
 #include "utility/ClickOnMeshTool.h"
 #include "widgets/EngineWidget.h"
@@ -91,35 +90,31 @@ bool Core::Next()
 
     if (clickOnMeshTool.DrawWaitingSample(3)) //why 3?
     {
-        ecs::Entity entity = clickOnMeshTool.SampleCoordinate();
-
-
         // this wil go somewhere else, but for now its all here
 
         ecs::EngineView<PassComponent<StencilOutlinePass>> view(engine);
         for (auto [submesh, _] : view)
             engine.Remove<PassComponent<StencilOutlinePass>>(submesh);
 
-        if (auto* identifyPass = engine.TryGet<PassComponent<IdentifyPass>>(entity))
+        ecs::Entity entity = clickOnMeshTool.SampleCoordinate();
+        if (engine.IsValid(entity))
         {
-            PassComponent<StencilOutlinePass> outlinePass {};
-            outlinePass.UpdateMesh(identifyPass->mesh->id);
-            outlinePass.submeshes->push_back({ 0, engine.Get<Mesh>(outlinePass.mesh->id).indexBuffer.count });
-            engine.Add<PassComponent<StencilOutlinePass>>(entity, outlinePass);
+            const rendering::Material<StencilOutlinePass> outlineMat { engine, renderer.passManager };
+            outlineMat.Apply(entity, true);
         }
 
         engineWidget.SetHotEntity(entity, coord);
     }
 
+    transformSys.Update(renderer.mainCamera);
+
     // imgui new frame
     ImGui_ImplVulkan_NewFrame();
     ImGui_ImplSDL2_NewFrame();
-
     ImGui::NewFrame();
-
     engineWidget.Windows();
-
     ImGui::Render();
+
     engine.Refresh();
 
     if (!skipDrawing)
@@ -136,7 +131,7 @@ bool Core::Next()
                 int w, h;
                 SDL_GetMouseState(&w, &h);
                 coord = glm::vec2 { w, h };
-                clickOnMeshTool.DrawMeshIndices(cmd, frame.imageExtent, renderer.sceneData.view, { glm::radians(80.0f), 1000.0f, 0.1f }, coord);
+                clickOnMeshTool.DrawMeshIndices(cmd, frame.imageExtent, renderer.mainCamera, coord);
             }
 
             resources.EndFrame();

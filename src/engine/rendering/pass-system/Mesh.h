@@ -24,6 +24,9 @@ struct Mesh
     rendering::Buffer<uint32_t> indexBuffer;
     VkDeviceAddress vertexBufferAddress;
 
+    glm::vec3 boundsMin;
+    glm::vec3 boundsMax;
+
 private:
     serial::array<std::byte> compressedMeshData {};
     size_t uncompressedSize = 0;
@@ -31,6 +34,8 @@ private:
     void Compress(std::span<std::byte> data);
 
     void Uncompress(serial::array<std::byte>& data);
+
+    void CalculateBounds(serial::array<rendering::Vertex> vertices);
 
 public:
     void SetMeshData(serial::array<uint32_t> indices, serial::array<rendering::Vertex> vertices);

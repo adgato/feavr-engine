@@ -1,4 +1,5 @@
 #pragma once
+#include "Mesh.h"
 #include "rendering/pass-system/PassSystem.h"
 #include "rendering/pass-system/PassComponent.h"
 
@@ -9,7 +10,14 @@ namespace rendering
     {
         ecs::Engine& engine;
         PassSystem& passManager;
-        std::array<uint32_t, sizeof...(Passes)> passGroups {};
+
+        template <ManagedPass T> requires (ecs::one_of_v<T, Passes...>)
+        PassComponent<T> Default(const std::span<SubMesh> submeshes) const
+        {
+            PassComponent<T> pass {};
+            *pass.submeshes = serial::array<SubMesh>::NewFromData(submeshes.data(), submeshes.size());
+            return pass;
+        }
 
     public:
         Material(ecs::Engine& engine, PassSystem& passManager)
@@ -17,37 +25,35 @@ namespace rendering
               passManager(passManager) {}
 
         template <ManagedPass T> requires (ecs::one_of_v<T, Passes...>)
-        uint32_t GetPassGroup()
-        {
-            return passGroups[ecs::index_of_type_v<T, Passes...>];
-        }
-
-        template <ManagedPass T> requires (ecs::one_of_v<T, Passes...>)
-        void SetPassGroup(const uint32_t group)
-        {
-            passGroups[ecs::index_of_type_v<T, Passes...>] = group;
-        }
-
-        template <ManagedPass T> requires (ecs::one_of_v<T, Passes...>)
-        T& Get()
+        T& Get() const
         {
             return passManager.GetPass<T>();
         }
 
-        // ecs::Entity AddEntity(ecs::Entity e, const ecs::EntityID meshID, const uint32_t firstIndex = 0, const uint32_t indexCount = ~0u)
-        // {
-        //     SubMesh submesh {};
-        //     submesh.ReferenceMesh(engine, meshID, firstIndex, indexCount);
-        //     engine.Add<SubMesh>(e, submesh);
-        //     (engine.Add<PassComponent<Passes>>(
-        //         e,
-        //         PassComponent<Passes>
-        //         {
-        //             .passGroup = { passGroups[ecs::index_of_type_v<Passes, Passes...>] },
-        //             .currentMesh = ecs::BadMaxEntity
-        //         }
-        //     ), ...);
-        //     return e;
-        // }
+        void Apply(ecs::Entity e, bool addFullSubmesh) const
+        {
+            SubMesh submesh;
+
+            if (addFullSubmesh)
+            {
+                if (const Model* model = engine.TryGet<Model>(e))
+                {
+                    const Mesh& mesh = engine.Get<Mesh>(model->meshRef->id);
+                    const uint32_t fullIndexCount = mesh.IsValid() ? mesh.indexBuffer.count : ~0u;
+                    submesh = { 0, fullIndexCount };
+                } else
+                    addFullSubmesh = false;
+            }
+
+            (engine.Add<PassComponent<Passes>>(
+                e,
+                Default<Passes>(addFullSubmesh ? std::span { &submesh, 1u } : std::span<SubMesh> {})
+            ), ...);
+        }
+
+        void AddSubmesh(ecs::Entity e, SubMesh submesh) const
+        {
+            (engine.Get<PassComponent<Passes>>(e).submeshes->push_back(submesh), ...);
+        }
     };
 }

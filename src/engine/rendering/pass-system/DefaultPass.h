@@ -2,7 +2,7 @@
 
 #include "MeshTransformSorter.h"
 #include "PassComponent.h"
-#include "components/Transform.h"
+#include "components/Model.h"
 #include "ecs/EngineView.h"
 #include "glm/vec4.hpp"
 #include "glm/mat4x4.hpp"
@@ -35,7 +35,7 @@ public:
     ecs::Engine& engine;
     VkDevice device = nullptr;
 
-    ecs::EngineView<Transform, PassComponent<DefaultPass>> view;
+    ecs::EngineView<Model, PassComponent<DefaultPass>> view;
     rendering::MeshTransformSorter sorter;
 
     VkPipelineLayout layout = nullptr;

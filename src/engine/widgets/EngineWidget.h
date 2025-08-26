@@ -7,6 +7,7 @@
 #include "ecs/Engine.h"
 #include "ecs/EngineView.h"
 #include "glm/vec2.hpp"
+#include "rendering/pass-system/Material.h"
 #include "rendering/pass-system/PassComponent.h"
 #include "rendering/pass-system/PassSystem.h"
 #include "rendering/pass-system/StencilOutlinePass.h"
@@ -37,10 +38,10 @@ namespace ecs
         Tags includeComponents;
         Tags excludeTags;
         Tags excludeComponents;
-        IdentifyPass& identifyPass;
         Engine& engine;
         EngineView<Tags> tagView;
         EngineView<PassComponent<StencilOutlinePass>> outlineView;
+        rendering::Material<StencilOutlinePass> outlineMat;
         glm::vec2 hotViewPos {};
         bool hotChanged = false;
         bool showHot = false;

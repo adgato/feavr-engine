@@ -32,7 +32,6 @@ namespace serial
     {
         bool MatchNextTag(TagID tag);
 
-
     public:
         std::any userData;
         bool reading = false;
@@ -40,10 +39,15 @@ namespace serial
         ReadByteStream reader;
 
         Stream() = default;
+
         ~Stream() { Destroy(); }
+
         Stream(const Stream& other) = delete;
+
         Stream(Stream&& other) noexcept = default;
+
         Stream& operator=(const Stream& other) = delete;
+
         Stream& operator=(Stream&& other) noexcept = delete;
 
         void InitRead()
@@ -111,24 +115,7 @@ namespace serial
     template <TagID tag, IsSerializable T>
     void Serializable<tag, T>::Serialize(Stream& m)
     {
-        if constexpr (std::is_arithmetic_v<T>)
-        {
-            if (m.reading)
-            {
-                const size_t size = m.reader.Read<fsize>();
-                if (size == sizeof(T))
-                    value = m.reader.Read<T>();
-                else
-                {
-                    fmt::println("Warning: unexpected size serialized.");
-                    m.reader.Jump(size);
-                }
-            } else
-            {
-                m.writer.Write<fsize>(sizeof(T));
-                m.writer.Write<T>(value);
-            }
-        } else
+        if constexpr (IsSerialType<T>)
         {
             size_t offset;
             size_t size = 0;
@@ -151,6 +138,23 @@ namespace serial
                 }
             } else
                 m.writer.WriteOver<fsize>(m.writer.GetCount() - offset - sizeof(fsize), offset);
+        } else
+        {
+            if (m.reading)
+            {
+                const size_t size = m.reader.Read<fsize>();
+                if (size == sizeof(T))
+                    value = m.reader.Read<T>();
+                else
+                {
+                    fmt::println("Warning: unexpected size serialized.");
+                    m.reader.Jump(size);
+                }
+            } else
+            {
+                m.writer.Write<fsize>(sizeof(T));
+                m.writer.Write<T>(value);
+            }
         }
     }
 }

@@ -105,6 +105,7 @@ namespace rendering
 
         VkPhysicalDeviceFeatures features {};
         features.shaderInt64 = true;
+        features.fillModeNonSolid = true;
 
         //use vkbootstrap to select a gpu.
         //We want a gpu that can write to the SDL surface and supports vulkan 1.2

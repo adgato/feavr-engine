@@ -2,12 +2,12 @@
 
 #include "MeshTransformSorter.h"
 #include "PassComponent.h"
+#include "components/Model.h"
 #include "ecs/EngineView.h"
 #include "glm/mat4x4.hpp"
 #include "rendering/CommonSetLayouts.h"
 #include "rendering/resources/RenderingResources.h"
 #include "rendering/utility/Descriptors.h"
-#include "components/Transform.h"
 
 namespace serial
 {
@@ -30,7 +30,7 @@ public:
     ecs::Engine& engine;
     VkDevice device = nullptr;
 
-    ecs::EngineView<Transform, PassComponent<IdentifyPass>> view;
+    ecs::EngineView<Model, PassComponent<IdentifyPass>> view;
     rendering::MeshTransformSorter sorter;
 
     DescriptorWriter pixelSceneProperties {};
