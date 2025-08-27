@@ -16,7 +16,7 @@
 #include "ecs/EngineView.h"
 #include "fmt/ranges.h"
 #include "glm/gtx/matrix_decompose.hpp"
-#include "rendering/Core.h"
+#include "rendering/Scene.h"
 #include "rendering/pass-system/Mesh.h"
 
 void load_primitive_indices(const fastgltf::Asset& gltf, const fastgltf::Primitive& primitive, serial::array<uint32_t>& indices, const size_t vertexOffset)
@@ -94,9 +94,9 @@ void load_primitive_vertices(const fastgltf::Asset& gltf, const fastgltf::Primit
 
 std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& assetPath, std::vector<std::byte>&& contents)
 {
-    Core core {};
-    ecs::Engine& engine = core.engine;
-    rendering::PassSystem& passManager = core.renderer.passManager;
+    Scene scene {};
+    ecs::Engine& engine = scene.engine;
+    rendering::PassSystem& passManager = scene.renderer.passSys;
 
     fastgltf::Parser parser {};
 
@@ -237,19 +237,7 @@ std::vector<std::string> SceneAssetGenerator::GenerateAssets(const std::string& 
 
     const std::string sceneFileName = assetPath + ".asset";
     const std::string fullPath = assets_system::GEN_ASSET_DIR + sceneFileName;
-
-    serial::Stream m;
-    m.InitWrite();
-
-    passManager.Serialize(m);
-    engine.Serialize(m);
-
-    assets_system::AssetFile sceneAsset("SCNE", 0);
-
-    sceneAsset.WriteToBlob(m, true);
-
-    sceneAsset.Save(fullPath.c_str());
-
+    scene.Save(fullPath.c_str());
     engine.Destroy();
 
     return { sceneFileName };

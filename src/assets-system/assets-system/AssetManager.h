@@ -24,7 +24,9 @@ namespace assets_system
 
         static bool RefreshAssets(bool refreshAll = false);
 
-        static AssetFile LoadAsset(AssetID assetId);
+        static AssetFile LoadAsset(AssetID assetID);
+
+        static void GetAllAssets(std::vector<AssetID>& outAssetIds, std::vector<std::string>& outRelativeAssetPaths);
 
         static std::string PrettyNameOfAsset(const std::string& relativeAssetPath);
     };

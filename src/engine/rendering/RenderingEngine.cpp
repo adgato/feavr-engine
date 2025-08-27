@@ -27,7 +27,7 @@
 using namespace rendering;
 
 RenderingEngine::RenderingEngine(ecs::Engine& engine, RenderingResources& resources)
-    : resources(resources), resource(resources.resource), passManager(resources, *this, engine), defaultMaterial(engine, passManager) {}
+    : resources(resources), resource(resources.resource), passSys(resources, *this, engine), defaultMaterial(engine, passSys) {}
 
 void RenderingEngine::Init(RenderingResources& resources)
 {
@@ -64,7 +64,7 @@ void RenderingEngine::Init(RenderingResources& resources)
     sampl.minFilter = VK_FILTER_LINEAR;
     vkCreateSampler(resource, &sampl, nullptr, &defaultSamplerLinear);
 
-    passManager.Init();
+    passSys.Init();
 
     mainCamera.velocity = glm::vec3(0.f);
     mainCamera.position = glm::vec3(30.f, -00.f, -085.f);
@@ -155,7 +155,7 @@ void RenderingEngine::Draw(const uint32_t frameCount, VkCommandBuffer cmd, Image
     sceneProperties.StageBuffer(shader_layouts::global::SceneData_binding, sceneDataBuffer);
     sceneProperties.PerformWrites();
 
-    passManager.Draw(cmd);
+    passSys.Draw(cmd);
     vkCmdEndRendering(cmd);
 
     drawImage.BlitFromRenderTarget(cmd, targetImage);
@@ -171,7 +171,7 @@ void RenderingEngine::Destroy()
         frameDescriptors.DestroyPools();
     }
 
-    passManager.Destroy();
+    passSys.Destroy();
 
     commonTextures.Destroy();
 

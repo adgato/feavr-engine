@@ -299,10 +299,10 @@ namespace assets_system
         return true;
     }
 
-    AssetFile AssetManager::LoadAsset(AssetID assetId)
-    {
-        constexpr auto GEN_ASSET_INDEX = PROJECT_ROOT"/assets-meta/gen_assets_index.csv";
+    static constexpr auto GEN_ASSET_INDEX = PROJECT_ROOT"/assets-meta/gen_assets_index.csv";
 
+    AssetFile AssetManager::LoadAsset(AssetID assetID)
+    {
         std::ifstream genAssetReader(GEN_ASSET_INDEX);
 
         if (!genAssetReader.is_open())
@@ -319,20 +319,50 @@ namespace assets_system
 
             uint32_t id = std::stoi(row[ID]);
 
-            if (id != assetId.id)
+            if (id != assetID.id)
                 continue;
 
             auto assetPaths = splitCSV(row[PATH]);
 
-            if (assetPaths.size() <= assetId.idx)
+            if (assetPaths.size() <= assetID.idx)
                 return AssetFile::Invalid();
 
-            const std::string assetFilename = GEN_ASSET_DIR + assetPaths[assetId.idx];
+            const std::string assetFilename = GEN_ASSET_DIR + assetPaths[assetID.idx];
             AssetFile result = AssetFile::Load(assetFilename.c_str());
 
             return result;
         }
         return AssetFile::Invalid();
+    }
+
+    void AssetManager::GetAllAssets(std::vector<AssetID>& outAssetIds, std::vector<std::string>& outRelativeAssetPaths)
+    {
+        outAssetIds.clear();
+        outRelativeAssetPaths.clear();
+
+        std::ifstream genAssetReader(GEN_ASSET_INDEX);
+
+        if (!genAssetReader.is_open())
+            return;
+
+        std::vector<std::string> row;
+        readCSVLine(genAssetReader, row);
+        assert(row[ID] == "id" && row[PATH] == "paths");
+
+        while (readCSVLine(genAssetReader, row))
+        {
+            if (row.size() == 0)
+                continue;
+
+            uint32_t id = std::stoi(row[ID]);
+            auto assetPaths = splitCSV(row[PATH]);
+
+            for (size_t i = 0; i < assetPaths.size(); ++i)
+            {
+                outAssetIds.emplace_back(id, i);
+                outRelativeAssetPaths.emplace_back(assetPaths[i]);
+            }
+        }
     }
 
     std::string AssetManager::PrettyNameOfAsset(const std::string& relativeAssetPath)
@@ -345,7 +375,14 @@ namespace assets_system
         const std::string extension = path.extension().string();
         const auto it = assetTypes.find(std::hash<std::string> {}(extension));
 
-        std::string type = it == assetTypes.end() ? "____" : it->second;
+        std::string type {};
+        if (it == assetTypes.end())
+        {
+            for (size_t i = 1; i < extension.size(); ++i)
+                type += std::toupper(extension[i]);
+        }
+        else
+            type = it->second;
 
         std::string field = fmt::format("{}_{}", type, path.stem().string());
         for (size_t i = 0; i < field.size(); ++i)

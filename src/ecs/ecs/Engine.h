@@ -3,12 +3,12 @@
 #include <vector>
 
 #include "Archetype.h"
+#include "EntitySource.h"
 #include "UpdateQueue.h"
+#include "assets-system/AssetManager.h"
 
 namespace ecs
 {
-    class Engine;
-
     template <ComponentType...>
     class EngineView;
     template <ComponentType...>
@@ -28,6 +28,7 @@ namespace ecs
         template <ComponentType...>
         friend class ArchetypeIterator;
         friend class EngineWidget;
+        friend struct EntitySource;
 
         // friendly extension methods
         template <typename... Ts>
@@ -37,6 +38,8 @@ namespace ecs
 
         std::vector<Archetype> archetypes = std::vector<Archetype>(1);
         std::vector<EntityLocation> entities;
+
+        std::vector<EntitySource> entitySources;
 
         std::vector<EntityID> deleted;
         bool anyUpdates = false;
@@ -48,10 +51,6 @@ namespace ecs
         void RawAdd(Entity e, const std::byte* data, const TypeInfo& typeInfo);
 
         void RawRemove(Entity e, TypeID type);
-
-        void ReadEngineTypes(const char* serialTypes, const std::vector<TypeID>& types, serial::Stream& m);
-
-        void WriteEngineTypes(const char* serialTypes, const std::vector<TypeID>& types, serial::Stream& m) const;
 
     public:
         Entity New(bool canUseDeleted = true);
@@ -131,8 +130,13 @@ namespace ecs
 
         void Destroy();
 
-        void Serialize(serial::Stream& m);
+        serial::Stream AddFrom(assets_system::AssetID assetID, bool useAsSource = true);
+        void WriteTo(serial::Stream& m);
 
-        void Insert(const Engine& other);
+        // very slow, but then again, what did you expect? we're parsing through a history of entity component systems to find the "source" of every single component.
+        void Lock();
+        void Unlock();
+        void Lock(Entity e, TypeID type);
+        void Unlock(Entity e, TypeID type);
     };
 }

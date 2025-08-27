@@ -21,4 +21,32 @@ namespace serial
 
         return readTag == tag;
     }
+
+    void Stream::Barrier(const TagID tag, size_t& size, size_t& offset)
+    {
+        if (offset > 0)
+        {
+            if (reading)
+            {
+                if (reader.GetCount() - offset != size)
+                {
+                    fmt::println("Warning: unexpected size serialized.");
+                    reader.Jump(offset - reader.GetCount() + size);
+                }
+            } else
+                writer.WriteOver<fsize>(writer.GetCount() - offset - sizeof(fsize), offset);
+        }
+
+        MatchNextTag(tag);
+
+        if (reading)
+        {
+            size = reader.Read<fsize>();
+            offset = reader.GetCount();
+        } else
+        {
+            size = 0;
+            offset = writer.Reserve<fsize>();
+        }
+    }
 }

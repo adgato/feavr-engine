@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include <SDL_video.h>
 
 #include "rendering/utility/Descriptors.h"

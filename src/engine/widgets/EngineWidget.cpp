@@ -5,6 +5,8 @@
 #include <string>
 
 #include "AutoCompleteWidget.h"
+#include "assets-system/AssetManager.h"
+#include "rendering/Scene.h"
 #include "rendering/pass-system/IdentifyPass.h"
 #include "rendering/pass-system/Mesh.h"
 #include "rendering/pass-system/PassSystem.h"
@@ -13,7 +15,7 @@
 
 namespace ecs
 {
-    std::vector<TypeID> EngineWidget::GetComponentIDs(const Tags& components)
+    std::vector<TypeID> EngineWidget::GetComponentIDs(const Tags& components) const
     {
         const size_t size = components.tags->size();
 
@@ -84,10 +86,78 @@ namespace ecs
         tags.assign(tagsSet.begin(), tagsSet.end());
     }
 
+    void EngineWidget::RefreshAssets()
+    {
+        assets_system::AssetManager::GetAllAssets(sceneAssetIDs, sceneAssetNames);
+        auto idIt = sceneAssetIDs.begin();
+        auto nameIt = sceneAssetNames.begin();
+
+        while (nameIt != sceneAssetNames.end())
+        {
+            *nameIt = assets_system::AssetManager::PrettyNameOfAsset(*nameIt);
+            if (nameIt->starts_with("SCNE"))
+            {
+                ++idIt;
+                ++nameIt;
+            } else
+            {
+                nameIt = sceneAssetNames.erase(nameIt);
+                idIt = sceneAssetIDs.erase(idIt);
+            }
+        }
+    }
+
+    void EngineWidget::ShowTabs()
+    {
+        float currentLineWidth = 0;
+        const float totalAvailableWidth = ImGui::GetContentRegionAvail().x;
+
+        for (size_t i = 0; i < engineViewTabs.size(); ++i)
+        {
+            ImGui::PushID(i);
+
+            const int tabNumber = (i + 1) % 10;
+            std::string tabString = std::to_string(tabNumber);
+            const char* buffer = tabString.c_str();
+
+            const float inputWidth = ImGui::CalcTextSize(buffer).x + 10;
+            const float thisItemWidth = inputWidth + ImGui::GetStyle().ItemSpacing.x;
+
+            // Check if this item fits on current line
+            if (i > 0 && currentLineWidth + thisItemWidth > totalAvailableWidth)
+                currentLineWidth = thisItemWidth;
+            else
+            {
+                if (i > 0)
+                    ImGui::SameLine();
+                currentLineWidth += thisItemWidth;
+            }
+
+            ImGui::SetNextItemWidth(inputWidth);
+
+            const ImU32 currentTabColour = ImGui::GetColorU32(ImGuiCol_ButtonActive);
+            const bool highlight = currentTab == i;
+            if (highlight)
+                ImGui::PushStyleColor(ImGuiCol_Button, currentTabColour);
+
+            if (ImGui::Button(buffer) || ImGui::IsKeyPressed(static_cast<ImGuiKey>(ImGuiKey_0 + tabNumber)))
+                currentTab = i;
+
+            if (highlight)
+                ImGui::PopStyleColor();
+
+            ImGui::PopID();
+        }
+    }
+
+    void EngineWidget::MainMenu() {}
+
     bool EngineWidget::ConsiderEntity(Entity e, const std::vector<TypeID>& includeTypes, const std::vector<TypeID>& excludeTypes)
     {
         if (!engine.IsValid(e))
             return false;
+
+        const EngineViewData& tab = engineViewTabs[currentTab];
 
         auto [archetype, index] = engine.entities[e];
         const std::vector<TypeID>& types = engine.archetypes[archetype].types;
@@ -97,23 +167,23 @@ namespace ecs
 
         if (Tags* tags = engine.TryGet<Tags>(e))
         {
-            for (size_t i = 0; i < includeTags.tags->size(); ++i)
+            for (size_t i = 0; i < tab.includeTags.tags->size(); ++i)
             {
-                if (!tags->ContainsTag(includeTags.tags->data()[i]))
+                if (!tags->ContainsTag(tab.includeTags.tags->data()[i]))
                     return false;
             }
-            for (size_t i = 0; i < excludeTags.tags->size(); ++i)
+            for (size_t i = 0; i < tab.excludeTags.tags->size(); ++i)
             {
-                if (tags->ContainsTag(excludeTags.tags->data()[i]))
+                if (tags->ContainsTag(tab.excludeTags.tags->data()[i]))
                     return false;
             }
             return true;
         }
-        return includeTags.tags->size() == 0;
+        return tab.includeTags.tags->size() == 0;
     }
 
-    EngineWidget::EngineWidget(Engine& engine, rendering::PassSystem& passSys)
-        : engine(engine), tagView(engine), outlineView(engine), outlineMat(engine, passSys)
+    EngineWidget::EngineWidget(Scene& core)
+        : scene(core), engine(core.engine), tagView(core.engine), outlineView(core.engine), outlineMat(core.engine, core.renderer.passSys)
     {
         typeNames.reserve(TypeRegistry::RegisteredCount());
         for (TypeID i = 0; i < TypeRegistry::RegisteredCount(); ++i)
@@ -123,19 +193,23 @@ namespace ecs
             typeNameSet.insert(typeName);
         }
         RefeshTags();
+        RefreshAssets();
     }
+
 
     void EngineWidget::SetHotEntity(Entity hotEntity, const glm::vec2 coord)
     {
-        if (showEntities.size() == 0)
+        EngineViewData& tab = engineViewTabs[currentTab];
+        if (tab.showEntities.size() == 0)
         {
-            showEntities.push_back(hotEntity);
+            tab.showEntities.push_back(hotEntity);
             showHot = false;
         } else
         {
-            showHot = showEntities[0] == hotEntity;
-            showEntities[0] = hotEntity;
+            showHot = tab.showEntities[0] == hotEntity;
+            tab.showEntities[0] = hotEntity;
         }
+
         hotViewPos = coord;
         hotChanged = true;
     }
@@ -175,25 +249,27 @@ namespace ecs
 
     void EngineWidget::Search()
     {
-        const std::vector<TypeID> includeTypes = GetComponentIDs(includeComponents);
-        const std::vector<TypeID> excludeTypes = GetComponentIDs(excludeComponents);
+        EngineViewData& tab = engineViewTabs[currentTab];
+        const std::vector<TypeID> includeTypes = GetComponentIDs(tab.includeComponents);
+        const std::vector<TypeID> excludeTypes = GetComponentIDs(tab.excludeComponents);
 
-        std::erase_if(showEntities, [&includeTypes, &excludeTypes, this](Entity e)
+        std::erase_if(tab.showEntities, [&includeTypes, &excludeTypes, this](Entity e)
         {
             return !ConsiderEntity(e, includeTypes, excludeTypes);
         });
 
-        const std::unordered_set<TypeID> oldShowEntities(showEntities.begin(), showEntities.end());
+        const std::unordered_set<TypeID> oldShowEntities(tab.showEntities.begin(), tab.showEntities.end());
 
         for (EntityID e = 0; e < engine.entities.size(); ++e)
         {
             if (!oldShowEntities.contains(e) && ConsiderEntity(e, includeTypes, excludeTypes))
-                showEntities.push_back(e);
+                tab.showEntities.push_back(e);
         }
     }
 
     void EngineWidget::SearchTree()
     {
+        EngineViewData& tab = engineViewTabs[currentTab];
         ImGui::PushID("Include");
         ImGui::SeparatorText("Include");
         int includeSelect = -1;
@@ -202,20 +278,20 @@ namespace ecs
         {
             const char* tag = tags[includeSelect].c_str();
             if (typeNameSet.contains(tags[includeSelect]))
-                includeComponents.AddTag(tag);
+                tab.includeComponents.AddTag(tag);
             else
-                includeTags.AddTag(tag);
+                tab.includeTags.AddTag(tag);
         }
 
         ImGui::PushID("Components");
         ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.1f, 0.1f, 0.5f, 1));
-        includeComponents.Widget();
+        tab.includeComponents.Widget();
         ImGui::PopStyleColor();
         ImGui::PopID();
         ImGui::SameLine();
         ImGui::PushID("Tags");
         ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.2f, 0.2f, 0.5f, 1));
-        includeTags.Widget();
+        tab.includeTags.Widget();
         ImGui::PopStyleColor();
         ImGui::PopID();
 
@@ -229,20 +305,20 @@ namespace ecs
         {
             const char* tag = tags[excludeSelect].c_str();
             if (typeNameSet.contains(tags[excludeSelect]))
-                excludeComponents.AddTag(tag);
+                tab.excludeComponents.AddTag(tag);
             else
-                excludeTags.AddTag(tag);
+                tab.excludeTags.AddTag(tag);
         }
 
         ImGui::PushID("Components");
         ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.5f, 0.1f, 0.1f, 1));
-        excludeComponents.Widget();
+        tab.excludeComponents.Widget();
         ImGui::PopStyleColor();
         ImGui::PopID();
         ImGui::SameLine();
         ImGui::PushID("Tags");
         ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.5f, 0.2f, 0.2f, 1));
-        excludeTags.Widget();
+        tab.excludeTags.Widget();
         ImGui::PopStyleColor();
         ImGui::PopID();
 
@@ -264,8 +340,11 @@ namespace ecs
                 engine.Remove<PassComponent<StencilOutlinePass>>(submesh);
 
             std::vector<EntityID> submeshes {};
-            for (Entity entity : showEntities)
-                outlineMat.Apply(entity, true);
+            for (Entity entity : tab.showEntities)
+            {
+                if (engine.IsValid(entity))
+                    outlineMat.Apply(entity, true);
+            }
         }
     }
 
@@ -365,8 +444,8 @@ namespace ecs
 
     void EngineWidget::EngineTable()
     {
+        EngineViewData& tab = engineViewTabs[currentTab];
         TypeID hotType = BadMaxType;
-
 
         constexpr ImGuiTableFlags flags =
                 ImGuiTableFlags_Borders |
@@ -376,11 +455,11 @@ namespace ecs
                 ImGuiTableFlags_ContextMenuInBody |
                 ImGuiTableFlags_SizingFixedSame;
 
-        if (ImGui::BeginTable("Engine View", showTypes.size() + 1, flags, ImGui::GetContentRegionAvail()))
+        if (ImGui::BeginTable("Engine View", tab.showTypes.size() + 1, flags, ImGui::GetContentRegionAvail()))
         {
             // Header row with component type selectors
             ImGui::TableSetupColumn("##Entity", ImGuiTableColumnFlags_WidthFixed, 70.0f);
-            for (size_t k = 0; k < showTypes.size(); ++k)
+            for (size_t k = 0; k < tab.showTypes.size(); ++k)
             {
                 ImGui::TableSetupColumn("##Component");
             }
@@ -393,31 +472,31 @@ namespace ecs
             ImGui::Text("Entity");
 
             ImGui::PushID("ComponentHeaders");
-            for (size_t k = 0; k < showTypes.size(); ++k)
+            for (size_t k = 0; k < tab.showTypes.size(); ++k)
             {
                 ImGui::PushID(k);
                 ImGui::TableNextColumn();
 
-                int t = showTypes[k].type;
+                int t = tab.showTypes[k].type;
                 ImGui::SetNextItemWidth(-1);
-                if (showTypes[k].widget.AutoComplete("##TypeCombo", &t, typeNames))
-                    showTypes[k].type = t;
+                if (tab.showTypes[k].widget.AutoComplete("##TypeCombo", &t, typeNames))
+                    tab.showTypes[k].type = t;
                 ImGui::PopID();
             }
             ImGui::PopID();
 
             // Entity rows
             ImGui::PushID("EntityRows");
-            for (size_t i = 0; i < showEntities.size(); ++i)
+            for (size_t i = 0; i < tab.showEntities.size(); ++i)
             {
                 ImGui::PushID(i);
                 ImGui::TableNextRow();
                 ImGui::TableNextColumn();
 
-                EntityID entity = showEntities[i];
+                EntityID entity = tab.showEntities[i];
 
                 if (ImGui::InputScalar("##EntityID", ImGuiDataType_U32, &entity))
-                    showEntities[i] = entity;
+                    tab.showEntities[i] = entity;
 
                 if (!engine.IsValid(entity))
                 {
@@ -452,12 +531,12 @@ namespace ecs
                 }
 
                 // Component columns for this entity
-                for (size_t k = 0; k < showTypes.size(); ++k)
+                for (size_t k = 0; k < tab.showTypes.size(); ++k)
                 {
                     ImGui::TableNextColumn();
                     ImGui::PushID(k);
 
-                    const TypeID showType = showTypes[k].type;
+                    const TypeID showType = tab.showTypes[k].type;
                     if (expandEntity)
                     {
                         const bool removing = popup.mode == UpdatePopupData::REMOVE && popup.entity == entity && popup.type == showType;
@@ -475,50 +554,122 @@ namespace ecs
             ImGui::EndTable();
         }
 
-        if (hotType != BadMaxType)
+        if (hotType < BadMaxType)
         {
-            if (showTypes.size() == 0)
-                showTypes.resize(1);
-            showTypes[0].type = hotType;
+            if (tab.showTypes.size() == 0)
+                tab.showTypes.resize(1);
+            tab.showTypes[0].type = hotType;
         }
     }
 
     void EngineWidget::Windows()
     {
+        EngineViewData& tab = engineViewTabs[currentTab];
         SetWindowSplit();
         if (ImGui::Begin("Engine View", nullptr, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize))
         {
+            ShowTabs();
+
             if (ImGui::TreeNode("Search ECS"))
             {
                 SearchTree();
                 ImGui::TreePop();
             }
 
-            int entityCount = showEntities.size();
+            int entityCount = tab.showEntities.size();
             ImGui::SetNextItemWidth(100);
             if (ImGui::InputInt("Entities", &entityCount))
             {
                 if (entityCount < 0)
                     entityCount = 0;
-                showEntities.resize(entityCount, BadMaxEntity);
+                tab.showEntities.resize(entityCount, BadMaxEntity);
             }
 
-            int typesCount = showTypes.size();
+            int typesCount = tab.showTypes.size();
             ImGui::SetNextItemWidth(100);
             if (ImGui::InputInt("Components", &typesCount))
             {
                 if (typesCount < 0)
                     typesCount = 0;
 
-                const size_t oldSize = showTypes.size();
-                showTypes.resize(typesCount);
+                const size_t oldSize = tab.showTypes.size();
+                tab.showTypes.resize(typesCount);
                 for (size_t i = oldSize; i < typesCount; ++i)
-                    showTypes[i].type = BadMaxType;
+                    tab.showTypes[i].type = BadMaxType;
             }
 
             EngineTable();
         }
         ImGui::End();
+
+
+        if (ImGui::IsKeyPressed(ImGuiKey_Escape))
+        {
+            showMainMenu ^= true;
+            if (showMainMenu)
+            {
+                ImGui::SetNextWindowPos(ImGui::GetMainViewport()->GetCenter(), 0, ImVec2 { 0.5f, 0.5f });
+                ImGui::SetNextWindowFocus();
+            }
+        }
+        const bool showMainMenuView = showMainMenu;
+        if (showMainMenuView && ImGui::Begin("Main Menu", &showMainMenu, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse))
+        {
+            if (ImGui::Button("Refresh Assets"))
+            {
+                assets_system::AssetManager::RefreshAssets();
+                RefreshAssets();
+            }
+
+            sceneAssetSelector.AutoComplete("## Load Asset Selector", &loadAssetIndex, sceneAssetNames);
+            ImGui::SameLine();
+            if (ImGui::Button("Load Scene"))
+            {
+                scene.Load(sceneAssetIDs[loadAssetIndex]);
+            }
+
+            // Position the input right after the text with no gap
+            ImGui::InputText("##Save Asset Name", saveAssetName, sizeof(saveAssetName));
+
+
+            ImGui::SameLine();
+            if (ImGui::Button("Save Scene"))
+            {
+                std::string fileName = assets_system::ASSET_DIR;
+                fileName += saveAssetName;
+                fileName += ".scne.asset";
+                scene.Save(fileName.c_str());
+            }
+
+            static bool test = false;
+            if (ImGui::Checkbox("Lock", &test))
+            {
+                if (test)
+                {
+                    vkDeviceWaitIdle(scene.resources.resource);
+                    engine.Lock();
+
+                    EngineView<Mesh> submeshView(engine);
+                    for (auto [id, mesh] : submeshView)
+                    {
+                        if (!mesh.IsValid())
+                            mesh.UploadMesh(scene.resources);
+                    }
+                }
+                else
+                    engine.Unlock();
+            }
+
+            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4 { 1, 0.3f, 0.3f, 1 });
+            ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4 { 1, 0.1f, 0.1f, 1 });
+            if (ImGui::Button("Quit"))
+                quitRequested = true;
+            ImGui::PopStyleColor(2);
+        } else
+            showMainMenu = false;
+
+        if (showMainMenuView)
+            ImGui::End();
 
         if (hotChanged)
         {
@@ -526,7 +677,8 @@ namespace ecs
             hotChanged = false;
         }
 
-        const bool showHotView = showHot && showEntities.size() > 0;
+
+        const bool showHotView = showHot && tab.showEntities.size() > 0;
         if (showHotView && ImGui::Begin("Hot View", nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoTitleBar))
         {
             if (ImGui::SmallButton("X"))
@@ -537,7 +689,7 @@ namespace ecs
                     engine.Remove<PassComponent<StencilOutlinePass>>(submesh);
             }
 
-            Entity e = showEntities[0];
+            Entity e = tab.showEntities[0];
             if (engine.IsValid(e))
             {
                 TypeID hotType = BadMaxType;
@@ -558,17 +710,17 @@ namespace ecs
                     ImGui::TreePop();
                 }
                 ImGui::Separator();
-                if (showTypes.size() > 0)
+                if (tab.showTypes.size() > 0)
                 {
-                    const TypeID type = showTypes[0].type;
+                    const TypeID type = tab.showTypes[0].type;
                     if (elem.StoresType(type))
                         TypeRegistry::Widget(type, elem.GetElem(index, type));
                 }
                 if (hotType != BadMaxType)
                 {
-                    if (showTypes.size() == 0)
-                        showTypes.resize(1);
-                    showTypes[0].type = hotType;
+                    if (tab.showTypes.size() == 0)
+                        tab.showTypes.resize(1);
+                    tab.showTypes[0].type = hotType;
                 }
             }
         }

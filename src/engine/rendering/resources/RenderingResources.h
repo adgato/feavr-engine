@@ -1,7 +1,7 @@
 #pragma once
 #include <functional>
 
-#include "rendering/resources/ResourceHandles.h"
+#include "ResourceHandles.h"
 
 namespace rendering
 {

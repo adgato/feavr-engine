@@ -6,7 +6,7 @@
 
 namespace serial
 {
-    template <IsSerializable T>
+    template <IsSerializable T> requires std::is_trivially_copyable_v<T>
     class array
     {
         T* ptr = nullptr;
@@ -43,7 +43,7 @@ namespace serial
             assert(capacity < UINT32_MAX - amount);
 
             capacity += amount;
-
+            assert(capacity > count);
 
             T* new_ptr = new T[capacity];
 
@@ -115,13 +115,11 @@ namespace serial
 
         T* data()
         {
-            assert(ptr);
             return ptr;
         }
 
         const T* data() const
         {
-            assert(ptr);
             return ptr;
         }
 
@@ -141,4 +139,22 @@ namespace serial
                 m.SerializeArray<T>(ptr, count);
         }
     };
+
+    template <typename T> requires std::is_trivially_copyable_v<T>
+    void SerializeVector(Stream& m, std::vector<T>& vector)
+    {
+        array<T> serial {};
+        if (m.reading)
+        {
+            serial.Serialize(m);
+            vector.resize(serial.size());
+            std::memcpy(vector.data(), serial.data(), vector.size() * sizeof(T));
+        }
+        else
+        {
+            serial = array<T>::NewFromData(vector.data(), vector.size());
+            serial.Serialize(m);
+        }
+        serial.Destroy();
+    }
 }

@@ -1,4 +1,5 @@
 id,paths
+32,"combined.scne.asset"
 30,"shaders/mesh_outline_vertMask.hlsl.asset,shaders/mesh_outline_vertOutline.hlsl.asset,shaders/mesh_outline_fragMask.hlsl.asset,shaders/mesh_outline_fragOutline.hlsl.asset"
 18,"basicmesh.glb.asset"
 17,"shaders/identify_shader_vert.hlsl.asset,shaders/identify_shader_frag.hlsl.asset"

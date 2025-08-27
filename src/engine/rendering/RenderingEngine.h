@@ -5,7 +5,7 @@
 #include "rendering/CommonTextures.h"
 #include "pass-system/Material.h"
 
-class Core;
+class Scene;
 
 
 struct FrameData
@@ -36,7 +36,7 @@ public:
     rendering::Image depthImage {};
 
     rendering::GlobalSceneData sceneData {};
-    rendering::PassSystem passManager;
+    rendering::PassSystem passSys;
 
     rendering::Material<IdentifyPass> defaultMaterial;
 
@@ -47,6 +47,7 @@ public:
     void Init(rendering::RenderingResources& resources);
 
     void Draw(uint32_t frameCount, VkCommandBuffer cmd, rendering::Image& targetImage);
+
 
     void Destroy();
 };

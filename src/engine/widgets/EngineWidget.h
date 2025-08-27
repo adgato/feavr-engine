@@ -3,6 +3,7 @@
 #include <unordered_set>
 
 #include "AutoCompleteWidget.h"
+#include "assets-system/AssetManager.h"
 #include "components/Tags.h"
 #include "ecs/Engine.h"
 #include "ecs/EngineView.h"
@@ -12,39 +13,60 @@
 #include "rendering/pass-system/PassSystem.h"
 #include "rendering/pass-system/StencilOutlinePass.h"
 
+class Scene;
 class IdentifyPass;
 
 namespace ecs
 {
     class EngineWidget
     {
-        std::vector<std::string> typeNames {};
-        std::unordered_set<std::string> typeNameSet {};
-        std::vector<std::string> tags {};
-        std::unordered_set<std::string> tagsSet {};
-
         struct ShowTypeData
         {
             TypeID type;
             widgets::AutoCompleteWidget widget;
         };
 
-        std::vector<EntityID> showEntities {};
-        std::vector<ShowTypeData> showTypes {};
+        struct EngineViewData
+        {
+            std::vector<EntityID> showEntities {};
+            std::vector<ShowTypeData> showTypes {};
+
+            Tags includeTags;
+            Tags includeComponents;
+            Tags excludeTags;
+            Tags excludeComponents;
+        };
+
         widgets::AutoCompleteWidget includeTagsSelector {};
         widgets::AutoCompleteWidget excludeTagsSelector {};
 
-        Tags includeTags;
-        Tags includeComponents;
-        Tags excludeTags;
-        Tags excludeComponents;
+        std::vector<std::string> typeNames {};
+        std::unordered_set<std::string> typeNameSet {};
+        std::vector<std::string> tags {};
+        std::unordered_set<std::string> tagsSet {};
+
+        std::vector<std::string> sceneAssetNames {};
+        std::vector<assets_system::AssetID> sceneAssetIDs {};
+        widgets::AutoCompleteWidget sceneAssetSelector {};
+
+        char saveAssetName[256] {};
+        int loadAssetIndex;
+
+        std::array<EngineViewData, 10> engineViewTabs;
+        size_t currentTab = 0;
+
+        Scene& scene;
         Engine& engine;
+
         EngineView<Tags> tagView;
         EngineView<PassComponent<StencilOutlinePass>> outlineView;
         rendering::Material<StencilOutlinePass> outlineMat;
+
         glm::vec2 hotViewPos {};
         bool hotChanged = false;
         bool showHot = false;
+
+        bool showMainMenu = false;
 
         struct UpdateSplitData
         {
@@ -58,15 +80,22 @@ namespace ecs
         struct UpdatePopupData
         {
             enum { DISABED, ADD, REMOVE } mode;
+
             EntityID entity;
             TypeID type;
         } popup {};
 
-        std::vector<TypeID> GetComponentIDs(const Tags& components);
+        std::vector<TypeID> GetComponentIDs(const Tags& components) const;
 
         void ShowUpdatePopup(Entity e, TypeID type);
 
         void RefeshTags();
+
+        void RefreshAssets();
+
+        void ShowTabs();
+
+        void MainMenu();
 
         bool ConsiderEntity(EntityID e, const std::vector<TypeID>& includeTypes, const std::vector<TypeID>& excludeTypes);
 
@@ -78,11 +107,12 @@ namespace ecs
 
         void SetWindowSplit();
 
-
         void EngineTable();
 
     public:
-        explicit EngineWidget(Engine& engine, rendering::PassSystem& passSys);
+        bool quitRequested = false;
+
+        explicit EngineWidget(Scene& core);
 
         void SetHotEntity(Entity hotEntity, glm::vec2 coord);
 

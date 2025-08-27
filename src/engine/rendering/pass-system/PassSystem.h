@@ -40,7 +40,6 @@ namespace rendering
 
         void Init();
 
-        static void Serialize(serial::Stream&) {}
 
         void Draw(VkCommandBuffer cmd);
 

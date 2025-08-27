@@ -2,6 +2,8 @@
 
 #include <algorithm>
 #include <numeric>
+#include <unordered_set>
+
 
 namespace ecs
 {
@@ -100,11 +102,10 @@ namespace ecs
             entities.emplace_back(0, archetypes[0].GetCount());
             archetypes[0].IncCount(e);
             entityUpdateQueue.emplace_back();
+            entitySources.emplace_back();
         }
         return e;
     }
-
-
 
     void Engine::RemoveAll(Entity e)
     {
@@ -132,6 +133,7 @@ namespace ecs
         entities.clear();
         deleted.clear();
         entityUpdateQueue.clear();
+        entitySources.clear();
     }
 
     void Engine::Refresh()
@@ -239,13 +241,27 @@ namespace ecs
         return res;
     }
 
-    void Engine::ReadEngineTypes(const char* serialTypes, const std::vector<TypeID>& types, serial::Stream& m)
+    serial::Stream Engine::AddFrom(const assets_system::AssetID assetID, const bool useAsSource /* = true*/)
     {
-        assert(m.reading);
-        const size_t numTypes = types.size();
+        const size_t count = TypeRegistry::RegisteredCount();
+        std::string serialTypes {};
+        for (TypeID i = 0; i < count; ++i)
+        {
+            serialTypes += TypeRegistry::GetInfo(i).name;
+            if (i < count - 1)
+                serialTypes += "; ";
+        }
+
+        assets_system::AssetFile assetFile = assets_system::AssetManager::LoadAsset(assetID);
+        assert(assetFile.HasFormat("SCNE", 0));
+
+        serial::Stream m = assetFile.ReadFromBlob();
+
+        // std::unordered_map<assets_system::AssetID, Scene> sourceMap {};
+        const TypeID numTypes = TypeRegistry::RegisteredCount();
 
         const auto targetSplit = split(m.reader.ReadString(), "; ");
-        const auto sourceSplit = split(serialTypes, "; ");
+        const auto sourceSplit = split(serialTypes.c_str(), "; ");
 
         const uint targetNumTypes = targetSplit.size();
         assert(sourceSplit.size() == numTypes);
@@ -270,10 +286,9 @@ namespace ecs
             if (!sourceUsed[j])
                 fmt::println("Note: Ignoring type {}", sourceSplit[j]);
 
-
         std::vector<std::unique_ptr<std::byte[]>> defaultTypeData;
         defaultTypeData.reserve(numTypes);
-        for (const TypeID globalType : types)
+        for (TypeID globalType = 0; globalType < numTypes; ++globalType)
             defaultTypeData.emplace_back(std::make_unique<std::byte[]>(TypeRegistry::GetInfo(globalType).size));
 
         EntityID unionOffset = entities.size();
@@ -281,12 +296,30 @@ namespace ecs
         m.userData.swap(outerData);
 
         const EntityID entityCount = m.reader.Read<EntityID>();
+
+        std::vector<EntitySource> oldEntitySources;
+        oldEntitySources.resize(entityCount);
+        for (size_t i = 0; i < oldEntitySources.size(); ++i)
+            oldEntitySources[i].Serialize(m);
+
         for (EntityID i = 0; i < entityCount; ++i)
         {
             Entity e = New(false);
             assert(e == i + unionOffset);
 
-            for (uint numOwn = m.reader.Read<uint>(); numOwn > 0; --numOwn)
+            EntitySource& entitySource = entitySources.back();
+            if (useAsSource)
+            {
+                entitySource.target = i;
+                entitySource.asset = assetID;
+            } else
+            {
+                entitySource = oldEntitySources[i];
+                for (TypeID& oldType : entitySource.types)
+                    oldType = remap[oldType];
+            }
+
+            for (TypeID numOwn = m.reader.Read<TypeID>(); numOwn > 0; --numOwn)
             {
                 const TypeID retype = m.reader.Read<TypeID>();
                 const size_t size = m.reader.Read<serial::fsize>();
@@ -300,36 +333,43 @@ namespace ecs
                     m.reader.Jump(size);
                     continue;
                 }
-                const TypeID globalType = types[type];
 
                 std::byte* data = defaultTypeData[type].get();
-                TypeRegistry::CopyDefault(globalType, data);
-                TypeRegistry::Serialize(globalType, data, m);
-                RawAdd(e, data, TypeRegistry::GetInfo(globalType));
+                TypeRegistry::CopyDefault(type, data);
+                TypeRegistry::Serialize(type, data, m);
+                RawAdd(e, data, TypeRegistry::GetInfo(type));
             }
         }
         m.userData.swap(outerData);
+        return m;
     }
 
-    void Engine::WriteEngineTypes(const char* serialTypes, const std::vector<TypeID>& types, serial::Stream& m) const
+    void Engine::WriteTo(serial::Stream& m)
     {
+        const size_t count = TypeRegistry::RegisteredCount();
+        std::string serialTypes {};
+        for (TypeID i = 0; i < count; ++i)
+        {
+            serialTypes += TypeRegistry::GetInfo(i).name;
+            if (i < count - 1)
+                serialTypes += "; ";
+        }
+
         assert(!m.reading);
+
         m.writer.WriteString(serialTypes);
-
-        std::vector<size_t> argSortedTypes(types.size());
-        std::iota(argSortedTypes.begin(), argSortedTypes.end(), 0);
-        std::sort(argSortedTypes.begin(), argSortedTypes.end(), [&types](const size_t i, const size_t j) { return types[i] < types[j]; });
-
-        std::vector<size_t> intersect {};
 
         const EntityID entityCount = entities.size();
         m.writer.Write<EntityID>(entityCount);
+
+        for (size_t i = 0; i < entityCount; ++i)
+            entitySources[i].Serialize(m);
 
         for (EntityID entity = 0; entity < entityCount; ++entity)
         {
             if (!IsValid(entity))
             {
-                m.writer.Write<uint>(1);
+                m.writer.Write<TypeID>(1);
                 m.writer.Write<TypeID>(BadMaxType);
                 m.writer.Write<serial::fsize>(0);
                 continue;
@@ -338,26 +378,10 @@ namespace ecs
             const auto& [archetype, index] = entities[entity];
             const Archetype& data = archetypes[archetype];
 
-            intersect.clear();
-            size_t i = 0, j = 0;
-            while (i < types.size() && j < data.types.size())
+            m.writer.Write<TypeID>(data.types.size());
+            for (const TypeID type : data.types)
             {
-                const TypeID ti = types[argSortedTypes[i]];
-                const TypeID tj = data.types[j];
-                if (ti == tj)
-                {
-                    intersect.emplace_back(argSortedTypes[i]);
-                    ++i;
-                    ++j;
-                } else if (ti < tj) ++i;
-                else ++j;
-            }
-
-            m.writer.Write<uint>(intersect.size());
-            for (const size_t idx : intersect)
-            {
-                m.writer.Write<TypeID>(idx);
-                const TypeID type = types[idx];
+                m.writer.Write<TypeID>(type);
                 const size_t offset = m.writer.Reserve<serial::fsize>();
 
                 TypeRegistry::Serialize(type, data.GetElem(index, type), m);
@@ -367,49 +391,98 @@ namespace ecs
         }
     }
 
-    void Engine::Serialize(serial::Stream& m)
+    void Engine::Lock()
     {
-        const size_t count = TypeRegistry::RegisteredCount();
-        std::string serialTypes {};
-        std::vector<TypeID> types;
-        types.reserve(count);
-        for (TypeID i = 0; i < count; ++i)
+        std::unordered_set<std::byte*> dontDestroy {};
+        EntitySource::EngineMap engineMap {};
+        for (EntityID e = 0; e < entities.size(); ++e)
         {
-            TypeInfo info = TypeRegistry::GetInfo(i);
-            types.emplace_back(info.type);
-            serialTypes += info.name;
-            if (i < count - 1)
-                serialTypes += "; ";
+            EntitySource& entitySource = entitySources[e];
+
+            if (!IsValid(e))
+            {
+                entitySource.types.clear();
+                continue;
+            }
+            auto& [archetype, index] = entities[e];
+            auto& elem = archetypes[archetype];
+
+            entitySource.types.assign(elem.types.begin(), elem.types.end());
+
+            for (const TypeID type : entitySource.types)
+            {
+                std::byte* dest = elem.GetElem(index, type);
+                if (std::byte* src = entitySource.TryGetFromSource(engineMap, type))
+                {
+                    TypeRegistry::Destroy(type, dest);
+                    std::memcpy(dest, src, TypeRegistry::GetInfo(type).size);
+                    dontDestroy.insert(src);
+                }
+            }
         }
 
-        if (m.reading)
-            ReadEngineTypes(serialTypes.c_str(), types, m);
-        else
-            WriteEngineTypes(serialTypes.c_str(), types, m);
+        // manual cleanup (needed as we copied some source components, don't want to destroy these)
+        for (auto& pair : engineMap)
+        {
+            Engine& engine = pair.second;
+            for (EntityID e = 0; e < engine.entities.size(); ++e)
+            {
+                if (!IsValid(e))
+                    continue;
+                auto& [archetype, index] = engine.entities[e];
+                auto& elem = engine.archetypes[archetype];
+                for (const TypeID type : elem.types)
+                {
+                    std::byte* data = elem.GetElem(index, type);
+                    if (!dontDestroy.contains(data))
+                        TypeRegistry::Destroy(type, data);
+                }
+            }
+        }
     }
 
-    void Engine::Insert(const Engine& other)
+    void Engine::Unlock()
     {
-        const size_t count = TypeRegistry::RegisteredCount();
-        std::string serialTypes {};
-        std::vector<TypeID> types;
-        types.reserve(count);
-        for (TypeID i = 0; i < count; ++i)
+        for (EntityID e = 0; e < entities.size(); ++e)
+            entitySources[e].types.clear();
+    }
+
+    void Engine::Lock(Entity e, const TypeID type)
+    {
+        assert(IsValid(e));
+
+        EntitySource::EngineMap engineMap {};
+        auto& [archetype, index] = entities[e];
+        std::byte* dest = archetypes[archetype].GetElem(index, type);
+        const std::byte* src = entitySources[e].TryGetFromSource(engineMap, type);
+        if (src)
         {
-            TypeInfo info = TypeRegistry::GetInfo(i);
-            types.emplace_back(info.type);
-            serialTypes += info.name;
-            if (i < count - 1)
-                serialTypes += "; ";
+            TypeRegistry::Destroy(type, dest);
+            std::memcpy(dest, src, TypeRegistry::GetInfo(type).size);
         }
 
-        serial::Stream w;
-        w.InitWrite();
-        other.WriteEngineTypes(serialTypes.c_str(), types, w);
+        // manual cleanup (needed as we copied a source component, don't want to destroy it)
+        for (auto& pair : engineMap)
+        {
+            Engine& engine = pair.second;
+            for (EntityID entity = 0; entity < engine.entities.size(); ++entity)
+            {
+                if (!IsValid(entity))
+                    continue;
+                auto& [archetype, index] = engine.entities[entity];
+                auto& elem = engine.archetypes[archetype];
+                for (const TypeID elemType : elem.types)
+                {
+                    std::byte* data = elem.GetElem(index, elemType);
+                    if (src != data)
+                        TypeRegistry::Destroy(elemType, data);
+                }
+            }
+        }
+    }
 
-        serial::Stream r;
-        r.InitRead();
-        r.reader.ViewFrom(w.writer.AsSpan());
-        ReadEngineTypes(serialTypes.c_str(), types, r);
+    void Engine::Unlock(Entity e, const TypeID type)
+    {
+        std::erase(entitySources[e].types, type);
     }
 }

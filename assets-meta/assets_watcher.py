@@ -22,7 +22,8 @@ TRACK_EXTS = [
     ".png",
     ".hlsl",
     ".glb",
-    ".gltf"
+    ".gltf",
+    ".asset"
 ]
 
 
